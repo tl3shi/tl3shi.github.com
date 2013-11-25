@@ -1,11 +1,3 @@
----
-layout: post
-title: "hello world2"
-description: "helloworld"
-category: 
-tags: []
----
-{% include JB/setup %}
 Welcome to StackEdit!	{#welcome}
 =====================
 
