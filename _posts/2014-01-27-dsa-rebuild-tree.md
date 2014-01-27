@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "dsa rebuild tree"
-description: ""
-category: 
-tags: []
+title: "数据结构-树重建"
+description: "rebuild tree"
+category: data structure
+tags: [data structure, tree]
 ---
 {% include JB/setup %}
 
