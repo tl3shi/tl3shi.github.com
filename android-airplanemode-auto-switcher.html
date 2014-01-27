@@ -1,0 +1,219 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Android 自动切换飞行模式</title>
+
+</head>
+<body>
+<h1>Android 自动切换飞行模式</h1>
+
+<p>之前写过一个<a href="http://www.tanglei.name/android-switch-airplanemode-3/">Android手机根据时间设定自动切换飞行模式的代码</a>，这次换了个屌丝红米手机之后安装后发现用不了。于是决定重写写一个。</p>
+
+<p>整个功能要实现的话思路很清晰，只要改变一下系统配置(System.AIRPLANE_MODE_ON)，发送一个通知即可。但发现Android的权限设置没有以前那么开放了。从Android 4.2开始(<a href="http://developer.android.com/about/versions/android-4.2.html">SDK API 17</a>)，设备的这些属性是只读的，官网上说：</p>
+
+<blockquote><p>Some device settings defined by Settings.System are now read-only. If your app attempts to write changes to settings defined in Settings.System that have moved to Settings.Global, the write operation will silently fail when running on Android 4.2 and higher.</p></blockquote>
+
+<p>所以对于Android4.2版本的手机来说就悲剧了～</p>
+
+<p>刚开始在代码里面试图去修改System.AIRPLANE_MODE_ON 的属性，UI上貌似没有什么反映，log看到说缺少android.permission.WRITE_SECURE_SETTINGS 权限，在manifest里面声明，eclipse 又编译不过提示 Permission is only System Apps，说是必须得是系统应用才行。网上也有讨论各种解决方案，有说要写成系统应用，需要一个跟固件一起打包编译或者跟固件有相同的签名才行。同样也有人说通过反射可以实现。第一种方式应该很麻烦，得下某源码包编啊之类的，第二种方案有人说可以尝试下，但具体我也没试～不知道是否靠谱。</p>
+
+<p>后来的后来，还是从网上找到了解决方案，不过device必须得root，不然<b>没办法</b>搞定。</p>
+
+<p>原文来自<a href="http://zipta.ru/2012/11/borba-s-android-4-2/">这里</a>，虽然不知道是哪国语言～但代码还是认识。</p>
+
+<pre><code>//开启飞行模式
+settings put global airplane_mode_on 1 
+am broadcast -a android.intent.action.AIRPLANE_MODE --ez state true
+//关闭飞行模式
+settings put global airplane_mode_on 0 
+am broadcast -a android.intent.action.AIRPLANE_MODE --ez state false
+</code></pre>
+
+<p>通过adb shell，输入以上两句命令，可以将切换飞行模式。核心问题解决了～剩下的就是需要通过Java代码去调用shell命令，这个不难～不过得注意需要通过root去调用，另外得防止程序卡死～
+后来在<a href="http://stackoverflow.com/questions/15861046/how-to-toggle-airplane-mode-on-android-4-2-using-root">stackoverflow</a>上也有人提到了这个解决方案，并且还给了另外一个解决方案，即通过sqlite去<b>直接</b>改变Android的系统配置。数据库位置在/data/data/com.android.providers.settings/databases/settings.db</p>
+
+<pre><code>sqlite3 /data/data/com.android.providers.settings/databases/settings.db
+insert into global values(null, 'airplane_mode_on', 1);
+//相应的插入0值，即是取消飞行模式
+</code></pre>
+
+<p>当然上面的数据库修改之后要生效，还是必须得发上面的那个broadcast才能生效。</p>
+
+<p>下面是我写的小程序的界面：</p>
+
+<p><img src="https://raw2.github.com/tl3shi/tools/master/MyAirPlanMode/snapshot/android-airplanemode-auto-switcher.png" target="_blank" alt="Android自动切换飞行模式" width="800" ></p>
+
+<p>使用方法如下：</p>
+
+<ol>
+<li>分别设定好需要开启、关闭飞行模式的时间，默认情况下为凌晨12点30分开启飞行模式，早上7点关闭飞行模式。然后打开当前状态的按钮即可，打开后会提示下次切换飞行模式的时间。</li>
+<li>设定的时间到之后，App会自动尝试去启用飞行模式状态，如上图第二副图所示，当然得允许了(最好添加到信任程序列表，不然每次弹框)。另外，设定的时间到之后，有可能你还正在使用手机而不想马上切换飞行模式，App会给你5s的时间考虑，5秒之后你没有操作，app就会自动启用飞行模式了。当然你取消之后，这次就不会切换了，不过当你启动这个App的时候，会根据时间设定满足规则则自动切换。</li>
+<li>切换"关闭"状态即取消设定功能，若当前手机正处理飞行模式状态，也会切换为正常状态。</li>
+</ol>
+
+
+<p>注意：针对Android4.2及其以上的版本，手机需要ROOT才OK，且建议添加到信任程序列表。4.2之前的版本是木有问题的。</p>
+
+<p>欢迎有兴趣的同学<a href="">下载</a>试用，有建议/意见欢迎反馈～</p>
+
+<p>TODO：</p>
+
+<ol>
+<li>Android 各个版本UI风格的统一</li>
+<li>增加多个时间段的设置，支持晚上睡觉和中午睡觉都转飞行模式，既省电又防打扰。</li>
+<li>自己写着瞎玩，应该有不少Bug.</li>
+</ol>
+
+</body>
+</html>
