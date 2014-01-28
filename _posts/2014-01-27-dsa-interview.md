@@ -47,148 +47,148 @@ tags: [data structure]
 > 
 
 解题
+{% highlight c %}
+#include <iostream>
+#include <cstdlib>
+#include <fstream>
+#include "assert.h"
 
-    #include <iostream>
-    #include <cstdlib>
-    #include <fstream>
-    #include "assert.h"
+using namespace std;
+template <class T>
+class list1
+{
+    T* data_;
+    int capacity_;
+    int size_;
 
-    using namespace std;
-    template <class T>
-    class list1
+public:
+    
+    typedef int iterator;
+
+    list1(int default_size = 4)
     {
-        T* data_;
-        int capacity_;
-        int size_;
-
-    public:
-        
-        typedef int iterator;
-
-        list1(int default_size = 4)
-        {
-            data_ = new T[default_size];
-            capacity_ = default_size;
-            size_  = 0;
-        }
-        
-        int size()
-        {
-            return size_;
-        }
-
-        iterator begin()
-        {
-            return 0;   
-        }
-        iterator end()
-        {
-          return size_;
-        }
-        void push_back(const T &d)
-        {
-            ensureSize();
-
-            data_[size_] = d;
-            size_++;
-        }
-
-        T at(iterator it)
-        {
-            assert(it < end());
-            return data_[it];
-        }
-
-        void insert(iterator it, T d)
-        {
-            ensureSize();
-            size_++;
-            for (int i = size_-1; i > it; i--)
-            {
-                data_[i] = data_[i-1];
-            }
-            data_[it] = d;
-        }
-
-    private:
-        void ensureSize()
-        {
-            if(capacity_ == size_)
-            {
-                capacity_ *= 2;
-                T* newdata = new T[capacity_];
-                for (int i = 0 ; i < size_; i++)
-                {
-                    newdata[i] = data_[i];
-                }
-
-                delete[] data_;
-                data_ = newdata;
-            }
-        }
-    };
-
-    int main()
+        data_ = new T[default_size];
+        capacity_ = default_size;
+        size_  = 0;
+    }
+    
+    int size()
     {
-        #define list list1
-        
-        //ifstream in("D:/github/algorithms/xuetangx.ds/interview.PA1_b_10.in");
-        //cin.rdbuf(in.rdbuf());
-        //ofstream out("D:/github/algorithms/xuetangx.ds/interview.PA1_b_10.out");
-        //cout.rdbuf(out.rdbuf());
-
-        int n, m;
-        cin >> n >> m;
-        int* data = new int[n]; 
-        for(int i = 0; i < n; i++)
-        {
-            cin >> data[i];
-        }
-        list<int> result;
-        result.push_back(data[0]);
-        int has_inserted = 0;
-        list<int>::iterator last_index = result.begin();
-        //int last_index;
-        while(true)
-        {
-            int i = 1;
-            list<int>::iterator cycle;
-            cycle = last_index;
-            while(true)
-            {
-                if(i == m)
-                {
-                    cycle++;//insert after/right of the one
-                    if(cycle == result.end())
-                        cycle = result.begin();
-                    result.insert(cycle, data[++has_inserted]);
-                    last_index = cycle;
-                    break;
-                }
-                i++;
-                cycle++;
-                if(cycle == result.end())
-                    cycle = result.begin();
-            }
-            if(result.size() == n)
-                break;
-        }
-        int output = 0;
-        while(true)
-        {
-            #ifdef list1
-             cout << *last_index << " ";
-             #else
-              cout << result.at(last_index) << " ";
-            #endif // list
-            
-            if(++output == n)
-                break;
-            if(last_index == result.begin())
-                last_index = result.end();
-            last_index --;
-        }
-        delete[] data;
-        return 0;
+        return size_;
     }
 
+    iterator begin()
+    {
+        return 0;   
+    }
+    iterator end()
+    {
+      return size_;
+    }
+    void push_back(const T &d)
+    {
+        ensureSize();
+
+        data_[size_] = d;
+        size_++;
+    }
+
+    T at(iterator it)
+    {
+        assert(it < end());
+        return data_[it];
+    }
+
+    void insert(iterator it, T d)
+    {
+        ensureSize();
+        size_++;
+        for (int i = size_-1; i > it; i--)
+        {
+            data_[i] = data_[i-1];
+        }
+        data_[it] = d;
+    }
+
+private:
+    void ensureSize()
+    {
+        if(capacity_ == size_)
+        {
+            capacity_ *= 2;
+            T* newdata = new T[capacity_];
+            for (int i = 0 ; i < size_; i++)
+            {
+                newdata[i] = data_[i];
+            }
+
+            delete[] data_;
+            data_ = newdata;
+        }
+    }
+};
+
+int main()
+{
+    #define list list1
+    
+    //ifstream in("D:/github/algorithms/xuetangx.ds/interview.PA1_b_10.in");
+    //cin.rdbuf(in.rdbuf());
+    //ofstream out("D:/github/algorithms/xuetangx.ds/interview.PA1_b_10.out");
+    //cout.rdbuf(out.rdbuf());
+
+    int n, m;
+    cin >> n >> m;
+    int* data = new int[n]; 
+    for(int i = 0; i < n; i++)
+    {
+        cin >> data[i];
+    }
+    list<int> result;
+    result.push_back(data[0]);
+    int has_inserted = 0;
+    list<int>::iterator last_index = result.begin();
+    //int last_index;
+    while(true)
+    {
+        int i = 1;
+        list<int>::iterator cycle;
+        cycle = last_index;
+        while(true)
+        {
+            if(i == m)
+            {
+                cycle++;//insert after/right of the one
+                if(cycle == result.end())
+                    cycle = result.begin();
+                result.insert(cycle, data[++has_inserted]);
+                last_index = cycle;
+                break;
+            }
+            i++;
+            cycle++;
+            if(cycle == result.end())
+                cycle = result.begin();
+        }
+        if(result.size() == n)
+            break;
+    }
+    int output = 0;
+    while(true)
+    {
+        #ifdef list1
+         cout << *last_index << " ";
+         #else
+          cout << result.at(last_index) << " ";
+        #endif // list
+        
+        if(++output == n)
+            break;
+        if(last_index == result.begin())
+            last_index = result.end();
+        last_index --;
+    }
+    delete[] data;
+    return 0;
+}
+{% endhighlight %}
