@@ -194,7 +194,7 @@ tags: [读书笔记, c++]
 - 好的接口很容易被正确使用, 不容易被误用. 
 - "促进正确使用"的办法包括接口的一致性, 以及与内置类型的行为兼容.
 - "阻止误用"的方法包括建立新类型(传递年月日的例子)、限制类型上的操作(a*b=c的例子,operator * 返回const，防止==/=混淆), 束缚对象值, 以及消除客户的资源管理责任.
-- shared_ptr 支持定制删除器(custom deleter), 这可防范 DLL 问题, 可被用来自动解除互斥锁(mutex)等.
+- shared_ptr 支持定制删除器(custom deleter), 这可防范 cross-DLL 问题, 可被用来自动解除互斥锁(mutex)等.
 
 ### 19 设计 class 犹如设计 type
 class 的设计就是 type 的设计, 在定义一个新 type 之前, 请考虑以下几个问题:
@@ -340,5 +340,199 @@ class 的设计就是 type 的设计, 在定义一个新 type 之前, 请考虑�
 
 ### 26 尽可能延后变量定义式出现的时间
 
+尽可能延后变量定式的出现，这样可增加程序的清晰度并改善程序的效率。如之前定义了某个T，而中途因某些逻辑return/throw exception等，会造成这个T的构造和析构的开销。
 
-	
+### 27 尽量少做转型动作
+
+- 旧式转型(old-style casts):
+	- (T)expression // C 语言风格的转型动作: 将 expression 转型为 T
+	- T(expression)	// 函数风格的转型动作: 将 expression 转型为 T
+- C++ 提供的新式转型(new-style / C++-style casts):
+	- const_cast<T>(expression)	 : 去除对象的常量性(cast away the constness).
+	- dynamic_cast<T>(expression) :	 用来执行 安全向下转型(safe downcasting), 也就是用来决定某对象是否归属继承体系中的某个类型. 在转型时可能**耗费重大**的运行成本.
+	- reinterpret_cast<T>(expression):	执行低级转型, 实际动作(及结果)可能取决于编译器.
+	- static_cast<T>(expression) : 强迫隐式转换(implicit conversions), 如 non-const 转型为 const, int 转型为 double, 将 point-to-base 转为 point-to-derived. 无法将const 转为 non-const.
+- 单一对象(如Dereived对象)可能拥有一个以上的地址（如以Base\*指向它的地址和以Derived\*指向它的地址)，这对C，Java,C#都不可能，但C++可以。
+- static_cast<Base>(*this).method(); 这句在Dereived class中写的。这样做是将this独享的base class成分建立一个副本，在副本的基础上调用method()。
+- 如果可以，尽量避免转型，尤其注意dynamic_cast。
+- 如果转型是必要的，试着将其隐藏某个函数背后，客户随后可以调用该函数，而不需要将转型放进他们自己的代码内。
+- 宁可使用c++-style的转型，更容易识别出来，也分门别类的职掌。
+
+### 28 避免返回handles指向对象内部成分
+
+Reference、指针、迭代器都是所谓的handles，返回一个代表对象内部的数据的handle，可能导致虽然调用const成员函数却还是造成对象状态被更改。
+
+>
+	class GUIObject{...};
+	class Rectangle
+	{
+	public:
+		const Point& upperLeft(){return ...};//return private ..
+	private:
+	...
+	}
+	const Rectangle boundingBox(const GUIObject &obj);//by value
+	//客户有可能这样使用
+	GUIObject *gui;
+	...
+	const Point * pUpperLeft = &(boundingBox(\*gui).upperLeft());
+
+这样做的结果就是：对boundingBox(\*gui)的调用将得到一个Rectangle的匿名临时对象(假设为tmp),然后通过tmp调用uppperLeft得到一个指向tmp内部Point的reference，然后pUpperLeft指向那个Point对象。结果，语句执行完，tmp对象被销毁/析构,而pUpperLeft此时指向一个不存在的对象。
+
+避免返回handles指向对象内部，遵守这个条约可增封装性，帮助const成员函数的行为像个const，并将发生dangling handles的可能性降低。
+
+### 29 为 异常安全  而努力是值得的
+
+- 异常安全函数(Exception-safe functions)即使异常也不会资源泄漏或数据结构破坏，提供三个保证之一：
+	- 基本承诺：若异常被抛出，程序内任何事务仍保持有效状态。没有任何对象或数据结构会因此而被破坏，所有对象处于一种内部前后一致的状态。
+	- 强烈保证：若异常被抛出，程序状态不改变，若函数调用成功就完全成功，若失败程序应该恢复到调用前的状态。
+	- 不抛出(nothrow)保证：承诺不抛出异常，例如作用于内置类型(int等)身上的所有操作都提供nothrow保证。
+- 强烈保证 往往能够以 copy-and-swap 实现出来，但并非所有函数都可实现或具备现实意义。copy-and-swap 关键: 修改对象数据的副本，然后在一个不抛出异常的操作中置换(swap)原对象和副本，若在修改动作中有异常抛出, 原对象仍保持未改变状态。
+- 函数提供的异常安全保证通常只等于其所调用的各个函数异常安全保证中的最弱者。(木桶/短板原理)
+
+### 30 透彻了解 inlining 的里里外外
+
+- inline 函数背后的整体观念是将“对此函数的每一个调用”都以函数本地替换之，inline可能会造成代码膨胀导致额外换页行为，降低高速缓存装置的命中率。所有inline应该限制在小型被频繁调用的函数身上。若inline函数本体很小，编译器针对函数本体所产生的代码可能比针对函数调用的所产生的代码更小。
+- inline只是对编译器的一个申请，不是强制命令，这项申请也可能是隐喻方式提出（例如
+  class Person里一个age()方法return private的age, 在class的定义式内直接呈现出函数本体)
+- **大多数**C++的inline是在编译期完成的，也可能在链接期，少量如基于.NET CLI(Common Language Infrastructure)的托管环境(managed environments)可在运行期inlining.
+- 编译器不对通过函数指针进行的调用进行inline，例如
+
+>
+	inline void f(){...}
+	void (* pf)() = f;
+	...;
+	f(); //被 inlined
+	pf(); // 不被inlined，函数指针的方式
+- 大部分调试器对inline函数没办法，并不知道在一个并不存在的函数内设定断点。
+- template的具体化与inline无关，不要只因为function template出现在头文件就将它们声明为inline
+- inline 函数无法随程序库的升级而升级.若 f是一个inline的函数，客户将f的本体编进其程序中，一旦f改变，那么用到的f的客户端程序都要重新编译，而若f是non-inline的，若修改了，只要重新链接就好，若是动态链接，升级版函数甚至悄无声息就被应用程序吸纳。
+
+### 31 将文件的编译依存关系降至最低
+
+- 编译器在编译期间必须要知道对象的大小(Java等中不存在)。
+- 如果能够使用object reference 或 object pointers可以完成任务，就不要使用objects，可以只靠一个声明式就定义出指向该类型的reference或pointer，而如果定义某类型的object，就必须要用到该类型的定义式。
+- 支持编译依存最小化的构想是：相依于声明式, 不要依赖于定义式. 基于此构想的两个手段是 Handle classes 和 Interface classes.
+- 程序库头文件应该以完全且仅有声明式(full and declaration-only forms)的形式存在. 这种做法不论是否涉及到 templates 都适用.
+
+----
+
+## 6 继承与面向对象设计
+
+### 32 确定你的public 继承塑模出 is-a 关系
+
+public 继承意味着 is-a, 适用于base classes的每一件事情也一定适用于derived
+class身上，因为每一个derived class对象也都是一个base class对象。（Liskov
+Substitution Principle）
+
+### 33 避免遮掩继承而来的名称
+
+- derived class内的名称会遮掩base class的名称(名称，not 签名)。
+- 为了让被遮掩的名称重见天日，可使用using 声明式或者转交(forwarding functios)。
+
+>
+    class Base
+    {
+    private:
+        int x;
+    public:
+        virtual void mf1() = 0;
+        virtual void mf1(int);
+        virtual void mf2();
+        void mf3();
+        void mf3(double);
+        ...
+    };
+    class Derived: public Base
+    {
+    public:
+        //using Base::mf1;
+        //using Base::mf3;
+        virtual void mf1();
+        void mf3();
+        void mf4();
+        ...
+    };
+    Derived d;
+    int x;
+    d.mf1(); // OK
+    d.mf1(x); // Error, Derived::mf1() 遮盖了 base::mf1
+    d.mf2(); // OK
+    d.mf3(); // OK
+    d.mf3(1.4); // Error, Derived::mf3 遮盖了base::mf3
+    若用using 声明式(取消注释掉的两句代码)，则上面两个OK
+    //转交函数
+    若Derived以private集成Base，而Derived只想继承mf1那个唔参数的版本，using声明式就不行了，可用forwarding function。
+    class Derived: private Base
+    {
+    public:
+        virtual vid mf1()
+        {
+            Base::mf1(); //转交函数，暗自inline
+        }
+    };
+    ...
+    Derived d;
+    int x;
+    d.mf1(); // OK, Derived::mf1调用
+    d.mf1(x); //Error, Base::mf1()遮盖了
+
+### 34 区分接口继承和实现继承
+
+- Derived class override的Base class 的virtual方法是对象也可以显示调用Base
+  class的方法，这样调用：derived->Base::func();
+- 接口继承和实现继承不同. 在 public 继承下, derived classes 总是继承 base class 的接口.
+- pure virtual 函数只具体指定接口继承, 纯虚函数也能提供自己的实现，调用时需要在子类中通过父类名显示调用。
+- 简朴的(非纯) impure vitual 函数具体指定接口继承以及缺省实现继承.
+- non-virtual 函数具体指定接口以及强制性的实现继承.
+
+### 35  考虑 virtual 函数以外的其他选择
+
+- 使用NVI(non-virtual-interface)手法，模版方法(Template  Method)设计模式的一种特殊形式，以public  non-virtual成员函数调用private/protected 的virtual函数。
+- 将virtual 函数替换为”函数指针成员变量“，是Strategy
+  设计模式的一种表现形式，也可以用std::tr1::function<> 封装成函数对象。
+- 将继承体系内的virtual函数替换为另一个继承体系内的virtual函数，传统的Strategy设计模式实现手法。
+
+### 36 绝不重新定义继承而来的non-virtual函数
+
+绝不重新定义继承而来的non-virtual函数.
+
+>
+    class B
+    {
+    public:
+        void mf();
+        ...
+    };
+    class D : public B
+    {
+    public:
+        void mf(); // hides B::mf, 名字隐藏
+    };
+    //客户端调用代码
+    D x;
+    B \* pB = &x;
+    pB->mf(); // 调用 B::mf()
+    D \* pD = &x;
+    pD->mf(); // 调用 D::mf()
+    同一个对象，调用”同一个“方法得到不同的结果！
+non-virtual函数如B::mf(),
+D::mf()都是静态绑定，通过pB调用的non-virtual函数永远都是B定义的版本。（virtual
+函数是动态绑定）
+
+### 37 绝不重新定义继承而来的缺省参数
+
+如36所说，不要重新定义继承而来的non-virtual函数，这里继承一个带有缺省参数值的virtual函数也是错误的。
+因为virtual函数是动态绑定的，缺省参数是静态绑定的，静态类型是被声明时的类型，动态类型是指目前所指对象的实际类型。
+
+[详细案例介绍](http://www.tanglei.name/donot-redefine-default-para-from-super-class/)
+
+### 38 通过复合塑模出has-a或根据某物实现出
+
+(Model "has-a" or "is-implemented-in-terms-of" throught composition)
+
+- 复合(composition)的意义和 public 继承完全不同
+- 在应用域(application domain), 复合意味着 has-a(有一个). 在实现域(implementation domain), 复合意味着
+is-implemented-in-terms-of(根据某物实现出). 
+
+### 39 明智儿谨慎地使用private继承
