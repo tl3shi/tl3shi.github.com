@@ -142,6 +142,7 @@ tags: [读书笔记, c++]
 -----
 
 ## 3 资源管理
+
 ### 13 以对象管理资源
 - 资源获得时机便是初始化时机(Resource Acquisition Is Initialization; RAII).
 - 两个常被使用的 RAII class 是 shared_ptr 和 auto_ptr. auto_ptr的复制动作会是它(被复制的对象)指向 NULL. 受auto_ptr管理的资源必须绝对没有一个以上的auto_ptr同时指向它。 share_ptr是RCSP(reference-counting smart pointer),智能指针无法解决循环引用问题。
@@ -188,6 +189,7 @@ tags: [读书笔记, c++]
 ----
 
 ## 4 设计与声明
+
 ### 18 让接口容易被正确使用, 不容易被误用
 - 好的接口很容易被正确使用, 不容易被误用. 
 - "促进正确使用"的办法包括接口的一致性, 以及与内置类型的行为兼容.
