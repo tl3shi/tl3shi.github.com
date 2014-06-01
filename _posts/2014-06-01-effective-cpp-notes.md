@@ -7,8 +7,6 @@ tags: [读书笔记, c++]
 ---
 {% include JB/setup %}
 
-Effective c++ 读书笔记(上:条款1-25)
-====================
 
 ## 0 导读
 
@@ -19,6 +17,7 @@ Effective c++ 读书笔记(上:条款1-25)
   - 函数传参时，若pass by value则是调用copy构造函数。
   
 例如
+
 >	
 	Widget w1; //default 构造函数
 	Widget w2(w1); // copy 构造
@@ -141,6 +140,7 @@ Effective c++ 读书笔记(上:条款1-25)
 - 不要尝试以某个 copying 函数实现另外一个 copying 函数, 应该将共同机能放进第三个函数(init之类)中, 并由两个 copying 函数共同调用.
 
 -----
+
 ## 3 资源管理
 ### 13 以对象管理资源
 - 资源获得时机便是初始化时机(Resource Acquisition Is Initialization; RAII).
@@ -181,8 +181,7 @@ Effective c++ 读书笔记(上:条款1-25)
 	1、执行new Widget() 
 	2、调用 privority();
 	3、构造shared_ptr;
-若在执行2时，有异常，则newed的widget不能正确释放，导致内存泄漏。改成这样就OK:
-
+	若在执行2时，有异常，则newed的widget不能正确释放，导致内存泄漏。改成这样就OK:
 	shared_ptr<Widget> pw(new Widget());
 	processWidget(pw, priority());
 
