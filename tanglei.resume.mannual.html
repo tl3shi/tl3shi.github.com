@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>Lei Tang | 清华大学(工学硕士)</title>
+<style type="text/css">
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+}
+[hidden] {
+  display: none;
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+html,
+button,
+input,
+select,
+textarea {
+  font-family: sans-serif;
+}
+body {
+  margin: 0;
+}
+a:focus {
+  outline: thin dotted;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+h2 {
+  font-size: 1.5em;
+  margin: 0.83em 0;
+}
+h3 {
+  font-size: 1.17em;
+  margin: 1em 0;
+}
+h4 {
+  font-size: 1em;
+  margin: 1.33em 0;
+}
+h5 {
+  font-size: 0.83em;
+  margin: 1.67em 0;
+}
+h6 {
+  font-size: 0.75em;
+  margin: 2.33em 0;
+}
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+b,
+strong {
+  font-weight: bold;
+}
+blockquote {
+  margin: 1em 40px;
+}
+dfn {
+  font-style: italic;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+p,
+pre {
+  margin: 1em 0;
+}
+pre,
+code,
+kbd,
+samp {
+  font-family: monospace, serif;
+  _font-family: 'courier new', monospace;
+  font-size: 1em;
+}
+pre {
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+q {
+  quotes: none;
+}
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+small {
+  font-size: 75%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+dl,
+menu,
+ol,
+ul {
+  margin: 1em 0;
+}
+dd {
+  margin: 0 0 0 40px;
+}
+menu,
+ol,
+ul {
+  padding: 0 0 0 40px;
+}
+nav ul,
+nav ol {
+  list-style: none;
+  list-style-image: none;
+}
+img {
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+figure {
+  margin: 0;
+}
+form {
+  margin: 0;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  border: 0;
+  padding: 0;
+  white-space: normal;
+  *margin-left: -7px;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  margin: 0;
+  vertical-align: baseline;
+  *vertical-align: middle;
+}
+button,
+input {
+  line-height: normal;
+}
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer;
+  -webkit-appearance: button;
+  *overflow: visible;
+}
+button[disabled],
+input[disabled] {
+  cursor: default;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  *height: 13px;
+  *width: 13px;
+}
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body.pdf {
+  color: black;
+}
+body.pdf a {
+  text-decoration: none;
+  color: black;
+}
+body.pdf .container {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+  border: none;
+  border-width: 8px 0 2px 0;
+  text-align: left;
+}
+body.pdf .resume {
+  position: relative;
+  padding: 40px 80px;
+}
+body.pdf a[href$='.pdf'] {
+  display: none;
+}
+body.pdf h1 {
+  letter-spacing: 0;
+  margin-top: 0;
+  font-size: 48px;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+body.pdf h2 {
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: normal;
+}
+body.pdf h3 {
+  float: left;
+  width: 16%;
+  font-style: normal;
+}
+body.pdf h3+p {
+  float: left;
+  width: 84%;
+}
+body.pdf blockquote {
+  top: 40px;
+  right: 50px;
+  position: absolute;
+}
+body.pdf ul li {
+  width: 28%;
+  float: left;
+}
+body.pdf ul dl {
+  margin: 0;
+  padding: 0.3em 0 0;
+}
+body.pdf ul dl dt {
+  font-size: 122%;
+  font-weight: normal;
+  margin: 0 0 .75em;
+}
+body.pdf ul dl dd {
+  padding: 0 4em 0 0;
+}
+body.pdf ol {
+  float: left;
+  width: 84%;
+  margin: .7em 0 0;
+}
+body.pdf ol li {
+  width: 33%;
+  margin: 0;
+}
+body.pdf ol li:nth-child(3n) {
+  width: 34%;
+}
+body.pdf ol li:nth-child(1),
+body.pdf ol li:nth-child(2),
+body.pdf ol li:nth-child(3) {
+  border-top: none;
+}
+body.pdf dl {
+  margin: .7em 0 0;
+  page-break-inside: avoid !important;
+  display: block;
+  width: 84%;
+  float: left;
+}
+body.pdf dl strong {
+  float: right;
+  margin-top: -2em;
+}
+body.pdf dl em {
+  font-size: 130%;
+  font-style: normal;
+}
+
+.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  visibility: hidden;
+  height: 0;
+  clear: both;
+  content: ".";
+}
+body {
+  font-family: 'Hoefler Text', Times New Roman, Times, serif;
+  color: #444;
+}
+h1,
+h2,
+h3,
+h4,
+ul dl dt {
+  font-family: Futura, "Century Gothic", AppleGothic, sans-serif;
+}
+.container {
+  margin: 0 auto;
+  padding: 0;
+  background: whiteSmoke;
+  border: solid #666;
+  border-width: 8px 0 2px 0;
+  text-align: left;
+}
+.resume {
+  position: relative;
+  padding: 10px 20px;
+}
+a {
+  color: #990003;
+}
+a[href$='.pdf'] {
+  display: inline-block;
+  background: #666;
+  color: white;
+  padding: 6px 12px;
+  margin-bottom: 6px;
+  text-decoration: none;
+}
+blockquote {
+  margin: 0;
+  padding: 0;
+  line-height: 1.4em;
+}
+hr {
+  display: block;
+  position: relative;
+  padding: 0;
+  margin: 18px auto;
+  width: 100%;
+  clear: both;
+  border: none;
+  border-top: 1px solid #CCC;
+  font-size: 1px;
+  line-height: 0;
+  overflow: visible;
+  page-break-after: avoid;
+}
+h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 36px;
+  letter-spacing: -1px;
+  font-weight: normal;
+}
+h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  font-style: italic;
+  letter-spacing: -1px;
+  font-weight: normal;
+}
+h3 {
+  margin: 0;
+  padding: 0 0 .5em;
+  font-size: 150%;
+  font-style: italic;
+  font-weight: normal;
+}
+h3+p {
+  margin: .6em 0 16px;
+  padding: 0;
+  display: block;
+  font-size: 104%;
+  line-height: 24px;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul li {
+  margin: 0;
+  padding: 0;
+}
+ul dl {
+  margin: .3em 0 0;
+  padding: 0;
+  width: 100%;
+}
+ul dl dt {
+  font-size: 100%;
+}
+ul dl dd {
+  margin: 0 0 1em;
+  padding: 0 2em 0 0;
+  font-size: .8em;
+  line-height: 1.5em;
+}
+ol {
+  margin: 0;
+  padding: 0 0 .75em;
+  width: 84%;
+  display: inline-block;
+}
+ol li {
+  margin: 0 0 0 1em;
+  padding: 0;
+  border-top: 1px solid #CCCCCC;
+  width: 100%;
+  float: left;
+  list-style: none;
+  line-height: 24px;
+  font-size: 14px;
+}
+ol li:nth-child(1) {
+  border-top: none;
+}
+dl {
+  display: inline-block;
+  width: 75%;
+  margin: 0;
+  padding: 0;
+}
+dl dt {
+  margin: 0;
+  padding: 0;
+  font-size: 140%;
+}
+dl dd {
+  margin: 0 0 1.5em;
+  padding: 0;
+  font-size: 80%;
+  line-height: 1.4em;
+}
+dl strong {
+  display: block;
+}
+dl em {
+  display: block;
+  font-size: 110%;
+  margin: .15em 0 .5em;
+  font-style: bold;
+}
+#footer {
+  display: none;
+}
+#footer + p {
+  width: 100%;
+  font-size: 11px;
+  text-align: center;
+}
+
+@media screen and (min-width: 37.5em) {
+  body {
+    padding: 2em 0;
+  }
+  blockquote {
+    top: 10px;
+    right: 50px;
+    position: absolute;
+  }
+  h1 {
+    margin-top: .5em;
+  }
+  ol {
+    margin: 0 0 0 1em;
+  }
+  ol li {
+    width: 50%;
+    margin: 0;
+  }
+  ol li:nth-child(1),
+  ol li:nth-child(2) {
+    border-top: none;
+  }
+}
+@media screen and (min-width: 57em) {
+  .container {
+    width: 912px;
+  }
+  .resume {
+    position: relative;
+    padding: 40px 50px;
+  }
+  blockquote {
+    top: 40px;
+    right: 50px;
+    position: absolute;
+  }
+  h1 {
+    margin-top: 0;
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: normal;
+  }
+  h2 {
+    text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 2px;
+    font-weight: normal;
+  }
+  h3 {
+    float: left;
+    width: 16%;
+  }
+  h3+p {
+    float: left;
+    width: 84%;
+  }
+  ul li {
+    width: 28%;
+    float: left;
+  }
+  ul dl dt {
+    font-size: 122%;
+    font-weight: normal;
+    margin-bottom: .75em;
+  }
+  ul dl dd {
+    padding: 0 4em 0 0;
+  }
+  ol {
+    float: left;
+    width: 84%;
+    margin: .6em 0 0;
+  }
+  ol li {
+    width: 33%;
+    margin: 0;
+  }
+  ol li:nth-child(3n) {
+    width: 34%;
+  }
+  ol li:nth-child(1),
+  ol li:nth-child(2),
+  ol li:nth-child(3) {
+    border-top: none;
+  }
+  dl {
+    margin: .5em 0 0;
+  }
+  dl strong {
+    float: right;
+    margin-top: -2em;
+  }
+  dl em {
+    font-size: 130%;
+    font-style: normal;
+  }
+}
+
+</style>
+</head>
+
+<body class="">
+
+<div class="container">
+    <div class="resume">
+        <h1>Lei Tang</h1>
+
+<h2>清华大学(工学硕士)</h2>
+
+<blockquote>
+  <p><a href="mailto：//i@tanglei.me">i@tanglei.me</a><br/>
+  (+86)I86-I297-8248 <br/>
+  <a href="http://www.tanglei.name">www.tanglei.name</a><br/></p>
+</blockquote>
+
+<hr />
+
+<h3 id="degree">教育经历</h3>
+
+<dl>
+<dt>工学学士</dt>
+<dd><em><a href="http://software.csu.edu.cn/">软件学院</a>， <a href="http://www.csu.edu.cn/">中南大学</a></em>
+<strong>2008.9 - 2012.7</strong></dd>
+
+<dt>工学硕士</dt>
+<dd><em><a href="http://www.tsinghua.edu.cn/publish/soft/index.html">软件学院</a>，
+<a href="http://www.tsinghua.edu.cn/publish/th/index.html">清华大学</a></em>
+<strong>2012.9 - 至今</strong></dd>
+</dl>
+
+<hr />
+
+<h3>计算机证书</h3>
+<li>全国计算机技术与软件专业技术资格(水平)考试， 软件设计师(中级)， 2010.5</li>
+<li>全国计算机技术与软件专业技术资格(水平)考试， 系统架构设计师(高级)， 2010.10(湖南省第二名)</li>
+<hr />
+
+<h3>社会工作</h3>
+
+<li><a href="http://www.tanglei.name/category/my-life/software0804-csu/">班长</a></li>
+<li><a href="http://software.csu.edu.cn/SoftwareSite/article.do?atcID=778">院科协副主席</a></li>
+<li><a href="http://www.thuflute.com/">清华大学笛子协会</a>创始人兼首任会长</li>
+
+<hr />
+
+<h3 id="skills">奖励及荣誉</h3>
+
+<dl>
+    <em>国家级(4项)</em>
+    <dd><li>国家奖学金(2010.10)</li><li>国家励志奖学金(2009.10，2011.10)</li><li>大学生创新性实验计划(20000元资助)</li></dd>
+
+    <em>省级(2项)</em>
+    <dd><li>软考“系统架构设计师”湖南省第二名</li>
+    <li>湖南省2012届优秀毕业生</li>
+    </dd>
+
+    <em>校级(15项)</em>
+    <dd>
+    <li>学年奖学金：一等奖学金(2次)， 特等奖学金(1%，2次)</li>
+    <li>校级奖励金：<a href="http://web.csu.edu.cn/csuaward/history/hjst200904.htm">蒋维英奖学金(2009.10)</a>， <a href="http://web.csu.edu.cn/csuaward/history/hjst201002.htm">宝钢优秀学生奖(2010.10)</a>，  <a href="http://web.csu.edu.cn/csuaward/history/hjst201119.htm">世纪海翔酬勤奖励金(2011.10)</a></li>
+    <li>荣誉： <a href="http://www.qgzxol.com/xuegong/xgw/NewsSystem/Files/2010-12-22/5571.shtml">优秀学生标兵(1‰)，先进班集体标兵(2%，任班长)</a>， 优秀学生(2次)，优秀团员(2次)，优秀毕业生，荣誉生</li>
+    </dd>
+
+    <em>其他(院级10项等)</em>
+    <dd>优秀学生干部， 四川华迪信息技术有限公司实训项目“毕业生就业管理系统”优秀小组奖(任组长)，优秀个人奖</dd>
+</dl>
+
+<hr />
+
+<h3>实习经历</h3>
+
+<dl>
+<dt><a href="http://gems8.com/Page/Introduction.aspx">清华CAD研究所，清软英泰信息技术有限公司</a></dt>
+<dd><em>几何造型，科研， 计算机图形学，C++</em>
+<strong>2013.1 - 至今</strong>
+心得： GEMS（GEometric Modeling System）是清华大学自主研发的工业级几何建模核心系统。主要工作包括：开源c++框架<a href="http://gppframework.com/">gppframework</a>的维护， 跨平台3D模型可视化解决方案 Nebula <a href="http://nebula.gems8.com/">网站</a>的维护及Nebula Android研发， GEMS8几何造型内核求交， GDML模块研发.</dd>
+
+<dt><a href="http://www.umeng.com/">创新工场 友盟 团队</a></dt>
+<dd><em>创业公司， 数据处理， Python</em>
+<strong>2012.7 - 2012.9</strong>
+心得： 友盟(UMeng)是创新工场孵化的第二个项目，致力于为中国的开发者提供专业的移动应用统计分析工具，跟数据分析统计打交道，实习期间完成了UMeng竞品分析，UMTrack渠道激活统计工具后台的研发。实习过程中用了一门新学的 python语言， 并体会到了在创业型公司于大公司的异同。</dd>
+
+<dt><a href="http://tencent.com/zh-cn/index.shtml">腾讯 计算机系统有限公司</a></dt>
+<dd><em>大公司， 海量服务， Php</em>
+<strong>2011.7 - 2012.1</strong> 
+心得： 实习所在部门：B2互联网业务系统/社交平台部/社区产品中心/社区开发组/基础功能组，参与<a href="http://www.pengyou.com/">朋友网</a>后台开发。最重要的是体验到了一个大公司的企业文化和规范流程，对学校学习的书本知识有了新的理解和认识。清楚得认识到系统架构对于项目后期运维的重要性，体会到公司里各部门分工明确，职责分明，同事的团结合作对于项目成功的重要性。此外还对公司内部框架有了大致了解以及海量服务的相关概念。</dd>
+
+<dt><a href="http://dawhois.com/site/sidusoft.com.html">长沙四度软件公司</a></dt>
+<dd><em>小作坊， 初次尝试， Java</em>
+<strong>2010.5 - 2010.7</strong>
+心得：第一次接触到公司实际应用项目，虽然工作任务仅仅是在原有系统上做项目升级，但收获不少。印象最深的是切身体会到在没有任何文档和注释的情况下修改他人代码的感觉，从此使得自己养成写代码注释的好习惯。</dd>
+</dl>
+
+<hr />
+
+<h3>课程实践</h3>
+
+<dl>
+<dt><a href="http://www.tanglei.name/some-of-my-projects/">基于传感器网络的移动SNS系统</a></dt>
+<dd>
+    <li><em>项目描述</em> 
+    获得国家级大学生创新性实验计划项目支持，项目经费2万元。该项目是基于Android手机内置蓝牙、GPS定位技术来更新和感应周围
+    SNS用户位置，通过重力加速度和摄像头交互实时数据的一款移动SNS系统。</li>
+    <li><em>项目心得</em>
+    担任项目组长，负责项目初期模型的研究和文档书写以及结题论文的撰写和发表，项目模块划分以及任务的分配，Android
+    手机蓝牙模块，项目初期架构和管理。该项目对于自己的项
+    目管理能力有很大的提升，涉及到经费问题，让自己掌握如何能够更好的让项目成员之间的团结协调的完成整个项目。</li>
+</dd>
+
+<dt><a href="http://www.tanglei.name/some-of-my-projects/">ICHAT聊天系统</a></dt>
+<dd>
+    <li><em>项目描述</em>系统主要是仿照 QQ 聊天软件。其功能模块包括：私聊、群聊、语音聊天、视频聊天; </li>
+    <li><em>项目心得</em>担任项目组长，负责系统架构、项目分工以及系统的语音聊天、视频聊天模块。该项目主要是检验自己的阶段学习成果和自学能力。培养了自己的团队精神，熟悉了软件开发的相关流程。其中，本人负责的模块语音视频功能国内资料比较少，锻炼了自己学习查阅英语文献的能力。</li>
+</dd>
+    
+<dt><a href="http://www.tanglei.name/some-of-my-projects/">基于中国移动飞信的校园资讯网</a></p></dt>
+<dd>
+    <li><em>项目描述</em>项目基于Web 网络的校园资讯网，项目分析了飞信协议，利用网络资源改写一个Web飞信，利用飞信功能可以进行个人日程提醒、订阅天气、好友生日提醒、管理学籍等应用；项目采用Struts+Hibernate 框架开发， Httpclient+HtmlParser 分析教务管理系统流程获取有用信息，利用WebService获得谷歌天气信息，将这些有用信息通过飞信发送给用户。</li>
+    <li><em>项目心得</em>主要负责的功能模块是教务管理模块以及飞信协议分析和性能提升模块；该项目对于自己来说是一个极大的挑战，项目运用了一些比较前沿的技术。分析建站流程，以及学会分析飞信等相关协议；提高了自学能力，当然团队精神是一个项目中必不可少的。</li>
+    </dd>
+</dl>
+
+    </div>
+</div>
+
+</body>
+</html>
