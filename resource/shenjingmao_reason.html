@@ -1,0 +1,160 @@
+<div id="content-padding">
+  <div id="content">
+  
+    		
+      <div class="post-nav"> 
+         <span class="previous"><a href="http://www.tanglei.name/debug-in-xcode-is-crap/" rel="prev">吐槽下xcode debug功能</a></span> 
+         <span class="next"></span>
+      </div>  
+   
+      <div class="post" id="post-2519" style="margin-top: 0;">
+         <table id="post-head">
+		 <tbody><tr>
+		  	<td id="head-date">
+         	<div class="date"><span>七</span> 
+         	24</div>
+         	</td>
+         	
+         	<td>
+         	 <div class="title">
+	            <h2><a href="http://www.tanglei.name/1-step-to-play-shenjingmao/" rel="bookmark" title="查看此文：围住神经猫 1步玩法-”作弊”">
+					围住神经猫 1步玩法-”作弊”</a>
+<!-- add by tl3shi请将以下代码放在您希望呈现 +1 按钮的位置。 -->
+<div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px; background: transparent;"><iframe frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 90px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1406219174330" name="I0_1406219174330" src="https://apis.google.com/u/0/_/+1/fastbutton?usegapi=1&amp;size=medium&amp;hl=zh-CN&amp;origin=http%3A%2F%2Fwww.tanglei.name&amp;url=http%3A%2F%2Fwww.tanglei.name%2F1-step-to-play-shenjingmao%2F&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.zh_CN.6Y5lZeuHdCA.O%2Fm%3D__features__%2Fam%3DAQ%2Frt%3Dj%2Fd%3D1%2Ft%3Dzcms%2Frs%3DAItRSTNHsMB4RfAZvQLjV0JB8IKIokqhPg#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I0_1406219174330&amp;parent=http%3A%2F%2Fwww.tanglei.name&amp;pfname=&amp;rpctoken=16836434" data-gapiattached="true" title="+1"></iframe></div>
+</h2>
+	            <div class="postdata">
+	               <span class="category"><a href="http://www.tanglei.name/category/skills/" title="查看 经验技巧 中的全部文章" rel="category tag">经验技巧</a></span>
+	               <span class="right mini-add-comment">
+	               	  <a href="#respond">Add comments</a>
+	               </span>
+	            </div>
+	         </div>
+         	</td>
+         </tr>
+         </tbody></table>
+         
+         <div class="entry">
+
+
+	<div style="margin-bottom:5px;">
+	<font color="gray" style="font-size:10pt">
+	转载请注明来源：<a href="http://www.tanglei.name/1-step-to-play-shenjingmao/" style="color:gray">唐磊的个人博客《围住神经猫 1步玩法-”作弊”》</a>
+	</font>
+ 	</div>
+
+         <p>今天被“围住神经猫”的游戏在微信朋友圈刷票了~ 自己也试了试，运气好能在10步左右OK。然后点击别人分享的页面直接进入游戏状态，发现分享的时候仅仅是分享网页的title不一样而已，且击败的对手百分比=(100-步数)%。于是“作弊”了下，仅仅“娱乐”罢了。</p>
+<p>原理很简单，分享的是一个网页url，于是自己生成一个html页面即可， title自己设置，当然想多少步就多少步，把原来网页的图片引用一份放到自己页面里，好让weixin抓取这个图片生成缩略图。为了让对方点这个url后跳转到原始游戏的url，可以让浏览器在onload时直接通过location.href跳转至原始游戏的url。然后分享这个网页的url出去即可。于是也就有了如下效果~ &nbsp;不知为何缩略图没生成。</p>
+<p style="text-align: center;"><a href="http://www.tanglei.name/wp-content/uploads/2014/07/shenjingmao-0.png"><img class="size-full wp-image-2520 aligncenter" title="shenjingmao-0" src="http://www.tanglei.name/wp-content/uploads/2014/07/shenjingmao-0.png" alt="" width="440" height="219"></a></p>
+<p>后来发现微信有自己的分享时的API，就更简单了。随便一个给一个网页，设置好缩略图url，title和描述，以及点击后跳转的url，然后weixin内置浏览器打开的时候就会去调用相应的事件，比如分享给朋友、分享到朋友圈等。</p>
+<div class="codecolorer-container javascript default" style="overflow:auto;white-space:nowrap;width:800px;"><table cellspacing="0" cellpadding="0"><tbody><tr><td class="line-numbers"><div>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>38<br>39<br>40<br>41<br>42<br>43<br>44<br>45<br>46<br>47<br>48<br></div></td><td><div class="javascript codecolorer"><span class="sy0">&lt;</span>script<span class="sy0">&gt;</span><br>
+<span class="kw2">var</span> imgUrl <span class="sy0">=</span> <span class="st0">"http://1251001823.cdn.myqcloud.com/1251001823/wechat/mao80.jpg"</span><span class="sy0">;</span><br>
+<span class="kw2">var</span> lineLink <span class="sy0">=</span> <span class="st0">"http://1251001823.cdn.myqcloud.com/1251001823/wechat/sjm/launcher"</span><span class="sy0">;</span><br>
+<span class="kw2">var</span> descContent <span class="sy0">=</span> <span class="st0">'在9×9范围内的格子中，使用色块围住白色神经猫。'</span><span class="sy0">;</span><br>
+<span class="kw2">var</span> shareTitle <span class="sy0">=</span> <span class="st0">'我用了1步围住神经猫，击败99%的人，你能超过我吗？'</span><span class="sy0">;</span><br>
+<span class="kw2">var</span> appid <span class="sy0">=</span> <span class="st0">''</span><span class="sy0">;</span><br>
+<span class="kw2">function</span> shareFriend<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; WeixinJSBridge.<span class="me1">invoke</span><span class="br0">(</span><span class="st0">'sendAppMessage'</span><span class="sy0">,</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"appid"</span><span class="sy0">:</span> appid<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"img_url"</span><span class="sy0">:</span> imgUrl<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"img_width"</span><span class="sy0">:</span> <span class="st0">"200"</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"img_height"</span><span class="sy0">:</span> <span class="st0">"200"</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"link"</span><span class="sy0">:</span> lineLink<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"desc"</span><span class="sy0">:</span> descContent<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"title"</span><span class="sy0">:</span> shareTitle<br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">(</span>res<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><br>
+<span class="br0">}</span><br>
+<span class="kw2">function</span> shareTimeline<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; WeixinJSBridge.<span class="me1">invoke</span><span class="br0">(</span><span class="st0">'shareTimeline'</span><span class="sy0">,</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"img_url"</span><span class="sy0">:</span> imgUrl<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"img_width"</span><span class="sy0">:</span> <span class="st0">"200"</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"img_height"</span><span class="sy0">:</span> <span class="st0">"200"</span><span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"link"</span><span class="sy0">:</span> lineLink<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"desc"</span><span class="sy0">:</span> descContent<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"title"</span><span class="sy0">:</span> shareTitle<br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">(</span>res<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+<span class="kw2">function</span> shareWeibo<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; WeixinJSBridge.<span class="me1">invoke</span><span class="br0">(</span><span class="st0">'shareWeibo'</span><span class="sy0">,</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"content"</span><span class="sy0">:</span> descContent<span class="sy0">,</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="st0">"url"</span><span class="sy0">:</span> lineLink<span class="sy0">,</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">(</span>res<span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><br>
+document.<span class="me1">addEventListener</span><span class="br0">(</span><span class="st0">'WeixinJSBridgeReady'</span><span class="sy0">,</span> <span class="kw2">function</span> onBridgeReady<span class="br0">(</span><span class="br0">)</span> <span class="br0">{</span><br>
+&nbsp; &nbsp; WeixinJSBridge.<span class="me1">on</span><span class="br0">(</span><span class="st0">'menu:share:appmessage'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">(</span>argv<span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; shareFriend<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; WeixinJSBridge.<span class="me1">on</span><span class="br0">(</span><span class="st0">'menu:share:timeline'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">(</span>argv<span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; shareTimeline<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; WeixinJSBridge.<span class="me1">on</span><span class="br0">(</span><span class="st0">'menu:share:weibo'</span><span class="sy0">,</span> <span class="kw2">function</span><span class="br0">(</span>argv<span class="br0">)</span><span class="br0">{</span><br>
+&nbsp; &nbsp; &nbsp; &nbsp; shareWeibo<span class="br0">(</span><span class="br0">)</span><span class="sy0">;</span><br>
+&nbsp; &nbsp; <span class="br0">}</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="br0">}</span><span class="sy0">,</span> <span class="kw2">false</span><span class="br0">)</span><span class="sy0">;</span><br>
+<span class="sy0">&lt;/</span>script<span class="sy0">&gt;</span></div></td></tr></tbody></table></div>
+<p>api里面有一个appid，以为要向TX申请后才OK，后来发现暂时不填也暂时能OK。效果如下：</p>
+<p><a href="http://www.tanglei.name/wp-content/uploads/2014/07/shenjingmao-1.png"><img class="aligncenter size-full wp-image-2521" title="shenjingmao-1" src="http://www.tanglei.name/wp-content/uploads/2014/07/shenjingmao-1.png" alt="" width="408" height="303"></a></p>
+<p><a href="http://tanglei.me/resource/shenjingmao.html" target="_blank">这里写了一个你可以自定义的网页，有兴趣玩玩</a>~ <img src="http://www.tanglei.name/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley">  </p>
+<h3><hr size="1" style="border:1 dashed #5151A2">相关文章</h3><ul><li>2011 年 04 月 30 日—《<a href="http://www.tanglei.name/winrar_crack/" title="winrar破解">winrar破解</a>》</li><li>2013 年 11 月 14 日—《<a href="http://www.tanglei.name/how-to-run-gpu-programs-using-remote-connection/" title="如何远程连接运行OpenGL/Cuda 等GPU程序">如何远程连接运行OpenGL/Cuda 等GPU程序</a>》</li><li>2012 年 03 月 31 日—《<a href="http://www.tanglei.name/how-to-use-foxmail-to-setup-professional-email-base-on-domain-on-godaddy/" title="godaddy域名企业邮箱客户端配置">godaddy域名企业邮箱客户端配置</a>》</li><li>2012 年 04 月 05 日—《<a href="http://www.tanglei.name/change-svn-server-in-subclipse/" title="SVN插件subclipse修改服务器url">SVN插件subclipse修改服务器url</a>》</li><li>2014 年 01 月 08 日—《<a href="http://www.tanglei.name/how-to-batch-delete-uploading-files-in-baidu-pan/" title="百度云管家批量删除正在上传文件列表">百度云管家批量删除正在上传文件列表</a>》</li></ul>
+ 
+                  
+         <p class="submeta"><strong><font color="blue">Author：</font><a href="http://www.tanglei.name/">tanglei</a></strong> 
+        <br> 
+	<font color="blue"><strong>Tags: </strong></font> <a href="http://www.tanglei.name/tag/javascript/" rel="tag">javascript</a>, <a href="http://www.tanglei.name/tag/%e4%bd%9c%e5%bc%8a/" rel="tag">作弊</a>, <a href="http://www.tanglei.name/tag/%e7%a5%9e%e7%bb%8f%e7%8c%ab/" rel="tag">神经猫</a><br>         </p>
+
+         <a class="post-edit-link" href="http://www.tanglei.name/wp-admin/post.php?post=2519&amp;action=edit" title="编辑文章">Edit</a>
+<!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_32x32">
+	<a class="jiathis_button_qzone" title="分享到QQ空间"><span class="jiathis_txt jtico jtico_qzone"></span></a>
+	<a class="jiathis_button_tsina" title="分享到新浪微博"><span class="jiathis_txt jtico jtico_tsina"></span></a>
+	<a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq"></span></a>
+	<a class="jiathis_button_weixin" title="分享到微信"><span class="jiathis_txt jtico jtico_weixin"></span></a>
+	<a class="jiathis_button_renren" title="分享到人人网"><span class="jiathis_txt jtico jtico_renren"></span></a>
+	<a href="http://www.jiathis.com/share?uid=895059" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_122" title="累计分享0次">0</span></a>
+</div>
+<script type="text/javascript">
+var jiathis_config = {data_track_clickback:'true'};
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=895059" charset="utf-8"></script><script type="text/javascript" src="http://v3.jiathis.com/code/plugin.client.js" charset="utf-8"></script><div style="position:absolute;width:0px;height:0px;"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="0" height="0" id="JIATHISSWF" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"><param name="allowScriptAccess" value="always"><param name="swLiveConnect" value="true"><param name="movie" value="http://www.jiathis.com/code/swf/m.swf"><param name="FlashVars" value="z=a"><embed name="JIATHISSWF" src="http://www.jiathis.com/code/swf/m.swf" flashvars="z=a" width="0" height="0" allowscriptaccess="always" swliveconnect="true" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer"></object></div>
+<!-- JiaThis Button END -->
+
+         </div><!--/entry -->
+       
+         <script type="text/javascript">
+var duoshuoQuery = {"short_name":"thutanglei","sso":{"login":"http:\/\/www.tanglei.name\/wp-login.php?action=duoshuo_login","logout":"http:\/\/www.tanglei.name\/wp-login.php?action=logout&_wpnonce=b76dfebbf8"},"theme":"default","stylePatch":"wordpress\/"};
+duoshuoQuery.sso.login += '&redirect_to=' + encodeURIComponent(window.location.href);
+duoshuoQuery.sso.logout += '&redirect_to=' + encodeURIComponent(window.location.href);
+(function() {
+    var ds = document.createElement('script'); ds.type = 'text/javascript'; ds.async = true;
+    ds.charset = 'UTF-8';
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script><a name="comments"></a>
+
+<div class="ds-thread" data-thread-key="2519" data-author-key="1" data-title="围住神经猫 1步玩法-&quot;作弊&quot;" data-url="http://www.tanglei.name/1-step-to-play-shenjingmao/"></div>
+
+<script type="text/javascript">
+	if (typeof DUOSHUO !== 'undefined')
+		DUOSHUO.EmbedThread('.ds-thread');
+</script>
+	<div id="ds-ssr">
+
+		
+            <ol id="commentlist">
+                            </ol>
+
+		            
+    </div>      </div><!--/post -->
+      
+	
+	</div><!--/content -->
+
+
+
+
+</div>
+
