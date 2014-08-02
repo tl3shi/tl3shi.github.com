@@ -10,16 +10,16 @@ tags: [leetcode, c++, two-sum]
 # two sum
 
 [leetcode link](https://oj.leetcode.com/problems/two-sum/)
+
 >Given an array of integers, find two numbers such that they add up to a specific target number.
 The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.
 You may assume that each input would have exactly one solution.
 
 >	Input: numbers={2, 7, 11, 15}, target=9
-
 >	Output: index1=1, index2=2
 
 解答1、先排序（得记录index），i->0, j->n 相加结果sum<target, i++ 否则 j—
-
+{% highlight cpp %}
 	vector<int> twoSum(vector<int> &numbers, int target)
 	{ 
 	    vector<pair<int, int> > num_index_map;
@@ -55,9 +55,10 @@ You may assume that each input would have exactly one solution.
 	    }
 	    return vector<int>();
 	}
-
+{% endhighlight %}
 2、用map存起来～直接找对应的另一半
 	
+{% highlight cpp %}
 	vector<int> twoSum(vector<int> &numbers, int target)
 	{
 	    //!important case [0,22,4,0] 0
@@ -81,3 +82,4 @@ You may assume that each input would have exactly one solution.
 	    }
 	    return vector<int>();
 	}
+{% endhighlight %}
