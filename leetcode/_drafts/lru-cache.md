@@ -46,92 +46,94 @@ set(key, value) - Set or insert the value if the key is not already present. Whe
     或者返回未找到。
 
 {% highlight cpp %}
-class LRUCache{
-public:
-    struct Node
-    {
-        int value;
-        int key;
-        Node * prev;
-        Node * next;
-        Node(int k, int v): key(k),value(v),prev(NULL), next(NULL)
-        {}
-    };
-    
-    LRUCache(int capacity):capacity_(capacity) 
-    {
-        head = new Node(-1,-1);
-        tail = new Node(-1,-1);
-        head->next = tail;
-        tail->prev = head;
-    }
-    
-    ~LRUCache()
-    {
-        delete head;
-        delete tail;
-        for(auto it = kv_.begin(); it!=kv_.end(); it++)
-            delete it->second;
-    }
-    
-    int get(int key) 
-    {
-        auto it = kv_.find(key);
-        if(it != kv_.end())
-        {
-            removeFromList(it->second);
-            move2Head(it->second);
-            return it->second->value;
-        }
-        return -1;
-    }
-    
-    void set(int key, int value) 
-    {
-        auto it = kv_.find(key);
-        if(it != kv_.end())//replace
-        {
-            removeFromList(it->second);
-            it->second->value = value;
-            move2Head(it->second);
-        }else//insert new
-        {
-            if(kv_.size() >= capacity_)//remove tail
-            {
-                auto node = tail->prev;
-                removeFromList(node);//!!Do not forget
-                kv_.erase(node->key);
-                node->key = key;
-                node->value = value;
-                kv_[key] = node;
-                move2Head(node);
-            }else //add
-            {
-                auto node = new Node(key, value);
-                kv_[key] = node;
-                move2Head(node);
-            }
-        }
-    }
-private:
-    Node * head; //head and tail do NOT store data
-    Node * tail;
-    unordered_map<int, Node*> kv_;
-    int capacity_;
-    void removeFromList(Node* node)
-    {
-        node->prev->next = node->next;
-        node->next->prev = node->prev;
-    }
-    void move2Head(Node* node)
-    {
-        Node* old = head->next;
-        old->prev = node;
-        node->next = old;
-        head->next = node;
-        node->prev = head;
-    }
-};
+	
+	class LRUCache
+	{
+	public:
+	    struct Node
+	    {
+	        int value;
+	        int key;
+	        Node * prev;
+	        Node * next;
+	        Node(int k, int v): key(k),value(v),prev(NULL), next(NULL)
+	        {}
+	    };
+	    
+	    LRUCache(int capacity):capacity_(capacity) 
+	    {
+	        head = new Node(-1,-1);
+	        tail = new Node(-1,-1);
+	        head->next = tail;
+	        tail->prev = head;
+	    }
+	    
+	    ~LRUCache()
+	    {
+	        delete head;
+	        delete tail;
+	        for(auto it = kv_.begin(); it!=kv_.end(); it++)
+	            delete it->second;
+	    }
+	    
+	    int get(int key) 
+	    {
+	        auto it = kv_.find(key);
+	        if(it != kv_.end())
+	        {
+	            removeFromList(it->second);
+	            move2Head(it->second);
+	            return it->second->value;
+	        }
+	        return -1;
+	    }
+	    
+	    void set(int key, int value) 
+	    {
+	        auto it = kv_.find(key);
+	        if(it != kv_.end())//replace
+	        {
+	            removeFromList(it->second);
+	            it->second->value = value;
+	            move2Head(it->second);
+	        }else//insert new
+	        {
+	            if(kv_.size() >= capacity_)//remove tail
+	            {
+	                auto node = tail->prev;
+	                removeFromList(node);//!!Do not forget
+	                kv_.erase(node->key);
+	                node->key = key;
+	                node->value = value;
+	                kv_[key] = node;
+	                move2Head(node);
+	            }else //add
+	            {
+	                auto node = new Node(key, value);
+	                kv_[key] = node;
+	                move2Head(node);
+	            }
+	        }
+	    }
+	private:
+	    Node * head; //head and tail do NOT store data
+	    Node * tail;
+	    unordered_map<int, Node*> kv_;
+	    int capacity_;
+	    void removeFromList(Node* node)
+	    {
+	        node->prev->next = node->next;
+	        node->next->prev = node->prev;
+	    }
+	    void move2Head(Node* node)
+	    {
+	        Node* old = head->next;
+	        old->prev = node;
+	        node->next = old;
+	        head->next = node;
+	        node->prev = head;
+	    }
+	};
 {% endhighlight %}
 
 看看人家用stl中的list写的，代码多短啊。 ref [leetcode-cpp](https://github.com/soulmachine/leetcode)
@@ -140,62 +142,64 @@ list中的方法
 Transfers elements from x into the container, inserting them at position. [list api](http://www.cplusplus.com/reference/list/list/splice/) 
 
 {% highlight cpp %}
-class LRUCache{
-public:
-    struct Node
+
+    class LRUCache
     {
-        int value;
-        int key;
-        Node(int k, int v): key(k),value(v)
-        {}
-    };
-    
-    LRUCache(int capacity):capacity_(capacity)
-    {
-    }
-    
-    int get(int key)
-    {
-        auto it = kv_.find(key);
-        if(it != kv_.end())
+    public:
+        struct Node
         {
-            //transfer: remove it from dataList, add to dataList.begin()
-            //std::list::splice http://www.cplusplus.com/reference/list/list/splice/
-            dataList.splice(dataList.begin(), dataList, it->second);
-            it->second = dataList.begin();
-            return it->second->value;
+            int value;
+            int key;
+            Node(int k, int v): key(k),value(v)
+            {}
+        };
+        
+        LRUCache(int capacity):capacity_(capacity)
+        {
         }
-        return -1;
-    }
-    
-    void set(int key, int value)
-    {
-        auto it = kv_.find(key);
-        if(it != kv_.end())//replace
+        
+        int get(int key)
         {
-            dataList.splice(dataList.begin(), dataList, it->second);
-            it->second = dataList.begin();
-            it->second->value = value;
-        }else//insert new
+            auto it = kv_.find(key);
+            if(it != kv_.end())
+            {
+                //transfer: remove it from dataList, add to dataList.begin()
+                //std::list::splice http://www.cplusplus.com/reference/list/list/splice/
+                dataList.splice(dataList.begin(), dataList, it->second);
+                it->second = dataList.begin();
+                return it->second->value;
+            }
+            return -1;
+        }
+        
+        void set(int key, int value)
         {
-            if(kv_.size() >= capacity_)//remove tail
+            auto it = kv_.find(key);
+            if(it != kv_.end())//replace
             {
-                kv_.erase(dataList.back().key);
-                auto tail = dataList.back();
-                dataList.pop_back();
-                tail.key = key; tail.value = value;
-                dataList.push_front(tail);
-                kv_[key] = dataList.begin(); //insert
-            }else
+                dataList.splice(dataList.begin(), dataList, it->second);
+                it->second = dataList.begin();
+                it->second->value = value;
+            }else//insert new
             {
-                dataList.push_front(Node(key, value));
-                kv_[key] = dataList.begin(); //insert
+                if(kv_.size() >= capacity_)//remove tail
+                {
+                    kv_.erase(dataList.back().key);
+                    auto tail = dataList.back();
+                    dataList.pop_back();
+                    tail.key = key; tail.value = value;
+                    dataList.push_front(tail);
+                    kv_[key] = dataList.begin(); //insert
+                }else
+                {
+                    dataList.push_front(Node(key, value));
+                    kv_[key] = dataList.begin(); //insert
+                }
             }
         }
-    }
-private:
-    unordered_map<int, list<Node>::iterator> kv_;
-    int capacity_;
-    list<Node> dataList;
-};
+    private:
+        unordered_map<int, list<Node>::iterator> kv_;
+        int capacity_;
+        list<Node> dataList;
+    };
 {% endhighlight %}
