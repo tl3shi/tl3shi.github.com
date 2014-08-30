@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Word Break 题解"
 description: "[leetcode] Word Break 题解"
 category: leetcode 
-tags: [leetcode, c++, 动态规划, dp]
+tags: [leetcode, c++, 动态规划, DP]
 ---
 {% include JB/setup %}
 
