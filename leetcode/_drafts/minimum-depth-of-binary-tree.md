@@ -40,4 +40,20 @@ tags: [leetcode, c++, binary tree, traverse, recusion]
     }
 {% endhighlight %}
 
+或者这样，递归时把是否有兄弟节点传进去。[ref](https://github.com/soulmachine/leetcode).
+
+{% highlight cpp %}
+	
+	int minDepth2(TreeNode* node, bool hasBrother)
+    {
+        if(node == NULL) return hasBrother ? INT_MAX : 0;
+        return std::min(minDepth2(node->left, node->right != NULL), 
+                        minDepth2(node->right, node->left != NULL))+1;
+    }
+    int minDepth(TreeNode *root) 
+    {
+        return minDepth2(root, false);
+    }
+{% endhighlight %}
+
  
