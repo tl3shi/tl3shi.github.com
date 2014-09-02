@@ -70,7 +70,6 @@ tags: [leetcode, c++, tree traversal]
 
 
 具体算法如下:
- 
     
 	步骤：
 	1. 如果当前节点的左孩子为空，则输出当前节点并将其右孩子作为当前节点。
@@ -80,35 +79,34 @@ tags: [leetcode, c++, tree traversal]
 	3. 重复以上1、2直到当前节点为空。
 
 {% highlight cpp %}
-
-    vector<int> inorderMorris(TreeNode * root)
-	{
-	    vector<int> result;
-	    TreeNode * cur = root;
-	    while(NULL != cur)
-	    {
-	        if(cur->left == NULL)
-	        {
-	            result.push_back(cur->val);
-	            cur = cur->right;
-	        }else
-	        {
-	            auto pre = cur->left;
-	            while(pre->right != NULL && pre->right != cur)
-	                pre = pre->right;
-	            if(pre->right == NULL)
-	            {
-	                pre->right = cur;
-	                cur = cur->left;
-	            }else //reset
-	            {
-	                pre->right = NULL;
-	                result.push_back(cur->val);
-	                cur = cur->right;
-	            }
-	        }
-	    }
-	    return move(result);
-	}
+vector<int> inorderMorris(TreeNode * root)
+{
+    vector<int> result;
+    TreeNode * cur = root;
+    while(NULL != cur)
+    {
+        if(cur->left == NULL)
+        {
+            result.push_back(cur->val);
+            cur = cur->right;
+        }else
+        {
+            auto pre = cur->left;
+            while(pre->right != NULL && pre->right != cur)
+                pre = pre->right;
+            if(pre->right == NULL)
+            {
+                pre->right = cur;
+                cur = cur->left;
+            }else //reset
+            {
+                pre->right = NULL;
+                result.push_back(cur->val);
+                cur = cur->right;
+            }
+        }
+    }
+    return move(result);
+}
 {% endhighlight %}
 

@@ -11,7 +11,6 @@ tags: [leetcode, c++, binary tree, traverse, recursion]
 题目来源：[Path Sum](https://oj.leetcode.com/problems/path-sum/)
 
 >
-	
 	Given a binary tree and a sum, determine if the tree has a root-to-leaf path such that adding up all the values along the path equals the given sum.
 	For example:
 	Given the below binary tree and sum = 22,
@@ -29,19 +28,18 @@ tags: [leetcode, c++, binary tree, traverse, recursion]
 递归最简单了。
 
 {% highlight cpp %}
-	
-	bool solveRecusive(TreeNode *root, int sum) 
-    {
-        int v = root->val;
-        if(root->left == NULL && root->right == NULL)
-            return v == sum;
-        return (root->left && solveRecusive(root->left, sum-v)) ||
-               (root->right && solveRecusive(root->right, sum-v));
-    }
-    bool hasPathSum(TreeNode *root, int sum) 
-    {
-        if(root == NULL) return false;//test case rule
-        return solveRecusive(root, sum);
-    }
+bool solveRecusive(TreeNode *root, int sum) 
+{
+    int v = root->val;
+    if(root->left == NULL && root->right == NULL)
+        return v == sum;
+    return (root->left && solveRecusive(root->left, sum-v)) ||
+           (root->right && solveRecusive(root->right, sum-v));
+}
+bool hasPathSum(TreeNode *root, int sum) 
+{
+    if(root == NULL) return false;//test case rule
+    return solveRecusive(root, sum);
+}
 {% endhighlight %}
 
