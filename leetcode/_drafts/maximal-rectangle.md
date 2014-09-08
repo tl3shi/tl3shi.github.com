@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Maximal Rectangle 题解"
 description: "[leetcode] Maximal Rectangle 题解"
 category: leetcode 
-tags: [leetcode, c++, ]
+tags: [leetcode, c++, matrix, stack]
 ---
 {% include JB/setup %}
 
@@ -145,4 +145,46 @@ tags: [leetcode, c++, ]
 	    }
 	    return maxArea;
 	}
+{% endhighlight %}
+
+
+####2. O(n^2)算法 思路2
+参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。 思路是对当前高度h, 找左边比他小的最大的index,设为i, 右边比h小最小的index,设为j,则以h为最小高度的面积应该为 
+`(j-i-1)*h`.  eg : [2,5,3,4,1], 当前高度3, 则, left=0, right = 4, area = 3*(4-0-1)=9.
+
+{% highlight cpp %}
+
+	int maximalRectangle(vector<vector<char> > &matrix) 
+    {
+        int m = matrix.size(); if(m == 0) return 0;
+        int n = matrix[0].size();
+        int result = 0;
+        vector<int> leftMax(n, -1);
+        vector<int> rightMin(n, n);
+        vector<int> height(n, 0);
+        for(int i = 0; i < m; i++)
+        {
+            int left = -1, right = n;
+            for(int j = 0; j < n; j++)
+            {
+                if(matrix[i][j] == '1'){
+                    ++height[j];
+                    leftMax[j] = std::max(leftMax[j], left);
+                }else{
+                    left = j;
+                    height[j]=0; leftMax[j]=-1; rightMin[j]=n;
+                }
+            }
+            for(int j = n-1; j >= 0; j--)
+            {
+                 if(matrix[i][j] == '1'){
+                     rightMin[j] = std::min(rightMin[j], right);
+                     result = std::max(result, height[j]*(rightMin[j]-leftMax[j]-1));
+                 }else{
+                     right = j;
+                 }
+            }
+        }
+        return result;
+    }
 {% endhighlight %}
