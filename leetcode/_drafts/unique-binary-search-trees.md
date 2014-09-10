@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Unique Binary Search Trees 题解"
 description: "[leetcode] Unique Binary Search Trees 题解"
 category: leetcode 
-tags: [leetcode, c++, binary tree, BST, DP]
+tags: [leetcode, c++, binary tree, BST, DP, math]
 ---
 {% include JB/setup %}
 
@@ -23,6 +23,7 @@ tags: [leetcode, c++, binary tree, BST, DP]
 
 解题思路：
 
+####0. 递归
 递归比较好理解。比如 根节点数字为i, 比i小的左孩纸i-1个(子问题), 右孩纸n-i. 于是就有了下面的代码。
 
 {% highlight cpp %}
@@ -37,6 +38,7 @@ int numTrees(int n)
 }
 {% endhighlight %}
 
+####1. 动态规划 
 其实可以缓存下, 用动态规划。
 
 {% highlight cpp %}
@@ -60,4 +62,5 @@ int numTrees(int n)
 }
 {% endhighlight %}
 
+####2. 数学公式法
 其实这个问题有公式可以直接算的，参考[卡塔兰数](http://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0) 。
