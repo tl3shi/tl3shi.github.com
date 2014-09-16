@@ -50,11 +50,11 @@ tags: [leetcode, c++, math]
     }
 {% endhighlight %}
 
-或者牛顿迭代法。[参考] (http://blog.punkid.org/2008/02/28/compute-the-square-root-via-newtons-iteration/)  
+或者牛顿迭代法, [参考这里](http://blog.punkid.org/2008/02/28/compute-the-square-root-via-newtons-iteration/).
 
 假设f(x)是关于X的函数:
 
- ![](../../resource/blogimage/leetcode-sqrtx.png)
+ ![](http://tl3shi.github.com/resource/blogimage/leetcode-sqrtx.png)
  
 求出f(x)的一阶导，即斜率: 
 
