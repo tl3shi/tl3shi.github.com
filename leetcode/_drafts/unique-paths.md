@@ -21,11 +21,30 @@ tags: [leetcode, c++, ]
 
 解题思路：
 
+一共m-1+n-1步，其中任意选择m-1作为竖着走即可。
+ 
 {% highlight cpp %}
-
+	
+	//C_n ^m 
+    int C(int n, int m)
+    {
+        if(m == 0) return 1;
+        if(n-m < m) return C(n, n-m);
+        int i = 1;
+        long long result = 1;
+        while(i <= m)
+        {
+            result *= n-(i-1);
+            result /= i;
+            i++;
+        }
+        return (int)result;
+    }
+    
+    int uniquePaths(int m, int n) 
+    {
+        return C(m-1 + n-1, m-1);
+    }
 {% endhighlight %}
 
-
-{% highlight cpp %}
-
-{% endhighlight %}
+ 
