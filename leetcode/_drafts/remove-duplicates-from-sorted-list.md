@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Remove Duplicates from Sorted List 题解"
 description: "[leetcode] Remove Duplicates from Sorted List 题解"
 category: leetcode 
-tags: [leetcode, c++, list]
+tags: [leetcode, c++, list, 链表]
 ---
 {% include JB/setup %}
 
