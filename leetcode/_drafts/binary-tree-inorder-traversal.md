@@ -12,7 +12,6 @@ tags: [leetcode, c++, tree traversal]
 
 >
 	Given a binary tree, return the inorder traversal of its nodes' values.
-
 	For example:
 	Given binary tree {1,#,2,3},
 	   1
@@ -21,7 +20,6 @@ tags: [leetcode, c++, tree traversal]
 	    /
 	   3
 	return [1,3,2].
-	
 	Note: Recursive solution is trivial, could you do it iteratively?
 
 解题思路：
@@ -31,38 +29,37 @@ tags: [leetcode, c++, tree traversal]
 
 ####2. 思路二: 用stack.
 
-{% highlight cpp %}
-
-    vector<int> inorderNormal(TreeNode * root)
-	{
-	    vector<int> result;
-	    stack<TreeNode*> stacks;
-	    TreeNode * cur = root;
-	    while(true)
-	    {
-	        if(cur != NULL)
-	        {
-	            stacks.push(cur);
-	            cur = cur->left;
-	        }else
-	        {
-	            if(stacks.empty()) break;
-	            cur = stacks.top(); stacks.pop();
-	            result.push_back(cur->val);
-	            if(stacks.empty())
-	                break;
-	            cur = cur->right;
+```cpp
+vector<int> inorderNormal(TreeNode * root)
+{
+    vector<int> result;
+    stack<TreeNode*> stacks;
+    TreeNode * cur = root;
+    while(true)
+    {
+        if(cur != NULL)
+        {
+            stacks.push(cur);
+            cur = cur->left;
+        }else
+        {
+            if(stacks.empty()) break;
+            cur = stacks.top(); stacks.pop();
+            result.push_back(cur->val);
+            if(stacks.empty())
+                break;
+            cur = cur->right;
 	
-	        }
-	    }
-	    return move(result);
-	}
-	vector<int> inorderTraversal(TreeNode *root)
-	{
-	    if(root == NULL) return vector<int>();
-	    return inorderNormal(root);
-	}
-{% endhighlight %}
+        }
+    }
+    return move(result);
+}
+vector<int> inorderTraversal(TreeNode *root)
+{
+    if(root == NULL) return vector<int>();
+    return inorderNormal(root);
+}
+```
 
 ####3. 思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
 
@@ -79,6 +76,7 @@ tags: [leetcode, c++, tree traversal]
 	3. 重复以上1、2直到当前节点为空。
 
 {% highlight cpp %}
+```cpp
 vector<int> inorderMorris(TreeNode * root)
 {
     vector<int> result;
@@ -108,5 +106,6 @@ vector<int> inorderMorris(TreeNode * root)
     }
     return move(result);
 }
+```
 {% endhighlight %}
 

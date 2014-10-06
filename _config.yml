@@ -5,7 +5,10 @@ permalink: /:categories/:title.html
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
 auto: true
 highlighter: pygments
-markdown: kramdown
+# markdown: kramdown ```language ``` cannot work
+markdown: redcarpet
+redcarpet:
+    extensions: ["fenced_code_blocks", "tables", "highlight", "strikethrough", "autolink"]
 #lsi: true
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.

@@ -14,11 +14,11 @@ tags: [leetcode, c++, ]
 
 解题思路：
 
-{% highlight cpp %}
+```cpp
 
-{% endhighlight %}
+```
 
 
-{% highlight cpp %}
+```cpp
 
-{% endhighlight %}
+```

@@ -47,7 +47,8 @@ tags: [data structure]
 > 
 
 解题
-{% highlight c %}
+
+```cpp
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
@@ -191,4 +192,4 @@ int main()
     delete[] data;
     return 0;
 }
-{% endhighlight %}
+```

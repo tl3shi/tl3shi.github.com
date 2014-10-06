@@ -86,7 +86,6 @@ tags: [leetcode, c++, tree, traverse]
             if(node->left)
                 stacks.push(node->left);
         }
-        root = last->right;
     }
 {% endhighlight %}
 
