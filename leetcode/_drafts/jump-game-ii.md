@@ -20,7 +20,7 @@ tags: [leetcode, c++, greedy]
 
 解题思路：
 
-跟 [jump-game](http://tl3shi.github.io/jump-game.html)一样, 可以贪心。每次选择当前可以跳的范围内，下一次能跳得最远的 
+跟 [jump-game](http://tl3shi.github.io/leetcode/jump-game.html)一样, 可以贪心。每次选择当前可以跳的范围内，下一次能跳得最远的 
 
 {% highlight cpp %}
 	

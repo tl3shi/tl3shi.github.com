@@ -20,7 +20,7 @@ tags: [leetcode, c++, interval]
 
 解题思路：
 
-可以先加进去，然后再按照[Merge Intervals](http://tl3shi.github.io/Merge-Intervals.html)的算法merge一下就行。
+可以先加进去，然后再按照[Merge Intervals](http://tl3shi.github.io/leetcode/Merge-Intervals.html)的算法merge一下就行。
 
 {% highlight cpp %}
 	

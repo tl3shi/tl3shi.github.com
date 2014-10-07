@@ -17,7 +17,7 @@ tags: [leetcode, c++, 数独, 回溯, DFS]
 
 解题思路：
 
-记录需要填充的每个位置，然后用1-9一个一个去试～ 深搜即可。 类似的问题还有[八皇后](http://tl3shi.github.io/n-queens.html)等。
+记录需要填充的每个位置，然后用1-9一个一个去试～ 深搜即可。 类似的问题还有[八皇后](http://tl3shi.github.io/leetcode/n-queens.html)等。
 
 {% highlight cpp %}
 	

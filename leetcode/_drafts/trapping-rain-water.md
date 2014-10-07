@@ -88,4 +88,4 @@ tags: [leetcode, c++, tricky]
 	}
 {% endhighlight %}
 
-类似的题目还有 [Container With Most Water](http://tl3shi.github.io/container-with-most-water.html).
+类似的题目还有 [Container With Most Water](http://tl3shi.github.io/leetcode/container-with-most-water.html).

@@ -23,7 +23,7 @@ tags: [leetcode, c++, ]
 	    
 解题思路：
 
-跟[3-sum](http://tl3shi.github.io/3sum.html)思路一样，只不过这个是\\( N^2 \\) 两两组合，再去找2sum, 得注意去重。
+跟[3-sum](http://tl3shi.github.io/leetcode/3sum.html)思路一样，只不过这个是\\( N^2 \\) 两两组合，再去找2sum, 得注意去重。
 
 ```cpp
 void search(vector<std::pair<int, int> > &pairs, int start, const int target, const vector<int> &num)

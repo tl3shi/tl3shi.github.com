@@ -18,7 +18,7 @@ tags: [leetcode, c++, rebuild tree, binary tree]
 
 解题思路：
 
-仍跟上题一样[construct-binary-tree-from-preorder-and-inorder-traversal](http://tl3shi.github.io/construct-binary-tree-from-preorder-and-inorder-traversal.html),同样假设输入合理。
+仍跟上题一样[construct-binary-tree-from-preorder-and-inorder-traversal](http://tl3shi.github.io/leetcode/construct-binary-tree-from-preorder-and-inorder-traversal.html),同样假设输入合理。
 若输入不合法，可参考[树重建](http://tanglei.me/data%20structure/dsa-rebuild-tree.html)进行处理。
 	
 	中：左  中  右

@@ -88,7 +88,7 @@ tags: [leetcode, c++, list]
      2. 根据第一步有，nodei->next是node的copy的那个(i为偶数)，现在要解决copy的node的random问题，即 nodei->next的random＝? 其实有`nodei->next->random = nodei->random->next`; nodei->random是原来的random，其next就是copyed的原来random的拷贝。 这步很关键。
      3. 将这个连接在一起的链表分开，注意要断开。 
 
-![常数空间解Copy List with Random Pointer](http://tl3shi.github.io/resource/blogimage/leetcode-copy-list-with-random.jpg)
+![常数空间解Copy List with Random Pointer](http://tl3shi.github.io/leetcode/resource/blogimage/leetcode-copy-list-with-random.jpg)
 
 举例个例子, 上面的一排数据1,2,3,4原始数据前后通过next连接, 然后1和2的random指针分别指向3和4.
 

@@ -18,11 +18,11 @@ tags: [leetcode, c++, 排列组合, permutation]
 
 解题思路：
 
-跟 [Permutations](http://tl3shi.github.io/Permutations.html)思路差不多，分为下面几种解法。
+跟 [Permutations](http://tl3shi.github.io/leetcode/Permutations.html)思路差不多，分为下面几种解法。
 
 ####0.置换法
 
-跟[Permutations](http://tl3shi.github.io/Permutations.html)一样，每一个与第一个交换～用set存结果，将重复的去掉，中途剪枝下即可AC。
+跟[Permutations](http://tl3shi.github.io/leetcode/Permutations.html)一样，每一个与第一个交换～用set存结果，将重复的去掉，中途剪枝下即可AC。
 
 {% highlight cpp %}
 	

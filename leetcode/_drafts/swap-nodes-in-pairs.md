@@ -20,7 +20,7 @@ tags: [leetcode, c++, list, 链表]
 
 ####0. reverseKGroup
 
-前面刚写了 [reverse-nodes-in-k-group](http://tl3shi.github.io/reverse-nodes-in-k-group.html)，直接调用一下，传参数2即可。
+前面刚写了 [reverse-nodes-in-k-group](http://tl3shi.github.io/leetcode/reverse-nodes-in-k-group.html)，直接调用一下，传参数2即可。
 
 ```cpp
 //reverse [start, tail], return newhead
