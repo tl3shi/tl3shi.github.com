@@ -23,6 +23,7 @@ tags: [leetcode, c++, math, string]
 解题思路：
 
 注意的问题：
+
 - 前面的空格, 正负数；
 - 字符串前面的字符部分匹配了数字，返回这部分匹配的，忽略后面非法的。
 - 越界问题。INT_MAX (2147483647) or INT_MIN (-2147483648) is returned. 
@@ -49,11 +50,11 @@ int atoi(const char *str)
    for(int i = endIndex; i >= startIndex; i--, base *= 10)
    {
        result += (str[i]-'0')*base;
-       if (result > INT_MAX) break;
+       if(result > INT_MAX) return sign == 1 ? INT_MAX : INT_MIN;//break;
    }
    result *= sign;
-   if (result >= INT_MAX) return INT_MAX;
-   if (result <= INT_MIN) return INT_MIN;
+   //if (result >= INT_MAX) return INT_MAX;
+   //if (result <= INT_MIN) return INT_MIN;
    return result;
 }
 ```
