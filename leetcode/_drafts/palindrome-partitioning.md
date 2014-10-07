@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Palindrome Partitioning 题解"
 description: "[leetcode] Palindrome Partitioning 题解"
 category: leetcode 
-tags: [leetcode, c++, dp, 回文, 排列组合, dfs]
+tags: [leetcode, c++, DP, 回文, 排列组合, DFS]
 ---
 {% include JB/setup %}
 

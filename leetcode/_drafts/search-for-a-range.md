@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Search for a Range 题解"
 description: "[leetcode] Search for a Range 题解"
 category: leetcode 
-tags: [leetcode, c++, Binary search, search]
+tags: [leetcode, c++, binary search, search]
 ---
 {% include JB/setup %}
 

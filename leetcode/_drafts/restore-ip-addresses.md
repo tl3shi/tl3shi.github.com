@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Restore IP Addresses 题解"
 description: "[leetcode] Restore IP Addresses 题解"
 category: leetcode 
-tags: [leetcode, c++, dfs]
+tags: [leetcode, c++, DFS]
 ---
 {% include JB/setup %}
 

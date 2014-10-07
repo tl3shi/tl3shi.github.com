@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Maximum Depth of Binary Tree  题解"
 description: "[leetcode] Maximum Depth of Binary Tree  题解"
 category: leetcode 
-tags: [leetcode, c++, binay tree, dfs]
+tags: [leetcode, c++, binay tree, DFS]
 ---
 {% include JB/setup %}
 

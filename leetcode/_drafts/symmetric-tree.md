@@ -15,7 +15,7 @@ tags: [leetcode, c++, binary tree, recursion]
 	
 解题思路：
 左节点的左子树 ＝ 右节点的由子树。 
-解题方法跟[same tree](TODO_PRE/same-tree.html)差不多。
+解题方法跟[same tree](http://tl3shi.github.io/same-tree.html)差不多。
 
 ####0.递归
 

@@ -65,7 +65,7 @@ tags: [leetcode, c++, matrix, stack]
 
 ####1. O(n^2)算法
 
-一行一行处理，每一行，按照柱状图那道题目 [Largest Rectangle in Histogram](TODO_PRE/Largest-Rectangle-in-Histogram.html) `O(n)`算法处理，总体复杂度O(n^2).
+一行一行处理，每一行，按照柱状图那道题目 [Largest Rectangle in Histogram](http://tl3shi.github.io/Largest-Rectangle-in-Histogram.html) `O(n)`算法处理，总体复杂度O(n^2).
 
 用栈维护了一个递增(非递减)的序列，当当前索引的元素比栈顶小时，取栈顶元素（并出栈），并将这个元素的高度和当前索引端(快降低了)构成的矩形面积，栈中上升的那段都可以出栈并计算。
 
@@ -113,7 +113,7 @@ tags: [leetcode, c++, matrix, stack]
     }
 {% endhighlight %}
 
-以高度`[2,5,3,4,1]`为例, 2[index=0], 5[index=2]进栈, 当前高度为3, 以5为最矮的计算面积为5,然后5出栈, 此时**把3[index=2]进栈** (注意对比下[Largest Rectangle in Histogram](TODO_PRE/Largest-Rectangle-in-Histogram.html)的写法), 一直到index=4时，1最小了, 依次计算面积, 
+以高度`[2,5,3,4,1]`为例, 2[index=0], 5[index=2]进栈, 当前高度为3, 以5为最矮的计算面积为5,然后5出栈, 此时**把3[index=2]进栈** (注意对比下[Largest Rectangle in Histogram](http://tl3shi.github.io/Largest-Rectangle-in-Histogram.html)的写法), 一直到index=4时，1最小了, 依次计算面积, 
 	
 	[0,2,3,]-->[0,2,]
 	4*(4-1-2)=8.

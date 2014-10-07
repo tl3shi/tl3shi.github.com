@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Binary Tree Zigzag Level Order Traversal 题解"
 description: "[leetcode] Binary Tree Zigzag Level Order Traversal 题解"
 category: leetcode 
-tags: [leetcode, c++, binary tree, bfs, level traverse, recursion]
+tags: [leetcode, c++, binary tree, BFS, level traverse, recursion]
 ---
 {% include JB/setup %}
 
@@ -30,16 +30,16 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 
 解题思路：
 
-跟前面的题[Binary Tree Level Order Traversal](TODO_PRE/binary-tree-level-order-traversal.html) 以及[Binary Tree Level Order Traversal II](TODO_PRE/binary-tree-level-order-traversal-ii.html)。 
+跟前面的题[Binary Tree Level Order Traversal](http://tl3shi.github.io/binary-tree-level-order-traversal.html) 以及[Binary Tree Level Order Traversal II](http://tl3shi.github.io/binary-tree-level-order-traversal-ii.html)。 
 区别就是这个将第偶数层的结果reverse一下。
 这里就只列了其中一种代码了。
 
 ####0. 常规方法, 两个queue交替
-参见[Binary Tree Level Order Traversal](TODO_PRE/binary-tree-level-order-traversal.html)。
+参见[Binary Tree Level Order Traversal](http://tl3shi.github.io/binary-tree-level-order-traversal.html)。
  
 ####1. 单queue+隔板
 
-前面[word ladder ii](TODO_PRE/word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
+前面[word ladder ii](http://tl3shi.github.io/word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
 {% highlight cpp %}
 	
@@ -72,5 +72,5 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 
 #### 2.递归
 
-参见[Binary Tree Level Order Traversal](TODO_PRE/binary-tree-level-order-traversal.html)。
+参见[Binary Tree Level Order Traversal](http://tl3shi.github.io/binary-tree-level-order-traversal.html)。
  

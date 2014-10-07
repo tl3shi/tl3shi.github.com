@@ -17,7 +17,7 @@ tags: [leetcode, c++, ]
 
 #### 0. tricky 方法, 另外取O(n)空间
 
-偷懒方法，另外取另外取O(n)空间把list的数据取出来放入数组，然后跟[](TODO_PRE/convert-sorted-array-to-binary-search-tree.html)题目一样用数组的方式去做。
+偷懒方法，另外取另外取O(n)空间把list的数据取出来放入数组，然后跟[](http://tl3shi.github.io/convert-sorted-array-to-binary-search-tree.html)题目一样用数组的方式去做。
 代码就略过了。
 虽然不是出题者的本意～ 但...... 你咬我呀.
 

@@ -17,7 +17,7 @@ tags: [leetcode, c++, binary search, sort]
 	Write a function to determine if a given target is in the array.
 	
 解题思路：
-跟[Search in Rotated Sorted Array](TODO_PRE/search-in-rotated-sorted-array.html)相比， 不能通过A[left] <= A[mid] 判断这段有序。
+跟[Search in Rotated Sorted Array](http://tl3shi.github.io/search-in-rotated-sorted-array.html)相比， 不能通过A[left] <= A[mid] 判断这段有序。
 
 {% highlight cpp %}
 	

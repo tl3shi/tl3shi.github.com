@@ -86,12 +86,12 @@ tags: [leetcode, c++, array, stack, 分治, 线段树]
 	}
 {% endhighlight %}
 
-注意看上面出栈时候的写法与[maximal-rectangle](TODO_PRE/maximal-rectangle.html)的异同。
+注意看上面出栈时候的写法与[maximal-rectangle](http://tl3shi.github.io/maximal-rectangle.html)的异同。
 
 - [ref1-leetcode_Largest_Rectangle_in_Histogram](http://www.cnblogs.com/lichen782/p/leetcode_Largest_Rectangle_in_Histogram.html)
 - [ref2-largest-rectangle-under-histogram](http://www.geeksforgeeks.org/largest-rectangle-under-histogram/)
 
-还有一个速录就死参考[maximal-rectangle](TODO_PRE/maximal-rectangle.html)的解法2.
+还有一个思路就是参考[maximal-rectangle](http://tl3shi.github.io/maximal-rectangle.html)的解法2.
 思路是对当前高度h, 找左边比他小的最大的index,设为i, 右边比h小最小的index,设为j,则以h为最小高度的面积应该为 
 `(j-i-1)*h`.  eg : [2,5,3,4,1], 当前高度3, 则, left=0, right = 4, area = 3*(4-0-1)=9.
 求left/right时思路如下：

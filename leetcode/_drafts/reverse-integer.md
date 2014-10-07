@@ -22,7 +22,7 @@ tags: [leetcode, c++, math, reverse]
 	
 解题思路：
 
-按照 [palindrome-number](TODO_PRE/palindrome-number.html)的思路，一样。
+按照 [palindrome-number](http://tl3shi.github.io/palindrome-number.html)的思路，一样。
 
 ```cpp
 int reverse(int x) 

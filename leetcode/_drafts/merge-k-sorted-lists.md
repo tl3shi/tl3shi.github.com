@@ -15,7 +15,7 @@ tags: [leetcode, c++, list, merge, 链表]
 	
 解题思路：
 
-跟[merge-two-sorted-lists](TODO_PRE/merge-two-sorted-lists.html) 一样, 一个一个merge即可。
+跟[merge-two-sorted-lists](http://tl3shi.github.io/merge-two-sorted-lists.html) 一样, 一个一个merge即可。
 
 ```cpp
 ListNode * merge2List(ListNode * list1, ListNode* list2)

@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "[leetcode] Combination Sum II 题解"
-description: "[leetcode] Combination Sum II 题解"
+title: "[leetcode] combination Sum II 题解"
+description: "[leetcode] combination Sum II 题解"
 category: leetcode 
-tags: [leetcode, c++, Combination, DFS]
+tags: [leetcode, c++, combination, DFS]
 ---
 {% include JB/setup %}
 
 
-题目来源：[Combination Sum II](https://oj.leetcode.com/problems/combination-sum-ii/)
+题目来源：[combination Sum II](https://oj.leetcode.com/problems/combination-sum-ii/)
 
 >
 	Given a collection of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
@@ -26,7 +26,7 @@ tags: [leetcode, c++, Combination, DFS]
 
 解题思路：
 
-跟 [combination-sum](TODO_PRE/combination-sum.html) 一样, DFS，在它的基础上，将用过的跳过即可。重复的数字，后面的要跳过，不然结果有重复的。
+跟 [combination-sum](http://tl3shi.github.io/combination-sum.html) 一样, DFS，在它的基础上，将用过的跳过即可。重复的数字，后面的要跳过，不然结果有重复的。
 
 {% highlight cpp %}
 	

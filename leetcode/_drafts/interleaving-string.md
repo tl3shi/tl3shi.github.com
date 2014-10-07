@@ -42,7 +42,7 @@ bool isInterleave(string s1, int i1, string s2, int i2, string s, int i)
 ####1. 动态规划
 DP。
 
-用DP，类似[Distinct Subsequences](TODO_PRE/distinct-subsequences.html) 一样，
+用DP，类似[Distinct Subsequences](http://tl3shi.github.io/distinct-subsequences.html) 一样，
 dp[i][j]表示长度为i的s1[0:i-1],长度为j的s2[0:j-1]和s3[0:i+j-1]的匹配结果，那么 
 	
 	dp[i][j] = dp[i][j-1] && (s2[j-1]==s3[i+j-1]) 

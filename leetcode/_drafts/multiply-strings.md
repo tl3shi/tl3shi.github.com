@@ -17,7 +17,7 @@ tags: [leetcode, c++, math]
 解题思路：
 
 大正整数乘法, 题目说了非负了。
-跟 [plus-one](TODO_PRE/plus-one.html)、 [add-binary](TODO_PRE/add-binary.html)差不多。
+跟 [plus-one](http://tl3shi.github.io/plus-one.html)、 [add-binary](http://tl3shi.github.io/add-binary.html)差不多。
 {% highlight cpp %}
 	
 	string multiply(string num1, string num2)

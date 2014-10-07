@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Regular Expression Matching 题解"
 description: "[leetcode] Regular Expression Matching 题解"
 category: leetcode 
-tags: [leetcode, c++, Regular Expression, string]
+tags: [leetcode, c++, regular expression, string]
 ---
 {% include JB/setup %}
 

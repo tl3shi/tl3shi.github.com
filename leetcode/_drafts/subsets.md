@@ -34,7 +34,7 @@ tags: [leetcode, c++, DFS, 排列组合]
 
 ####0.DFS搜索
 
-跟[Combinations](TODO_PRE/Combinations.html)一样。
+跟[Combinations](http://tl3shi.github.io/Combinations.html)一样。
 {% highlight cpp %}
 	
 	void search(vector<vector<int> > &result, vector<int> &S, vector<int> &input, int start, int k)

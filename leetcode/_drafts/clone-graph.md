@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Clone Graph 题解"
 description: "[leetcode] Clone Graph 题解"
 category: leetcode 
-tags: [leetcode, c++, graph, bfs]
+tags: [leetcode, c++, graph, BFS]
 ---
 {% include JB/setup %}
 

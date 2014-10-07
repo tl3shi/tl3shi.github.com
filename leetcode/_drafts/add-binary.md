@@ -19,7 +19,7 @@ tags: [leetcode, c++, string, math]
 
 解题思路：
 
-跟前面的 [plus-one](TODO_PRE/plus-one.html) 差不多。 这里注意char和int的转换，别搞错了。
+跟前面的 [plus-one](http://tl3shi.github.io/plus-one.html) 差不多。 这里注意char和int的转换，别搞错了。
 {% highlight cpp %}
 	
 	string addBinary(string a, string b) 

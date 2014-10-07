@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Binary Tree Level Order Traversal 题解"
 description: "[leetcode] Binary Tree Level Order Traversal 题解"
 category: leetcode 
-tags: [leetcode, c++, binary tree, bfs, level traverse, recursion]
+tags: [leetcode, c++, binary tree, BFS, level traverse, recursion]
 ---
 {% include JB/setup %}
 
@@ -59,7 +59,7 @@ tags: [leetcode, c++, binary tree, bfs, level traverse, recursion]
 
 ####1. 单queue+隔板
 
-前面[word ladder ii](TODO_PRE/word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
+前面[word ladder ii](http://tl3shi.github.io/word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
 {% highlight cpp %}
 	

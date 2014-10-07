@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "[leetcode] Combination Sum 题解"
-description: "[leetcode] Combination Sum 题解"
+title: "[leetcode] combination Sum 题解"
+description: "[leetcode] combination Sum 题解"
 category: leetcode 
-tags: [leetcode, c++, Combination, DFS]
+tags: [leetcode, c++, combination, DFS]
 ---
 {% include JB/setup %}
 
 
-题目来源：[Combination Sum](https://oj.leetcode.com/problems/combination-sum/)
+题目来源：[combination Sum](https://oj.leetcode.com/problems/combination-sum/)
 
 >
 	Given a set of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.

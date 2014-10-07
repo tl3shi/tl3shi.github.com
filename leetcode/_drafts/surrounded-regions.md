@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Surrounded Regions 题解"
 description: "[leetcode] Surrounded Regions 题解"
 category: leetcode 
-tags: [leetcode, c++, dfs, bfs]
+tags: [leetcode, c++, DFS, BFS]
 ---
 {% include JB/setup %}
 

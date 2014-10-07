@@ -96,4 +96,4 @@ tags: [leetcode, c++, DP]
     }
 {% endhighlight %}
 
-这题参考了[REF](https://oj.leetcode.com/discuss/2143/any-better-solution-that-takes-less-than-space-while-in-time?show=2143#q2143)，其实跟[Interleaving String](TODO_PRE/interleaving-string.html) 这道题差不多。
+这题参考了[REF](https://oj.leetcode.com/discuss/2143/any-better-solution-that-takes-less-than-space-while-in-time?show=2143#q2143)，其实跟[Interleaving String](http://tl3shi.github.io/interleaving-string.html) 这道题差不多。

@@ -17,7 +17,7 @@ tags: [leetcode, c++, sort]
 	    
 解题思路：
 
-跟[3-sum](TODO_PRE/3sum.html)思路一致。
+跟[3-sum](http://tl3shi.github.io/3sum.html)思路一致。
 
 ```cpp
 int threeSumClosest(vector<int> &num, int target) 

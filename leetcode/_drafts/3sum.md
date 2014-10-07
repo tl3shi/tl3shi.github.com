@@ -22,7 +22,7 @@ tags: [leetcode, c++, sort]
     
 解题思路：
 
-可以沿用[2sum](TODO_PRE/leetcode-two-sum.html)的思路。
+可以沿用[2sum](http://tl3shi.github.io/leetcode-two-sum.html)的思路。
 排序后以当前值target为基准，从当前值后面的值中找等于-target的所有对。注意去重～
 
 - 当前值i的去重

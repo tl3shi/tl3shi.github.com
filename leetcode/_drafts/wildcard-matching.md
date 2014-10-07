@@ -28,7 +28,7 @@ tags: [leetcode, c++, 通配符, string]
 
 解题思路：
 
-跟 [regular-expression-matching](TODO_PRE/regular-expression-matching.html) 类似。
+跟 [regular-expression-matching](http://tl3shi.github.io/regular-expression-matching.html) 类似。
 
 ####0. 递归
 

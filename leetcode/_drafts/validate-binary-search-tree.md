@@ -38,7 +38,7 @@ tags: [leetcode, c++, binary tree, inorder traversal]
 
 ####1. 中序遍历
 
-BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、迭代、Morris遍历等，详情可以参考[binary-tree-inorder-traversal](TODO_PRE/binary-tree-inorder-traversal.html), 下面就只列一种了。
+BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、迭代、Morris遍历等，详情可以参考[binary-tree-inorder-traversal](http://tl3shi.github.io/binary-tree-inorder-traversal.html), 下面就只列一种了。
 
 {% highlight cpp %}
 	
@@ -67,7 +67,7 @@ BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、
 {% endhighlight %}
 
 再训练下Morris遍历。
-跟[recover-binary-search-tree](TODO_PRE/recover-binary-search-tree.html)一样，还是得强调下，Morris遍历中找到不是升序了，也不能return。因为修改了原来树的结构，必须rollback完毕才OK。
+跟[recover-binary-search-tree](http://tl3shi.github.io/recover-binary-search-tree.html)一样，还是得强调下，Morris遍历中找到不是升序了，也不能return。因为修改了原来树的结构，必须rollback完毕才OK。
 
 {% highlight cpp %}
 	

@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Binary Tree Maximum Path Sum 题解"
 description: "[leetcode] Binary Tree Maximum Path Sum 题解"
 category: leetcode 
-tags: [leetcode, c++, binary tree, dfs]
+tags: [leetcode, c++, binary tree, DFS]
 ---
 {% include JB/setup %}
 

@@ -16,7 +16,7 @@ tags: [leetcode, c++, 回溯, backtracking]
 
 解题思路：
 
-跟上一题 [n-queens](TODO_PRE/n-queens.html)一模一样。
+跟上一题 [n-queens](http://tl3shi.github.io/n-queens.html)一模一样。
 
 {% highlight cpp %}
 	

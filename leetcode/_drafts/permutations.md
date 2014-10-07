@@ -48,7 +48,7 @@ tags: [leetcode, c++, 排列组合, permutation]
 
 ####1. 增量构造法
 
-可以跟 [combinations](TODO_PRE/combinations.html) 类似, 一个一个往里面加。
+可以跟 [combinations](http://tl3shi.github.io/combinations.html) 类似, 一个一个往里面加。
 
 {% highlight cpp %}
 	
@@ -81,4 +81,4 @@ tags: [leetcode, c++, 排列组合, permutation]
 
 ####2. nextPermunation
 
-参考 [permutations-ii](TODO_PRE/permutations-ii.html).
+参考 [permutations-ii](http://tl3shi.github.io/permutations-ii.html).

@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Generate Parentheses 题解"
 description: "[leetcode] Generate Parentheses 题解"
 category: leetcode 
-tags: [leetcode, c++, recursion, dfs]
+tags: [leetcode, c++, recursion, DFS]
 ---
 {% include JB/setup %}
 

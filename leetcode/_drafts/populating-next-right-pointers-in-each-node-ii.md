@@ -33,7 +33,7 @@ tags: [leetcode, c++, tree, traverse]
 	    
 解题思路：
 
-跟[Populating Next Right Pointers in Each Node](TODO_PRE/populating-next-right-pointers-in-each-node.html)思路一致，值得注意的是
+跟[Populating Next Right Pointers in Each Node](http://tl3shi.github.io/populating-next-right-pointers-in-each-node.html)思路一致，值得注意的是
 
 * 在填充下一层next时，当前层的next要找完。//Attention 0
 * 往下走时，可能前面的节点没有孩纸节点，也要找完同一层的节点是否存在孩纸节点。//Attention 1

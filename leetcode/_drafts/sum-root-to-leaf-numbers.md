@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Sum Root to Leaf Numbers 题解"
 description: "[leetcode] Sum Root to Leaf Numbers 题解"
 category: leetcode 
-tags: [leetcode, c++, binary tree, dfs]
+tags: [leetcode, c++, binary tree, DFS]
 ---
 {% include JB/setup %}
 
