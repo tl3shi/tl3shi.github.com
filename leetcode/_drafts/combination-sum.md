@@ -26,7 +26,7 @@ tags: [leetcode, c++, combination, DFS]
 
 深搜, 排序后一个一个往里面加，注意是组合，比如当前加到2了，2还可以加，但2以前的就不能加了。
 
-{% highlight cpp %}
+```cpp
 	
 	void dfs(vector<vector<int> > &result, vector<int> &path, const vector<int> &num, int sum, int target)
     {
@@ -58,4 +58,4 @@ tags: [leetcode, c++, combination, DFS]
         dfs(result, path, candidates, 0, target);
         return move(result);
     }
-{% endhighlight %}
+```

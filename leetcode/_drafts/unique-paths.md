@@ -23,7 +23,7 @@ tags: [leetcode, c++, ]
 
 一共m-1+n-1步，其中任意选择m-1作为竖着走即可。
  
-{% highlight cpp %}
+```cpp
 	
 	//C_n ^m 
     int C(int n, int m)
@@ -45,6 +45,6 @@ tags: [leetcode, c++, ]
     {
         return C(m-1 + n-1, m-1);
     }
-{% endhighlight %}
+```
 
  

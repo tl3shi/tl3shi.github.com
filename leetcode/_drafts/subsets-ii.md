@@ -30,7 +30,7 @@ tags: [leetcode, c++, DFS, 排列组合]
 
 可以跟上题[Subsets](http://tl3shi.github.io/leetcode/subsets.html)一样做，只是在add到result的时候先判断result中是否存在。 或者最后将result unique一下都可以。
 
-{% highlight cpp %}
+```cpp
 	
 	void searchWithDup(vector<vector<int> >& result, vector<int> &sub, vector<int> &S, int k, int start)
 	{
@@ -63,11 +63,11 @@ tags: [leetcode, c++, DFS, 排列组合]
 	    //result.erase(std::unique(result.begin(), result.end()), result.end());
 	    return move(result);
 	}
-{% endhighlight %}
+```
 
 另外，考虑到会对输入的S排序，可以在递归搜索的时候，若有连续相邻的元素，则只需要搜索一个即可。[ref](http://www.cnblogs.com/x1957/p/3517989.html)
 
-{% highlight cpp %}
+```cpp
 	
 	void search(vector<vector<int> > &result, const vector<int> &S, vector<int> &input, int start, int k)
     {
@@ -91,4 +91,4 @@ tags: [leetcode, c++, DFS, 排列组合]
             search(result, S, input, 0, k);
         return move(result);
     }
-{% endhighlight %}
+```

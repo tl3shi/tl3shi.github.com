@@ -19,7 +19,7 @@ tags: [leetcode, c++, binay tree, DFS]
 
 跟[Minimum Depth of Binary Tree](https://oj.leetcode.com/problems/minimum-depth-of-binary-tree/)思路一样，这个更简答。
 
-{% highlight cpp %}
+```cpp
 	
 	int depth(TreeNode* root){
         if(root->left == NULL && root->right == NULL) return 1;
@@ -33,4 +33,4 @@ tags: [leetcode, c++, binay tree, DFS]
         if(root == NULL) return 0;
         return depth(root);
     }
-{% endhighlight %}
+```

@@ -21,7 +21,7 @@ tags: [leetcode, c++, binary tree, inorder traversal]
 
 ####0. 递归判断节点值是否满足条件
 
-{% highlight cpp %}
+```cpp
 	
 	bool _isBST(TreeNode * node, int min_, int max_)
     {
@@ -34,13 +34,13 @@ tags: [leetcode, c++, binary tree, inorder traversal]
     {
         return _isBST(root, INT_MIN, INT_MAX);
     }
-{% endhighlight %}
+```
 
 ####1. 中序遍历
 
 BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、迭代、Morris遍历等，详情可以参考[binary-tree-inorder-traversal](http://tl3shi.github.io/leetcode/binary-tree-inorder-traversal.html), 下面就只列一种了。
 
-{% highlight cpp %}
+```cpp
 	
 	bool isValidBST(TreeNode *root) 
     {
@@ -64,12 +64,12 @@ BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、
         }
         return true;
     }
-{% endhighlight %}
+```
 
 再训练下Morris遍历。
 跟[recover-binary-search-tree](http://tl3shi.github.io/leetcode/recover-binary-search-tree.html)一样，还是得强调下，Morris遍历中找到不是升序了，也不能return。因为修改了原来树的结构，必须rollback完毕才OK。
 
-{% highlight cpp %}
+```cpp
 	
 	bool isValidBST(TreeNode *root) 
     {
@@ -103,5 +103,5 @@ BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、
         }
         return result;
     }
-{% endhighlight %}
+```
 

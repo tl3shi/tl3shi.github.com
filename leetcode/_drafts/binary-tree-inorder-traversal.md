@@ -75,7 +75,7 @@ vector<int> inorderTraversal(TreeNode *root)
 	   b) 如果前驱节点的右孩子为当前节点，将它的右孩子重新设为空（恢复树的形状）。输出当前节点。当前节点更新为当前节点的右孩子。
 	3. 重复以上1、2直到当前节点为空。
 
-{% highlight cpp %}
+```cpp
 ```cpp
 vector<int> inorderMorris(TreeNode * root)
 {
@@ -107,5 +107,5 @@ vector<int> inorderMorris(TreeNode * root)
     return move(result);
 }
 ```
-{% endhighlight %}
+```
 

@@ -23,7 +23,7 @@ tags: [leetcode, c++, recursion, string]
 
 递归数数即可。
 
-{% highlight cpp %}
+```cpp
 	
 	string to_str(int a)
     {
@@ -55,5 +55,5 @@ tags: [leetcode, c++, recursion, string]
         }
         return result;
     }
-{% endhighlight %}
+```
  

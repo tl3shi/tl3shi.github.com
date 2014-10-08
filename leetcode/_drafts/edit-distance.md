@@ -24,7 +24,7 @@ DP, DP[i][j] 表示word1[0:i-1] 与 word2[0:j-1]的编辑距离。[Ref](http://e
 ![](http://upload.wikimedia.org/math/4/1/1/411039fdd7ca16f4569c10310156cfc2.png)
 w(del), w(ins), w(sub) 分别是删除，插入，替换(substitute)的权重。
 
-{% highlight cpp %}
+```cpp
 	
 	int minDistance(string word1, string word2) 
     {
@@ -51,6 +51,6 @@ w(del), w(ins), w(sub) 分别是删除，插入，替换(substitute)的权重。
         return dp[m][n];
         
     }
-{% endhighlight %}
+```
 
 关于更多编辑距离的算法及应用可参考 [stanford 课件](http://www.stanford.edu/class/cs124/lec/med.pdf)。

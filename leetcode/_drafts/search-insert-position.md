@@ -22,7 +22,7 @@ tags: [leetcode, c++, binary search, search]
 注意运算符优先级。mid = start + ((end - start) >> 1); 后面的括号非常有必要！>> 优先级比+低！
 参考lowerBound.
 
-{% highlight cpp %}
+```cpp
 	
 	int searchInsert(int A[], int n, int target)
 	{
@@ -39,6 +39,6 @@ tags: [leetcode, c++, binary search, search]
 	    }
 	    return left;
 	}
-{% endhighlight %}
+```
 
  

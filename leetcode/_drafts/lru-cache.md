@@ -45,7 +45,7 @@ set(key, value) - Set or insert the value if the key is not already present. Whe
     哈希表的作用是什么呢？如果没有哈希表，我们要访问某个结点，就需要顺序地一个个找， 时间复杂度是O(n)。使用哈希表可以让我们在O(1)的时间找到想要访问的结点， 
     或者返回未找到。
 
-{% highlight cpp %}
+```cpp
 	
 	class LRUCache
 	{
@@ -134,14 +134,14 @@ set(key, value) - Set or insert the value if the key is not already present. Whe
 	        node->prev = head;
 	    }
 	};
-{% endhighlight %}
+```
 
 看看人家用stl中的list写的，代码多短啊。 ref [leetcode-cpp](https://github.com/soulmachine/leetcode)
 list中的方法
 >	splice (iterator position, list& x, iterator i);
 Transfers elements from x into the container, inserting them at position. [list api](http://www.cplusplus.com/reference/list/list/splice/) 
 
-{% highlight cpp %}
+```cpp
 
     class LRUCache
     {
@@ -202,4 +202,4 @@ Transfers elements from x into the container, inserting them at position. [list 
         int capacity_;
         list<Node> dataList;
     };
-{% endhighlight %}
+```

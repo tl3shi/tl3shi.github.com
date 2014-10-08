@@ -20,7 +20,7 @@ tags: [leetcode, c++, binary tree, recursion]
 	
 递归. 
 
-{% highlight cpp %}
+```cpp
 	
 	int depth(TreeNode * root){
         if(root == NULL) return 0;
@@ -35,11 +35,11 @@ tags: [leetcode, c++, binary tree, recursion]
         return isBalanced(root->left) && isBalanced(root->right);
     }
 
-{% endhighlight %}
+```
 
 其实递归过程中好多都算重复了。 可以将判断过程融合在算高度的方法里。
 
-{% highlight cpp %}
+```cpp
 	
 	int depth(TreeNode * root){
         if(root == NULL) return 0;
@@ -54,7 +54,7 @@ tags: [leetcode, c++, binary tree, recursion]
         if(root == NULL) return true;
         return depth(root) >= 0;
     }
-{% endhighlight %}
+```
 	
 
 

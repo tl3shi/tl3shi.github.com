@@ -24,7 +24,7 @@ tags: [leetcode, c++, matrix, tricky]
 ####0.  O(m + n) 空间
 另用数组记录哪些行/列有0.
 
-{% highlight cpp %}
+```cpp
 	
 	void setZeroes(vector<vector<int> > &matrix) 
     {
@@ -46,13 +46,13 @@ tags: [leetcode, c++, matrix, tricky]
                     matrix[i][j] = 0;
             }
     }	
-{% endhighlight %}
+```
 
 ####1.  常数空间
 
 假设第i行j列是0，那么第0行的j列、第0列第i行 肯定要设置为0。 所以可以用两个变量记录下第0行0列是否有，然后把其他行列的信息往这写。
 
-{% highlight cpp %}
+```cpp
 	
 	 void setZeroes(vector<vector<int> > &matrix) 
     {
@@ -101,4 +101,4 @@ tags: [leetcode, c++, matrix, tricky]
                 matrix[i][0]=0;
          }
     }
-{% endhighlight %}
+```

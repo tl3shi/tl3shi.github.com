@@ -26,7 +26,7 @@ tags: [leetcode, c++, binary tree, BST, DP, math]
 ####0. 递归
 递归比较好理解。比如 根节点数字为i, 比i小的左孩纸i-1个(子问题), 右孩纸n-i. 于是就有了下面的代码。
 
-{% highlight cpp %}
+```cpp
 int numTrees(int n) 
 {
     if(n == 0) return 1;//recursion, maybe, real input 0 shoule return 0
@@ -36,12 +36,12 @@ int numTrees(int n)
         r += numTrees(i-1)*numTrees(n-i);
     return r;
 }
-{% endhighlight %}
+```
 
 ####1. 动态规划 
 其实可以缓存下, 用动态规划。
 
-{% highlight cpp %}
+```cpp
 int f(int n)
 {
     const int size = n+1;
@@ -60,7 +60,7 @@ int numTrees(int n)
     if(n == 0) return 0;
     return f(n);
 }
-{% endhighlight %}
+```
 
 ####2. 数学公式法
 其实这个问题有公式可以直接算的，参考[卡塔兰数](http://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0) 。

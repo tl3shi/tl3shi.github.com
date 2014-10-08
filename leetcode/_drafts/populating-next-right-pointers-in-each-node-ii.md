@@ -38,7 +38,7 @@ tags: [leetcode, c++, tree, traverse]
 * 在填充下一层next时，当前层的next要找完。//Attention 0
 * 往下走时，可能前面的节点没有孩纸节点，也要找完同一层的节点是否存在孩纸节点。//Attention 1
 
-{% highlight cpp %}
+```cpp
 	
 	void connect(TreeLinkNode *root) 
     {
@@ -73,5 +73,5 @@ tags: [leetcode, c++, tree, traverse]
             root = down;//go down
         }    
     }
-{% endhighlight %}
+```
 

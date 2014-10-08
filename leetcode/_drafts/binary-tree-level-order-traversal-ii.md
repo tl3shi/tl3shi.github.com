@@ -42,7 +42,7 @@ II](https://oj.leetcode.com/problems/binary-tree-level-order-traversal-ii/)
 
 前面[word ladder ii](http://tl3shi.github.io/leetcode/word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
-{% highlight cpp %}
+```cpp
 	
 	 vector<vector<int> > levelOrderBottom(TreeNode *root) 
     {
@@ -67,7 +67,7 @@ II](https://oj.leetcode.com/problems/binary-tree-level-order-traversal-ii/)
         std::reverse(result.begin(), result.end());
         return move(result);
     }
-{% endhighlight %}
+```
 
 #### 2.递归
 

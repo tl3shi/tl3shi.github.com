@@ -22,7 +22,7 @@ tags: [leetcode, c++, interval]
 [1,4] [1,5]时,[1,5][1,4]  统一处理[1,4][2,4]吃掉。 
 然后数轴上对前后两个interval作讨论，3种情况，一种including，i+1包含在i里面; i+1和i相交，i+1和i相隔。 
 
-{% highlight cpp %}
+```cpp
 
 	/**
 	 * Definition for an interval.
@@ -71,11 +71,11 @@ tags: [leetcode, c++, interval]
 	        return move(result);
 	    }
 	};
-{% endhighlight %}
+```
 
 当然，也可以借助 [Insert Interval](http://tl3shi.github.io/leetcode/Insert-Interval.html) 一个一个插入到结果里面去。
 
-{% highlight cpp %}
+```cpp
 
 	vector<Interval> merge(vector<Interval> &intervals)
 	{
@@ -109,5 +109,5 @@ tags: [leetcode, c++, interval]
 	    result.push_back(newInterval);
 	    return move(result);
 	}
-{% endhighlight %}
+```
  

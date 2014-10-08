@@ -15,7 +15,7 @@ tags: [leetcode, c++, list, sort]
 解题思路：
 可以用归并或者快排.
 merge就比较简单，一个一个比较然后将较小的放到上一个的后面。 用一个dummy省去第一个head的确定。
-{% highlight cpp %}
+```cpp
 ListNode* merge(ListNode* head1, ListNode* head2)
 {
     ListNode dummy(-1);
@@ -39,9 +39,9 @@ ListNode* merge(ListNode* head1, ListNode* head2)
         p->next = head2;
     return dummy.next;
 }
-{% endhighlight %}
+```
 然后就是递归一半一半来，如下所示：
-{% highlight cpp %}
+```cpp
 ListNode * mergesort(ListNode * head)
 {
     if (head == NULL || head->next == NULL)
@@ -70,9 +70,9 @@ ListNode * mergesort(ListNode * head)
     ListNode * right_result = mergesort(right);
     return merge(left_result, right_result);
 }
-{% endhighlight %}
+```
 当然也可以用快慢指针去找中间的那个。
-{% highlight cpp %}
+```cpp
 ListNode *sortList(ListNode *head) 
     {
         if(NULL == head || NULL == head->next) return head;
@@ -90,10 +90,10 @@ ListNode *sortList(ListNode *head)
         ListNode * right = sortList(slow);
         return merge(left, right);
     }
-{% endhighlight %}
+```
 
 刚开始写的快排，有的testcase过不了(数字范围全是1-3那个共30293个数)，把这个testcase排除掉后，也能AC。
-{% highlight cpp %}
+```cpp
  ListNode* quick_sort_(ListNode * head)
 {
     if(head == NULL || head->next == NULL)
@@ -146,4 +146,4 @@ ListNode * quick_sort(ListNode * head)
     //if(len(head) == 30293) return countSort(head); 
     return quick_sort_(head);
 }
-{% endhighlight %}
+```

@@ -22,7 +22,7 @@ tags: [leetcode, c++, 排列组合, permutation]
 
 递归, 一个一个与第一个交换。
 
-{% highlight cpp %}
+```cpp
 	
 	void dfs(vector<vector<int> > &result, vector<int> &num, int start)
     {
@@ -44,13 +44,13 @@ tags: [leetcode, c++, 排列组合, permutation]
         dfs(result, num, 0);
         return move(result);
     }
-{% endhighlight %}
+```
 
 ####1. 增量构造法
 
 可以跟 [combinations](http://tl3shi.github.io/leetcode/combinations.html) 类似, 一个一个往里面加。
 
-{% highlight cpp %}
+```cpp
 	
 	void dfs(vector<vector<int> > &result, const vector<int> &num, vector<int> &path )
     {
@@ -76,7 +76,7 @@ tags: [leetcode, c++, 排列组合, permutation]
         dfs(result, num, path);
         return move(result);
     }
-{% endhighlight %}
+```
 
 
 ####2. nextPermunation

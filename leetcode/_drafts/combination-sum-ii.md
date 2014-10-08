@@ -28,7 +28,7 @@ tags: [leetcode, c++, combination, DFS]
 
 跟 [combination-sum](http://tl3shi.github.io/leetcode/combination-sum.html) 一样, DFS，在它的基础上，将用过的跳过即可。重复的数字，后面的要跳过，不然结果有重复的。
 
-{% highlight cpp %}
+```cpp
 	
 	void dfs(vector<vector<int> > &result, vector<int> &path, const vector<int> &num, int sum, int target, int start)
     {
@@ -61,4 +61,4 @@ tags: [leetcode, c++, combination, DFS]
         dfs(result, path, num, 0, target, 0);
         return move(result);
     }
-{% endhighlight %}
+```

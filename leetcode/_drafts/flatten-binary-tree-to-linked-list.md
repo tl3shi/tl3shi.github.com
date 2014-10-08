@@ -39,7 +39,7 @@ tags: [leetcode, c++, tree, traverse]
 
 先序遍历，可以遍历完后再连接，也可以在遍历过程中连接。
 
-{% highlight cpp %}
+```cpp
 	
 	void flatten(TreeNode *root) 
     {
@@ -62,11 +62,11 @@ tags: [leetcode, c++, tree, traverse]
             prefs[i]->right = prefs[i+1];
         }
     }
-{% endhighlight %}
+```
 
 或者
 
-{% highlight cpp %}
+```cpp
 	
 	void flatten(TreeNode *root) 
     {
@@ -87,6 +87,6 @@ tags: [leetcode, c++, tree, traverse]
                 stacks.push(node->left);
         }
     }
-{% endhighlight %}
+```
 
 或者用其他binary tree pre traverse 的方法都行。

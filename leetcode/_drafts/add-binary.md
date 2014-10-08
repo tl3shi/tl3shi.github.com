@@ -20,7 +20,7 @@ tags: [leetcode, c++, string, math]
 解题思路：
 
 跟前面的 [plus-one](http://tl3shi.github.io/leetcode/plus-one.html) 差不多。 这里注意char和int的转换，别搞错了。
-{% highlight cpp %}
+```cpp
 	
 	string addBinary(string a, string b) 
     {
@@ -50,4 +50,4 @@ tags: [leetcode, c++, string, math]
         }
         return result;
     }
-{% endhighlight %}
+```

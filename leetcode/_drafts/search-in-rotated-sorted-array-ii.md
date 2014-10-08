@@ -19,7 +19,7 @@ tags: [leetcode, c++, binary search, sort]
 解题思路：
 跟[Search in Rotated Sorted Array](http://tl3shi.github.io/leetcode/search-in-rotated-sorted-array.html)相比， 不能通过A[left] <= A[mid] 判断这段有序。
 
-{% highlight cpp %}
+```cpp
 	
 	bool search(int A[], int n, int target) 
     {
@@ -48,6 +48,6 @@ tags: [leetcode, c++, binary search, sort]
         }
         return false;
     }
-{% endhighlight %}
+```
 
  

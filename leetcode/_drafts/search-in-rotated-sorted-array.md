@@ -20,7 +20,7 @@ tags: [leetcode, c++, binary search, sort]
 
 rotate总是至少有一半是有序的，可以根据这一半有序的值去二分。
 
-{% highlight cpp %}
+```cpp
 	
 	int search(int A[], int n, int target)
 	{
@@ -46,4 +46,4 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 	    }
 	    return -1;
 	}
-{% endhighlight %}
+```

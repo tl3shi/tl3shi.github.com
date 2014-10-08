@@ -40,7 +40,7 @@ tags: [leetcode, c++, graph, BFS]
 
 用BFS+hashmap解决。
 
-{% highlight cpp %}
+```cpp
 
 	//Definition for undirected graph.
 	struct UndirectedGraphNode 
@@ -74,4 +74,4 @@ tags: [leetcode, c++, graph, BFS]
         }
         return copies[node];
     }
-{% endhighlight %}
+```

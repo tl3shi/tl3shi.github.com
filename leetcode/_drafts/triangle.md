@@ -30,7 +30,7 @@ tags: [leetcode, c++, DP]
 动态规划，从下往上走～ 
 `rows[col] = std::min(rows[col], rows[col+1]) + triangle[row][col];`
 
-{% highlight cpp %}
+```cpp
     
     int minimumTotal(vector < vector< int > > &triangle )
     {
@@ -42,10 +42,10 @@ tags: [leetcode, c++, DP]
                 dp[c] = std::min(dp[c], dp[c+1]) + triangle [r][c];
         return dp[0];
     }
-{% endhighlight %}
+```
 
 如果triangle值可以改变的话，可以O(1)的空间复杂度。
-{% highlight cpp %}
+```cpp
 
     //triangle can be changed
     int minimumTotal(vector < vector< int > > &triangle )
@@ -57,5 +57,5 @@ tags: [leetcode, c++, DP]
                 triangle [r][c] += std::min(triangle [r+1][c], triangle[r+1][c+1]);
         return triangle [0][0];
 }
-{% endhighlight %}
+```
 

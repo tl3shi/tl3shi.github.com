@@ -25,7 +25,7 @@ tags: [leetcode, c++, 动态规划, DP]
 
 首先想到的就是DFS，直接挨个搜索，能走到结尾就OK。不过这样做超时了。
 
-{% highlight cpp %}
+```cpp
 
 	//TLE
     bool dfs(string s, int startIndex, unordered_set<string> &dict)
@@ -48,12 +48,12 @@ tags: [leetcode, c++, 动态规划, DP]
         if(s.length() == 0) return false;
         return dfs(s, 0, dict);
     }
-{% endhighlight %}
+```
 
 然后用DP,`dp[i]`表示s[0:i]都跟dict对应了, 对于更长的j, `dp[j]`为true的话，肯定存在i使得`dp[i]`为true 和 `s[i:j]`能在dict中找到。  
 因此得到如下代码：
 
-{% highlight cpp %}
+```cpp
 
 	bool dp(string s, unordered_set<string> &dict)
     {
@@ -75,5 +75,5 @@ tags: [leetcode, c++, 动态规划, DP]
             }
         return dp[n];
     }
-{% endhighlight %}
+```
 

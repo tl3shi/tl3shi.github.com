@@ -29,7 +29,7 @@ tags: [leetcode, c++, tree traversal]
 
 ####2. 思路二: 用stack.
 
-{% highlight cpp %}
+```cpp
 
     vector<int> preNormal(TreeNode * root)
     {
@@ -47,7 +47,7 @@ tags: [leetcode, c++, tree traversal]
         }
         return move(result);
     }
-{% endhighlight %}
+```
 
 ####3. 思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
 
@@ -64,7 +64,7 @@ tags: [leetcode, c++, tree traversal]
        b)如果前驱节点的右孩子为当前节点，将它的右孩子重新设为空。当前节点更新为当前节点的右孩子。
     3. 重复以上1、2直到当前节点为空。
 
-{% highlight cpp %}
+```cpp
 
     vector<int> preMorris(TreeNode * root)
     {
@@ -95,5 +95,5 @@ tags: [leetcode, c++, tree traversal]
         }
         return move(result);
     }
-{% endhighlight %}
+```
 

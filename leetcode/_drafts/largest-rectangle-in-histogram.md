@@ -27,7 +27,7 @@ tags: [leetcode, c++, array, stack, 分治, 线段树]
 ####0 直接穷举，剪枝即可AC
 
 
-{% highlight cpp %}
+```cpp
 
 	int largestRectangleArea1(vector<int > &height)
 	{
@@ -47,7 +47,7 @@ tags: [leetcode, c++, array, stack, 分治, 线段树]
 	    }
 	    return result;
 	}
-{% endhighlight %}
+```
 
 ####1. 用栈的O(n)解法
 
@@ -59,7 +59,7 @@ tags: [leetcode, c++, array, stack, 分治, 线段树]
 	
 	栈维护了一个递增(非递减)的序列，当当前索引的元素比栈顶小时，取栈顶元素（并出栈），并将这个元素的高度和当前索引端(快降低了)构成的矩形面积，栈中上升的那段都可以出栈并计算。上图中，到第2个2为止，6、5先后出栈计算（作为smalleast的一端），不可能比2后面的数组成一起构成更大的面积，因为2小了，短板在此，且6，5才是作为smalleast的一端参与计算的，出栈到之前1比当前2小，就不再出栈了，因为1作为smalleast可能与2后面的数构成更大面积的矩形(宽度更长)。算法开始前加了一个-1是为了将所有的栈都弹出并参与计算。
 	
-{% highlight cpp %}
+```cpp
 		
 	//ref: http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
 	//ref2: http://www.cnblogs.com/lichen782/p/leetcode_Largest_Rectangle_in_Histogram.html
@@ -84,7 +84,7 @@ tags: [leetcode, c++, array, stack, 分治, 线段树]
 	    height.pop_back();
 	    return maxArea;
 	}
-{% endhighlight %}
+```
 
 注意看上面出栈时候的写法与[maximal-rectangle](http://tl3shi.github.io/leetcode/maximal-rectangle.html)的异同。
 
@@ -112,7 +112,7 @@ right差不多的思路。初始时，left[0:n-1]=-1, right[0:n-1]=n.
 	复杂度： T(n) = T(n-1) + O(log n), O(log n)用于查看区间内的最小值. 
 	最终复杂度为O(n log n). 
 
-{% highlight cpp %}
+```cpp
 
 	// A utility function to find minimum of three integers
 	int max(int x, int y, int z)
@@ -243,4 +243,4 @@ right差不多的思路。初始时，left[0:n-1]=-1, right[0:n-1]=n.
         if(height.size() == 0) return 0;
         return getMaxArea(&height[0], height.size());
     }
-{% endhighlight %}
+```

@@ -20,7 +20,7 @@ tags: [leetcode, c++, binary tree, traverse, recusion]
 
 穷举所有路径即可。 
 
-{% highlight cpp %}
+```cpp
 	
 	void depthRecursion(TreeNode *root, int curDepth, int &minDepth){
         if(root->left == NULL && root->right == NULL) 
@@ -38,11 +38,11 @@ tags: [leetcode, c++, binary tree, traverse, recusion]
         depthRecursion(root, 0, result);
         return result;
     }
-{% endhighlight %}
+```
 
 或者这样，递归时把是否有兄弟节点传进去。[ref](https://github.com/soulmachine/leetcode).
 
-{% highlight cpp %}
+```cpp
 	
 	int minDepth2(TreeNode* node, bool hasBrother)
     {
@@ -54,6 +54,6 @@ tags: [leetcode, c++, binary tree, traverse, recusion]
     {
         return minDepth2(root, false);
     }
-{% endhighlight %}
+```
 
  

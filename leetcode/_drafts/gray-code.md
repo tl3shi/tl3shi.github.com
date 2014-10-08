@@ -48,7 +48,7 @@ tags: [leetcode, c++, tricky, math]
 	1 0 1 
 	1 0 0 
 
-{% highlight cpp %}
+```cpp
 	
 	vector<int> grayCode(int n) 
     {
@@ -64,7 +64,7 @@ tags: [leetcode, c++, tricky, math]
         }
         return move(result);
     }
-{% endhighlight %}
+```
 
 ####1.公式法
 
@@ -74,7 +74,7 @@ tags: [leetcode, c++, tricky, math]
 	G(N) = (B(n)/2) XOR B(n) 
 	Binary Code(1011)要转换成Gray Code = (1011 >> 1) ^ 1011 = 1110 
 
-{% highlight cpp %}
+```cpp
 	
 	vector<int> grayCode(int n) 
     {
@@ -85,4 +85,4 @@ tags: [leetcode, c++, tricky, math]
             result[i] = (i>>1)^i;
         return move(result);
     }
-{% endhighlight %}
+```

@@ -26,7 +26,7 @@ tags: [leetcode, c++, DFS, 排列组合]
 
 解题思路：
 
-{% highlight cpp %}
+```cpp
 	
 	void search(vector<vector<int> > &result, vector<int> &input, int start, int k, int n)
     {
@@ -48,5 +48,5 @@ tags: [leetcode, c++, DFS, 排列组合]
         search(result, input, 1, k, n);
         return move(result);
     }
-{% endhighlight %}
+```
  

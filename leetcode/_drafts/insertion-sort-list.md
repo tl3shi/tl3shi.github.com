@@ -15,7 +15,7 @@ tags: [leetcode, c++, list, sort]
 解题思路：
 发现有逆序的就将这个插入到前面的有序序列里。
 
-{% highlight cpp %}
+```cpp
 ListNode *insertionSortList(ListNode *head)
 {
     if(NULL == head || NULL == head->next) return head;
@@ -42,10 +42,10 @@ ListNode *insertionSortList(ListNode *head)
     return result.next;
 }
 
-{% endhighlight %}
+```
 
 顺便把选择排序也写下.
-{% highlight cpp %}
+```cpp
 ListNode * selectionSort(ListNode *head)
 {
     ListNode * nodei = head;
@@ -64,4 +64,4 @@ ListNode * selectionSort(ListNode *head)
     }
     return head;
 }
-{% endhighlight %}
+```

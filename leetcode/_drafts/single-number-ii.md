@@ -27,7 +27,7 @@ tags: [leetcode, c++, 位运算]
 
 有了[Single Number](http://tanglei.me/leetcode/single-number.html)的思路，可能你会想想用位运算。不过一时半会貌似想不太出来。没关系，开一个32位数组，每个数字出现3次，相应的位肯定出现3次的整数倍。剩下的那些数对应的那个应该就是要找的了。
 
-{% highlight cpp %}
+```cpp
 
 	int singleNumber(int A[], int n) 
     {
@@ -46,14 +46,14 @@ tags: [leetcode, c++, 位运算]
         }
         return r;
     }
-{% endhighlight %}
+```
 
 #### 2. 极品程序员
 
 从[discuss](https://oj.leetcode.com/discuss/857/constant-space-solution)看到极品程序员的答案。值得学习，不过有时候容易搞混。个人认为上面第1种(文艺)程序员的方法就不错。
 
 
-{% highlight cpp %}
+```cpp
 
 	int singleNumber(int A[], int n)
     {
@@ -69,7 +69,7 @@ tags: [leetcode, c++, 位运算]
         }
         return ones; //twos, threes最终都为0. ones是只出现一次的数
     }
-{% endhighlight %}
+```
 
 
 

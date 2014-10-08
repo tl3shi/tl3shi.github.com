@@ -21,7 +21,7 @@ tags: [leetcode, c++, list]
 
 注意一些边界情况， 要保持以前的两个节点顺序。不然就可以把小于x的一个一个往最前面插入。
 
-{% highlight cpp %}
+```cpp
 	
 	ListNode *partition(ListNode *head, int x) 
     {
@@ -46,5 +46,5 @@ tags: [leetcode, c++, list]
         right->next = NULL;
         return dummy1.next;
     }
-{% endhighlight %}
+```
  

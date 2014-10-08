@@ -25,7 +25,7 @@ tags: [leetcode, c++, 位运算]
 
 用一个hashmap数数，再遍历一次即可。
 
-{% highlight cpp %}
+```cpp
 
 	int singleNumber(int A[], int n) 
     {
@@ -40,13 +40,13 @@ tags: [leetcode, c++, 位运算]
         //error
         return 0;
     }
-{% endhighlight %}
+```
 
 #### 1. 文艺程序员方法
 
 看题目要求不用额外的存储~ 然后所有数字出现2次～ 然后想想位运算。能想到位运算应该就差不多了。 `1^1 = 0 `
 
-{% highlight cpp %}
+```cpp
 
 	int singleNumber(int A[], int n) 
     {
@@ -56,4 +56,4 @@ tags: [leetcode, c++, 位运算]
             r ^= A[i];
         return r;
     }
-{% endhighlight %}
+```

@@ -23,7 +23,7 @@ tags: [leetcode, c++, greedy, DP]
 ####0. 贪心
 过每个index查看能到的最远的index，若当前最远的比遍历index还小或者相等时就走不下去了。 
 
-{% highlight cpp %}
+```cpp
 	
 	bool canJump(int A[], int n) 
     {
@@ -37,14 +37,14 @@ tags: [leetcode, c++, greedy, DP]
         }
         return false;
     }
-{% endhighlight %}
+```
 
 ####1. 动归
 
 f[i]表示走到第A[i]时, 多余的最大步数。
 ```f[i] = max(f[i-1], A[i-1])-1 ```
 
-{% highlight cpp %}
+```cpp
 	
 	bool canJump(int A[], int n) 
     {
@@ -57,4 +57,4 @@ f[i]表示走到第A[i]时, 多余的最大步数。
         }
         return dp[n-1] >= 0;
     }
-{% endhighlight %}
+```

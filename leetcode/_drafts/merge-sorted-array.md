@@ -18,7 +18,7 @@ tags: [leetcode, c++, mergesort]
 解题思路：
 	因为A空间足够，所以直接从后往前定位就可以。只需要将B放完即可，若B放完，A也已经呆在应该待的位置了。
 	
-{% highlight cpp %}
+```cpp
 	
 	void merge(int A[], int m, int B[], int n) 
     {
@@ -33,5 +33,5 @@ tags: [leetcode, c++, mergesort]
                 A[tot--] = B[j--];
         }
     }
-{% endhighlight %}
+```
 

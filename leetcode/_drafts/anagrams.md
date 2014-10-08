@@ -18,7 +18,7 @@ tags: [leetcode, c++, string, map]
 
 变位词sort后是一样的，因此可用map存起来。
 
-{% highlight cpp %}
+```cpp
 
 	////[from discuss] single one is not counted yet!
 	vector<string> anagrams(vector<string> &strs)
@@ -39,5 +39,5 @@ tags: [leetcode, c++, string, map]
         }
         return move(result);
     }
-{% endhighlight %}
+```
  

@@ -20,7 +20,7 @@ tags: [leetcode, c++, binary tree, recursion]
 
 ####0. 递归
 
-{% highlight cpp %}
+```cpp
 	
 	bool isSameTreeRecursion(TreeNode *p, TreeNode *q) 
     {
@@ -29,11 +29,11 @@ tags: [leetcode, c++, binary tree, recursion]
         if(p->val != q->val) return false;
         return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
     }
-{% endhighlight %}
+```
 
 ####1. 迭代
 
-{% highlight cpp %}
+```cpp
 	
 	bool isSameTree(TreeNode *p, TreeNode *q) 
     {
@@ -53,4 +53,4 @@ tags: [leetcode, c++, binary tree, recursion]
         }
         return true;
     }
-{% endhighlight %}
+```

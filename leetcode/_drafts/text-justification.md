@@ -33,7 +33,7 @@ tags: [leetcode, c++, string]
 
 一步一步来即可。注意最后一行需要特殊处理。最后一行的空格尽量留在行末，而其他行是多余的空格尽量分布在行首。
 
-{% highlight cpp %}
+```cpp
 	
 	vector<string> fullJustify(vector<string> &words, int L)
 	{
@@ -101,4 +101,4 @@ tags: [leetcode, c++, string]
 	    result[result.size()-1] = lastlineshould;
 	    return move(result);
 	}
-{% endhighlight %}
+```

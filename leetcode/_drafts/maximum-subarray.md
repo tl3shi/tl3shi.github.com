@@ -24,7 +24,7 @@ tags: [leetcode, c++, 分治, DP]
 若当前i，前面i-1的结果若为负的话，新序列就从当前A[i]开始算起了，不然就将当前A[i]附加上去。
 ####0. DP, O(n) 空间
 
-{% highlight cpp %}
+```cpp
 	
 	int maxSubArray(int A[], int n) 
     {
@@ -42,13 +42,13 @@ tags: [leetcode, c++, 分治, DP]
         }
         return result;
     }
-{% endhighlight %}
+```
 
 ####1. DP, O(1) 空间
 
 上面的优化一下即可。
 
-{% highlight cpp %}
+```cpp
 	
 	//Kadane's algorithm O(n)
     //max_end_here是结束位置为i-1的最大子数组和
@@ -66,14 +66,14 @@ tags: [leetcode, c++, 分治, DP]
         }
         return max_so_far ;
     }
-{% endhighlight %}
+```
 
 
 #### 2. 分治, O(nlogn)
 
 分治算法：要么左半/右半，要么包括中间的和左右两边都有部分, 时间复杂度```O(NlogN)```.
 
-{% highlight cpp %}
+```cpp
 
 	//Divide and Conquer O(nlogn)
     int maxSubArrayDAC(int A[], int left, int right)
@@ -108,7 +108,7 @@ tags: [leetcode, c++, 分治, DP]
         if(n == 1) return A[0];
         return maxSubArrayDAC(A, 0, n-1) ;
     }
-{% endhighlight %}
+```
 
 参考资料:
 

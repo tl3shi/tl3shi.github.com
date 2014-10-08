@@ -28,8 +28,7 @@ tags: [leetcode, c++, stack, string]
 
 主要就是一些testcase能否想到。
 
-{% highlight java %}
-	
+```java	
 	public  String simplifyPath(String path)
     {
         if(path == null || path.length() <= 1) return path;
@@ -64,11 +63,11 @@ tags: [leetcode, c++, stack, string]
             result += "/" + ss2.pop();
         return result;
     }
-{% endhighlight %}
+```
 
 C++ 一样的。
 
-{% highlight cpp %}
+```cpp
 	
 	string simplifyPath(string path)
 	{
@@ -111,4 +110,4 @@ C++ 一样的。
 	    return str_result;
 	}
 
-{% endhighlight %}
+```

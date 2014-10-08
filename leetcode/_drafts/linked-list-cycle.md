@@ -18,7 +18,7 @@ tags: [leetcode, c++, list]
 
 简单的快慢指针.
 
-{% highlight cpp %}
+```cpp
 
     bool hasCycle(ListNode *head) 
     {
@@ -32,4 +32,4 @@ tags: [leetcode, c++, list]
         }
         return false;
     }
-{% endhighlight %}
+```

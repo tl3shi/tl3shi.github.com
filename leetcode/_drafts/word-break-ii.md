@@ -28,7 +28,7 @@ tags: [leetcode, c++, 动态规划, DP]
 
 代码如下：
 
-{% highlight cpp %}
+```cpp
 
 	 void searchResult(string input, vector<vector<string> >&dp, int len, vector<string> &result)
     {
@@ -75,11 +75,11 @@ tags: [leetcode, c++, 动态规划, DP]
     vector<string> wordBreak(string s, unordered_set<string> &dict) {
         return dp(s, dict);
     }
-{% endhighlight %}
+```
 
 其实，按照上面提的思路一边dp的时候就去枚举结果也是可以的，测试用例中就那一个较长的过不了，先按照wordbreak的思路detective一下再枚举就可以AC。(一般人我不告诉他) :)
 
-{% highlight cpp %}
+```cpp
 	
 	//中途的复杂度记录dps的复杂度较高，用例（aaaaaaaaaaaaaaaa*b, aaaaaa...aaa）可能最后没有结果 但仍然搜索了很多次，导致超时或内存超过
 	//先detect一下 可以通过oj
@@ -116,4 +116,4 @@ tags: [leetcode, c++, 动态规划, DP]
 	    }
 	    return dps[len];
 	}
-{% endhighlight %}
+```

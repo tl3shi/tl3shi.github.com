@@ -19,7 +19,7 @@ tags: [leetcode, c++, inorder traveral, binary tree]
 
 O(2*n) 空间解法～
 直接中序遍历，然后分别从前往后、从后往前找非升序、非降序的两个node，交换其值即可。
-{% highlight cpp %}
+```cpp
 	
 	void inorder1(vector<TreeNode*> &result, TreeNode* root)
 	{
@@ -56,13 +56,13 @@ O(2*n) 空间解法～
 	    firstWrong->val = secondWrong->val;
 	    secondWrong->val = tmp;
 	}
-{% endhighlight %}
+```
 
 #### 1. 中序遍历一边遍历，一边扫描。
 
 当两个节点都找到后，即可退出中序遍历流程。
 
-{% highlight cpp %}
+```cpp
 	
 	void recoverTree(TreeNode *root) 
     {
@@ -96,7 +96,7 @@ O(2*n) 空间解法～
         }
         std::swap(node1->val, node2->val);
     }
-{% endhighlight %}
+```
 
 ####2. Morris遍历，常数空间。
 
@@ -104,7 +104,7 @@ O(2*n) 空间解法～
 
 注意*找出两个node后还得让遍历走完～以避免之前的改动revert完毕*，否则可能会造成oj check时死循环(传入的树结构修改后不对).
 
-{% highlight cpp %}
+```cpp
 	
 	void recoverTree(TreeNode *root) 
     {
@@ -155,4 +155,4 @@ O(2*n) 空间解法～
         }
         std::swap(node1->val, node2->val);
     }
-{% endhighlight %}
+```

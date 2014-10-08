@@ -23,7 +23,7 @@ the same straight line.
 
 第一种方法若用Java写就要注意了，Double作为key时得注意，*斜率+0和-0用Double作为key时不一样*。你可以试着输出Double +.0 和 Double -.0的hashcode，明显是不一样的。
 
-{% highlight cpp %}
+```cpp
 int maxPoints(vector<Point> &points) 
 {
     int n = points.size();
@@ -61,14 +61,14 @@ int maxPoints(vector<Point> &points)
     }
     return result;
 }
-{% endhighlight %}
+```
 
 <span id = "method2">
 方法二，自己新写一个类，科学的写法是斜率+斜率上一点构成直线，然后用另外的直线斜率相等且也过相同的一个点才判断两条直线是重合的，这里就偷懒了，构造直线的时候总用同一个点。
 写Hash函数的时候得注意下, 相同的直线(斜率)映射的hash函数要一致才OK。即*== 为true时，hash必须一样*。
 </span>
 
-{% highlight cpp %}
+```cpp
 
 struct DeltaPoint
 {
@@ -133,4 +133,4 @@ int maxPoints2(vector<Point> &points)
 }
 
 
-{% endhighlight %}
+```

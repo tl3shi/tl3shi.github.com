@@ -25,7 +25,7 @@ tags: [leetcode, c++, binary tree, DFS]
 
 path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ maxPathSum(root.left), maxPathSum(root.right), maxPathSum(root.left) + maxPathSum(root.right) + root.val }， 右/左 子树的最大结果很有可能不能跟当前节点连在一起。
 
-{% highlight cpp %}
+```cpp
 	
 	// ended/started with root, the max path
 	int subMax(TreeNode *root, int &global_max)
@@ -49,4 +49,4 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 	    subMax(root, global_max);
 	    return global_max;
 	}
-{% endhighlight %}
+```

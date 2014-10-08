@@ -31,7 +31,7 @@ tags: [leetcode, c++, 回溯, backtracking]
 
 八(N)皇后问题，经典回溯法。
 
-{% highlight cpp %}
+```cpp
 	
 	vector<string> genResult(const vector<int> &queen)
     {
@@ -82,5 +82,5 @@ tags: [leetcode, c++, 回溯, backtracking]
         dfs(result, queen, 0);
         return move(result);
     }
-{% endhighlight %}
+```
  

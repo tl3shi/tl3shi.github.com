@@ -24,7 +24,7 @@ tags: [leetcode, c++, 排列组合, permutation]
 
 跟[Permutations](http://tl3shi.github.io/leetcode/Permutations.html)一样，每一个与第一个交换～用set存结果，将重复的去掉，中途剪枝下即可AC。
 
-{% highlight cpp %}
+```cpp
 	
 	void dfs(set<vector<int> > &result, vector<int> &num, int start)
 	{
@@ -49,13 +49,13 @@ tags: [leetcode, c++, 排列组合, permutation]
 	    dfs(result, num, 0);
 	    return vector<vector<int>>(result.begin(), result.end());
 	}
-{% endhighlight %}
+```
 
 ####1. 增量构造
 
 或者跟permutation的方法，增量构造, 这里需要用一个map存下数量。
 
-{% highlight cpp %}
+```cpp
 	
 	void dfs(vector<vector<int> > &result, const int n, vector<int> &path, unordered_map<int, int> &countMap)
     {
@@ -91,13 +91,13 @@ tags: [leetcode, c++, 排列组合, permutation]
         dfs(result, num.size(), path, countMap);
         return move(result);
     }
-{% endhighlight %}
+```
 
 ####2. next_permunation 
 
 自然序的下一个：1 3 5 4 2，从后往前找，找到第一个降序(从后往前看)的数字3，然后找后面的比3大的最小的数字4，交换，1 4 5 3 2，然后交换index后面的序列逆序 532->235，构成下一个自然序：1 4 2 3 5。 
 
-{% highlight cpp %}
+```cpp
  
 	bool nextPermutation(vector<int> &current)
 	{
@@ -126,4 +126,4 @@ tags: [leetcode, c++, 排列组合, permutation]
 	        result.push_back(num);
 	    return std::move(result);
 	}
-{% endhighlight %}
+```

@@ -24,7 +24,7 @@ return "blue is sky the".
 2. 中间单词间隔多个空格； 
 3. reverse最后一个单词。
 
-{% highlight cpp %}
+```cpp
 void reverseWords(string &s)
 {
     int start = 0;
@@ -57,9 +57,9 @@ void reverseWords(string &s)
     }
     s = result.substr(1, result.length()-1);
 }
-{% endhighlight %}
+```
 从[discuss](https://oj.leetcode.com/discuss/3378/is-my-solution-good-enough)里面还看到了简短的代码～值得学习。 通过stringstream 一次提取一个单词出来, 然后将这个单词与上一次的结果连接(逆序)。
-{% highlight cpp %}
+```cpp
 void reverseWords2(string &s)
 {
     stringstream ss(s);
@@ -73,4 +73,4 @@ void reverseWords2(string &s)
     }
     s = result.substr(0, result.length()-1);
 }
-{% endhighlight %}
+```

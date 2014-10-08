@@ -27,7 +27,7 @@ tags: [leetcode, c++]
 
 杨辉三角～
 
-{% highlight cpp %}
+```cpp
 	
 	vector<vector<int> > generate(int numRows) 
     {
@@ -41,6 +41,6 @@ tags: [leetcode, c++]
         }
         return move(result);
     }
-{% endhighlight %}
+```
 
 还可以用二项式系数那个公式算。在[Pascal's Triangle II](http://tanglei.me/leetcode/pascals-triangle-ii.html)中有，这里就不再贴了。

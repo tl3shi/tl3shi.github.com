@@ -26,7 +26,7 @@ tags: [leetcode, c++, ]
 
 跟上题[Unique Binary Search Trees](http://tl3shi.github.io/leetcode/unique-binary-search-trees-ii.html)一样，这个题目需要返回具体的结果。
 
-{% highlight cpp %}
+```cpp
 vector<TreeNode*> generateTreesRec(int start, int end)
 {
     vector<TreeNode *> result;
@@ -58,6 +58,6 @@ vector<TreeNode *> generateTrees(int n)
 {
    return generateTreesRec(1, n);//n==0, return TreeNode is NULL, included.
 }
-{% endhighlight %}
+```
 
 注意当end>start的时候也要返回一个空的Node，因为后面的遍历时，直接用left/right都有的情况才生成新的node。

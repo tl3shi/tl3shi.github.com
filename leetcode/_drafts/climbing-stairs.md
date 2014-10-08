@@ -18,7 +18,7 @@ tags: [leetcode, c++, fibonacci, DP]
 
 设f(x)=【剩x阶时，迈楼梯的方法总数】。首先迈出第一步，如果一次迈一阶，剩下x-1阶，方法总数为f(x-1)；如果一次迈两阶，剩下x-2阶，方法总数为f(x-2); f(x)=f(x-1)+f(x-2)。容易发现，f(1)=1，f(2)=2。
 
-{% highlight cpp %}
+```cpp
   	
 	//TLE
     int climbStairsTLE(int n) 
@@ -28,10 +28,10 @@ tags: [leetcode, c++, fibonacci, DP]
         return climbStairs(n-1) + climbStairs(n-2);
     }
     
-{% endhighlight %}
+```
 
 
-{% highlight cpp %}
+```cpp
 
     int climbStairs(int n) 
     {
@@ -46,4 +46,4 @@ tags: [leetcode, c++, fibonacci, DP]
         }
         return c;
     }
-{% endhighlight %}
+```

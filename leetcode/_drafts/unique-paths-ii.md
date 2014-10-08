@@ -28,7 +28,7 @@ tags: [leetcode, c++, DP]
 跟 [minimum-path-sum](http://tl3shi.github.io/leetcode/minimum-path-sum.html)差不多. 
 这里就省却递归方法了，直接用DP。
 
-{% highlight cpp %}
+```cpp
     
     int uniquePathsWithObstacles(vector<vector<int> > &grid) 
     {
@@ -59,5 +59,5 @@ tags: [leetcode, c++, DP]
         return dp[m-1][n-1];
     }
     
-{% endhighlight %}
+```
 

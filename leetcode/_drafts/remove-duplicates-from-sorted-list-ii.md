@@ -20,7 +20,7 @@ tags: [leetcode, c++, list]
 
 用一个变量标记是否有相同的节点，直到不同的才连接到result中。
 
-{% highlight cpp %}
+```cpp
 	
 	ListNode *deleteDuplicates(ListNode *head) 
     {
@@ -45,6 +45,6 @@ tags: [leetcode, c++, list]
         result->next = NULL; //!!IMPORTANT
         return dummy.next;
     }
-{% endhighlight %}
+```
 别忘了最后的节点->next需要置空。
 

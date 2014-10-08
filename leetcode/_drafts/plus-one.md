@@ -18,7 +18,7 @@ tags: [leetcode, c++, math]
 
 直接从后往前加即可。
 
-{% highlight cpp %}
+```cpp
 	
 	vector<int> plusOne(vector<int> &digits)
     {
@@ -41,5 +41,5 @@ tags: [leetcode, c++, math]
         }
         return move(digits);
     }
-{% endhighlight %}
+```
 

@@ -22,7 +22,7 @@ tags: [leetcode, c++, interval]
 
 可以先加进去，然后再按照[Merge Intervals](http://tl3shi.github.io/leetcode/Merge-Intervals.html)的算法merge一下就行。
 
-{% highlight cpp %}
+```cpp
 	
 	vector<Interval> merge2(vector<Interval> &intervals)
     {
@@ -89,13 +89,13 @@ tags: [leetcode, c++, interval]
         }
         return merge2(newIntervals);
     }
-{% endhighlight %}
+```
 
 
 或者 直接加。参考了 [leetcode-cpp](https://github.com/soulmachine/leetcode)
 原文中的代码貌似有个testcase 过不了TLE。
 
-{% highlight cpp %}
+```cpp
 	
 	vector<Interval> insert(vector<Interval> &intervals, Interval newInterval)
     {
@@ -121,4 +121,4 @@ tags: [leetcode, c++, interval]
         result.push_back(newInterval);
         return move(result);
     }
-{% endhighlight %}
+```

@@ -31,7 +31,7 @@ tags: [leetcode, c++, DP, 回文, 排列组合, DFS]
 枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
 还可以优化，把中间的某个子串是否回文用hash缓存下来。
 
-{% highlight cpp %}
+```cpp
 
     bool isPalindrome(string s)
     {
@@ -77,14 +77,14 @@ tags: [leetcode, c++, DP, 回文, 排列组合, DFS]
         return move(result);
     }
 
-{% endhighlight %}
+```
 
 ####1. 利用动态规划 O(n^2)
 
 `dp[i:j]`表示`s[i:j]`是回文,  如果`s[i] == s[j] and dp[i+1, j-1]`,满足条件, 则dp[i:j]就是回文。 
 注意要先算dp[i+1][j-1]，所以循环的顺序。
 
-{% highlight cpp %}
+```cpp
 
 	void search(vector<string> &path, int start, string s, vector<vector<bool> > &dp, vector<vector<string> > &result)
 	{
@@ -120,13 +120,13 @@ tags: [leetcode, c++, DP, 回文, 排列组合, DFS]
 	    search(path, 0, s, dp, result);
 	    return move(result);
 	}
-{% endhighlight %}
+```
 
 其实像上面那样把每一个回文子串找出来后，就不用像排列组合那样去搜索了，可以直接构造。这个参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。
 `result[i]` 表示s[i:n]构成的回文串拆分结果。再走一遍dp就可以构造出来。方法如下:
 result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
  
-{% highlight cpp %}
+```cpp
 	
 	vector<vector<string>> partitionDp(string s)
     {
@@ -165,4 +165,4 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
         return result[0];
     }
 
-{% endhighlight %}
+```

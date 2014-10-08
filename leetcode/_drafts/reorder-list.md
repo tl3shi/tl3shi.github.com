@@ -26,7 +26,7 @@ tags: [leetcode, c++, list]
 #### 1. `O(n)`时间 + `O(n)`空间
 将node都copy出来放到数组里，后半段逆序(或者直接通过下标不用逆序)连接前半段。
 
-{% highlight cpp %}
+```cpp
 
 	//O(n) + O(n)
 	void reorderList2(ListNode* head)
@@ -53,12 +53,12 @@ tags: [leetcode, c++, list]
 	    else
 	        nodes[n-1]->next = NULL;
 	}
-{% endhighlight %}
+```
 
 #### 2. `O(n)`时间 + `O(1)`空间
 这才是出题者的意图，同样后半段逆序，但通过指针的方式就地逆序，然后与前半段连接。
 
-{% highlight cpp %}
+```cpp
 
 	ListNode * reverseList(ListNode * head)
 	{
@@ -100,4 +100,4 @@ tags: [leetcode, c++, list]
 	        second = tmp;
 	    }
 	}
-{% endhighlight %}
+```

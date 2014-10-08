@@ -18,7 +18,7 @@ tags: [leetcode, c++, tricky]
 
 从 [discuss](https://oj.leetcode.com/discuss/1074/anyone-who-has-a-o-n-algorithm) 得到的答案。
 
-{% highlight cpp %}
+```cpp
 	
 	int maxArea(vector<int> &height) 
     {
@@ -36,7 +36,7 @@ tags: [leetcode, c++, tricky]
         }
         return result;
     }
-{% endhighlight %}
+```
 
 怎么证明是对的?
 

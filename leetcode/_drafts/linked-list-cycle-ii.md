@@ -50,7 +50,7 @@ fast走到a时，slow恰好走了(n-1)圈+c，刚好回到了环起点a处。
 
 代码如下：
 
-{% highlight cpp %}
+```cpp
 
     ListNode *detectCycle(ListNode *head) 
     {
@@ -74,4 +74,4 @@ fast走到a时，slow恰好走了(n-1)圈+c，刚好回到了环起点a处。
         }
         return NULL;
     }
-{% endhighlight %}
+```

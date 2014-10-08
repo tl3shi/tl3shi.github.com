@@ -18,7 +18,7 @@ tags: [leetcode, c++, 回溯, backtracking]
 
 跟上一题 [n-queens](http://tl3shi.github.io/leetcode/n-queens.html)一模一样。
 
-{% highlight cpp %}
+```cpp
 	
 	bool canPut(const vector<int> &queen, int row, int col)
     {
@@ -59,6 +59,6 @@ tags: [leetcode, c++, 回溯, backtracking]
         dfs(result, queen, 0);
         return result;
     }
-{% endhighlight %}
+```
 
  

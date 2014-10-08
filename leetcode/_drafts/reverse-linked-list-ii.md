@@ -26,7 +26,7 @@ tags: [leetcode, c++, list]
 pre m cur next
 pre不变, 一个一个插入到pre后面.
 
-{% highlight cpp %}
+```cpp
 	
 	
 	ListNode *reverseBetween(ListNode *head, int m, int n)
@@ -52,5 +52,5 @@ pre不变, 一个一个插入到pre后面.
 	    mthNode->next = next;
 	    return dummy.next;
 	}	
-{% endhighlight %}
+```
 

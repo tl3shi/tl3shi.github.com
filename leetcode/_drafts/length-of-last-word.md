@@ -22,7 +22,7 @@ tags: [leetcode, c++, string]
 
 去掉首位的空格, 从最后往前走到第一个空格或开头停止。
 
-{% highlight cpp %}
+```cpp
 	
 	int lengthOfLastWord(const char *s) 
     {
@@ -39,11 +39,11 @@ tags: [leetcode, c++, string]
             ++len, --end;
         return len;
     }
-{% endhighlight %}
+```
 
 这个思路用STL写就简单了, [ref](https://github.com/soulmachine/leetcode)。 [std::ptr_fun<arg type, result type> 模版取函数指针](http://www.cplusplus.com/reference/functional/ptr_fun/).
 
-{% highlight cpp %}
+```cpp
 
 	int lengthOfLastWord(const char *s)
 	{
@@ -53,12 +53,12 @@ tags: [leetcode, c++, string]
 	    auto last = std::find_if_not(start, str.rend(), std::ptr_fun<int, int>(std::isalpha));
 	    return std::distance(start, last);
 	}
-{% endhighlight %}
+```
 
 
 直接从前往后，记录每一个单词的长度，后面的单词长度会取代前面的长度，注意得跳过中间的连续空格。
 
-{% highlight cpp %}
+```cpp
 	
 	int lengthOfLastWord(const char *s)
     {
@@ -82,4 +82,4 @@ tags: [leetcode, c++, string]
         }
         return len;
     }
-{% endhighlight %}
+```

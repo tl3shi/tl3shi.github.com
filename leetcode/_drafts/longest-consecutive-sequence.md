@@ -28,7 +28,7 @@ tags: [leetcode, c++, hashmap, radixsort]
 
 用一个set/map记录每个数，然后挨个找相邻的数字，每找到一个就从原set/map中去掉，直到全部遍历完毕。
 
-{% highlight cpp %}
+```cpp
 
 	int longestConsecutive(vector<int> &num)
 	{
@@ -57,7 +57,7 @@ tags: [leetcode, c++, hashmap, radixsort]
 	    }
 	    return result;
 	}
-{% endhighlight %}
+```
 
 ####1. 先利用O(n)的排序
 
@@ -66,7 +66,7 @@ tags: [leetcode, c++, hashmap, radixsort]
 
 这里用基数排序radixsort，注意基数排序中内部计数排序时注意，输入可能含有负数，因此映射的下标不能是[0,9],而是还得把负数的另外一半算上即[0,18],-9->0, 9->18.
 
-{% highlight cpp %}
+```cpp
 	
 	//-9 ---> index is 0 //9 --->index is 18
 	int getBucket(int n, int base)
@@ -128,4 +128,4 @@ tags: [leetcode, c++, hashmap, radixsort]
 	    return std::max(max, len);
 	}
 
-{% endhighlight %}
+```

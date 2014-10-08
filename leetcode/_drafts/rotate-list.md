@@ -20,7 +20,7 @@ tags: [leetcode, c++, list, rotate]
 
 找出分隔点，注意对输入k值的处理，k可能超过链表长度。另外别忘了链表结尾要手动置为NULL。
 
-{% highlight cpp %}
+```cpp
     
     int length(ListNode* head)
     {
@@ -48,5 +48,5 @@ tags: [leetcode, c++, list, rotate]
         tail->next = headbak;
         return newHead;
     } 
-{% endhighlight %}
+```
 

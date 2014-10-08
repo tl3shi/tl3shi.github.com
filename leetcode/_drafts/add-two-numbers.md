@@ -19,7 +19,7 @@ tags: [leetcode, c++, list, math]
 
 ####0. 递归版
 
-{% highlight cpp %}
+```cpp
 	
 	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2, int carry)
 	{
@@ -45,11 +45,11 @@ tags: [leetcode, c++, list, math]
 	        return l1;
 	    return addTwoNumbers(l1, l2, 0);
 	}
-{% endhighlight %}
+```
 
 ####1. 迭代版
 
-{% highlight cpp %}
+```cpp
 	
 	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) 
     {
@@ -88,4 +88,4 @@ tags: [leetcode, c++, list, math]
         }
         return dummy.next;
     }
-{% endhighlight %}
+```

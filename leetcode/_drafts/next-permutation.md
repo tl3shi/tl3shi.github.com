@@ -23,7 +23,7 @@ tags: [leetcode, c++, permutation, 排列组合]
 
 这里 [permutations-ii](http://tl3shi.github.io/leetcode/permutations-ii.html)其实已经实现过一次了。
 
-{% highlight cpp %}
+```cpp
 	
 	void nextPermutation(vector<int> &num) 
     {
@@ -43,4 +43,4 @@ tags: [leetcode, c++, permutation, 排列组合]
         std::swap(num[index], num[bigger]);
         std::reverse(num.begin()+index+1, num.end());
     }
-{% endhighlight %}
+```

@@ -28,7 +28,7 @@ tags: [leetcode, c++, DP]
 动态规划, `dp[j][i]` 表示`S[:i],T[:j]`的结果, dp[j][i]至少为dp[j][i-1]
 那么 若`S[i] == T[j]`, 则dp[j][i]还得加上dp[j-1][i-1]即S[:i-1],T[:j-1]的匹配结果。
 
-{% highlight cpp %}
+```cpp
 	
 	int numDistinct(string S, string T)
     {
@@ -52,12 +52,12 @@ tags: [leetcode, c++, DP]
             }
         return dp[m-1][n-1];
     }
-{% endhighlight %}
+```
 
 若以dp[j][i]中的i/j以长度来看的话，代码要简洁些。
 初始化dp[0][0:i]=1 表示T中长度为0的串可以和S中任意长度匹配。
 
-{% highlight cpp %}
+```cpp
 	
 	int numDistinct(string S, string T)
     {
@@ -72,11 +72,11 @@ tags: [leetcode, c++, DP]
                 dp[j][i] = dp[j][i-1] + (S[i-1] == T[j-1] ? dp[j-1][i-1] : 0);
         return dp[m][n];
     }
-{% endhighlight %}
+```
 
 节省内存
 
-{% highlight cpp %}
+```cpp
 
 	int numDistinct(string S, string T) 
     {
@@ -94,6 +94,6 @@ tags: [leetcode, c++, DP]
         }
         return path[m]; 
     }
-{% endhighlight %}
+```
 
 这题参考了[REF](https://oj.leetcode.com/discuss/2143/any-better-solution-that-takes-less-than-space-while-in-time?show=2143#q2143)，其实跟[Interleaving String](http://tl3shi.github.io/leetcode/interleaving-string.html) 这道题差不多。

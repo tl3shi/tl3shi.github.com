@@ -32,7 +32,7 @@ tags: [leetcode, c++, DFS, BFS]
 
 这个题关键在与能想到跟最外面的'O'连通的就能“幸免于难”, 因此可以从从最外层的O开始往里dfs/bfs搜索，把连在一起的O记录下来(比如暂时改成另外的符号)，遍历完之后，再把所有的搜索一遍，这时仍然是’O’的就要变成’X’了，是之前暂存的，要还原成’O’. [ref](http://blog.csdn.net/shiquxinkong/article/details/18241833)
 
-{% highlight cpp %}
+```cpp
 	
 	void dfs(vector<vector<char>> &board, int row, int col)
     {
@@ -77,11 +77,11 @@ tags: [leetcode, c++, DFS, BFS]
                     board[i][j] = 'X';
             }
     }
-{% endhighlight %}
+```
 
 或者将上面的dfs换成bfs也一样。
 
-{% highlight cpp %}
+```cpp
 
 	bool check(int row, int col, vector<vector<char> >&board)
 	{
@@ -115,4 +115,4 @@ tags: [leetcode, c++, DFS, BFS]
 	        }
 	    }
 	}
-{% endhighlight %}
+```

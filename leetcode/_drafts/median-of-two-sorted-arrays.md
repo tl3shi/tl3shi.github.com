@@ -18,7 +18,7 @@ tags: [leetcode, c++, binary search]
 `log` 得二分了。
 思想是将A[k/2-1] 与 B[k/2-1]比较：如果 `A[k/2-1] < B[k/2-1]` 意味着, A[0: k/2-1] 不会大于合并后的第k个数。
 
-{% highlight cpp %}
+```cpp
 	
 	//kth number, increase. k starts from 1
     int findkth(int *a, int m, int *b, int n, int k)
@@ -43,5 +43,5 @@ tags: [leetcode, c++, binary search]
             return findkth(a, m, b, n, ((m+n)>>1)+1);
         return  (findkth(a, m, b, n, ((m+n)>>1)+1) + findkth(a, m, b, n, (m+n)>>1))*0.5;
     }
-{% endhighlight %}
+```
 

@@ -31,7 +31,7 @@ tags: [leetcode, c++, tricky, array]
 
 一个一个试～  `O(N^2)` 能AC。
 
-{% highlight cpp %}
+```cpp
 	
 	bool ok(vector<int> &gas, vector<int> &cost, int startIndex)
     {
@@ -59,7 +59,7 @@ tags: [leetcode, c++, tricky, array]
         }
         return -1;
     }
-{% endhighlight %}
+```
 
 ####1. O(N)解法
 
@@ -70,7 +70,7 @@ tags: [leetcode, c++, tricky, array]
 	2. If the total number of gas is bigger than the total number of cost. There must be a solution.
 	3. Every time a fail happens, accumulate the amount of gas that is needed to overcome the fail. After looping through the stations, if the gas left is more than gas needed, then we have a solution, otherwise not.
 
-{% highlight cpp %}
+```cpp
 	
 	 int canCompleteCircuit(vector<int> &gas, vector<int> &cost) 
     {
@@ -90,4 +90,4 @@ tags: [leetcode, c++, tricky, array]
         }
         return sum >= 0 ? start : -1;
     }
-{% endhighlight %}
+```

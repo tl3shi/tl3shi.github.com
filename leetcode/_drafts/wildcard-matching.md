@@ -34,73 +34,71 @@ tags: [leetcode, c++, 通配符, string]
 
 主要是考虑 “\*” 匹配任意字符的问题， 下面代码超时了。
 
-{% highlight cpp %}
-	
-	bool isMatch(const char *s, const char *p) 
+```cpp
+bool isMatch(const char *s, const char *p) 
+{
+    if(s == NULL && p == NULL) return true;
+    if(s == NULL || p == NULL) return false;
+    if(*s == '\0') return *p == '\0' || (*p == '*' && *(p+1) == '\0');
+    if(*p == '\0') return *s == '\0';
+    if(*p == '*')
     {
-        if(s == NULL && p == NULL) return true;
-        if(s == NULL || p == NULL) return false;
-        if(*s == '\0') return *p == '\0' || (*p == '*' && *(p+1) == '\0');
-        if(*p == '\0') return *s == '\0';
-        if(*p == '*')
+        while(*(p+1) == '*') p++;//skip all continous * 
+        while(*s != '\0')
         {
-            while(*(p+1) == '*') p++;//skip all continous * 
-            while(*s != '\0')
-            {
-                if(isMatch(s, p+1)) 
-                    return true;
-                s++;
-            }
-            return *(p+1) == '\0';
+            if(isMatch(s, p+1)) 
+                return true;
+            s++;
         }
-        while(*s != '\0' && *p != '\0' && (*s == *p || *p == '?'))
-        {
-            s++; p++;
-        }
-        if(*s == '\0' && *p == '\0') return true;
-        return false;
+        return *(p+1) == '\0';
     }
-{% endhighlight %}
+    while(*s != '\0' && *p != '\0' && (*s == *p || *p == '?'))
+    {
+        s++; p++;
+    }
+    if(*s == '\0' && *p == '\0') return true;
+    return false;
+}
+```
 
 ####1. 迭代
 
 Key point, compare char one by one, if not matched, and '\*' matched before, then pattern backtrace to '\*', and string backtrace to the later one of compared char of last iterative time. 
 参考了 [discuss.leetcode](http://discuss.leetcode.com/questions/222/wildcard-matching).
 
-{% highlight cpp %}
-	
-	bool isMatch(const char *s, const char *p)
-	{
-	    if(s == NULL && p == NULL) return true;
-	    if(s == NULL || p == NULL) return false;
-	    if(*s == '\0') return *p == '\0' || (*p == '*' && *(p+1) == '\0');
-	    if(*p == '\0') return *s == '\0';
-	    const char *star_p=NULL,*star_s=NULL;
-	    while(*s)
-	    {
-	        if(*p == '?' || *p == *s)
-	        {
-	            ++p,++s;
-	        }else if(*p == '*')
-	        {
-	            //skip all continuous '*'
-	            while(*p == '*') ++p;
-	            
-	            if(!*p) return true; //if end with '*', its match.
-	            
-	            star_p = p; //star_p is later char of '*',
-	            star_s = s; //store '*' pos for string
-	        }else if((!*p || *p != *s)  && star_p)
-	        {
-	            s = ++star_s; //skip non-match char of string, regard it matched in '*'
-	            p = star_p; //pattern backtrace to later char of '*'
-	        }else
-	            return false;
-	    }
-	    //check if later part of p are all '*'
-	    while(*p)
-	        if(*p++ != '*')
-	            return false;
-	    return true;
-	}
-{% endhighlight %}
+```cpp
+bool isMatch(const char *s, const char *p)
+{
+    if(s == NULL && p == NULL) return true;
+    if(s == NULL || p == NULL) return false;
+    if(*s == '\0') return *p == '\0' || (*p == '*' && *(p+1) == '\0');
+    if(*p == '\0') return *s == '\0';
+    const char *star_p=NULL,*star_s=NULL;
+    while(*s)
+    {
+        if(*p == '?' || *p == *s)
+        {
+            ++p,++s;
+        }else if(*p == '*')
+        {
+            //skip all continuous '*'
+            while(*p == '*') ++p;
+            
+            if(!*p) return true; //if end with '*', its match.
+            
+            star_p = p; //star_p is later char of '*',
+            star_s = s; //store '*' pos for string
+        }else if((!*p || *p != *s)  && star_p)
+        {
+            s = ++star_s; //skip non-match char of string, regard it matched in '*'
+            p = star_p; //pattern backtrace to later char of '*'
+        }else
+            return false;
+    }
+    //check if later part of p are all '*'
+    while(*p)
+        if(*p++ != '*')
+            return false;
+    return true;
+}
+```

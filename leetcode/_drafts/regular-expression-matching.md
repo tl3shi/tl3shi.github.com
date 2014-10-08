@@ -30,7 +30,7 @@ tags: [leetcode, c++, regular expression, string]
 
 注意理解请题意，\* 和前面的字符是一个整体, c\* 可以表示'', 'c','ccccc' 等。'.*' 表示 '[......]'
 
-{% highlight cpp %}
+```cpp
 	
 	bool isMatch(const char *s, const char *p) 
     {
@@ -51,4 +51,4 @@ tags: [leetcode, c++, regular expression, string]
             return isMatch(s+1, p+1);
         return false;
     }
-{% endhighlight %}
+```

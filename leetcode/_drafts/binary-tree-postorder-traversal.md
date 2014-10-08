@@ -30,7 +30,7 @@ tags: [leetcode, c++, tree traversal]
 
 ####思路一: 直接递归
 
-{% highlight cpp %}
+```cpp
 	
 	void postRecursion(TreeNode * root, vector<int> &path)
 	{
@@ -48,7 +48,7 @@ tags: [leetcode, c++, tree traversal]
 	    postRecursion(root, result);
 	    return move(result);
 	}
-{% endhighlight %}
+```
 
 ####思路二: 非递归. 仿造先序,因为先序的非递归很好写. 
 (来自寝室哥们ZZ大神的思路)
@@ -59,7 +59,7 @@ tags: [leetcode, c++, tree traversal]
 发现 先序.reverse = `右左中` 将`右左`交换就得到`左右中`.
 即将原来的先序变通下就有了下面的算法.
 
-{% highlight cpp %}
+```cpp
 
     vector<int> postFakePre(TreeNode * root)
     {
@@ -80,13 +80,13 @@ tags: [leetcode, c++, tree traversal]
         std::reverse(result.begin(), result.end());
         return move(result);
     }
-{% endhighlight %}
+```
 
 ####思路三：传统方法 
 
 用一个指针last记录上一次访问的节点来区分右孩纸是否已经访问过了该回归到父节点。代码如下
 
-{% highlight cpp %}
+```cpp
 
 	vector<int> postNormal(TreeNode * root)
     {
@@ -116,7 +116,7 @@ tags: [leetcode, c++, tree traversal]
         }
         return move(result);
     }
-{% endhighlight %}
+```
 
 ####思路四：改进的传统方法 
 
@@ -129,7 +129,7 @@ tags: [leetcode, c++, tree traversal]
 
 代码如下:
 
-{% highlight cpp %}
+```cpp
 
 	vector<int> postNormalBetter(TreeNode * root)
     {
@@ -157,7 +157,7 @@ tags: [leetcode, c++, tree traversal]
         }
         return move(result);
     }
-{% endhighlight %}
+```
 
 ####思路五：Morris遍历
 
@@ -178,7 +178,7 @@ tags: [leetcode, c++, tree traversal]
     3. 重复以上1、2直到当前节点为空。
 
 
-{% highlight cpp %}
+```cpp
 
 	vector<int> reverse(TreeNode * from, TreeNode * to)
 	{
@@ -223,4 +223,4 @@ tags: [leetcode, c++, tree traversal]
 	    }
 	    return move(result);
 	}
-{% endhighlight %}
+```

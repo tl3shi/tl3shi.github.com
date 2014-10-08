@@ -27,7 +27,7 @@ tags: [leetcode, c++, binary tree, traverse, recursion]
 
 递归最简单了。
 
-{% highlight cpp %}
+```cpp
 bool solveRecusive(TreeNode *root, int sum) 
 {
     int v = root->val;
@@ -41,5 +41,5 @@ bool hasPathSum(TreeNode *root, int sum)
     if(root == NULL) return false;//test case rule
     return solveRecusive(root, sum);
 }
-{% endhighlight %}
+```
 

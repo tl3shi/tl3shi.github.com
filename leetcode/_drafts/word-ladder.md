@@ -34,7 +34,7 @@ tags: [leetcode, c++, ]
 
 用BFS搜索，记录从开始到当前路径长度。注意遍历map/set删除满足条件的element的写法。第一个用BFS搜索到的肯定是最短的之一。DFS则不是哦。
 
-{% highlight cpp %}
+```cpp
 
 	bool diff1char(string s1, string s2)
     {
@@ -72,10 +72,10 @@ tags: [leetcode, c++, ]
         }
         return -1;
     }
-{% endhighlight %}
+```
 
 悲剧的是，上面的过不了～ testcase中dict太大，而word相对较短，去从dict去搜索相邻的单词，耗时太久。改为变动word中的每一个字符(26个一个一个试)，然后再去dict中判断是否存在。这样就能AC。[ref](https://oj.leetcode.com/discuss/7348/time-limit-exceeded-bfs), 代码如下：
-{% highlight cpp %}
+```cpp
 
 	void getDiff1chars(string s1, queue<std::pair<string,int>> &next, int nextLen, unordered_set<string> &dict)
     {
@@ -115,4 +115,4 @@ tags: [leetcode, c++, ]
         return 0;
     }
 
-{% endhighlight %}
+```

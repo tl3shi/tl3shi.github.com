@@ -21,7 +21,7 @@ tags: [leetcode, c++, DP]
 
 超时
 
-{% highlight cpp %}
+```cpp
 	
 	int maxProductN2(int A[], int n)
 	{
@@ -39,13 +39,13 @@ tags: [leetcode, c++, DP]
 	    }
 	    return result;
 	}
-{% endhighlight %}
+```
 
 ####1. DP O(n)
 
 记录到i为止的最大值和最小值，最小值乘以当前值可能反而变成最大值，不用去考虑当前A[i]的值的正负，分情况讨论，这样反而复杂。
 
-{% highlight cpp %}
+```cpp
 	
 	int maxProduct(int A[], int n)
 	{
@@ -63,11 +63,11 @@ tags: [leetcode, c++, DP]
 	    }
 	    return result;
 	}
-{% endhighlight %}
+```
 
 可以用O(1)的空间，记录上一次的结果。代码就直接贴 [discuss](https://oj.leetcode.com/discuss/11923/sharing-my-solution-o-1-space-o-n-running-time) 里的了。
 
-{% highlight cpp %}
+```cpp
 
 	//[ref](https://oj.leetcode.com/discuss/11923/sharing-my-solution-o-1-space-o-n-running-time)
 	int maxProduct(int A[], int n)
@@ -87,4 +87,4 @@ tags: [leetcode, c++, DP]
 	    }
 	    return maxsofar;
 	}
-{% endhighlight %}
+```

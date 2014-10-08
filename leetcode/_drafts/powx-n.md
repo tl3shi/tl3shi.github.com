@@ -15,7 +15,7 @@ tags: [leetcode, c++, math]
 
 解题思路：
 
-{% highlight cpp %}
+```cpp
 double pow(double x, int n)  
 { 
     if(n == 0 || x == 1.0) return 1.0; 
@@ -32,4 +32,4 @@ double rpow(double x, int n)
         return r*r*x; 
     return r*r; 
 } 
-{% endhighlight %}
+```

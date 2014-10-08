@@ -21,7 +21,7 @@ tags: [leetcode, c++, 数独]
 
 只要里面填的数字满足3个规则就认为是valid的，同行、同列、小的9宫格不能有重复的数字。
 
-{% highlight cpp %}
+```cpp
 	
 	bool isValid(vector<vector<char> > &board, int row, int col)
     {
@@ -50,4 +50,4 @@ tags: [leetcode, c++, 数独]
             }
         return true;
     }
-{% endhighlight %}
+```

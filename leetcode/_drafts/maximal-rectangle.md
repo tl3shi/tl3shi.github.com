@@ -19,7 +19,7 @@ tags: [leetcode, c++, matrix, stack]
 
 一种直接的方法是: 横向记录从左到i, 包括i为1的连续1的长度，然后再纵向去查找以这个连续1长度作为min宽的最大的高度,得到面积。O(n^3)
 
-{% highlight cpp %}
+```cpp
 	
 	int getMaxHeight(const vector<vector<int> > &ones, int row, int col)
     {
@@ -61,7 +61,7 @@ tags: [leetcode, c++, matrix, stack]
             }
         return result;
     }
-{% endhighlight %}
+```
 
 ####1. O(n^2)算法
 
@@ -69,7 +69,7 @@ tags: [leetcode, c++, matrix, stack]
 
 用栈维护了一个递增(非递减)的序列，当当前索引的元素比栈顶小时，取栈顶元素（并出栈），并将这个元素的高度和当前索引端(快降低了)构成的矩形面积，栈中上升的那段都可以出栈并计算。
 
-{% highlight cpp %}
+```cpp
 	
 	int largestRectangleArea(const vector<int> &height)
     {
@@ -111,7 +111,7 @@ tags: [leetcode, c++, matrix, stack]
         }
         return result;
     }
-{% endhighlight %}
+```
 
 以高度`[2,5,3,4,1]`为例, 2[index=0], 5[index=2]进栈, 当前高度为3, 以5为最矮的计算面积为5,然后5出栈, 此时**把3[index=2]进栈** (注意对比下[Largest Rectangle in Histogram](http://tl3shi.github.io/leetcode/Largest-Rectangle-in-Histogram.html)的写法), 一直到index=4时，1最小了, 依次计算面积, 
 	
@@ -123,7 +123,7 @@ tags: [leetcode, c++, matrix, stack]
 	2*(4)=8.
 
 上面代码还可以优化下内存空间, 用`O(n)`n为列数量。
-{% highlight cpp %}
+```cpp
 
 	int maximalRectangle2(vector <string > & matrix)
 	{
@@ -145,14 +145,14 @@ tags: [leetcode, c++, matrix, stack]
 	    }
 	    return maxArea;
 	}
-{% endhighlight %}
+```
 
 
 ####2. O(n^2)算法 思路2
 参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。 思路是对当前高度h, 找左边比他小的最大的index,设为i, 右边比h小最小的index,设为j,则以h为最小高度的面积应该为 
 `(j-i-1)*h`.  eg : [2,5,3,4,1], 当前高度3, 则, left=0, right = 4, area = 3*(4-0-1)=9.
 
-{% highlight cpp %}
+```cpp
 
 	int maximalRectangle(vector<vector<char> > &matrix) 
     {
@@ -187,4 +187,4 @@ tags: [leetcode, c++, matrix, stack]
         }
         return result;
     }
-{% endhighlight %}
+```

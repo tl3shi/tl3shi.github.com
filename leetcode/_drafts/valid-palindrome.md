@@ -26,8 +26,8 @@ tags: [leetcode, c++, 回文]
 
 搞清题意只check数字和字母，忽略大小写。
 
-{% highlight cpp %}
+```cpp
 	
 	bool isa2zorNum(char c)    {        char x = std::tolower(c);        return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9');    }    bool isPalindrome(string s)     {        int left = 0;         int right = (int)s.length() - 1;        while(left < right)        {            while(left < right && !isa2zorNum(s[left]))                left++;            while(left < right && !isa2zorNum(s[right]))                right--;            if(left >= right) return true;            if(std::tolower(s[left]) == std::tolower(s[right]))            {                left++;                right--;            }else                return false;        }        return true;    }
-{% endhighlight %}
+```
 

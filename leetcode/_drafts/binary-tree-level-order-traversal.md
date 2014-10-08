@@ -33,7 +33,7 @@ tags: [leetcode, c++, binary tree, BFS, level traverse, recursion]
 
 ####0. 常规方法, 两个queue交替
 
-{% highlight cpp %}
+```cpp
 	
 	vector<vector<int> > levelOrder0(TreeNode *root)
 	{
@@ -55,13 +55,13 @@ tags: [leetcode, c++, binary tree, BFS, level traverse, recursion]
 	    }
 	    return move(result);
 	}
-{% endhighlight %}
+```
 
 ####1. 单queue+隔板
 
 前面[word ladder ii](http://tl3shi.github.io/leetcode/word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
-{% highlight cpp %}
+```cpp
 	
 	vector<vector<int> > levelOrder(TreeNode *root)
 	{
@@ -85,13 +85,13 @@ tags: [leetcode, c++, binary tree, BFS, level traverse, recursion]
 	    }
 	    return move(result);
 	}
-{% endhighlight %}
+```
 
 #### 2.递归
 
 递归写起来就是简单。
 
-{% highlight cpp %}
+```cpp
 
 	void levelOrderRecusion(TreeNode *root, int level, vector<vector<int> > &result)
     {
@@ -110,4 +110,4 @@ tags: [leetcode, c++, binary tree, BFS, level traverse, recursion]
         levelOrderRecusion(root, 0, result);
         return move(result);
     }
-{% endhighlight %}
+```

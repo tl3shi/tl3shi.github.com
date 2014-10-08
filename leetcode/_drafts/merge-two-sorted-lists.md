@@ -17,7 +17,7 @@ tags: [leetcode, c++, list, merge]
 
 用一个多余的节点在头部，使得代码简洁，不然得去内部判断到底哪个节点当作新list的head。
 
-{% highlight cpp %}
+```cpp
 	
 	ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) 
     {
@@ -37,6 +37,6 @@ tags: [leetcode, c++, list, merge]
             pre->next = l2;
         return dummy.next;
     }
-{% endhighlight %}
+```
 
  

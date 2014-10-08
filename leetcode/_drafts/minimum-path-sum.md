@@ -18,7 +18,7 @@ tags: [leetcode, c++, recursion, DP]
 
 ####0. 递归
 用递归思路比较清晰，然后转成迭代。
-{% highlight cpp %}
+```cpp
 
     int min(vector<vector<int> >&grid, int row, int col) 
     { 
@@ -40,11 +40,11 @@ tags: [leetcode, c++, recursion, DP]
         int fromup = min(grid, row-1, col); 
         return std::min(fromleft, fromup); 
     } 
-{% endhighlight %}
+```
 
 ####1. 动态规划, O(m+n)空间
 
-{% highlight cpp %}
+```cpp
 	
 	int minPathSum(vector<vector<int> > &grid)
 	{
@@ -61,7 +61,7 @@ tags: [leetcode, c++, recursion, DP]
 	            dp[i][j] = std::min(dp[i-1][j], dp[i][j-1]) + grid[i][j];
 	    return dp[m-1][n-1];
 	}
-{% endhighlight %}
+```
 
 
 ####2. 动态规划, O(n)空间
@@ -72,7 +72,7 @@ tags: [leetcode, c++, recursion, DP]
 	右边的f[j]是老的f[j]表示v[i-1][j], f[j-1]即为v[i][j-1]
 	左边f[j]是新的,即v[i][j].
 
-{% highlight cpp %}
+```cpp
 
 	int minPathSum(vector<vector<int > > &grid)
 	{
@@ -88,4 +88,4 @@ tags: [leetcode, c++, recursion, DP]
 		}
 		return f[n - 1];
 	}
-{% endhighlight %}
+```

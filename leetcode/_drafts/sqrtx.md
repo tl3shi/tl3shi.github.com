@@ -20,7 +20,7 @@ tags: [leetcode, c++, math]
 
 注意 可能越界Int。
 
-{% highlight cpp %}
+```cpp
 	
 	int binarySearch(int x)
     {
@@ -48,7 +48,7 @@ tags: [leetcode, c++, math]
         if(x <= 1) return x;
         return binarySearch(x);
     }
-{% endhighlight %}
+```
 
 或者牛顿迭代法, [参考这里](http://blog.punkid.org/2008/02/28/compute-the-square-root-via-newtons-iteration/).
 
@@ -70,7 +70,7 @@ tags: [leetcode, c++, math]
 	x_(k+1) = 1/2 * (x_k + n / x_k)
 
 其实牛顿迭代法也可以看作是泰勒公式(Taylor Series)的简化.
-{% highlight cpp %}
+```cpp
 	
 	int sqrt(int x) 
     {
@@ -85,7 +85,7 @@ tags: [leetcode, c++, math]
         }
         return -1;
     }
-{% endhighlight %}
+```
 
 $$
 f'(x_{n}) = \frac{ \mathrm{rise} }{ \mathrm{run} } = \frac{ \mathrm{\Delta y} }{ \mathrm{\Delta x} } = \frac{ f( x_{n} ) - 0 }{ x_{n} - x_{n+1} } = \frac{0 - f(x_{n})}{(x_{n+1} - x_{n})}

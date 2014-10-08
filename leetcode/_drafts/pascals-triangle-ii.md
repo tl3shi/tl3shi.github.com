@@ -22,7 +22,7 @@ tags: [leetcode, c++, ]
 
 二项式系数求法。
 
-{% highlight cpp %}
+```cpp
 	
 	int C(int n, int k)
     {
@@ -45,5 +45,5 @@ tags: [leetcode, c++, ]
         }
         return move(result);    
     }
-{% endhighlight %}
+```
 

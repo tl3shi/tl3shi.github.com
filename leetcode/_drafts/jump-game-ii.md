@@ -22,7 +22,7 @@ tags: [leetcode, c++, greedy]
 
 跟 [jump-game](http://tl3shi.github.io/leetcode/jump-game.html)一样, 可以贪心。每次选择当前可以跳的范围内，下一次能跳得最远的 
 
-{% highlight cpp %}
+```cpp
 	
 	int selectMaxIndex(int *A, int start, int range, int n)
     {
@@ -57,11 +57,11 @@ tags: [leetcode, c++, greedy]
         }
         return step;
     }
-{% endhighlight %}
+```
 
 学习下 [人家的](https://github.com/soulmachine/leetcode)代码就是简单.
 
-{% highlight cpp %}
+```cpp
 	
 	int jump(int A[], int n) 
     {
@@ -82,4 +82,4 @@ tags: [leetcode, c++, greedy]
         }
         return step;
     }
-{% endhighlight %}
+```

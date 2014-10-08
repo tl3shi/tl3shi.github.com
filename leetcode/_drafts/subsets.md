@@ -35,7 +35,7 @@ tags: [leetcode, c++, DFS, 排列组合]
 ####0.DFS搜索
 
 跟[Combinations](http://tl3shi.github.io/leetcode/Combinations.html)一样。
-{% highlight cpp %}
+```cpp
 	
 	void search(vector<vector<int> > &result, vector<int> &S, vector<int> &input, int start, int k)
     {
@@ -58,13 +58,13 @@ tags: [leetcode, c++, DFS, 排列组合]
             search(result, S, input, 0, i);
         return move(result);
     }
-{% endhighlight %}
+```
 
 
 ####1.0 二进制组合
 每个元素都有0/1两种状态，全部排列一下即可。例如1,2,3,4一共有2^4=16种子集，第15种(2^0+2^1+2^2+2^3)为1-4都取, 第7种`(1*(2^0)+1*(2^1)+1*(2^2)+0*(2^3))`为[1,2,3]. [ref](http://blog.csdn.net/magisu/article/details/12989531).
 注意得先将S排序(当然也可以先加到result中，最后再来排序), 不然结果中的子集顺序不是升序的。
-{% highlight cpp %}
+```cpp
 	
 	vector<vector<int> > subsets(vector<int> &S) 
     {
@@ -81,6 +81,6 @@ tags: [leetcode, c++, DFS, 排列组合]
         }
         return move(result);
     }
-{% endhighlight %}
+```
 
 

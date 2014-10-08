@@ -25,7 +25,7 @@ tags: [leetcode, c++, tricky]
 
 参考了 [soulmachine 's leetcode](https://github.com/soulmachine/leetcode); 
 
-{% highlight cpp %}
+```cpp
 	
 	int trap(int A[], int n) 
     {
@@ -52,7 +52,7 @@ tags: [leetcode, c++, tricky]
         }
         return water;
     }
-{% endhighlight %}
+```
 
 ####1. O(n)
 
@@ -63,7 +63,7 @@ tags: [leetcode, c++, tricky]
 
 参考 [discuss](https://oj.leetcode.com/discuss/3546/any-one-pass-solutions).
 
-{% highlight cpp %}
+```cpp
 	
 	int trap(int A[], int n)
 	{
@@ -86,6 +86,6 @@ tags: [leetcode, c++, tricky]
 	    }
 	    return total - block;
 	}
-{% endhighlight %}
+```
 
 类似的题目还有 [Container With Most Water](http://tl3shi.github.io/leetcode/container-with-most-water.html).

@@ -22,7 +22,7 @@ tags: [leetcode, c++, DP]
 最简单就是O(n^2)暴力解法，可惜超时，过不了。
 用DP, dp[i]表示前i个的最大利润。
 
-{% highlight cpp %}
+```cpp
 	
 	int maxProfit(vector<int> &prices) 
     {
@@ -37,5 +37,5 @@ tags: [leetcode, c++, DP]
         }
         return dp[n-1];
     }
-{% endhighlight %}
+```
 

@@ -45,7 +45,7 @@ tags: [leetcode, c++, tree, traverse]
 1种方法是领取数组把每一层存起来，然后连接。不过非常数空间。
 另外就是常数空间解法。
 
-{% highlight cpp %}
+```cpp
 	
 	void connect(TreeLinkNode *root) 
     {
@@ -63,7 +63,7 @@ tags: [leetcode, c++, tree, traverse]
             root = left;//go down
         }
     }
-{% endhighlight %}
+```
 
 
  

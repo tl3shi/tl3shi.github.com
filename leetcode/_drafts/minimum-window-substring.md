@@ -35,7 +35,7 @@ tags: [leetcode, c++, string, tricky]
 	
 代码如下：
 
-{% highlight cpp %}
+```cpp
 	
 	string minWindow(string S, string T)
 	{
@@ -82,6 +82,6 @@ tags: [leetcode, c++, string, tricky]
 	    if(minLen == INT_MAX) return "";
 	    return S.substr(minStart, minLen);
 	}
-{% endhighlight %}
+```
 
 [Ref](http://www.cnblogs.com/lichen782/p/leetcode_minimum_window_substring_3.html)

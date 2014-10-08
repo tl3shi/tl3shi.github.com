@@ -29,7 +29,7 @@ tags: [leetcode, c++, rebuild tree, binary tree]
 	先序右：[pre_start+left_len+1, pre_end]
 	中序右：[left+1, in_end]
 
-{% highlight cpp %}
+```cpp
 	
 	//assuming always can get right result
     TreeNode * buildRecursion(vector<int> &preorder, vector<int> &inorder,
@@ -52,4 +52,4 @@ tags: [leetcode, c++, rebuild tree, binary tree]
     {
         return buildRecursion(preorder, inorder, 0, preorder.size()-1, 0, inorder.size()-1);
     }
-{% endhighlight %}
+```

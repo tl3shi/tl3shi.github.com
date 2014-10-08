@@ -19,7 +19,7 @@ height balanced BST.
 
 递归即可。
 
-{% highlight cpp %}
+```cpp
 	
 	TreeNode * convert(vector<int> &num, int start, int end)
     {
@@ -37,5 +37,5 @@ height balanced BST.
         if(num.size() == 0) return NULL;
         return convert(num, 0, num.size()-1);
     }
-{% endhighlight %}
+```
 

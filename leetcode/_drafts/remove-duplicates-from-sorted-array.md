@@ -19,7 +19,7 @@ tags: [leetcode, c++, array, sort]
 
 解题思路：
 
-{% highlight cpp %}
+```cpp
 	
 	int removeDuplicates(int A[], int n) 
     {
@@ -35,6 +35,6 @@ tags: [leetcode, c++, array, sort]
         }
         return index; //index
     }
-{% endhighlight %}
+```
 
 

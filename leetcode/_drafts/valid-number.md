@@ -39,7 +39,7 @@ tags: [leetcode, c++, math, string]
 |-.3|True |
 |6e6.5 |false |
 
-{% highlight cpp %}
+```cpp
 	
 	bool isNumber(const char *s)
 	{
@@ -91,11 +91,11 @@ tags: [leetcode, c++, math, string]
 	    } 
 	    return true; 
 	}	
-{% endhighlight %}
+```
 
 整理下上面的代码，可以更好看些。
 
-{% highlight cpp %}
+```cpp
 
 	bool isNumber(const char *s) 
     {
@@ -128,7 +128,7 @@ tags: [leetcode, c++, math, string]
         }
         return isNum;
     }
-{% endhighlight %}   
+```   
 
 ####1. 利用strtod. 
 
@@ -137,7 +137,7 @@ tags: [leetcode, c++, math, string]
 	double      strtod( const char          *str, char          **str_end );
 能够一步一步提取str中能够组成的double, str_end为提取后剩下的串。这里找了一份实现, 有兴趣的可以参考下 [strtod的源码](https://code.google.com/p/retrobsd/source/browse/trunk/src/libc/stdlib/strtod.c?r=509&spec=svn509).
 
-{% highlight cpp %}
+```cpp
 	
 	bool isNumber(const char *s) 
     {
@@ -152,7 +152,7 @@ tags: [leetcode, c++, math, string]
         }
         return true;
     }
-{% endhighlight %}
+```
 
 ####2. 利用自动机
 
@@ -170,7 +170,7 @@ tags: [leetcode, c++, math, string]
 	8前面有有效数输入之后，输入space的状态
 	共9种状态了，难设计的是6,7,8状态。
 	分好之后就好办了，设计出根据输入进行状态转换就OK了。
-{% highlight cpp %}
+```cpp
 
 	class Solution {
 	public:
@@ -211,4 +211,4 @@ tags: [leetcode, c++, math, string]
 	          return state == 1 || state == 4 || state == 7 || state == 8;
 	     }
 	};
-{% endhighlight %}
+```

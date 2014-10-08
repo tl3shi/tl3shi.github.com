@@ -23,7 +23,7 @@ tags: [leetcode, c++, two-sum, sort, hashmap]
 
 1、先排序（得记录index），i->0, j->n 相加结果sum<target, i++ 否则 j—
 
-{% highlight cpp %}
+```cpp
 
 vector<int> twoSum(vector<int> &numbers, int target)
 { 
@@ -60,11 +60,11 @@ vector<int> twoSum(vector<int> &numbers, int target)
     }
     return vector<int>();
 }
-{% endhighlight %}
+```
 
 2、用map存起来～直接找对应的另一半
 	
-{% highlight cpp %}
+```cpp
 
 	vector< int> twoSum(vector< int > &numbers, int target)
 	{
@@ -79,4 +79,4 @@ vector<int> twoSum(vector<int> &numbers, int target)
 	        numIndex[num] = index++;
 	    }
 	}
-{% endhighlight %}
+```

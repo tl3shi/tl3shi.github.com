@@ -33,7 +33,7 @@ tags: [leetcode, c++, DP]
 	* 其他, 只能自己跟自己一组了. dp[i] = dp[i-1] eg: (XXX3)6
 	
 还可以将下面的O(n)空间化简成常数空间～记录之前上一次结果 和 上上一次的结果，当前的结果由此获得。
-{% highlight cpp %}
+```cpp
 	
 	int numDecodings(string s) 
     {
@@ -55,6 +55,6 @@ tags: [leetcode, c++, DP]
         }
         return dp[s.length()];
     }
-{% endhighlight %}
+```
 
 

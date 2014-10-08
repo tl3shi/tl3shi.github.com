@@ -46,7 +46,7 @@ tags: [leetcode, c++, ]
 
 当然这两步也可以合在一起. [ref](https://oj.leetcode.com/discuss/6691/my-dp-solution-explanation-and-code)
 
-{% highlight cpp %}
+```cpp
 
 	int minCut(string s) 
     {
@@ -72,4 +72,4 @@ tags: [leetcode, c++, ]
         }
         return cuts[0];
     }
-{% endhighlight %}
+```

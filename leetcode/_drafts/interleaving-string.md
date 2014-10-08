@@ -23,7 +23,7 @@ tags: [leetcode, c++, DP]
 
 #### 0.递归
 超时。
-{% highlight cpp %}
+```cpp
 bool isInterleave(string s1, string s2, string s3)
 {
     return isInterleave(s1, s1.length()-1, s2, s2.length()-1, s3, s3.length()-1);
@@ -37,7 +37,7 @@ bool isInterleave(string s1, int i1, string s2, int i2, string s, int i)
         return true;
     return false;
 }
-{% endhighlight %}
+```
 
 ####1. 动态规划
 DP。
@@ -50,7 +50,7 @@ dp[i][j]表示长度为i的s1[0:i-1],长度为j的s2[0:j-1]和s3[0:i+j-1]的匹�
            or false.
 注意边界的初始化条件.
 
-{% highlight cpp %}
+```cpp
 bool isInterleave(string s1, string s2, string s3) 
 {
     int n1 = s1.length(); int n2 = s2.length(); int n3 = s3.length();
@@ -75,4 +75,4 @@ bool isInterleave(string s1, string s2, string s3)
         }
     return dp[n1][n2];
 }
-{% endhighlight %}
+```

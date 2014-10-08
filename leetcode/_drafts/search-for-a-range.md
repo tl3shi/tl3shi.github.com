@@ -28,7 +28,7 @@ lower返回插入点(相等的最小的index)的位置，upper返回比target大
 [std::upper_bound](http://en.cppreference.com/w/cpp/algorithm/upper_bound).
 
 
-{% highlight cpp %}
+```cpp
 	
 	int lower(int *A, int n, int target)
 	{
@@ -69,6 +69,6 @@ lower返回插入点(相等的最小的index)的位置，upper返回比target大
 	    return vector<int>{left, right-1};
 	
 	} 
-{% endhighlight %}
+```
 
  

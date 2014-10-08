@@ -21,7 +21,7 @@ Valid operators are +, -, *, /. Each operand may be an integer or another expres
 解题思路：后缀表达式求值，用一个stack即可。
 字符串转数字其实可以用库函数: int [stoi](http://www.cplusplus.com/reference/string/stoi/?kw=stoi) (const string&  str, size_t* idx = 0, int base = 10);
 
-{% highlight cpp %}
+```cpp
 bool isOperator(string s){
     if(s.length() == 1 &&
        (s[0] == '+' || s[0] == '-' || s[0] == '*' || s[0] == '/'))
@@ -76,4 +76,4 @@ int evalRPN(vector<string> &tokens) {
     }
     return op.top();
 }
-{% endhighlight %}
+```

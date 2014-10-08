@@ -34,7 +34,7 @@ tags: [leetcode, c++, BFS, DFS, level traverse]
 
 先BFS把邻接图构造出来，即比如与hit相差紧1个字符的单词有哪些~ 然后再dfs把所有结果搜索出来。有了[word ladder](http://tanglei.me/leetcode/word-ladder.html)的经验，这次就直接用`26*length(word)`去查找相邻的单词而不取dict搜索了。 其实到可以判断下 dict大小和 `26*length(word)`之间的关系决定选用哪种方法。
 
-{% highlight cpp %}
+```cpp
 	
 	void getDiff1s(string s, unordered_set< string> &adjlist , const unordered_set< string> &dict )
 	{
@@ -105,12 +105,13 @@ tags: [leetcode, c++, BFS, DFS, level traverse]
 	    genResult(0, level, end, path, adjList, result);
 	    return move(result);
 	}
-{% endhighlight %}
+```
 
 get了一种bfs的新技能，用一个queue，不用像上面那样两层之间交换。 一层一层之间加个特殊的节点表示层次之间的隔板（比如空指针啊，空串等）。
 上面其他逻辑不变，bfs部分改变后的代码如下，也能AC。 
 针对本体的逻辑，注意最内层for循环(//!!!!!)，不能直接加到q1中去，因为这样操作q1中可能含有重复的单词，会超时。
-{% highlight cpp %}
+
+```cpp
 	
 	vector<vector <string>> findLadders( string start , string end, unordered_set <string> & dict)
 	{
@@ -157,4 +158,4 @@ get了一种bfs的新技能，用一个queue，不用像上面那样两层之间
 	    genResult(0, level, end, path, adjList, result);
 	    return move(result);
 	}
-{% endhighlight %}
+```

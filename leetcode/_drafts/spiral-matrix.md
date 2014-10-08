@@ -25,7 +25,7 @@ tags: [leetcode, c++, matrix]
 
 暴力模拟～ 
 
-{% highlight cpp %}
+```cpp
 	
 	vector<int> spiralOrder(vector<vector<int> > &matrix)
 	{
@@ -64,6 +64,6 @@ tags: [leetcode, c++, matrix]
 	    }
 	    return move(result);
 	}
-{% endhighlight %}
+```
 
  

@@ -24,7 +24,7 @@ tags: [leetcode, c++, countsort, radixsort, sort]
 ####0. countSort= O(2\*n)
 按照提示，分别数数0,1,2各有多少个，然后填充进去即可。简单的countsort.
 
-{% highlight cpp %}
+```cpp
 	
 	void sortColors(int A[], int n) 
     {
@@ -46,7 +46,7 @@ tags: [leetcode, c++, countsort, radixsort, sort]
         while(i < zero+one+two)
             A[i++] = 2;
     }
-{% endhighlight %}
+```
 
 ####1. O(1\*n) 算法
 
@@ -61,7 +61,7 @@ tags: [leetcode, c++, countsort, radixsort, sort]
 注意修改方式从后往前即可避免繁琐的边界值(first2=first1等情况) 
 这个主要是参考了[anyone with one pass and constant space solution](https://oj.leetcode.com/discuss/1827/anyone-with-one-pass-and-constant-space-solution).
 
-{% highlight cpp %}
+```cpp
 	
 	 void sortColors(int A[], int n) 
     {
@@ -83,7 +83,7 @@ tags: [leetcode, c++, countsort, radixsort, sort]
             }
         }
     }
-{% endhighlight %}
+```
 
 ####2. O(1\*n) 算法
 
@@ -93,7 +93,7 @@ tags: [leetcode, c++, countsort, radixsort, sort]
 	cur == 0: 将zero的后一个与cur交换, 二者都+1;
 	cur == 2: 将two和当前对应值交换, two是放2的位置，下一次放2,放到two-1的地方, 交换的值可能是0，所以cur的指针不能后移。`1 2(cur) 0`, 2与0交换后, 0还得与前面的1交换。
 
-{% highlight cpp %}
+```cpp
 
 	void sortColors(int A[], int n) 
     {
@@ -110,4 +110,4 @@ tags: [leetcode, c++, countsort, radixsort, sort]
                 i++;
         }
     }
-{% endhighlight %}
+```

@@ -45,7 +45,7 @@ tags: [leetcode, c++, recursion, DP]
 	
 用递归即可。 rg|tae gr|eat， rg和gr是scramble， tae和eat递归成 t|ae 和 ea|t， 因此最后满足条件。
 
-{% highlight cpp %}
+```cpp
 	
 	bool isSameChar(string s1, string s2)
     {
@@ -75,13 +75,13 @@ tags: [leetcode, c++, recursion, DP]
         }
         return false;
     }
-{% endhighlight %}
+```
 
 虽然能AC，但上面的代码效率确实～ 内存耗费不少吧，每次都去创建string出来。
 参考下别人的代码，直接用迭代器来做，省掉了字符串的创建。
 以上还可以把一些算过的用map cache起来, 学下 [STL的tuple](http://en.cppreference.com/w/cpp/utility/tuple)。
 
-{% highlight cpp %}
+```cpp
 	
 	bool isSameChar(string::const_iterator first1, string::const_iterator first2, int len)
     {
@@ -114,7 +114,7 @@ tags: [leetcode, c++, recursion, DP]
         if(s1 == s2) return true;
         return isScramble(s1.begin(), s2.begin(), s1.length());
     }
-{% endhighlight %}
+```
 
 设状态为 f[n][i][j]，表示长度为 n，起
 点为 s1[i] 和起点为 s2[j] 两个字符串是否互为 scramble，则状态转移方程为
@@ -123,7 +123,7 @@ tags: [leetcode, c++, recursion, DP]
 			|| (f[k][i][j+n-k] && f[n-k][i+k][j])
 跟上面递归的`isScramble(string::const_iterator first1, string::const_iterator first2, int len)`一致。
 
-{% highlight cpp %}
+```cpp
 	
 	bool isScramble(const string &s1, const string &s2)
 	{
@@ -149,6 +149,6 @@ tags: [leetcode, c++, recursion, DP]
 	                }
 	    return dp[n][0][0];
 	}
-{% endhighlight %}
+```
 
 参考 [leetcode-cpp](https://github.com/soulmachine/leetcode)

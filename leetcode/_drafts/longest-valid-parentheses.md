@@ -23,7 +23,7 @@ tags: [leetcode, c++, stack, string]
 
 1、用一个数组记录每个括号的配对状态，借助stack找配对的index，最后再扫描一遍，找连续配对的数量max.[ref1](https://oj.leetcode.com/discuss/5907/an-easy-understanding-way-to-solve-it).
 
-{% highlight cpp %}
+```cpp
 	
 	int longestValidParentheses(string s) 
     {
@@ -51,7 +51,7 @@ tags: [leetcode, c++, stack, string]
         }
         return result;
     }
-{% endhighlight %}
+```
 
 ####1. O(N)
 
@@ -64,7 +64,7 @@ tags: [leetcode, c++, stack, string]
 	index=5时, pop(),len=5-left.top()=4, 
 	index=6时, empty() len=6-last=6.
 
-{% highlight cpp %}
+```cpp
 	
 	int longestValidParentheses(string s) 
     {
@@ -93,4 +93,4 @@ tags: [leetcode, c++, stack, string]
         }
         return result;
     }
-{% endhighlight %}
+```

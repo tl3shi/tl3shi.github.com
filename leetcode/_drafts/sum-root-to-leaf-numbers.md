@@ -29,7 +29,7 @@ tags: [leetcode, c++, binary tree, DFS]
 
 直接dfs，将到达叶节点代表的数字加起来即可。
 
-{% highlight cpp %}
+```cpp
 
 	void dfs(long long input, TreeNode* node, long long &result)
     {
@@ -52,4 +52,4 @@ tags: [leetcode, c++, binary tree, DFS]
         dfs(0, root, result);
         return (int)result;
     }
-{% endhighlight %}
+```

@@ -31,7 +31,7 @@ tags: [leetcode, c++, 备忘录, cache, tricky]
 遍历一两遍即可,每次找下一次最低点，最低点的糖数量为1，再从最低的遍历到当前点得到结果。下面代码用了一个数组保存了每个child的结果，实际上只需用几个变量记录即可。
 按照这个思路写了下面的比较戳的代码。
 
-{% highlight cpp %}
+```cpp
 
 	//nextLowest and max index
 	int nextLowest(vector<int> &ratings, int startIndex)
@@ -107,7 +107,7 @@ tags: [leetcode, c++, 备忘录, cache, tricky]
 	    }
 	    return sum;
 	}
-{% endhighlight %}
+```
 
 
 #### 1. 从左到右从右到左双向遍历
@@ -121,7 +121,7 @@ tags: [leetcode, c++, 备忘录, cache, tricky]
 	
 即把整个过程分为两个步骤，第一步从左到右，只要右边的ratings大于自己，右边的糖数量就＝自己+1, (先不管左边大于右边的情况)，这一步完成之后有条件,`ratings[i] > ratings[i - 1] && candies[i] > candies[i - 1]` 然后再从右往左，一样的思路，使得`ratings[i] > ratings[i + 1] && candies[i] > candies[i + 1]`。 最后candies再取两个中的max，这样就同时满足这两个条件。问题解决。
 
-{% highlight cpp %}
+```cpp
 
 	int candy2(vector<int> &ratings)
 	{
@@ -146,13 +146,13 @@ tags: [leetcode, c++, 备忘录, cache, tricky]
 	    return total;
 	}
 
-{% endhighlight %}
+```
 
 #### 2. 备忘录法
 
 这个方法参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。即用递归的方式使得分得candy数量同时满足以上两个条件。
 
-{% highlight cpp %}
+```cpp
 
 	int f(vector<int> &ratings, vector<int> &cache, int index){
 	    if(cache[index] == 0)//has not been calculated before
@@ -173,4 +173,4 @@ tags: [leetcode, c++, 备忘录, cache, tricky]
 	        total += f(ratings, cache, i);
 	    return total;
 	}
-{% endhighlight %}
+```

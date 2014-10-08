@@ -25,7 +25,7 @@ tags: [leetcode, c++, matrix]
 
 跟 [spiral-matrix](http://tl3shi.github.io/leetcode/spiral-matrix.html)一样。
 
-{% highlight cpp %}
+```cpp
 	
 	vector<vector<int> > generateMatrix(int n)
 	{
@@ -64,7 +64,7 @@ tags: [leetcode, c++, matrix]
 	    }
 	    return move(matrix);
 	}
-{% endhighlight %}
+```
 
  
  

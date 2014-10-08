@@ -16,7 +16,7 @@ tags: [leetcode, c++, list]
     pointer which could point to any node in the list or null.
 
     Return a deep copy of the list.
-{% highlight cpp %}
+```cpp
     
     struct RandomListNode 
     {
@@ -24,7 +24,7 @@ tags: [leetcode, c++, list]
         RandomListNode *next, *random;
         RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
     };
-{% endhighlight %}
+```
 
 解题思路：
 
@@ -33,7 +33,7 @@ tags: [leetcode, c++, list]
 
 主要是解决random pointer的问题，可以用一个map把copy过的存起来，下次碰到的时候直接从map中取。
 
-{% highlight cpp %}
+```cpp
 
    
     
@@ -76,7 +76,7 @@ tags: [leetcode, c++, list]
         return copyRandomListUseMap(head);
     }
 
-{% endhighlight %}
+```
 
 #### 2. 常数空间神奇妙解
 
@@ -100,7 +100,7 @@ tags: [leetcode, c++, list]
 
 AC代码如下:
 
-{% highlight cpp %}
+```cpp
 
 	RandomListNode *copyRandomListConstantSpace(RandomListNode *head)
     {
@@ -138,4 +138,4 @@ AC代码如下:
         return result;
     }
 
-{% endhighlight %}
+```

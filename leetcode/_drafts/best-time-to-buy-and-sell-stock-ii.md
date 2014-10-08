@@ -25,7 +25,7 @@ tags: [leetcode, c++, array, greedy]
 
 思路就是在一个递增序列里，最矮的点买进，最高的点卖出。这样得到的利润最大。于是算法就是找一段一段的递增序列。
 
-{% highlight cpp %}
+```cpp
 	
 	int maxProfit(vector<int> &prices) 
     {
@@ -50,11 +50,11 @@ tags: [leetcode, c++, array, greedy]
         }
         return result;
     }
-{% endhighlight %}
+```
 
 后来看人家代码，才两三行，就觉得奇怪了。再分析下，举个例子，序列 1 3 4 5, 1进5出（一天只能交易一次）。相当于1进3出3进4出4进5出。于是就有了下面的代码。
 
-{% highlight cpp %}
+```cpp
 	
 	int maxProfit(vector<int> &prices) 
     {
@@ -64,4 +64,4 @@ tags: [leetcode, c++, array, greedy]
             result += std::max(prices[i]-prices[i-1], 0);
         return result;
     }
-{% endhighlight %}
+```
