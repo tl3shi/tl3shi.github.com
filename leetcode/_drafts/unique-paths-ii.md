@@ -25,7 +25,7 @@ tags: [leetcode, c++, DP]
     Note: m and n will be at most 100.
 
 解题思路：
-跟 [minimum-path-sum](http://tl3shi.github.io/leetcode/minimum-path-sum.html)差不多. 
+跟 [minimum-path-sum](./minimum-path-sum.html)差不多. 
 这里就省却递归方法了，直接用DP。
 
 ```cpp

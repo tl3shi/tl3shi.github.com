@@ -28,7 +28,7 @@ tags: [leetcode, c++, DFS, 排列组合]
 
 解题思路：
 
-可以跟上题[Subsets](http://tl3shi.github.io/leetcode/subsets.html)一样做，只是在add到result的时候先判断result中是否存在。 或者最后将result unique一下都可以。
+可以跟上题[Subsets](./subsets.html)一样做，只是在add到result的时候先判断result中是否存在。 或者最后将result unique一下都可以。
 
 ```cpp
 	

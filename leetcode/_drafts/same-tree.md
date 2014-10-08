@@ -16,7 +16,7 @@ tags: [leetcode, c++, binary tree, recursion]
 
 解题思路：
 
-思路跟上题[对称树](http://tl3shi.github.io/leetcode/symmetric-tree.html)一样, 仍分递归和迭代两种方法。
+思路跟上题[对称树](./symmetric-tree.html)一样, 仍分递归和迭代两种方法。
 
 ####0. 递归
 

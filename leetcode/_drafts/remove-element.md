@@ -17,7 +17,7 @@ tags: [leetcode, c++, tricky]
 解题思路：
 
 直接两个index, 跟目标不同就复制下, 不然只移动后面一个index.
-跟[Remove Duplicates from Sorted Array](http://tl3shi.github.io/leetcode/remove-duplicates-from-sorted-array.html)这道题类似.
+跟[Remove Duplicates from Sorted Array](./remove-duplicates-from-sorted-array.html)这道题类似.
 
 ```cpp
 int removeElement(int A[], int n, int elem) 

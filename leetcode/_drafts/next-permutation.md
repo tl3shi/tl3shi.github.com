@@ -21,7 +21,7 @@ tags: [leetcode, c++, permutation, 排列组合]
 
 解题思路：
 
-这里 [permutations-ii](http://tl3shi.github.io/leetcode/permutations-ii.html)其实已经实现过一次了。
+这里 [permutations-ii](./permutations-ii.html)其实已经实现过一次了。
 
 ```cpp
 	

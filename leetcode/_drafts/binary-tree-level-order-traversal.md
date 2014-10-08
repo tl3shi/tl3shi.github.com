@@ -59,7 +59,7 @@ tags: [leetcode, c++, binary tree, BFS, level traverse, recursion]
 
 ####1. 单queue+隔板
 
-前面[word ladder ii](http://tl3shi.github.io/leetcode/word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
+前面[word ladder ii](./word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
 ```cpp
 	

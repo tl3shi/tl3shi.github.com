@@ -30,7 +30,7 @@ tags: [leetcode, c++, binary tree, traverse, recursion]
 
 解题思路：
 
-跟[Path Sum](http://tl3shi.github.io/leetcode/path-sum.html)思路一样，不过这题把路径存起来。
+跟[Path Sum](./path-sum.html)思路一样，不过这题把路径存起来。
 
 ```cpp
 	

@@ -24,7 +24,7 @@ tags: [leetcode, c++, ]
 
 解题思路：
 
-跟上题[Unique Binary Search Trees](http://tl3shi.github.io/leetcode/unique-binary-search-trees-ii.html)一样，这个题目需要返回具体的结果。
+跟上题[Unique Binary Search Trees](./unique-binary-search-trees-ii.html)一样，这个题目需要返回具体的结果。
 
 ```cpp
 vector<TreeNode*> generateTreesRec(int start, int end)

@@ -26,7 +26,7 @@ tags: [leetcode, c++, combination, DFS]
 
 解题思路：
 
-跟 [combination-sum](http://tl3shi.github.io/leetcode/combination-sum.html) 一样, DFS，在它的基础上，将用过的跳过即可。重复的数字，后面的要跳过，不然结果有重复的。
+跟 [combination-sum](./combination-sum.html) 一样, DFS，在它的基础上，将用过的跳过即可。重复的数字，后面的要跳过，不然结果有重复的。
 
 ```cpp
 	

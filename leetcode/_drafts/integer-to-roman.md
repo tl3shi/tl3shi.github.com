@@ -16,7 +16,7 @@ tags: [leetcode, c++, ]
 
 解题思路：
 
-跟[roman-to-integer](http://tl3shi.github.io/leetcode/roman-to-integer.html)一样，搞一个map对应关系，这个题目把一些特殊的比如4/9之类的也放进map里，然后遍历得到, 不然会搞得很复杂。 参考了[Discuss]().
+跟[roman-to-integer](./roman-to-integer.html)一样，搞一个map对应关系，这个题目把一些特殊的比如4/9之类的也放进map里，然后遍历得到, 不然会搞得很复杂。 参考了[Discuss]().
 
 ```cpp
 string intToRoman(int num)

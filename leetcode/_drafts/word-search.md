@@ -104,7 +104,7 @@ bool exist(vector <string> & board, string word)
 }
 ```
 
-上面代码难看了点，其实可以像下面这样，简单些。 另外，可以借助[Surrounded Regions](http://tl3shi.github.io/leetcode/surrounded-regions.html)的思想，在原有矩阵的情况下加标记，最后还原即可。可以省去O(m*n)的空间。
+上面代码难看了点，其实可以像下面这样，简单些。 另外，可以借助[Surrounded Regions](./surrounded-regions.html)的思想，在原有矩阵的情况下加标记，最后还原即可。可以省去O(m*n)的空间。
 
 ```cpp
 	

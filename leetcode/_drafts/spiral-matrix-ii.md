@@ -23,7 +23,7 @@ tags: [leetcode, c++, matrix]
 
 解题思路：
 
-跟 [spiral-matrix](http://tl3shi.github.io/leetcode/spiral-matrix.html)一样。
+跟 [spiral-matrix](./spiral-matrix.html)一样。
 
 ```cpp
 	

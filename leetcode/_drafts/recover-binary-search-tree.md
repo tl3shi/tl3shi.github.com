@@ -100,7 +100,7 @@ O(2*n) 空间解法～
 
 ####2. Morris遍历，常数空间。
 
-算法解释见[binary-tree-inorder-traversal](http://tl3shi.github.io/leetcode/binary-tree-inorder-traversal.html);
+算法解释见[binary-tree-inorder-traversal](./binary-tree-inorder-traversal.html);
 
 注意*找出两个node后还得让遍历走完～以避免之前的改动revert完毕*，否则可能会造成oj check时死循环(传入的树结构修改后不对).
 

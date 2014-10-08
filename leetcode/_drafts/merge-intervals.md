@@ -73,7 +73,7 @@ tags: [leetcode, c++, interval]
 	};
 ```
 
-当然，也可以借助 [Insert Interval](http://tl3shi.github.io/leetcode/Insert-Interval.html) 一个一个插入到结果里面去。
+当然，也可以借助 [Insert Interval](./Insert-Interval.html) 一个一个插入到结果里面去。
 
 ```cpp
 

@@ -98,7 +98,7 @@ void dfs(vector<int> &result, const unordered_map<string, int> &origin, unordere
 ####1. \\( O(n) \\) 滑动窗口解法
 
 
-滑动窗口，跟[Longest Substring Without Repeating Characters](http://tl3shi.github.io/leetcode/Longest-Substring-Without-Repeating-Characters.html) 、[Minimum Window Substring](Minimum-Window-Substring.html) 类似。复杂度 \\( O(\frac{strlen}{wordlen} * wordlen) = O(n) \\)，一次扫描需要迭代 strlen/wordlen 次，偏移wordlen次。
+滑动窗口，跟[Longest Substring Without Repeating Characters](./Longest-Substring-Without-Repeating-Characters.html) 、[Minimum Window Substring](Minimum-Window-Substring.html) 类似。复杂度 \\( O(\frac{strlen}{wordlen} * wordlen) = O(n) \\)，一次扫描需要迭代 strlen/wordlen 次，偏移wordlen次。
 
 	如"[bar][foo][the][foo][bar][man]" (只考虑这个串,下次右移1位，即考虑[arf]oothefoobarman 偏移wordlen-1次可以考虑完全)
 	[barfoothefoobarman
