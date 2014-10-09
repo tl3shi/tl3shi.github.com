@@ -21,7 +21,7 @@ tags: [leetcode, c++, array, greedy]
     (ie, you must sell the stock before you buy again).
 
 解题思路：
-这题目跟[前一题](http://tanglei.me/leetcode/best-time-to-buy-and-sell-stock.html)的区别在于，这个题允许多次交易。
+这题目跟[前一题](./best-time-to-buy-and-sell-stock.html)的区别在于，这个题允许多次交易。
 
 思路就是在一个递增序列里，最矮的点买进，最高的点卖出。这样得到的利润最大。于是算法就是找一段一段的递增序列。
 

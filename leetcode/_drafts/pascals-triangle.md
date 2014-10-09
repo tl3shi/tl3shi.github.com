@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Pascal's Triangle 题解"
 description: "[leetcode] Pascal's Triangle 题解"
 category: leetcode 
-tags: [leetcode, c++]
+tags: [leetcode, c++, DP]
 ---
 {% include JB/setup %}
 

@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Merge Sorted Array 题解"
 description: "[leetcode] Merge Sorted Array 题解"
 category: leetcode 
-tags: [leetcode, c++, mergesort]
+tags: [leetcode, c++, sort, mergesort]
 ---
 {% include JB/setup %}
 

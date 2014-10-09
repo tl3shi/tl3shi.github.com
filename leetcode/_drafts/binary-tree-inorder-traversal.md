@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Binary Tree Inorder Traversal 题解"
 description: "[leetcode] Binary Tree Inorder Traversal 题解"
 category: leetcode 
-tags: [leetcode, c++, tree traversal]
+tags: [leetcode, c++, tree traversal, binary tree]
 ---
 {% include JB/setup %}
 

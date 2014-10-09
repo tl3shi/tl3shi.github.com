@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Populating Next Right Pointers in Each Node II 题解"
 description: "[leetcode] Populating Next Right Pointers in Each Node II 题解"
 category: leetcode 
-tags: [leetcode, c++, tree, traverse]
+tags: [leetcode, c++, binary tree, traverse]
 ---
 {% include JB/setup %}
 

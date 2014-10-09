@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Valid Parentheses 题解"
 description: "[leetcode] Valid Parentheses 题解"
 category: leetcode 
-tags: [leetcode, c++, stack]
+tags: [leetcode, c++, stack, string, parentheses]
 ---
 {% include JB/setup %}
 

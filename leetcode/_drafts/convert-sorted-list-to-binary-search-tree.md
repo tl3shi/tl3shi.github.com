@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Convert Sorted List to Binary Search Tree 题解"
 description: "[leetcode] Convert Sorted List to Binary Search Tree 题解"
 category: leetcode 
-tags: [leetcode, c++, ]
+tags: [leetcode, c++, list, sort, binary tree, BST]
 ---
 {% include JB/setup %}
 

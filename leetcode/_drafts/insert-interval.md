@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Insert Interval 题解"
 description: "[leetcode] Insert Interval 题解"
 category: leetcode 
-tags: [leetcode, c++, interval]
+tags: [leetcode, c++, sort, interval]
 ---
 {% include JB/setup %}
 

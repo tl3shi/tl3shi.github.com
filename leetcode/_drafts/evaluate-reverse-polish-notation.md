@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Evaluate Reverse Polish Notation 题解"
 description: "[leetcode] Evaluate Reverse Polish Notation 题解"
 category: leetcode 
-tags: [leetcode, c++, stack]
+tags: [leetcode, c++, stack, string]
 ---
 {% include JB/setup %}
 

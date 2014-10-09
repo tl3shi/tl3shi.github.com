@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Longest Consecutive Sequence 题解"
 description: "[leetcode] Longest Consecutive Sequence 题解"
 category: leetcode 
-tags: [leetcode, c++, hashmap, radixsort]
+tags: [leetcode, c++, sort, hashmap, radixsort]
 ---
 {% include JB/setup %}
 

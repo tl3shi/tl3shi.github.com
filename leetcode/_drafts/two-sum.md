@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Two Sum 题解"
 description: "[leetcode] Two Sum题解"
 category: leetcode 
-tags: [leetcode, c++, two-sum, sort, hashmap]
+tags: [leetcode, c++, sort, hashmap]
 ---
 {% include JB/setup %}
 

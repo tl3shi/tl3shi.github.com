@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Word Ladder 题解"
 description: "[leetcode] Word Ladder 题解"
 category: leetcode 
-tags: [leetcode, c++, ]
+tags: [leetcode, c++, BFS]
 ---
 {% include JB/setup %}
 

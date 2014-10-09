@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Reverse Words in a String  题解"
 description: "[leetcode] Reverse Words in a String 题解"
 category: leetcode 
-tags: [leetcode, c++, reverse]
+tags: [leetcode, c++, reverse, string]
 ---
 {% include JB/setup %}
 

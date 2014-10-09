@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "[leetcode] combination Sum 题解"
-description: "[leetcode] combination Sum 题解"
+title: "[leetcode] Combination Sum 题解"
+description: "[leetcode] Combination Sum 题解"
 category: leetcode 
-tags: [leetcode, c++, combination, DFS]
+tags: [leetcode, c++, combination, 排列组合, DFS]
 ---
 {% include JB/setup %}
 

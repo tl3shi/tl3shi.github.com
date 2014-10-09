@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "[leetcode] best-time-to-buy-and-sell-stock 题解"
-description: "[leetcode] best-time-to-buy-and-sell-stock 题解"
+title: "[leetcode] Best Time to Buy and Sell Stock 题解"
+description: "[leetcode] Best Time to Buy and Sell Stock 题解"
 category: leetcode 
 tags: [leetcode, c++, DP]
 ---
 {% include JB/setup %}
 
 
-题目来源：[best-time-to-buy-and-sell-stock](https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+题目来源：[Best Time to Buy and Sell Stock](https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
 >
 

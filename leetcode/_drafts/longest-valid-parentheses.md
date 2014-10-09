@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Longest Valid Parentheses 题解"
 description: "[leetcode] Longest Valid Parentheses 题解"
 category: leetcode 
-tags: [leetcode, c++, stack, string]
+tags: [leetcode, c++, stack, string, parentheses]
 ---
 {% include JB/setup %}
 

@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Flatten Binary Tree to Linked List  题解"
 description: "[leetcode] Flatten Binary Tree to Linked List  题解"
 category: leetcode 
-tags: [leetcode, c++, tree, traverse]
+tags: [leetcode, c++, binary tree, traverse]
 ---
 {% include JB/setup %}
 

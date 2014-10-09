@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Single Number 题解"
 description: "[leetcode] Single Number 题解"
 category: leetcode 
-tags: [leetcode, c++, 位运算]
+tags: [leetcode, c++, bit operation, search]
 ---
 {% include JB/setup %}
 

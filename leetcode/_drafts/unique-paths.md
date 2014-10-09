@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Unique Paths 题解"
 description: "[leetcode] Unique Paths 题解"
 category: leetcode 
-tags: [leetcode, c++, ]
+tags: [leetcode, c++, combination, 排列组合, math]
 ---
 {% include JB/setup %}
 

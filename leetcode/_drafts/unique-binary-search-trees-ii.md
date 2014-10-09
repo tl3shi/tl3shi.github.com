@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Unique Binary Search Trees II 题解"
 description: "[leetcode] Unique Binary Search Trees II 题解"
 category: leetcode 
-tags: [leetcode, c++, ]
+tags: [leetcode, c++, binary tree, BST]
 ---
 {% include JB/setup %}
 
