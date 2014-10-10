@@ -15,6 +15,7 @@ tags: [leetcode, c++, list, sort]
 解题思路：
 可以用归并或者快排.
 merge就比较简单，一个一个比较然后将较小的放到上一个的后面。 用一个dummy省去第一个head的确定。
+
 ```cpp
 ListNode* merge(ListNode* head1, ListNode* head2)
 {
@@ -41,6 +42,7 @@ ListNode* merge(ListNode* head1, ListNode* head2)
 }
 ```
 然后就是递归一半一半来，如下所示：
+
 ```cpp
 ListNode * mergesort(ListNode * head)
 {
@@ -72,6 +74,7 @@ ListNode * mergesort(ListNode * head)
 }
 ```
 当然也可以用快慢指针去找中间的那个。
+
 ```cpp
 ListNode *sortList(ListNode *head) 
     {
@@ -93,6 +96,7 @@ ListNode *sortList(ListNode *head)
 ```
 
 刚开始写的快排，有的testcase过不了(数字范围全是1-3那个共30293个数)，把这个testcase排除掉后，也能AC。
+
 ```cpp
  ListNode* quick_sort_(ListNode * head)
 {

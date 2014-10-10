@@ -47,23 +47,24 @@ tags: [leetcode, c++, binary tree, traverse]
 
 ```cpp
 	
-	void connect(TreeLinkNode *root) 
-    {
-        while(root)
-        {
-            auto left = root->left;
-            while(root) //go right
-            {
-                if(root->left && root->right)
-                    root->left->next = root->right;
-                if(root->right && root->next)
-                    root->right->next = root->next->left;
-                root = root->next;
-            }
-            root = left;//go down
-        }
-    }
+void connect(TreeLinkNode *root) 
+{
+   while(root)
+   {
+       auto left = root->left;
+       while(root) //go right
+       {
+           if(root->left && root->right)
+               root->left->next = root->right;
+           if(root->right && root->next)
+               root->right->next = root->next->left;
+           root = root->next;
+       }
+       root = left;//go down
+   }
+}
 ```
+还有的写法就是 [Populating Next Right Pointers in Each Node II](./populating-next-right-pointers-in-each-node-ii.html)了，完全可以用于解这个题目。
 
 
  
