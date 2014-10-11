@@ -1,4 +1,5 @@
 #coding=utf-8
+import os
 
 #run in *nix/mac the new line for input file is mac
 def parsefile(filename):
@@ -9,15 +10,20 @@ def parsefile(filename):
     for i in range(10, len(lines)):
         line = lines[i]
         if (line.startswith("###")):
+            if(len(lines[i-1]) >= 2):
+                result.append('\n')
             line = line[:3] + ' ' + line[4:].strip()
             if(line[4] >= '0' and line[4] <= '5'):
                 line = line[:4] + line[5:].strip()
                 if(line[4] == '.'):
                     line = line[:4]+line[5:]
+            line += '\n'
         if (line.startswith('```cpp')) and (len(lines[i-1]) > 2):
             needchange = True
             result.append('\n')
         result.append(line)
+        if (line.startswith("###") and len(lines[i+1]) >= 2):
+            result.append('\n')
     result.append('\n')
     f.close()
     if(needchange):

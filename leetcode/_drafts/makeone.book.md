@@ -370,7 +370,9 @@ w(del), w(ins), w(sub) 分别是删除，插入，替换(substitute)的权重。
 
 解题思路：
 
-### 递归超时。
+### 递归
+
+超时。
 
 ```cpp
 bool isInterleave(string s1, string s2, string s3)
@@ -388,7 +390,9 @@ bool isInterleave(string s1, int i1, string s2, int i2, string s, int i)
 }
 ```
 
-###  动态规划DP。
+###  动态规划
+
+DP。
 
 用DP，类似[Distinct Subsequences](./distinct-subsequences.html) 一样，
 dp[i][j]表示长度为i的s1[0:i-1],长度为j的s2[0:j-1]和s3[0:i+j-1]的匹配结果，那么 
@@ -436,6 +440,7 @@ bool isInterleave(string s1, string s2, string s3)
 解题思路：
 
 ###  暴力搜索, \\(O(N^2) \\)
+
 最简单的方法就是选中i(0~n-1)，然后向两边扩展，复杂度为\\(O(N^2) \\) . 注意回文长度可能是奇数或者偶数， 即
 ```aba or abba ```
 
@@ -506,6 +511,7 @@ string longestPalindrome(string s)
 ```
 
 ###  DP, \\(O(N^2) \\)
+
 dp[i][j] 表示 s[i:j] 是回文, 当且尽当``` s[i] == [j] && dp[i+1][j-1]```, 即计算dp[i][j]时, dp[i+1][j-1]得先计算出来，算dp[x][i]，必须先把dp[x][i-1]先计算出来了来。
 
 
@@ -540,6 +546,7 @@ string longestPalindrome(string s)
 
 
 ###  \\( O(n) \\) 算法, Manacher 算法
+
 [felix021的文章讲得很清楚](http://www.felix021.com/blog/read.php?2040)，这里“偷”过来。
 
 >
@@ -631,6 +638,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 解题思路：
 
 ###  暴力O(n^2)
+
 超时
 
 ```cpp
@@ -654,6 +662,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 ```
 
 ###  DP O(n)
+
 记录到i为止的最大值和最小值，最小值乘以当前值可能反而变成最大值，不用去考虑当前A[i]的值的正负，分情况讨论，这样反而复杂。
 
 ```cpp
@@ -716,7 +725,9 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 注意此例是连续subarray,且最少得选1个。
 
 若当前i，前面i-1的结果若为负的话，新序列就从当前A[i]开始算起了，不然就将当前A[i]附加上去。
+
 ###  DP, O(n) 空间
+
 ```cpp
 	
 	int maxSubArray(int A[], int n) 
@@ -738,6 +749,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 ```
 
 ###  DP, O(1) 空间
+
 上面的优化一下即可。
 
 ```cpp
@@ -762,6 +774,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 
 
 ###  分治, O(nlogn)
+
 分治算法：要么左半/右半，要么包括中间的和左右两边都有部分, 时间复杂度```O(NlogN)```.
 
 ```cpp
@@ -815,7 +828,9 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 
 解题思路：
 
-###  递归用递归思路比较清晰，然后转成迭代。
+###  递归
+
+用递归思路比较清晰，然后转成迭代。
 
 ```cpp
 
@@ -842,6 +857,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 ```
 
 ###  动态规划, O(m+n)空间
+
 ```cpp
 	
 	int minPathSum(vector<vector<int> > &grid)
@@ -863,6 +879,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 
 
 ###  动态规划, O(n)空间
+
 更加节约点空间可以这样. 参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)
 	
 	f[j] = min(f[j-1], f[j])+grid[i][j];
@@ -909,7 +926,9 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 
 解题思路：
 
-###  直接暴力解决枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
+###  直接暴力解决
+
+枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
 还可以优化，把中间的某个子串是否回文用hash缓存下来。
 
 ```cpp
@@ -961,6 +980,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 ```
 
 ###  利用动态规划 O(n^2)
+
 `dp[i:j]`表示`s[i:j]`是回文,  如果`s[i] == s[j] and dp[i+1, j-1]`,满足条件, 则dp[i:j]就是回文。 
 注意要先算dp[i+1][j-1]，所以循环的顺序。
 
@@ -1335,7 +1355,9 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 
 解题思路：
 
-###  递归递归比较好理解。比如 根节点数字为i, 比i小的左孩纸i-1个(子问题), 右孩纸n-i. 于是就有了下面的代码。
+###  递归
+
+递归比较好理解。比如 根节点数字为i, 比i小的左孩纸i-1个(子问题), 右孩纸n-i. 于是就有了下面的代码。
 
 ```cpp
 int numTrees(int n) 
@@ -1349,7 +1371,9 @@ int numTrees(int n)
 }
 ```
 
-###  动态规划其实可以缓存下, 用动态规划。
+###  动态规划
+
+其实可以缓存下, 用动态规划。
 
 ```cpp
 int f(int n)
@@ -1372,7 +1396,9 @@ int numTrees(int n)
 }
 ```
 
-###  数学公式法其实这个问题有公式可以直接算的，参考[卡塔兰数](http://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0) 。
+###  数学公式法
+
+其实这个问题有公式可以直接算的，参考[卡塔兰数](http://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0) 。
 
 ## Unique Paths II
 
@@ -1629,6 +1655,7 @@ int numTrees(int n)
 解题思路：
 
 ###  递归版
+
 ```cpp
 	
 	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2, int carry)
@@ -1658,6 +1685,7 @@ int numTrees(int n)
 ```
 
 ###  迭代版
+
 ```cpp
 	
 	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) 
@@ -1709,11 +1737,13 @@ int numTrees(int n)
 解题思路：
 
 ###  tricky 方法, 另外取O(n)空间
+
 偷懒方法，另外取另外取O(n)空间把list的数据取出来放入数组，然后跟[](./convert-sorted-array-to-binary-search-tree.html)题目一样用数组的方式去做。
 代码就略过了。
 虽然不是出题者的本意～ 但...... 你咬我呀.
 
 ###  O(nlogn)时间
+
 每次用O(len/2)的时间去把中间的节点找出来。然后跟数组一样的方式解决。时间复杂度为O(nlogn).中途找mid不跟数组一样O(1).
 
 ```cpp
@@ -1842,6 +1872,7 @@ int numTrees(int n)
 
 ###  传统方法用hashmap
 
+
 主要是解决random pointer的问题，可以用一个map把copy过的存起来，下次碰到的时候直接从map中取。
 
 ```cpp
@@ -1887,6 +1918,7 @@ int numTrees(int n)
 ```
 
 ###  常数空间神奇妙解
+
 上面的的方法用了额外的空间，网上总是有些高人能想出牛B的解法。下面就是一个。
 
 [不用map等数据结构常数空间解Copy List with Random Pointer](http://crushbeercrushcode.org/2013/09/copying-linked-lists-with-random-pointers)，该方法分3步：
@@ -2611,7 +2643,9 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
 
 解题思路：
 
-###  `O(n)`时间 + `O(n)`空间将node都copy出来放到数组里，后半段逆序(或者直接通过下标不用逆序)连接前半段。
+###  `O(n)`时间 + `O(n)`空间
+
+将node都copy出来放到数组里，后半段逆序(或者直接通过下标不用逆序)连接前半段。
 
 ```cpp
 
@@ -2642,7 +2676,9 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
 	}
 ```
 
-###  `O(n)`时间 + `O(1)`空间这才是出题者的意图，同样后半段逆序，但通过指针的方式就地逆序，然后与前半段连接。
+###  `O(n)`时间 + `O(1)`空间
+
+这才是出题者的意图，同样后半段逆序，但通过指针的方式就地逆序，然后与前半段连接。
 
 ```cpp
 
@@ -3010,6 +3046,7 @@ ListNode * quick_sort(ListNode * head)
 解题思路：
 
 ###  reverseKGroup
+
 前面刚写了 [reverse-nodes-in-k-group](./reverse-nodes-in-k-group.html)，直接调用一下，传参数2即可。
 
 ```cpp
@@ -3067,6 +3104,8 @@ ListNode *swapPairs(ListNode *head)
 
 
 ###  递归版本
+
+
 >
 	next(p1->p2->p3->p4...) = 	
 	p1->next = next(p3->p4...);
@@ -3092,6 +3131,7 @@ ListNode *swapPairs(ListNode *head)
 ```
 
 ###  迭代版本
+
 ```cpp
 ListNode *swapPairs(ListNode *head) 
 {
@@ -3193,7 +3233,9 @@ ListNode *swapPairs(ListNode *head)
 
 
 ###  思路一: 直接递归(略)
+
 ###  思路二: 用stack.
+
 ```cpp
 vector<int> inorderNormal(TreeNode * root)
 {
@@ -3227,6 +3269,7 @@ vector<int> inorderTraversal(TreeNode *root)
 ```
 
 ###  思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
+
 利用线索二叉树, 利用叶子节点的空指针指向前驱后继来记住状态。算法仍参考[Morris Traversal](http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html)，里面讲了详细的案例。
 
 
@@ -3297,6 +3340,7 @@ vector<int> inorderMorris(TreeNode * root)
 解题思路：
 
 ###  常规方法, 两个queue交替
+
 ```cpp
 	
 	vector<vector<int> > levelOrder0(TreeNode *root)
@@ -3322,6 +3366,7 @@ vector<int> inorderMorris(TreeNode * root)
 ```
 
 ###  单queue+隔板
+
 前面[word ladder ii](./word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
 ```cpp
@@ -3351,6 +3396,7 @@ vector<int> inorderMorris(TreeNode * root)
 ```
 
 ### 递归
+
 递归写起来就是简单。
 
 ```cpp
@@ -3403,9 +3449,13 @@ II](https://oj.leetcode.com/problems/binary-tree-level-order-traversal-ii/)
 跟前一题[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)唯一的区别就是这个将最后结果reverse一下。
 这里就只列了其中一种代码了。
 
-###  常规方法, 两个queue交替参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
+###  常规方法, 两个queue交替
+
+参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
  
+
 ###  单queue+隔板
+
 前面[word ladder ii](./word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
 ```cpp
@@ -3436,6 +3486,7 @@ II](https://oj.leetcode.com/problems/binary-tree-level-order-traversal-ii/)
 ```
 
 ### 递归
+
 参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
  
 
@@ -3507,6 +3558,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 下文用了5种方法实现了对二叉树进行后序遍历。
 
 ### 思路一: 直接递归
+
 ```cpp
 	
 	void postRecursion(TreeNode * root, vector<int> &path)
@@ -3527,7 +3579,9 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 	}
 ```
 
-### 思路二: 非递归. 仿造先序,因为先序的非递归很好写.(来自寝室哥们ZZ大神的思路)
+### 思路二: 非递归. 仿造先序,因为先序的非递归很好写.
+
+(来自寝室哥们ZZ大神的思路)
 	
 	先序: `中左右` 
 	后序: `左右中` 
@@ -3559,6 +3613,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 ```
 
 ### 思路三：传统方法
+
 用一个指针last记录上一次访问的节点来区分右孩纸是否已经访问过了该回归到父节点。代码如下
 
 ```cpp
@@ -3594,6 +3649,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 ```
 
 ### 思路四：改进的传统方法
+
 下面的方法来自网络(但忘了具体出处了). 比较好理解。
 
 >
@@ -3634,6 +3690,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 ```
 
 ### 思路五：Morris遍历
+
 以上都用了`O(n)`的时间+`O(n)`的空间.
 还有就是传说中的利用了线索二叉树`O(1)`的空间的`Morris遍历算法`.
 主要就是利用了叶子节点的孩纸指针, 指向后继节点记录回退的位置。
@@ -3718,7 +3775,9 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 
 
 ###  思路一: 直接递归(略)
+
 ###  思路二: 用stack.
+
 ```cpp
 
     vector<int> preNormal(TreeNode * root)
@@ -3740,6 +3799,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 ```
 
 ###  思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
+
 利用线索二叉树, 利用叶子节点的空指针指向前驱后继来记住状态。算法仍参考[Morris Traversal](http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html)，里面讲了详细的案例。
 
 
@@ -3815,9 +3875,13 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 区别就是这个将第偶数层的结果reverse一下。
 这里就只列了其中一种代码了。
 
-###  常规方法, 两个queue交替参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
+###  常规方法, 两个queue交替
+
+参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
  
+
 ###  单queue+隔板
+
 前面[word ladder ii](./word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
 ```cpp
@@ -3850,6 +3914,7 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 ```
 
 ### 递归
+
 参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
  
 
@@ -3962,11 +4027,13 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 解题思路：
 
 ###  tricky 方法, 另外取O(n)空间
+
 偷懒方法，另外取另外取O(n)空间把list的数据取出来放入数组，然后跟[](./convert-sorted-array-to-binary-search-tree.html)题目一样用数组的方式去做。
 代码就略过了。
 虽然不是出题者的本意～ 但...... 你咬我呀.
 
 ###  O(nlogn)时间
+
 每次用O(len/2)的时间去把中间的节点找出来。然后跟数组一样的方式解决。时间复杂度为O(nlogn).中途找mid不跟数组一样O(1).
 
 ```cpp
@@ -4533,6 +4600,7 @@ void connect(TreeLinkNode *root)
 解题思路：
 
 ###  求得中序遍历结果,再两边向中间扫描
+
 O(2*n) 空间解法～
 直接中序遍历，然后分别从前往后、从后往前找非升序、非降序的两个node，交换其值即可。
 
@@ -4576,6 +4644,7 @@ O(2*n) 空间解法～
 ```
 
 ###  中序遍历一边遍历，一边扫描。
+
 当两个节点都找到后，即可退出中序遍历流程。
 
 ```cpp
@@ -4615,6 +4684,7 @@ O(2*n) 空间解法～
 ```
 
 ###  Morris遍历，常数空间。
+
 算法解释见[binary-tree-inorder-traversal](./binary-tree-inorder-traversal.html);
 
 注意*找出两个node后还得让遍历走完～以避免之前的改动revert完毕*，否则可能会造成oj check时死循环(传入的树结构修改后不对).
@@ -4686,6 +4756,7 @@ O(2*n) 空间解法～
 思路跟上题[对称树](./symmetric-tree.html)一样, 仍分递归和迭代两种方法。
 
 ###  递归
+
 ```cpp
 	
 	bool isSameTreeRecursion(TreeNode *p, TreeNode *q) 
@@ -4698,6 +4769,7 @@ O(2*n) 空间解法～
 ```
 
 ###  迭代
+
 ```cpp
 	
 	bool isSameTree(TreeNode *p, TreeNode *q) 
@@ -4780,12 +4852,14 @@ O(2*n) 空间解法～
 解题方法跟[same tree](./same-tree.html)差不多。
 
 ### 递归
+
 ```cpp
 	
 	bool isSymmetric(TreeNode* node1, TreeNode* node2)    {        if(node1 == NULL && node2 == NULL) return true;        if(node1 == NULL || node2 == NULL) return false;        if(node1->val != node2->val ) return false;        return isSymmetric(node1->left, node2->right) && isSymmetric(node1->right, node2->left);    }    bool isSymmetric(TreeNode *root)     {        if(root == NULL) return true;            return isSymmetric(root->left, root->right);    }
 ```
 
 ### 迭代
+
 ```cpp
 
 	bool isSymmetric(TreeNode *root)    {        if(root == NULL) return true;        stack<TreeNode*> q;        q.push(root->left);        q.push(root->right);        while(! q.empty())        {            auto right = q.top(); q.pop();            auto left = q.top(); q.pop();            if(left == NULL && right == NULL) continue;            if(left == NULL || right == NULL) return false;            if(left->val != right->val) return false;            q.push(right->left);            q.push(left->right);            q.push(left->left);            q.push(right->right);        }        return true;    }
@@ -4810,7 +4884,9 @@ O(2*n) 空间解法～
 
 解题思路：
 
-###  递归递归比较好理解。比如 根节点数字为i, 比i小的左孩纸i-1个(子问题), 右孩纸n-i. 于是就有了下面的代码。
+###  递归
+
+递归比较好理解。比如 根节点数字为i, 比i小的左孩纸i-1个(子问题), 右孩纸n-i. 于是就有了下面的代码。
 
 ```cpp
 int numTrees(int n) 
@@ -4824,7 +4900,9 @@ int numTrees(int n)
 }
 ```
 
-###  动态规划其实可以缓存下, 用动态规划。
+###  动态规划
+
+其实可以缓存下, 用动态规划。
 
 ```cpp
 int f(int n)
@@ -4847,7 +4925,9 @@ int numTrees(int n)
 }
 ```
 
-###  数学公式法其实这个问题有公式可以直接算的，参考[卡塔兰数](http://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0) 。
+###  数学公式法
+
+其实这个问题有公式可以直接算的，参考[卡塔兰数](http://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0) 。
 
 ## Unique Binary Search Trees II
 
@@ -4919,6 +4999,7 @@ vector<TreeNode *> generateTrees(int n)
 解题思路：
 
 ###  递归判断节点值是否满足条件
+
 ```cpp
 	
 	bool _isBST(TreeNode * node, int min_, int max_)
@@ -4935,6 +5016,7 @@ vector<TreeNode *> generateTrees(int n)
 ```
 
 ###  中序遍历
+
 BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、迭代、Morris遍历等，详情可以参考[binary-tree-inorder-traversal](./binary-tree-inorder-traversal.html), 下面就只列一种了。
 
 ```cpp
@@ -5360,6 +5442,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 解题思路：
 
 ###  利用hashmap
+
 用一个set/map记录每个数，然后挨个找相邻的数字，每找到一个就从原set/map中去掉，直到全部遍历完毕。
 
 ```cpp
@@ -5394,6 +5477,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 ```
 
 ###  先利用O(n)的排序
+
 这也是参考了[discuss](https://oj.leetcode.com/discuss/2731/this-problem-has-a-o-n-solution?show=4368#a4368)的答案。 先用一个O(n)的排序算法，然后挨个左右看就是。
 注意数组中可能含有相同的数字以及负数。
 
@@ -5690,7 +5774,10 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 
 解题思路：
 	
-###  countSort= O(2\*n)按照提示，分别数数0,1,2各有多少个，然后填充进去即可。简单的countsort.
+
+###  countSort= O(2\*n)
+
+按照提示，分别数数0,1,2各有多少个，然后填充进去即可。简单的countsort.
 
 ```cpp
 	
@@ -5717,6 +5804,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 ```
 
 ###  O(1\*n) 算法
+
 设前面的数字已经排好序.  0000 111 222 *1\*02*… 
 
 记录第一次出现1的index，第一次出现2的index， 当前搜索的数是1的话，将first2改为1，当前index的数改为2即可...即:
@@ -5753,6 +5841,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 ```
 
 ###  O(1\*n) 算法
+
 双指针算法, 参考 [leetcode-cpp](https://github.com/soulmachine/leetcode).
 
 	zero记录最后一个0的的后一个index(可能是1或2), two记录最开始一个2的位置。
@@ -6255,6 +6344,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 解题思路：
 
 ###  普通程序员方法
+
 用一个hashmap数数，再遍历一次即可。
 
 ```cpp
@@ -6275,6 +6365,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 ```
 
 ###  文艺程序员方法
+
 看题目要求不用额外的存储~ 然后所有数字出现2次～ 然后想想位运算。能想到位运算应该就差不多了。 `1^1 = 0 `
 
 ```cpp
@@ -6303,9 +6394,11 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 解题思路：
 
 ###  普通程序员方法
+
 用一个hashmap数数，再遍历一次即可。代码就略了。
 
 ###  文艺程序员方法
+
 有了[Single Number](http://tanglei.me/leetcode/single-number.html)的思路，可能你会想想用位运算。不过一时半会貌似想不太出来。没关系，开一个32位数组，每个数字出现3次，相应的位肯定出现3次的整数倍。剩下的那些数对应的那个应该就是要找的了。
 
 ```cpp
@@ -6330,6 +6423,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 ```
 
 ###  极品程序员
+
 从[discuss](https://oj.leetcode.com/discuss/857/constant-space-solution)看到极品程序员的答案。值得学习，不过有时候容易搞混。个人认为上面第1种(文艺)程序员的方法就不错。
 
 
@@ -6419,6 +6513,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 解题思路：
 
 ###  递归版
+
 ```cpp
 	
 	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2, int carry)
@@ -6448,6 +6543,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 ```
 
 ###  迭代版
+
 ```cpp
 	
 	ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) 
@@ -6567,7 +6663,10 @@ int divide(int dividend, int divisor)
 
 
 解题思路：
-###  逆序注意观察，n每增加1，即是在n-1的结果之上，最高位加1，并按照n-1的逆序。 
+
+###  逆序
+
+注意观察，n每增加1，即是在n-1的结果之上，最高位加1，并按照n-1的逆序。 
 
 	n = 1 
 	0 
@@ -6608,6 +6707,7 @@ int divide(int dividend, int divisor)
 ```
 
 ### 公式法
+
 [格雷码](http://zh.wikipedia.org/zh-cn/%E6%A0%BC%E9%9B%B7%E7%A0%81)
 
 	G：格雷码  B：二进制码 
@@ -6921,6 +7021,7 @@ int romanToInt(string s)
 解题思路：
 
 ### 二分
+
 注意 可能越界Int。
 
 ```cpp
@@ -7021,6 +7122,7 @@ $$
 - 越界问题。INT_MAX (2147483647) or INT_MIN (-2147483648) is returned. 
 
 ###  从后往前
+
 ```cpp
 int atoi(const char *str) 
 {
@@ -7053,6 +7155,7 @@ int atoi(const char *str)
 上面的解法从后往前，注意base可能越界。也可以用下面的解法，从前往后。
 
 ###  从前往后
+
 ```cpp
 int atoi(const char *str)
 {
@@ -7099,6 +7202,7 @@ int atoi(const char *str)
 解题思路：
 
 ###  粗暴方法
+
 自己写的代码丑陋无比，一种情况一种情况试, 实在是无参考价值。
 主要是各种情况，例如：
 
@@ -7206,6 +7310,7 @@ int atoi(const char *str)
 ```   
 
 ###  利用strtod.
+
 利用函数**strtod**. 
 	
 	double      strtod( const char          *str, char          **str_end );
@@ -7229,6 +7334,7 @@ int atoi(const char *str)
 ```
 
 ###  利用自动机
+
 可参考 [自动机实现valid-number](http://blog.csdn.net/kenden23/article/details/18696083).
 
 	注释一下本题分多少状态吧：
@@ -7463,6 +7569,7 @@ int evalRPN(vector<string> &tokens) {
 解题思路：
 
 ###  暴力法 \\( O(m*n)\\)
+
 ```cpp
 char *strStr(char *haystack, char *needle) 
 {
@@ -7486,6 +7593,7 @@ char *strStr(char *haystack, char *needle)
 ```
 
 ###  KMP, \\( O(m + n) \\)
+
 [这篇文章](http://blog.csdn.net/v_july_v/article/details/7041827) 讲得比较详细.
 
 ```cpp
@@ -7661,6 +7769,7 @@ string longestCommonPrefix(vector<string> &strs)
 解题思路：
 
 ###  暴力搜索, \\(O(N^2) \\)
+
 最简单的方法就是选中i(0~n-1)，然后向两边扩展，复杂度为\\(O(N^2) \\) . 注意回文长度可能是奇数或者偶数， 即
 ```aba or abba ```
 
@@ -7731,6 +7840,7 @@ string longestPalindrome(string s)
 ```
 
 ###  DP, \\(O(N^2) \\)
+
 dp[i][j] 表示 s[i:j] 是回文, 当且尽当``` s[i] == [j] && dp[i+1][j-1]```, 即计算dp[i][j]时, dp[i+1][j-1]得先计算出来，算dp[x][i]，必须先把dp[x][i-1]先计算出来了来。
 
 
@@ -7765,6 +7875,7 @@ string longestPalindrome(string s)
 
 
 ###  \\( O(n) \\) 算法, Manacher 算法
+
 [felix021的文章讲得很清楚](http://www.felix021.com/blog/read.php?2040)，这里“偷”过来。
 
 >
@@ -7892,6 +8003,7 @@ int lengthOfLongestSubstring(string s)
 找连续合法的括号对数。
 
 ###  O(2\*N)
+
 1、用一个数组记录每个括号的配对状态，借助stack找配对的index，最后再扫描一遍，找连续配对的数量max.[ref1](https://oj.leetcode.com/discuss/5907/an-easy-understanding-way-to-solve-it).
 
 ```cpp
@@ -7925,6 +8037,7 @@ int lengthOfLongestSubstring(string s)
 ```
 
 ###  O(N)
+
 
 用last记录上一个还没配对的右括号”)”, 用一个栈记录下”(“的index, 遇到”)”, 配对时pop掉，记录其长度, pop完时，长度为当前 `index-last`, 没完时，长度为当前`index-stack.top()`. [ref2](http://www.cnblogs.com/lichen782/p/leetcode_Longest_Valid_Parentheses.html)
 
@@ -8444,6 +8557,7 @@ bool isValid(string s)
 跟 [regular-expression-matching](./regular-expression-matching.html) 类似。
 
 ###  递归
+
 主要是考虑 “\*” 匹配任意字符的问题， 下面代码超时了。
 
 ```cpp
@@ -8474,6 +8588,7 @@ bool isMatch(const char *s, const char *p)
 ```
 
 ###  迭代
+
 Key point, compare char one by one, if not matched, and '\*' matched before, then pattern backtrace to '\*', and string backtrace to the later one of compared char of last iterative time. 
 参考了 [discuss.leetcode](http://discuss.leetcode.com/questions/222/wildcard-matching).
 
@@ -8828,7 +8943,9 @@ vector<string> letterCombinations(string digits)
 
 解题思路：
 
-###  直接暴力解决枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
+###  直接暴力解决
+
+枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
 还可以优化，把中间的某个子串是否回文用hash缓存下来。
 
 ```cpp
@@ -8880,6 +8997,7 @@ vector<string> letterCombinations(string digits)
 ```
 
 ###  利用动态规划 O(n^2)
+
 `dp[i:j]`表示`s[i:j]`是回文,  如果`s[i] == s[j] and dp[i+1, j-1]`,满足条件, 则dp[i:j]就是回文。 
 注意要先算dp[i+1][j-1]，所以循环的顺序。
 
@@ -9047,6 +9165,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 解题思路：
 
 ###  置换法
+
 递归, 一个一个与第一个交换。
 
 ```cpp
@@ -9074,6 +9193,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 ###  增量构造法
+
 可以跟 [combinations](./combinations.html) 类似, 一个一个往里面加。
 
 ```cpp
@@ -9106,6 +9226,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 
 ###  nextPermunation
+
 参考 [permutations-ii](./permutations-ii.html).
 
 ## Permutations II
@@ -9123,6 +9244,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 跟 [Permutations](./Permutations.html)思路差不多，分为下面几种解法。
 
 ### 置换法
+
 跟[Permutations](./Permutations.html)一样，每一个与第一个交换～用set存结果，将重复的去掉，中途剪枝下即可AC。
 
 ```cpp
@@ -9153,6 +9275,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 ###  增量构造
+
 或者跟permutation的方法，增量构造, 这里需要用一个map存下数量。
 
 ```cpp
@@ -9194,6 +9317,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 ###  next_permunation
+
 自然序的下一个：1 3 5 4 2，从后往前找，找到第一个降序(从后往前看)的数字3，然后找后面的比3大的最小的数字4，交换，1 4 5 3 2，然后交换index后面的序列逆序 532->235，构成下一个自然序：1 4 2 3 5。 
 
 ```cpp
@@ -9254,6 +9378,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 注意输出的每个子集要有序。
 
 ### DFS搜索
+
 跟[Combinations](./Combinations.html)一样。
 
 ```cpp
@@ -9282,7 +9407,9 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 
-### 0 二进制组合每个元素都有0/1两种状态，全部排列一下即可。例如1,2,3,4一共有2^4=16种子集，第15种(2^0+2^1+2^2+2^3)为1-4都取, 第7种`(1*(2^0)+1*(2^1)+1*(2^2)+0*(2^3))`为[1,2,3]. [ref](http://blog.csdn.net/magisu/article/details/12989531).
+### 0 二进制组合
+
+每个元素都有0/1两种状态，全部排列一下即可。例如1,2,3,4一共有2^4=16种子集，第15种(2^0+2^1+2^2+2^3)为1-4都取, 第7种`(1*(2^0)+1*(2^1)+1*(2^2)+0*(2^3))`为[1,2,3]. [ref](http://blog.csdn.net/magisu/article/details/12989531).
 注意得先将S排序(当然也可以先加到result中，最后再来排序), 不然结果中的子集顺序不是升序的。
 
 ```cpp
@@ -9453,6 +9580,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 解题思路：
 
 ###  常规
+
 ```cpp
 	
 	void rotate(vector<vector<int> > &matrix)
@@ -9477,6 +9605,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 ###  高级解法
+
 参考[discuss](https://oj.leetcode.com/discuss/3064/in-place-solution)
 	
 	//[discurs]
@@ -9515,7 +9644,9 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 解题思路：
 
-###   O(m + n) 空间另用数组记录哪些行/列有0.
+###   O(m + n) 空间
+
+另用数组记录哪些行/列有0.
 
 ```cpp
 	
@@ -9542,6 +9673,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 ###   常数空间
+
 假设第i行j列是0，那么第0行的j列、第0列第i行 肯定要设置为0。 所以可以用两个变量记录下第0行0列是否有，然后把其他行列的信息往这写。
 
 ```cpp
@@ -9730,6 +9862,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 解题思路：
 
 ### O(n^3) 算法
+
 一种直接的方法是: 横向记录从左到i, 包括i为1的连续1的长度，然后再纵向去查找以这个连续1长度作为min宽的最大的高度,得到面积。O(n^3)
 
 ```cpp
@@ -9777,6 +9910,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 ###  O(n^2)算法
+
 一行一行处理，每一行，按照柱状图那道题目 [Largest Rectangle in Histogram](./Largest-Rectangle-in-Histogram.html) `O(n)`算法处理，总体复杂度O(n^2).
 
 用栈维护了一个递增(非递减)的序列，当当前索引的元素比栈顶小时，取栈顶元素（并出栈），并将这个元素的高度和当前索引端(快降低了)构成的矩形面积，栈中上升的那段都可以出栈并计算。
@@ -9861,7 +9995,9 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 
-###  O(n^2)算法 思路2参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。 思路是对当前高度h, 找左边比他小的最大的index,设为i, 右边比h小最小的index,设为j,则以h为最小高度的面积应该为 
+###  O(n^2)算法 思路2
+
+参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。 思路是对当前高度h, 找左边比他小的最大的index,设为i, 右边比h小最小的index,设为j,则以h为最小高度的面积应该为 
 `(j-i-1)*h`.  eg : [2,5,3,4,1], 当前高度3, 则, left=0, right = 4, area = 3*(4-0-1)=9.
 
 ```cpp
@@ -10403,6 +10539,7 @@ vector<string> generateParenthesis(int n)
 解题思路：
 
 ###  bfs
+
 用BFS搜索，记录从开始到当前路径长度。注意遍历map/set删除满足条件的element的写法。第一个用BFS搜索到的肯定是最短的之一。DFS则不是哦。
 
 ```cpp
@@ -10856,7 +10993,9 @@ bool exist(vector<vector<char> > &board, string word)
 
 解题思路：
 
-###  贪心过每个index查看能到的最远的index，若当前最远的比遍历index还小或者相等时就走不下去了。 
+###  贪心
+
+过每个index查看能到的最远的index，若当前最远的比遍历index还小或者相等时就走不下去了。 
 
 ```cpp
 	
@@ -10875,6 +11014,7 @@ bool exist(vector<vector<char> > &board, string word)
 ```
 
 ###  动归
+
 f[i]表示走到第A[i]时, 多余的最大步数。
 ```f[i] = max(f[i-1], A[i-1])-1 ```
 
@@ -10995,6 +11135,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
 解析：注意理解题意 [3,2,2,3,1] 糖数量: 2,1,1,2,1; [4,2,3,4,1] 结果是 2,1,2,3,1. 
 
 ###  每次找最低点，再往回确定糖数量
+
 遍历一两遍即可,每次找下一次最低点，最低点的糖数量为1，再从最低的遍历到当前点得到结果。下面代码用了一个数组保存了每个child的结果，实际上只需用几个变量记录即可。
 按照这个思路写了下面的比较戳的代码。
 
@@ -11078,6 +11219,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
 
 
 ###  从左到右从右到左双向遍历
+
 从[discuss](https://oj.leetcode.com/discuss/76/does-anyone-have-a-better-idea)看到的答案，短小精悍的代码。思路也很清晰。
 
 >
@@ -11115,6 +11257,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
 ```
 
 ###  备忘录法
+
 这个方法参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。即用递归的方式使得分得candy数量同时满足以上两个条件。
 
 ```cpp
@@ -11206,6 +11349,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
 解题思路：
 
 ###  暴力法
+
 一个一个试～  `O(N^2)` 能AC。
 
 ```cpp
@@ -11239,6 +11383,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
 ```
 
 ###  O(N)解法
+
 从[discuss](https://oj.leetcode.com/discuss/4159/share-some-of-my-ideas)看来的答案。思路如下：
 
 >
@@ -11287,7 +11432,10 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
 
 
 解题思路：
-###  逆序注意观察，n每增加1，即是在n-1的结果之上，最高位加1，并按照n-1的逆序。 
+
+###  逆序
+
+注意观察，n每增加1，即是在n-1的结果之上，最高位加1，并按照n-1的逆序。 
 
 	n = 1 
 	0 
@@ -11328,6 +11476,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
 ```
 
 ### 公式法
+
 [格雷码](http://zh.wikipedia.org/zh-cn/%E6%A0%BC%E9%9B%B7%E7%A0%81)
 
 	G：格雷码  B：二进制码 
@@ -11595,6 +11744,7 @@ int removeElement(int A[], int n, int elem)
 解题思路：
 
 ###  O(2\*n)
+
 先找打最高的柱子, 然后从两边往中间走, 如从左到右时, maxHeight记录到当前位置最高的柱子, 若当前高度cur小于maxHeight, 则 water += maxHeight - cur;
 
 参考了 [soulmachine 's leetcode](https://github.com/soulmachine/leetcode); 
@@ -11629,6 +11779,7 @@ int removeElement(int A[], int n, int elem)
 ```
 
 ###  O(n)
+
 >
 	one pass and constant space,one point starts from left,another starts from right,and store the level at present,calculate the area of rectangle "all",and remove the area of block "block".It's the answer. 
 	
