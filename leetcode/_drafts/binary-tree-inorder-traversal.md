@@ -76,8 +76,6 @@ vector<int> inorderTraversal(TreeNode *root)
 	3. 重复以上1、2直到当前节点为空。
 
 ```cpp
-
-```cpp
 vector<int> inorderMorris(TreeNode * root)
 {
     vector<int> result;
@@ -108,6 +106,3 @@ vector<int> inorderMorris(TreeNode * root)
     return move(result);
 }
 ```
-```
-
-
