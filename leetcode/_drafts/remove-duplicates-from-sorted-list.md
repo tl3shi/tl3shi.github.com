@@ -39,6 +39,7 @@ tags: [leetcode, c++, list, 链表]
 把与上一个节点相同的值略过， [1] {1 1} 2 2 ... 
 上面代码保留相同中的第一个， 会造成内存泄漏。 
 下面代码是保留相同中的最后一个，之前的都delete掉。
+
 ```cpp 
 
 	ListNode *deleteDuplicates(ListNode *head) 
@@ -61,3 +62,4 @@ tags: [leetcode, c++, list, 链表]
         return dummy.next;
     }
 ```
+

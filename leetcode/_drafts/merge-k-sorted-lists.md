@@ -50,6 +50,7 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
 不过超时了. 从超时的testcase可以看出,全是短的链表， 加到结果集的链表后，新的短链表加进去运气不好又得将长链表遍历完后才能加到结果链表中。
 
 改成如下代码就可以AC了。
+
 ```cpp
 ListNode *mergeKLists(vector<ListNode *> &lists) 
 {
@@ -67,3 +68,4 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
    return merged[0];
 }
 ```
+

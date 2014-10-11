@@ -74,6 +74,7 @@ tags: [leetcode, c++, binary tree, traverse, recursion]
 注意别被code中的表象所迷惑，将`//Attention 1`的代码提取到`//Attention 0`处。 path先后push_back会反映到递归调用里面去的。
 
 不然应该下面这样写。
+
 ```cpp
 
 	void search2(vector<int> &path, vector<vector<int> >&result, TreeNode* node, int target)
@@ -91,4 +92,5 @@ tags: [leetcode, c++, binary tree, traverse, recursion]
         path.pop_back();
     }
 ```
+
 

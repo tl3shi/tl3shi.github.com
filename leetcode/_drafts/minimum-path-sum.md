@@ -16,8 +16,9 @@ tags: [leetcode, c++, recursion, DP]
 
 解题思路：
 
-####0. 递归
+#### 0. 递归
 用递归思路比较清晰，然后转成迭代。
+
 ```cpp
 
     int min(vector<vector<int> >&grid, int row, int col) 
@@ -42,7 +43,7 @@ tags: [leetcode, c++, recursion, DP]
     } 
 ```
 
-####1. 动态规划, O(m+n)空间
+#### 1. 动态规划, O(m+n)空间
 
 ```cpp
 	
@@ -64,7 +65,7 @@ tags: [leetcode, c++, recursion, DP]
 ```
 
 
-####2. 动态规划, O(n)空间
+#### 2. 动态规划, O(n)空间
 
 更加节约点空间可以这样. 参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)
 	
@@ -89,3 +90,4 @@ tags: [leetcode, c++, recursion, DP]
 		return f[n - 1];
 	}
 ```
+

@@ -15,7 +15,7 @@ tags: [leetcode, c++, matrix, stack]
 
 解题思路：
 
-####0 O(n^3) 算法
+#### 0 O(n^3) 算法
 
 一种直接的方法是: 横向记录从左到i, 包括i为1的连续1的长度，然后再纵向去查找以这个连续1长度作为min宽的最大的高度,得到面积。O(n^3)
 
@@ -63,7 +63,7 @@ tags: [leetcode, c++, matrix, stack]
     }
 ```
 
-####1. O(n^2)算法
+#### 1. O(n^2)算法
 
 一行一行处理，每一行，按照柱状图那道题目 [Largest Rectangle in Histogram](./Largest-Rectangle-in-Histogram.html) `O(n)`算法处理，总体复杂度O(n^2).
 
@@ -123,6 +123,7 @@ tags: [leetcode, c++, matrix, stack]
 	2*(4)=8.
 
 上面代码还可以优化下内存空间, 用`O(n)`n为列数量。
+
 ```cpp
 
 	int maximalRectangle2(vector <string > & matrix)
@@ -148,7 +149,7 @@ tags: [leetcode, c++, matrix, stack]
 ```
 
 
-####2. O(n^2)算法 思路2
+#### 2. O(n^2)算法 思路2
 参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。 思路是对当前高度h, 找左边比他小的最大的index,设为i, 右边比h小最小的index,设为j,则以h为最小高度的面积应该为 
 `(j-i-1)*h`.  eg : [2,5,3,4,1], 当前高度3, 则, left=0, right = 4, area = 3*(4-0-1)=9.
 
@@ -188,3 +189,4 @@ tags: [leetcode, c++, matrix, stack]
         return result;
     }
 ```
+

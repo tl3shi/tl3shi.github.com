@@ -59,6 +59,7 @@ void reverseWords(string &s)
 }
 ```
 从[discuss](https://oj.leetcode.com/discuss/3378/is-my-solution-good-enough)里面还看到了简短的代码～值得学习。 通过stringstream 一次提取一个单词出来, 然后将这个单词与上一次的结果连接(逆序)。
+
 ```cpp
 void reverseWords2(string &s)
 {
@@ -74,3 +75,4 @@ void reverseWords2(string &s)
     s = result.substr(0, result.length()-1);
 }
 ```
+

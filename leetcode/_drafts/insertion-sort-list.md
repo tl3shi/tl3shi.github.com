@@ -45,6 +45,7 @@ ListNode *insertionSortList(ListNode *head)
 ```
 
 顺便把选择排序也写下.
+
 ```cpp
 ListNode * selectionSort(ListNode *head)
 {
@@ -65,3 +66,4 @@ ListNode * selectionSort(ListNode *head)
     return head;
 }
 ```
+

@@ -1,7 +1,7 @@
 
 ## DP, 动态规划类
  
-###Best Time to Buy and Sell Stock III
+### Best Time to Buy and Sell Stock III
 
 题目来源：[Best Time to Buy and Sell Stock III](https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/)
 
@@ -83,7 +83,7 @@
     }
 ```
 
-###Best Time to Buy and Sell Stock
+### Best Time to Buy and Sell Stock
 
 题目来源：[Best Time to Buy and Sell Stock](https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock/)
 
@@ -117,7 +117,7 @@
 ```
 
 
-###Climbing Stairs
+### Climbing Stairs
 
 题目来源：[Climbing Stairs](https://oj.leetcode.com/problems/climbing-stairs/)
 
@@ -159,7 +159,7 @@
     }
 ```
 
-###Decode Ways
+### Decode Ways
 
 题目来源：[Decode Ways](https://oj.leetcode.com/problems/decode-ways/)
 
@@ -186,6 +186,7 @@
 	* 其他, 只能自己跟自己一组了. dp[i] = dp[i-1] eg: (XXX3)6
 	
 还可以将下面的O(n)空间化简成常数空间～记录之前上一次结果 和 上上一次的结果，当前的结果由此获得。
+
 ```cpp
 	
 	int numDecodings(string s) 
@@ -212,7 +213,8 @@
 
 
 
-###Distinct Subsequences
+
+### Distinct Subsequences
 
 题目来源：[Distinct Subsequences](https://oj.leetcode.com/problems/distinct-subsequences/)
 
@@ -304,7 +306,7 @@
 
 这题参考了[REF](https://oj.leetcode.com/discuss/2143/any-better-solution-that-takes-less-than-space-while-in-time?show=2143#q2143)，其实跟[Interleaving String](./interleaving-string.html) 这道题差不多。
 
-###Edit Distance
+### Edit Distance
 
 题目来源：[Edit Distance](https://oj.leetcode.com/problems/edit-distance/)
 
@@ -353,7 +355,7 @@ w(del), w(ins), w(sub) 分别是删除，插入，替换(substitute)的权重。
 
 关于更多编辑距离的算法及应用可参考 [stanford 课件](http://www.stanford.edu/class/cs124/lec/med.pdf)。
 
-###Interleaving String
+### Interleaving String
 
 题目来源：[Interleaving String](https://oj.leetcode.com/problems/interleaving-string/)
 
@@ -368,8 +370,9 @@ w(del), w(ins), w(sub) 分别是删除，插入，替换(substitute)的权重。
 
 解题思路：
 
-##### 0.递归
+####   0.递归
 超时。
+
 ```cpp
 bool isInterleave(string s1, string s2, string s3)
 {
@@ -386,7 +389,7 @@ bool isInterleave(string s1, int i1, string s2, int i2, string s, int i)
 }
 ```
 
-#####1. 动态规划
+####  1. 动态规划
 DP。
 
 用DP，类似[Distinct Subsequences](./distinct-subsequences.html) 一样，
@@ -424,7 +427,8 @@ bool isInterleave(string s1, string s2, string s3)
 }
 ```
 
-###Longest Palindromic Substring
+
+### Longest Palindromic Substring
 
 题目来源：[Longest Palindromic Substring](https://oj.leetcode.com/problems/longest-palindromic-substring/)
 
@@ -433,7 +437,7 @@ bool isInterleave(string s1, string s2, string s3)
 
 解题思路：
 
-#####0. 暴力搜索, \\(O(N^2) \\)
+#### 0. 暴力搜索, \\(O(N^2) \\)
 
 最简单的方法就是选中i(0~n-1)，然后向两边扩展，复杂度为\\(O(N^2) \\) . 注意回文长度可能是奇数或者偶数， 即
 ```aba or abba ```
@@ -504,7 +508,7 @@ string longestPalindrome(string s)
 }
 ```
 
-#####1. DP, \\(O(N^2) \\)
+#### 1. DP, \\(O(N^2) \\)
 
 dp[i][j] 表示 s[i:j] 是回文, 当且尽当``` s[i] == [j] && dp[i+1][j-1]```, 即计算dp[i][j]时, dp[i+1][j-1]得先计算出来，算dp[x][i]，必须先把dp[x][i-1]先计算出来了来。
 
@@ -539,7 +543,7 @@ string longestPalindrome(string s)
 另外，虽然都是平方的算法，上面用vector还过不了，用数组才能过。
 
 
-#####2. \\( O(n) \\) 算法, Manacher 算法
+#### 2. \\( O(n) \\) 算法, Manacher 算法
 
 [felix021的文章讲得很清楚](http://www.felix021.com/blog/read.php?2040)，这里“偷”过来。
 
@@ -616,8 +620,11 @@ string longestPalindrome(string s)
 }
 ```
 
+<!-- MathJax Section -->
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-###Maximum Product Subarray
+### Maximum Product Subarray
 
 题目来源：[Maximum Product Subarray](https://oj.leetcode.com/problems/maximum-product-subarray/)
 
@@ -628,7 +635,7 @@ string longestPalindrome(string s)
 
 解题思路：
 
-#####0. 暴力O(n^2)
+#### 0. 暴力O(n^2)
 
 超时
 
@@ -652,7 +659,7 @@ string longestPalindrome(string s)
 	}
 ```
 
-#####1. DP O(n)
+#### 1. DP O(n)
 
 记录到i为止的最大值和最小值，最小值乘以当前值可能反而变成最大值，不用去考虑当前A[i]的值的正负，分情况讨论，这样反而复杂。
 
@@ -700,7 +707,7 @@ string longestPalindrome(string s)
 	}
 ```
 
-###Maximum Subarray
+### Maximum Subarray
 
 题目来源：[Maximum Subarray](https://oj.leetcode.com/problems/maximum-subarray/)
 
@@ -716,7 +723,7 @@ string longestPalindrome(string s)
 注意此例是连续subarray,且最少得选1个。
 
 若当前i，前面i-1的结果若为负的话，新序列就从当前A[i]开始算起了，不然就将当前A[i]附加上去。
-#####0. DP, O(n) 空间
+#### 0. DP, O(n) 空间
 
 ```cpp
 	
@@ -738,7 +745,7 @@ string longestPalindrome(string s)
     }
 ```
 
-#####1. DP, O(1) 空间
+#### 1. DP, O(1) 空间
 
 上面的优化一下即可。
 
@@ -763,7 +770,7 @@ string longestPalindrome(string s)
 ```
 
 
-##### 2. 分治, O(nlogn)
+####  2. 分治, O(nlogn)
 
 分治算法：要么左半/右半，要么包括中间的和左右两边都有部分, 时间复杂度```O(NlogN)```.
 
@@ -808,7 +815,7 @@ string longestPalindrome(string s)
 
 - [ref](http://en.wikipedia.org/wiki/Maximum_subarray_problem)
 
-###Minimum Path Sum
+### Minimum Path Sum
 
 题目来源：[Minimum Path Sum](https://oj.leetcode.com/problems/minimum-path-sum/)
 
@@ -818,8 +825,9 @@ string longestPalindrome(string s)
 
 解题思路：
 
-#####0. 递归
+####  0. 递归
 用递归思路比较清晰，然后转成迭代。
+
 ```cpp
 
     int min(vector<vector<int> >&grid, int row, int col) 
@@ -844,7 +852,7 @@ string longestPalindrome(string s)
     } 
 ```
 
-#####1. 动态规划, O(m+n)空间
+####  1. 动态规划, O(m+n)空间
 
 ```cpp
 	
@@ -866,7 +874,7 @@ string longestPalindrome(string s)
 ```
 
 
-#####2. 动态规划, O(n)空间
+####  2. 动态规划, O(n)空间
 
 更加节约点空间可以这样. 参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)
 	
@@ -892,7 +900,8 @@ string longestPalindrome(string s)
 	}
 ```
 
-###Palindrome Partitioning
+
+### Palindrome Partitioning
 
 题目来源：[Palindrome Partitioning](https://oj.leetcode.com/problems/palindrome-partitioning/)
 
@@ -913,7 +922,7 @@ string longestPalindrome(string s)
 
 解题思路：
 
-##### 0. 直接暴力解决
+####  0. 直接暴力解决
 枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
 还可以优化，把中间的某个子串是否回文用hash缓存下来。
 
@@ -965,7 +974,7 @@ string longestPalindrome(string s)
 
 ```
 
-#####1. 利用动态规划 O(n^2)
+#### 1. 利用动态规划 O(n^2)
 
 `dp[i:j]`表示`s[i:j]`是回文,  如果`s[i] == s[j] and dp[i+1, j-1]`,满足条件, 则dp[i:j]就是回文。 
 注意要先算dp[i+1][j-1]，所以循环的顺序。
@@ -1053,7 +1062,7 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 
 ```
 
-###Palindrome Partitioning II
+### Palindrome Partitioning II
 
 题目来源：[Palindrome Partitioning II](https://oj.leetcode.com/problems/palindrome-partitioning-ii/)
 
@@ -1121,7 +1130,7 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
     }
 ```
 
-###Scramble String
+### Scramble String
 
 题目来源：[Scramble String ](https://oj.leetcode.com/problems/scramble-string/)
 
@@ -1268,7 +1277,7 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 
 参考 [leetcode-cpp](https://github.com/soulmachine/leetcode)
 
-###Triangle
+### Triangle
 
 题目来源：[Triangle](https://oj.leetcode.com/problems/triangle/)
 
@@ -1307,6 +1316,7 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 ```
 
 如果triangle值可以改变的话，可以O(1)的空间复杂度。
+
 ```cpp
 
     //triangle can be changed
@@ -1322,7 +1332,8 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 ```
 
 
-###Unique Binary Search Trees
+
+### Unique Binary Search Trees
 
 题目来源：[Unique Binary Search Trees](https://oj.leetcode.com/problems/unique-binary-search-trees/)
 
@@ -1339,7 +1350,7 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 
 解题思路：
 
-#####0. 递归
+#### 0. 递归
 递归比较好理解。比如 根节点数字为i, 比i小的左孩纸i-1个(子问题), 右孩纸n-i. 于是就有了下面的代码。
 
 ```cpp
@@ -1354,7 +1365,7 @@ int numTrees(int n)
 }
 ```
 
-#####1. 动态规划 
+#### 1. 动态规划 
 其实可以缓存下, 用动态规划。
 
 ```cpp
@@ -1378,10 +1389,10 @@ int numTrees(int n)
 }
 ```
 
-#####2. 数学公式法
+#### 2. 数学公式法
 其实这个问题有公式可以直接算的，参考[卡塔兰数](http://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0) 。
 
-###Unique Paths II
+### Unique Paths II
 
 题目来源：[Unique Paths II](https://oj.leetcode.com/problems/unique-paths-ii/)
 
@@ -1437,7 +1448,7 @@ int numTrees(int n)
 ```
 
 
-###Word Break
+### Word Break
 
 题目来源：[Word Break](https://oj.leetcode.com/problems/word-break/)
 
@@ -1509,7 +1520,7 @@ int numTrees(int n)
 ```
 
 
-###Word Break II
+### Word Break II
 
 题目来源：[Word Break II](https://oj.leetcode.com/problems/word-break-ii/)
 
@@ -1624,7 +1635,7 @@ int numTrees(int n)
 
 ## list, 链表相关
 
-###Add Two Numbers
+### Add Two Numbers
 
 题目来源：[Add Two Numbers](https://oj.leetcode.com/problems/add-two-numbers/)
 
@@ -1635,7 +1646,7 @@ int numTrees(int n)
 
 解题思路：
 
-#####0. 递归版
+#### 0. 递归版
 
 ```cpp
 	
@@ -1665,7 +1676,7 @@ int numTrees(int n)
 	}
 ```
 
-#####1. 迭代版
+#### 1. 迭代版
 
 ```cpp
 	
@@ -1708,7 +1719,7 @@ int numTrees(int n)
     }
 ```
 
-###Convert Sorted List to Binary Search Tree
+### Convert Sorted List to Binary Search Tree
 
 题目来源：[Convert Sorted List to Binary Search Tree](https://oj.leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)
 
@@ -1717,13 +1728,13 @@ int numTrees(int n)
 
 解题思路：
 
-##### 0. tricky 方法, 另外取O(n)空间
+####  0. tricky 方法, 另外取O(n)空间
 
 偷懒方法，另外取另外取O(n)空间把list的数据取出来放入数组，然后跟[](./convert-sorted-array-to-binary-search-tree.html)题目一样用数组的方式去做。
 代码就略过了。
 虽然不是出题者的本意～ 但...... 你咬我呀.
 
-##### 1. O(nlogn)时间
+####  1. O(nlogn)时间
 
 每次用O(len/2)的时间去把中间的节点找出来。然后跟数组一样的方式解决。时间复杂度为O(nlogn).中途找mid不跟数组一样O(1).
 
@@ -1828,7 +1839,7 @@ int numTrees(int n)
     }
 ```
 
-###Copy List with Random Pointer
+### Copy List with Random Pointer
 
 题目来源：[Copy List with Random Pointer](https://oj.leetcode.com/problems/copy-list-with-random-pointer/)
 
@@ -1851,7 +1862,7 @@ int numTrees(int n)
 
 解题思路：
 
-##### 1. 传统方法用hashmap
+####  1. 传统方法用hashmap
 
 
 主要是解决random pointer的问题，可以用一个map把copy过的存起来，下次碰到的时候直接从map中取。
@@ -1898,7 +1909,7 @@ int numTrees(int n)
 
 ```
 
-##### 2. 常数空间神奇妙解
+####  2. 常数空间神奇妙解
 
 上面的的方法用了额外的空间，网上总是有些高人能想出牛B的解法。下面就是一个。
 
@@ -1960,7 +1971,7 @@ AC代码如下:
 
 ```
 
-###Insertion Sort List
+### Insertion Sort List
 
 题目来源：[Insertion Sort List](https://oj.leetcode.com/problems/insertion-sort-list/)
 
@@ -1999,6 +2010,7 @@ ListNode *insertionSortList(ListNode *head)
 ```
 
 顺便把选择排序也写下.
+
 ```cpp
 ListNode * selectionSort(ListNode *head)
 {
@@ -2020,7 +2032,8 @@ ListNode * selectionSort(ListNode *head)
 }
 ```
 
-###LRU Cache
+
+### LRU Cache
 
 题目来源：[LRU Cache](https://oj.leetcode.com/problems/lru-cache/)
 
@@ -2218,7 +2231,7 @@ Transfers elements from x into the container, inserting them at position. [list 
     };
 ```
 
-###Linked List Cycle
+### Linked List Cycle
 
 题目来源：[Linked List Cycle](https://oj.leetcode.com/problems/linked-list-cycle/)
 
@@ -2246,7 +2259,7 @@ Transfers elements from x into the container, inserting them at position. [list 
     }
 ```
 
-###Linked List Cycle II
+### Linked List Cycle II
 
 题目来源：[Linked List Cycle II](https://oj.leetcode.com/problems/linked-list-cycle-ii/)
 
@@ -2316,7 +2329,7 @@ fast走到a时，slow恰好走了(n-1)圈+c，刚好回到了环起点a处。
     }
 ```
 
-###Merge Two Sorted Lists
+### Merge Two Sorted Lists
 
 题目来源：[Merge Two Sorted Lists](https://oj.leetcode.com/problems/merge-two-sorted-lists/)
 
@@ -2351,7 +2364,7 @@ fast走到a时，slow恰好走了(n-1)圈+c，刚好回到了环起点a处。
 
  
 
-###Merge k Sorted Lists
+### Merge k Sorted Lists
 
 题目来源：[Merge k Sorted Lists](https://oj.leetcode.com/problems/merge-k-sorted-lists/)
 
@@ -2395,6 +2408,7 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
 不过超时了. 从超时的testcase可以看出,全是短的链表， 加到结果集的链表后，新的短链表加进去运气不好又得将长链表遍历完后才能加到结果链表中。
 
 改成如下代码就可以AC了。
+
 ```cpp
 ListNode *mergeKLists(vector<ListNode *> &lists) 
 {
@@ -2413,7 +2427,8 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
 }
 ```
 
-###Partition List
+
+### Partition List
 
 题目来源：[Partition List ](https://oj.leetcode.com/problems/partition-list/)
 
@@ -2456,7 +2471,7 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
 ```
  
 
-###Remove Duplicates from Sorted List
+### Remove Duplicates from Sorted List
 
 题目来源：[Remove Duplicates from Sorted List](https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list/)
 
@@ -2489,6 +2504,7 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
 把与上一个节点相同的值略过， [1] {1 1} 2 2 ... 
 上面代码保留相同中的第一个， 会造成内存泄漏。 
 下面代码是保留相同中的最后一个，之前的都delete掉。
+
 ```cpp 
 
 	ListNode *deleteDuplicates(ListNode *head) 
@@ -2512,7 +2528,8 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
     }
 ```
 
-###Remove Duplicates from Sorted List II
+
+### Remove Duplicates from Sorted List II
 
 题目来源：[Remove Duplicates from Sorted List II](https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list-ii/)
 
@@ -2555,7 +2572,7 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
 别忘了最后的节点->next需要置空。
 
 
-###Remove Nth Node From End of List
+### Remove Nth Node From End of List
 
 题目来源：[Remove Nth Node From End of List](https://oj.leetcode.com/problems/remove-nth-node-from-end-of-list/)
 
@@ -2601,7 +2618,7 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
     return headbak;
 }
 ```
-###Reorder List
+### Reorder List
 
 题目来源：[Reorder List](https://oj.leetcode.com/problems/reorder-list/)
 
@@ -2618,7 +2635,7 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
 
 解题思路：
 
-##### 1. `O(n)`时间 + `O(n)`空间
+####  1. `O(n)`时间 + `O(n)`空间
 将node都copy出来放到数组里，后半段逆序(或者直接通过下标不用逆序)连接前半段。
 
 ```cpp
@@ -2650,7 +2667,7 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
 	}
 ```
 
-##### 2. `O(n)`时间 + `O(1)`空间
+####  2. `O(n)`时间 + `O(1)`空间
 这才是出题者的意图，同样后半段逆序，但通过指针的方式就地逆序，然后与前半段连接。
 
 ```cpp
@@ -2697,7 +2714,7 @@ ListNode *removeNthFromEnd(ListNode *head, int n)
 	}
 ```
 
-###Reverse Linked List II
+### Reverse Linked List II
 
 题目来源：[Reverse Linked List II](https://oj.leetcode.com/problems/reverse-linked-list-ii/)
 
@@ -2746,7 +2763,7 @@ pre不变, 一个一个插入到pre后面.
 ```
 
 
-###Reverse Nodes in k Group
+### Reverse Nodes in k Group
 
 题目来源：[Reverse Nodes in k-Group](https://oj.leetcode.com/problems/reverse-nodes-in-k-group/)
 
@@ -2815,7 +2832,7 @@ ListNode *reverseKGroup(ListNode *head, int k)
     return result;
 }
 ```
-###Rotate List
+### Rotate List
 
 题目来源：[Rotate List](https://oj.leetcode.com/problems/rotate-list/)
 
@@ -2860,7 +2877,7 @@ ListNode *reverseKGroup(ListNode *head, int k)
 ```
 
 
-###Sort List
+### Sort List
 
 题目来源：[Sort List ](https://oj.leetcode.com/problems/sort-list/)
 
@@ -3006,7 +3023,7 @@ ListNode * quick_sort(ListNode * head)
 }
 ```
 
-###Swap Nodes in Pairs
+### Swap Nodes in Pairs
 
 题目来源：[Swap Nodes in Pairs](https://oj.leetcode.com/problems/swap-nodes-in-pairs/)
 
@@ -3018,7 +3035,7 @@ ListNode * quick_sort(ListNode * head)
 
 解题思路：
 
-#####0. reverseKGroup
+#### 0. reverseKGroup
 
 前面刚写了 [reverse-nodes-in-k-group](./reverse-nodes-in-k-group.html)，直接调用一下，传参数2即可。
 
@@ -3076,7 +3093,7 @@ ListNode *swapPairs(ListNode *head)
 ```
 
 
-#####1. 递归版本
+#### 1. 递归版本
 
 >
 	next(p1->p2->p3->p4...) = 	
@@ -3102,7 +3119,7 @@ ListNode *swapPairs(ListNode *head)
 }
 ```
 
-#####2. 迭代版本 
+#### 2. 迭代版本 
 
 ```cpp
 ListNode *swapPairs(ListNode *head) 
@@ -3132,7 +3149,7 @@ ListNode *swapPairs(ListNode *head)
 
 ## binary tree, 二叉树相关
 
-###Balanced Binary Tree
+### Balanced Binary Tree
 
 题目来源：[Balanced Binary Tree ](https://oj.leetcode.com/problems/balanced-binary-tree/)
 
@@ -3185,7 +3202,7 @@ ListNode *swapPairs(ListNode *head)
 
 
 
-###Binary Tree Inorder Traversal
+### Binary Tree Inorder Traversal
 
 题目来源： [Binary Tree Inorder Traversal](https://oj.leetcode.com/problems/binary-tree-Inorder-traversal/)
 
@@ -3204,9 +3221,9 @@ ListNode *swapPairs(ListNode *head)
 解题思路：
 
 
-#####1. 思路一: 直接递归(略)
+####  1. 思路一: 直接递归(略)
 
-#####2. 思路二: 用stack.
+####  2. 思路二: 用stack.
 
 ```cpp
 vector<int> inorderNormal(TreeNode * root)
@@ -3240,7 +3257,7 @@ vector<int> inorderTraversal(TreeNode *root)
 }
 ```
 
-#####3. 思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
+####  3. 思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
 
 利用线索二叉树, 利用叶子节点的空指针指向前驱后继来记住状态。算法仍参考[Morris Traversal](http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html)，里面讲了详细的案例。
 
@@ -3255,6 +3272,7 @@ vector<int> inorderTraversal(TreeNode *root)
 	3. 重复以上1、2直到当前节点为空。
 
 ```cpp
+
 ```cpp
 vector<int> inorderMorris(TreeNode * root)
 {
@@ -3289,7 +3307,8 @@ vector<int> inorderMorris(TreeNode * root)
 ```
 
 
-###Binary Tree Level Order Traversal
+
+### Binary Tree Level Order Traversal
 
 题目来源：[Binary Tree Level Order Traversal](https://oj.leetcode.com/problems/binary-tree-level-order-traversal/)
 
@@ -3314,7 +3333,7 @@ vector<int> inorderMorris(TreeNode * root)
 
 解题思路：
 
-#####0. 常规方法, 两个queue交替
+#### 0. 常规方法, 两个queue交替
 
 ```cpp
 	
@@ -3340,7 +3359,7 @@ vector<int> inorderMorris(TreeNode * root)
 	}
 ```
 
-#####1. 单queue+隔板
+#### 1. 单queue+隔板
 
 前面[word ladder ii](./word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
@@ -3370,7 +3389,7 @@ vector<int> inorderMorris(TreeNode * root)
 	}
 ```
 
-##### 2.递归
+####  2.递归
 
 递归写起来就是简单。
 
@@ -3395,7 +3414,7 @@ vector<int> inorderMorris(TreeNode * root)
     }
 ```
 
-###Binary Tree Level Order Traversal II
+### Binary Tree Level Order Traversal II
 
 题目来源：[Binary Tree Level Order Traversal
 II](https://oj.leetcode.com/problems/binary-tree-level-order-traversal-ii/)
@@ -3424,10 +3443,10 @@ II](https://oj.leetcode.com/problems/binary-tree-level-order-traversal-ii/)
 跟前一题[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)唯一的区别就是这个将最后结果reverse一下。
 这里就只列了其中一种代码了。
 
-#####0. 常规方法, 两个queue交替
+#### 0. 常规方法, 两个queue交替
 参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
  
-#####1. 单queue+隔板
+#### 1. 单queue+隔板
 
 前面[word ladder ii](./word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
@@ -3458,12 +3477,12 @@ II](https://oj.leetcode.com/problems/binary-tree-level-order-traversal-ii/)
     }
 ```
 
-##### 2.递归
+####  2.递归
 
 参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
  
 
-###Binary Tree Maximum Path Sum
+### Binary Tree Maximum Path Sum
 
 题目来源：[Binary Tree Maximum Path Sum](https://oj.leetcode.com/problems/binary-tree-maximum-path-sum/)
 
@@ -3508,7 +3527,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 	}
 ```
 
-###Binary Tree Postorder Traversal
+### Binary Tree Postorder Traversal
 
 题目来源： [Binary Tree Postorder Traversal](https://oj.leetcode.com/problems/binary-tree-postorder-traversal/)
 
@@ -3530,7 +3549,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 
 下文用了5种方法实现了对二叉树进行后序遍历。
 
-#####思路一: 直接递归
+#### 思路一: 直接递归
 
 ```cpp
 	
@@ -3552,7 +3571,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 	}
 ```
 
-#####思路二: 非递归. 仿造先序,因为先序的非递归很好写. 
+#### 思路二: 非递归. 仿造先序,因为先序的非递归很好写. 
 (来自寝室哥们ZZ大神的思路)
 	
 	先序: `中左右` 
@@ -3584,7 +3603,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
     }
 ```
 
-#####思路三：传统方法 
+#### 思路三：传统方法 
 
 用一个指针last记录上一次访问的节点来区分右孩纸是否已经访问过了该回归到父节点。代码如下
 
@@ -3620,7 +3639,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
     }
 ```
 
-#####思路四：改进的传统方法 
+#### 思路四：改进的传统方法 
 
 下面的方法来自网络(但忘了具体出处了). 比较好理解。
 
@@ -3661,7 +3680,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
     }
 ```
 
-#####思路五：Morris遍历
+#### 思路五：Morris遍历
 
 以上都用了`O(n)`的时间+`O(n)`的空间.
 还有就是传说中的利用了线索二叉树`O(1)`的空间的`Morris遍历算法`.
@@ -3727,7 +3746,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 	}
 ```
 
-###Binary Tree Preorder Traversal
+### Binary Tree Preorder Traversal
 
 题目来源： [Binary Tree Preorder Traversal](https://oj.leetcode.com/problems/binary-tree-preorder-traversal/)
 
@@ -3746,9 +3765,9 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 解题思路：
 
 
-#####1. 思路一: 直接递归(略)
+#### 1. 思路一: 直接递归(略)
 
-#####2. 思路二: 用stack.
+#### 2. 思路二: 用stack.
 
 ```cpp
 
@@ -3770,7 +3789,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
     }
 ```
 
-#####3. 思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
+#### 3. 思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
 
 利用线索二叉树, 利用叶子节点的空指针指向前驱后继来记住状态。算法仍参考[Morris Traversal](http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html)，里面讲了详细的案例。
 
@@ -3819,7 +3838,7 @@ path路径能以任意节点开头或结尾。注意maxPathSum(root) != max{ max
 ```
 
 
-###Binary Tree Zigzag Level Order Traversal
+### Binary Tree Zigzag Level Order Traversal
 
 题目来源：[Binary Tree Zigzag Level Order Traversal
 II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
@@ -3847,10 +3866,10 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 区别就是这个将第偶数层的结果reverse一下。
 这里就只列了其中一种代码了。
 
-#####0. 常规方法, 两个queue交替
+#### 0. 常规方法, 两个queue交替
 参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
  
-#####1. 单queue+隔板
+#### 1. 单queue+隔板
 
 前面[word ladder ii](./word-ladder-ii.html)就提到过bfs，用隔板将各层之间隔离出来。只用一个queue就能知道某层是否已经遍历完毕。
 
@@ -3883,12 +3902,12 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
     }
 ```
 
-##### 2.递归
+####  2.递归
 
 参见[Binary Tree Level Order Traversal](./binary-tree-level-order-traversal.html)。
  
 
-###Construct Binary Tree from Inorder and Postorder Traversal
+### Construct Binary Tree from Inorder and Postorder Traversal
 
 题目来源：[Construct Binary Tree from Inorder and Postorder Traversal](https://oj.leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/)
 
@@ -3939,7 +3958,7 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 ```
 
 
-###Construct Binary Tree from Preorder and Inorder Traversal
+### Construct Binary Tree from Preorder and Inorder Traversal
 
 题目来源：[Construct Binary Tree from Preorder and Inorder Traversal](https://oj.leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
 
@@ -3987,7 +4006,7 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
     }
 ```
 
-###Convert Sorted List to Binary Search Tree
+### Convert Sorted List to Binary Search Tree
 
 题目来源：[Convert Sorted List to Binary Search Tree](https://oj.leetcode.com/problems/convert-sorted-list-to-binary-search-tree/)
 
@@ -3996,13 +4015,13 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 
 解题思路：
 
-##### 0. tricky 方法, 另外取O(n)空间
+####  0. tricky 方法, 另外取O(n)空间
 
 偷懒方法，另外取另外取O(n)空间把list的数据取出来放入数组，然后跟[](./convert-sorted-array-to-binary-search-tree.html)题目一样用数组的方式去做。
 代码就略过了。
 虽然不是出题者的本意～ 但...... 你咬我呀.
 
-##### 1. O(nlogn)时间
+####  1. O(nlogn)时间
 
 每次用O(len/2)的时间去把中间的节点找出来。然后跟数组一样的方式解决。时间复杂度为O(nlogn).中途找mid不跟数组一样O(1).
 
@@ -4107,7 +4126,7 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
     }
 ```
 
-###Flatten Binary Tree to Linked List
+### Flatten Binary Tree to Linked List
 
 题目来源：[Flatten Binary Tree to Linked List ](https://oj.leetcode.com/problems/flatten-binary-tree-to-linked-list/)
 
@@ -4192,7 +4211,7 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 
 或者用其他binary tree pre traverse 的方法都行。
 
-###Maximum Depth of Binary Tree
+### Maximum Depth of Binary Tree
 
 题目来源：[Maximum Depth of Binary Tree ](https://oj.leetcode.com/problems/maximum-depth-of-binary-tree/)
 
@@ -4221,7 +4240,7 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
     }
 ```
 
-###Minimum Depth of Binary Tree
+### Minimum Depth of Binary Tree
 
 题目来源：[Minimum Depth of Binary Tree](https://oj.leetcode.com/problems/minimum-depth-of-binary-tree/)
 
@@ -4273,7 +4292,7 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 
  
 
-###Path Sum
+### Path Sum
 
 题目来源：[Path Sum](https://oj.leetcode.com/problems/path-sum/)
 
@@ -4311,7 +4330,7 @@ bool hasPathSum(TreeNode *root, int sum)
 ```
 
 
-###Path Sum II
+### Path Sum II
 
 题目来源：[Path Sum II ](https://oj.leetcode.com/problems/path-sum-ii/)
 
@@ -4379,6 +4398,7 @@ bool hasPathSum(TreeNode *root, int sum)
 注意别被code中的表象所迷惑，将`//Attention 1`的代码提取到`//Attention 0`处。 path先后push_back会反映到递归调用里面去的。
 
 不然应该下面这样写。
+
 ```cpp
 
 	void search2(vector<int> &path, vector<vector<int> >&result, TreeNode* node, int target)
@@ -4398,7 +4418,8 @@ bool hasPathSum(TreeNode *root, int sum)
 ```
 
 
-###Populating Next Right Pointers in Each Node
+
+### Populating Next Right Pointers in Each Node
 
 题目来源：[Populating Next Right Pointers in Each Node](https://oj.leetcode.com/problems/populating-next-right-pointers-in-each-node/)
 
@@ -4461,7 +4482,7 @@ void connect(TreeLinkNode *root)
 
  
 
-###populating next right pointers in each node ii
+### populating next right pointers in each node ii
 
 题目来源：[Populating Next Right Pointers in Each Node II](https://oj.leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/)
 
@@ -4558,7 +4579,7 @@ void connect(TreeLinkNode *root)
 }
 ```
 
-###Recover Binary Search Tree
+### Recover Binary Search Tree
 
 题目来源：[Recover Binary Search Tree](https://oj.leetcode.com/problems/recover-binary-search-tree/)
 
@@ -4567,10 +4588,11 @@ void connect(TreeLinkNode *root)
 
 解题思路：
 
-##### 0. 求得中序遍历结果,再两边向中间扫描
+####   0. 求得中序遍历结果,再两边向中间扫描
 
 O(2*n) 空间解法～
 直接中序遍历，然后分别从前往后、从后往前找非升序、非降序的两个node，交换其值即可。
+
 ```cpp
 	
 	void inorder1(vector<TreeNode*> &result, TreeNode* root)
@@ -4610,7 +4632,7 @@ O(2*n) 空间解法～
 	}
 ```
 
-##### 1. 中序遍历一边遍历，一边扫描。
+####   1. 中序遍历一边遍历，一边扫描。
 
 当两个节点都找到后，即可退出中序遍历流程。
 
@@ -4650,7 +4672,7 @@ O(2*n) 空间解法～
     }
 ```
 
-#####2. Morris遍历，常数空间。
+####  2. Morris遍历，常数空间。
 
 算法解释见[binary-tree-inorder-traversal](./binary-tree-inorder-traversal.html);
 
@@ -4709,7 +4731,8 @@ O(2*n) 空间解法～
     }
 ```
 
-###Same Tree
+
+### Same Tree
 
 题目来源：[Same Tree ](https://oj.leetcode.com/problems/same-tree/)
 
@@ -4721,7 +4744,7 @@ O(2*n) 空间解法～
 
 思路跟上题[对称树](./symmetric-tree.html)一样, 仍分递归和迭代两种方法。
 
-#####0. 递归
+#### 0. 递归
 
 ```cpp
 	
@@ -4734,7 +4757,7 @@ O(2*n) 空间解法～
     }
 ```
 
-#####1. 迭代
+#### 1. 迭代
 
 ```cpp
 	
@@ -4758,7 +4781,7 @@ O(2*n) 空间解法～
     }
 ```
 
-###Sum Root to Leaf Numbers
+### Sum Root to Leaf Numbers
 
 题目来源：[Sum Root to Leaf Numbers](https://oj.leetcode.com/problems/sum-root-to-leaf-numbers/)
 
@@ -4806,7 +4829,7 @@ O(2*n) 空间解法～
     }
 ```
 
-###Symmetric Tree
+### Symmetric Tree
 
 题目来源：[Symmetric Tree](https://oj.leetcode.com/problems/symmetric-tree/)
 
@@ -4817,21 +4840,23 @@ O(2*n) 空间解法～
 左节点的左子树 ＝ 右节点的由子树。 
 解题方法跟[same tree](./same-tree.html)差不多。
 
-#####0.递归
+####  0.递归
 
 ```cpp
 	
 	bool isSymmetric(TreeNode* node1, TreeNode* node2)    {        if(node1 == NULL && node2 == NULL) return true;        if(node1 == NULL || node2 == NULL) return false;        if(node1->val != node2->val ) return false;        return isSymmetric(node1->left, node2->right) && isSymmetric(node1->right, node2->left);    }    bool isSymmetric(TreeNode *root)     {        if(root == NULL) return true;            return isSymmetric(root->left, root->right);    }
 ```
 
-#####1.迭代
+####  1.迭代
+
 ```cpp
 
 	bool isSymmetric(TreeNode *root)    {        if(root == NULL) return true;        stack<TreeNode*> q;        q.push(root->left);        q.push(root->right);        while(! q.empty())        {            auto right = q.top(); q.pop();            auto left = q.top(); q.pop();            if(left == NULL && right == NULL) continue;            if(left == NULL || right == NULL) return false;            if(left->val != right->val) return false;            q.push(right->left);            q.push(left->right);            q.push(left->left);            q.push(right->right);        }        return true;    }
 ```
  
 
-###Unique Binary Search Trees
+
+### Unique Binary Search Trees
 
 题目来源：[Unique Binary Search Trees](https://oj.leetcode.com/problems/unique-binary-search-trees/)
 
@@ -4848,7 +4873,7 @@ O(2*n) 空间解法～
 
 解题思路：
 
-#####0. 递归
+#### 0. 递归
 递归比较好理解。比如 根节点数字为i, 比i小的左孩纸i-1个(子问题), 右孩纸n-i. 于是就有了下面的代码。
 
 ```cpp
@@ -4863,7 +4888,7 @@ int numTrees(int n)
 }
 ```
 
-#####1. 动态规划 
+#### 1. 动态规划 
 其实可以缓存下, 用动态规划。
 
 ```cpp
@@ -4887,10 +4912,10 @@ int numTrees(int n)
 }
 ```
 
-#####2. 数学公式法
+#### 2. 数学公式法
 其实这个问题有公式可以直接算的，参考[卡塔兰数](http://zh.wikipedia.org/wiki/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0) 。
 
-###Unique Binary Search Trees II
+### Unique Binary Search Trees II
 
 题目来源：[Unique Binary Search Trees II](https://oj.leetcode.com/problems/unique-binary-search-trees-ii/)
 
@@ -4946,7 +4971,7 @@ vector<TreeNode *> generateTrees(int n)
 
 注意当end>start的时候也要返回一个空的Node，因为后面的遍历时，直接用left/right都有的情况才生成新的node。
 
-###Validate Binary Search Tree
+### Validate Binary Search Tree
 
 题目来源：[Validate Binary Search Tree](https://oj.leetcode.com/problems/validate-binary-search-tree/)
 
@@ -4959,7 +4984,7 @@ vector<TreeNode *> generateTrees(int n)
 
 解题思路：
 
-#####0. 递归判断节点值是否满足条件
+#### 0. 递归判断节点值是否满足条件
 
 ```cpp
 	
@@ -4976,7 +5001,7 @@ vector<TreeNode *> generateTrees(int n)
     }
 ```
 
-#####1. 中序遍历
+#### 1. 中序遍历
 
 BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、迭代、Morris遍历等，详情可以参考[binary-tree-inorder-traversal](./binary-tree-inorder-traversal.html), 下面就只列一种了。
 
@@ -5049,7 +5074,7 @@ BST 中序遍历结果是升序。 中序遍历的方法就多了，有递归、
 
 ## sort, 排序相关
 
-###3Sum Closest
+### 3Sum Closest
 
 题目来源：[3Sum Closest](https://oj.leetcode.com/problems/3sum-closest/)
 
@@ -5092,7 +5117,7 @@ int threeSumClosest(vector<int> &num, int target)
 ```
  
 
-###3Sum
+### 3Sum
 
 题目来源：[3Sum](https://oj.leetcode.com/problems/3sum/)
 
@@ -5195,7 +5220,7 @@ vector<vector<int> > threeSum(vector<int> &num)
 ```
  
 
-###4Sum
+### 4Sum
 
 题目来源：[4Sum](https://oj.leetcode.com/problems/4sum/)
 
@@ -5263,8 +5288,11 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 }
 ```
 
+<!-- MathJax Section -->
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-###Insert Interval
+### Insert Interval
 
 题目来源：[Insert Interval](https://oj.leetcode.com/problems/insert-interval/)
 
@@ -5381,7 +5409,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
     }
 ```
 
-###Longest Consecutive Sequence
+### Longest Consecutive Sequence
 
 题目来源：[Longest Consecutive Sequence](https://oj.leetcode.com/problems/longest-consecutive-sequence/)
 
@@ -5399,7 +5427,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 
 解题思路：
 
-#####0. 利用hashmap 
+#### 0. 利用hashmap 
 
 用一个set/map记录每个数，然后挨个找相邻的数字，每找到一个就从原set/map中去掉，直到全部遍历完毕。
 
@@ -5434,7 +5462,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 	}
 ```
 
-#####1. 先利用O(n)的排序
+#### 1. 先利用O(n)的排序
 
 这也是参考了[discuss](https://oj.leetcode.com/discuss/2731/this-problem-has-a-o-n-solution?show=4368#a4368)的答案。 先用一个O(n)的排序算法，然后挨个左右看就是。
 注意数组中可能含有相同的数字以及负数。
@@ -5505,7 +5533,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 
 ```
 
-###Merge Intervals
+### Merge Intervals
 
 题目来源：[Merge Intervals](https://oj.leetcode.com/problems/merge-intervals/)
 
@@ -5611,7 +5639,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 ```
  
 
-###Merge Sorted Array
+### Merge Sorted Array
 
 题目来源：[Merge Sorted Array](https://oj.leetcode.com/problems/merge-sorted-array/)
 
@@ -5641,7 +5669,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 ```
 
 
-###Remove Duplicates from Sorted Array
+### Remove Duplicates from Sorted Array
 
 题目来源：[Remove Duplicates from Sorted Array](https://oj.leetcode.com/problems/remove-duplicates-from-sorted-array/)
 
@@ -5674,7 +5702,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 
 
 
-###Remove Duplicates from Sorted Array II
+### Remove Duplicates from Sorted Array II
 
 题目来源：[Remove Duplicates from Sorted Array II](https://oj.leetcode.com/problems/remove-duplicates-from-sorted-array-ii/)
 
@@ -5717,7 +5745,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 
 ```
 
-###Sort Colors
+### Sort Colors
 
 题目来源：[Sort Colors](https://oj.leetcode.com/problems/sort-colors/)
 
@@ -5732,7 +5760,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
 
 解题思路：
 	
-#####0. countSort= O(2\*n)
+#### 0. countSort= O(2\*n)
 按照提示，分别数数0,1,2各有多少个，然后填充进去即可。简单的countsort.
 
 ```cpp
@@ -5759,7 +5787,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
     }
 ```
 
-#####1. O(1\*n) 算法
+#### 1. O(1\*n) 算法
 
 设前面的数字已经排好序.  0000 111 222 *1\*02*… 
 
@@ -5796,7 +5824,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
     }
 ```
 
-#####2. O(1\*n) 算法
+#### 2. O(1\*n) 算法
 
 双指针算法, 参考 [leetcode-cpp](https://github.com/soulmachine/leetcode).
 
@@ -5823,7 +5851,7 @@ vector<vector<int> > fourSum(vector<int> &num, int target)
     }
 ```
 
-###Two Sum
+### Two Sum
 
 
 题目来源:[leetcode-two-sum](https://oj.leetcode.com/problems/two-sum/)
@@ -5901,7 +5929,7 @@ vector<int> twoSum(vector<int> &numbers, int target)
 
 ## search, 搜索相关
 
-###First Missing Positive
+### First Missing Positive
 
 题目来源：[First Missing Positive](https://oj.leetcode.com/problems/first-missing-positive/)
 
@@ -5995,7 +6023,7 @@ A里面的数，若A[i]是正数0-n之间的，则把TA放到位置i-1处。即�
     }
 ```
 
-###Median of Two Sorted Arrays
+### Median of Two Sorted Arrays
 
 题目来源：[Median of Two Sorted Arrays](https://oj.leetcode.com/problems/median-of-two-sorted-arrays/)
 
@@ -6035,7 +6063,7 @@ A里面的数，若A[i]是正数0-n之间的，则把TA放到位置i-1处。即�
 ```
 
 
-###Search Insert Position
+### Search Insert Position
 
 题目来源：[Search Insert Position](https://oj.leetcode.com/problems/search-insert-position/)
 
@@ -6072,7 +6100,7 @@ A里面的数，若A[i]是正数0-n之间的，则把TA放到位置i-1处。即�
 
  
 
-###Search a 2D Matrix
+### Search a 2D Matrix
 
 题目来源：[Search a 2D Matrix](https://oj.leetcode.com/problems/search-a-2d-matrix/)
 
@@ -6129,7 +6157,7 @@ A里面的数，若A[i]是正数0-n之间的，则把TA放到位置i-1处。即�
 
  
 
-###Search for a Range
+### Search for a Range
 
 题目来源：[Search for a Range](https://oj.leetcode.com/problems/search-for-a-range/)
 
@@ -6196,7 +6224,7 @@ lower返回插入点(相等的最小的index)的位置，upper返回比target大
 
  
 
-###Search in Rotated Sorted Array
+### Search in Rotated Sorted Array
 
 题目来源：[Search in Rotated Sorted Array](https://oj.leetcode.com/problems/search-in-rotated-sorted-array/)
 
@@ -6238,7 +6266,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 	}
 ```
 
-###Search in Rotated Sorted Array II
+### Search in Rotated Sorted Array II
 
 题目来源：[Search in Rotated Sorted Array II](https://oj.leetcode.com/problems/search-in-rotated-sorted-array-ii/)
 
@@ -6284,7 +6312,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 
  
 
-###Single Number
+### Single Number
 
 题目来源：[Single Number](https://oj.leetcode.com/problems/single-number/)
 
@@ -6299,7 +6327,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 
 解题思路：
 
-##### 0. 普通程序员方法
+####  0. 普通程序员方法
 
 用一个hashmap数数，再遍历一次即可。
 
@@ -6320,7 +6348,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
     }
 ```
 
-##### 1. 文艺程序员方法
+####  1. 文艺程序员方法
 
 看题目要求不用额外的存储~ 然后所有数字出现2次～ 然后想想位运算。能想到位运算应该就差不多了。 `1^1 = 0 `
 
@@ -6336,7 +6364,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
     }
 ```
 
-###Single Number II
+### Single Number II
 
 题目来源：[Single Number II](https://oj.leetcode.com/problems/single-number-ii/)
 
@@ -6349,11 +6377,11 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 
 解题思路：
 
-##### 0. 普通程序员方法
+####  0. 普通程序员方法
 
 用一个hashmap数数，再遍历一次即可。代码就略了。
 
-##### 1. 文艺程序员方法
+####  1. 文艺程序员方法
 
 有了[Single Number](http://tanglei.me/leetcode/single-number.html)的思路，可能你会想想用位运算。不过一时半会貌似想不太出来。没关系，开一个32位数组，每个数字出现3次，相应的位肯定出现3次的整数倍。剩下的那些数对应的那个应该就是要找的了。
 
@@ -6378,7 +6406,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
     }
 ```
 
-##### 2. 极品程序员
+####  2. 极品程序员
 
 从[discuss](https://oj.leetcode.com/discuss/857/constant-space-solution)看到极品程序员的答案。值得学习，不过有时候容易搞混。个人认为上面第1种(文艺)程序员的方法就不错。
 
@@ -6409,7 +6437,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 
 ## math, 数学类相关
 
-###Add Binary
+### Add Binary
 
 题目来源：[Add Binary](https://oj.leetcode.com/problems/add-binary/)
 
@@ -6423,6 +6451,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 解题思路：
 
 跟前面的 [plus-one](./plus-one.html) 差不多。 这里注意char和int的转换，别搞错了。
+
 ```cpp
 	
 	string addBinary(string a, string b) 
@@ -6455,7 +6484,8 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
     }
 ```
 
-###Add Two Numbers
+
+### Add Two Numbers
 
 题目来源：[Add Two Numbers](https://oj.leetcode.com/problems/add-two-numbers/)
 
@@ -6466,7 +6496,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 
 解题思路：
 
-#####0. 递归版
+#### 0. 递归版
 
 ```cpp
 	
@@ -6496,7 +6526,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
 	}
 ```
 
-#####1. 迭代版
+#### 1. 迭代版
 
 ```cpp
 	
@@ -6539,7 +6569,7 @@ rotate总是至少有一半是有序的，可以根据这一半有序的值去�
     }
 ```
 
-###Divide Two Integers
+### Divide Two Integers
 
 题目来源：[Divide Two Integers](https://oj.leetcode.com/problems/divide-two-integers/)
 
@@ -6598,7 +6628,7 @@ int divide(int dividend, int divisor)
 }
 ```
 
-###Gray Code
+### Gray Code
 
 题目来源：[Gray Code](https://oj.leetcode.com/problems/gray-code/)
 
@@ -6617,7 +6647,7 @@ int divide(int dividend, int divisor)
 
 
 解题思路：
-#####0. 逆序
+#### 0. 逆序
 注意观察，n每增加1，即是在n-1的结果之上，最高位加1，并按照n-1的逆序。 
 
 	n = 1 
@@ -6658,7 +6688,7 @@ int divide(int dividend, int divisor)
     }
 ```
 
-#####1.公式法
+#### 1.公式法
 
 [格雷码](http://zh.wikipedia.org/zh-cn/%E6%A0%BC%E9%9B%B7%E7%A0%81)
 
@@ -6679,7 +6709,7 @@ int divide(int dividend, int divisor)
     }
 ```
 
-###Integer to Roman
+### Integer to Roman
 
 题目来源：[Integer to Roman](https://oj.leetcode.com/problems/integer-to-roman/)
 
@@ -6712,7 +6742,7 @@ string intToRoman(int num)
 }
 ```
 
-###Multiply Strings
+### Multiply Strings
 
 题目来源：[Multiply Strings](https://oj.leetcode.com/problems/multiply-strings/)
 
@@ -6724,6 +6754,7 @@ string intToRoman(int num)
 
 大正整数乘法, 题目说了非负了。
 跟 [plus-one](./plus-one.html)、 [add-binary](./add-binary.html)差不多。
+
 ```cpp
 	
 	string multiply(string num1, string num2)
@@ -6781,7 +6812,8 @@ string intToRoman(int num)
 
  
 
-###Palindrome Number
+
+### Palindrome Number
 
 题目来源：[Palindrome Number](https://oj.leetcode.com/problems/palindrome-number/)
 
@@ -6821,7 +6853,7 @@ bool isPalindrome(int x)
 }
 ```
  
-###Plus One
+### Plus One
 
 题目来源：[Plus One ](https://oj.leetcode.com/problems/plus-one/)
 
@@ -6859,7 +6891,7 @@ bool isPalindrome(int x)
 ```
 
 
-###Pow(x, n)
+### Pow(x, n)
 
 题目来源：[Pow(x, n)](https://oj.leetcode.com/problems/powx-n/)
 
@@ -6887,7 +6919,7 @@ double rpow(double x, int n)
 } 
 ```
 
-###Reverse Integer
+### Reverse Integer
 
 题目来源：[Reverse Integer](https://oj.leetcode.com/problems/reverse-integer/)
 
@@ -6928,7 +6960,7 @@ int reverse(int x)
 }
 ```
 
-###Roman to Integer
+### Roman to Integer
 
 题目来源：[Roman to Integer](https://oj.leetcode.com/problems/roman-to-integer/)
 
@@ -6960,7 +6992,7 @@ int romanToInt(string s)
 ```
  
 
-###Sqrt(x)
+### Sqrt(x)
 
 题目来源：[Sqrt(x)](https://oj.leetcode.com/problems/sqrtx/)
 
@@ -6970,7 +7002,7 @@ int romanToInt(string s)
 
 解题思路：
 
-#####0 二分
+####  0 二分
 
 注意 可能越界Int。
 
@@ -7024,6 +7056,7 @@ int romanToInt(string s)
 	x_(k+1) = 1/2 * (x_k + n / x_k)
 
 其实牛顿迭代法也可以看作是泰勒公式(Taylor Series)的简化.
+
 ```cpp
 	
 	int sqrt(int x) 
@@ -7045,8 +7078,10 @@ $$
 f'(x_{n}) = \frac{ \mathrm{rise} }{ \mathrm{run} } = \frac{ \mathrm{\Delta y} }{ \mathrm{\Delta x} } = \frac{ f( x_{n} ) - 0 }{ x_{n} - x_{n+1} } = \frac{0 - f(x_{n})}{(x_{n+1} - x_{n})}
 $$
 
+<script type="text/javascript" src="https://stackedit.io/libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
 
-###String to Integer (atoi)
+
+### String to Integer (atoi)
 
 题目来源：[String to Integer (atoi)](https://oj.leetcode.com/problems/string-to-integer-atoi/)
 
@@ -7068,7 +7103,7 @@ $$
 - 字符串前面的字符部分匹配了数字，返回这部分匹配的，忽略后面非法的。
 - 越界问题。INT_MAX (2147483647) or INT_MIN (-2147483648) is returned. 
 
-#####0. 从后往前 
+#### 0. 从后往前 
 
 ```cpp
 int atoi(const char *str) 
@@ -7101,7 +7136,7 @@ int atoi(const char *str)
 
 上面的解法从后往前，注意base可能越界。也可以用下面的解法，从前往后。
 
-#####1. 从前往后 
+#### 1. 从前往后 
 
 ```cpp
 int atoi(const char *str)
@@ -7132,7 +7167,7 @@ int atoi(const char *str)
 ```
 
 若不用long long的话，可以在```*10 + ```之前先判断是否越界即 ```result > INT_MAX/10 || result == INT_MAX/10 && *str-'0'> INT_MAX%10 ```
-###Valid Number
+### Valid Number
 
 题目来源：[Valid Number](https://oj.leetcode.com/problems/valid-number/)
 
@@ -7148,7 +7183,7 @@ int atoi(const char *str)
 
 解题思路：
 
-#####0. 粗暴方法
+####  0. 粗暴方法
 
 自己写的代码丑陋无比，一种情况一种情况试, 实在是无参考价值。
 主要是各种情况，例如：
@@ -7256,7 +7291,7 @@ int atoi(const char *str)
     }
 ```   
 
-#####1. 利用strtod. 
+####  1. 利用strtod. 
 
 利用函数**strtod**. 
 	
@@ -7280,7 +7315,7 @@ int atoi(const char *str)
     }
 ```
 
-#####2. 利用自动机
+####  2. 利用自动机
 
 可参考 [自动机实现valid-number](http://blog.csdn.net/kenden23/article/details/18696083).
 
@@ -7296,6 +7331,7 @@ int atoi(const char *str)
 	8前面有有效数输入之后，输入space的状态
 	共9种状态了，难设计的是6,7,8状态。
 	分好之后就好办了，设计出根据输入进行状态转换就OK了。
+
 ```cpp
 
 	class Solution {
@@ -7341,9 +7377,10 @@ int atoi(const char *str)
 
 
 
+
 ## string, 字符串处理相关
 
-###Anagrams
+### Anagrams
 
 题目来源：[Anagrams](https://oj.leetcode.com/problems/anagrams/)
 
@@ -7379,7 +7416,7 @@ int atoi(const char *str)
 ```
  
 
-###Count and Say
+### Count and Say
 
 题目来源：[Count and Say](https://oj.leetcode.com/problems/count-and-say/)
 
@@ -7431,7 +7468,7 @@ int atoi(const char *str)
 ```
  
 
-###Evaluate Reverse Polish Notation
+### Evaluate Reverse Polish Notation
 
 
 >
@@ -7503,7 +7540,7 @@ int evalRPN(vector<string> &tokens) {
 }
 ```
 
-###Implement strStr()
+### Implement strStr()
 
 题目来源：[Implement strStr()](https://oj.leetcode.com/problems/implement-strstr/)
 
@@ -7513,7 +7550,7 @@ int evalRPN(vector<string> &tokens) {
 
 解题思路：
 
-#####0. 暴力法 \\( O(m*n)\\)
+#### 0. 暴力法 \\( O(m*n)\\)
 
 ```cpp
 char *strStr(char *haystack, char *needle) 
@@ -7537,7 +7574,7 @@ char *strStr(char *haystack, char *needle)
 }
 ```
 
-#####1. KMP, \\( O(m + n) \\)
+#### 1. KMP, \\( O(m + n) \\)
 
 [这篇文章](http://blog.csdn.net/v_july_v/article/details/7041827) 讲得比较详细.
 
@@ -7593,7 +7630,10 @@ char *strStr(char *haystack, char *needle)
 - [还有这个视频也不错](http://v.youku.com/v_show/id_XNzQzMjQ1OTYw.html) ～
 - [july的这篇文章](http://blog.csdn.net/v_july_v/article/details/7041827)
 
-###Length of Last Word
+<!-- MathJax Section -->
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+### Length of Last Word
 
 题目来源：[Length of Last Word](https://oj.leetcode.com/problems/length-of-last-word/)
 
@@ -7671,7 +7711,7 @@ char *strStr(char *haystack, char *needle)
     }
 ```
 
-###Longest Common Prefix
+### Longest Common Prefix
 
 题目来源：[Longest Common Prefix](https://oj.leetcode.com/problems/longest-common-prefix/)
 
@@ -7702,7 +7742,7 @@ string longestCommonPrefix(vector<string> &strs)
 ```
 
  
-###Longest Palindromic Substring
+### Longest Palindromic Substring
 
 题目来源：[Longest Palindromic Substring](https://oj.leetcode.com/problems/longest-palindromic-substring/)
 
@@ -7711,7 +7751,7 @@ string longestCommonPrefix(vector<string> &strs)
 
 解题思路：
 
-#####0. 暴力搜索, \\(O(N^2) \\)
+#### 0. 暴力搜索, \\(O(N^2) \\)
 
 最简单的方法就是选中i(0~n-1)，然后向两边扩展，复杂度为\\(O(N^2) \\) . 注意回文长度可能是奇数或者偶数， 即
 ```aba or abba ```
@@ -7782,7 +7822,7 @@ string longestPalindrome(string s)
 }
 ```
 
-#####1. DP, \\(O(N^2) \\)
+#### 1. DP, \\(O(N^2) \\)
 
 dp[i][j] 表示 s[i:j] 是回文, 当且尽当``` s[i] == [j] && dp[i+1][j-1]```, 即计算dp[i][j]时, dp[i+1][j-1]得先计算出来，算dp[x][i]，必须先把dp[x][i-1]先计算出来了来。
 
@@ -7817,7 +7857,7 @@ string longestPalindrome(string s)
 另外，虽然都是平方的算法，上面用vector还过不了，用数组才能过。
 
 
-#####2. \\( O(n) \\) 算法, Manacher 算法
+#### 2. \\( O(n) \\) 算法, Manacher 算法
 
 [felix021的文章讲得很清楚](http://www.felix021.com/blog/read.php?2040)，这里“偷”过来。
 
@@ -7894,8 +7934,11 @@ string longestPalindrome(string s)
 }
 ```
 
+<!-- MathJax Section -->
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-###Longest Substring Without Repeating Characters
+### Longest Substring Without Repeating Characters
 
 题目来源：[Longest Substring Without Repeating Characters](https://oj.leetcode.com/problems/longest-substring-without-repeating-characters/)
 
@@ -7929,7 +7972,7 @@ int lengthOfLongestSubstring(string s)
 
 我不会告诉你我参考了[这篇文章的](http://blog.csdn.net/likecool21/article/details/10858799).
 
-###Longest Valid Parentheses
+### Longest Valid Parentheses
 
 题目来源：[Longest Valid Parentheses](https://oj.leetcode.com/problems/longest-valid-parentheses/)
 
@@ -7942,7 +7985,7 @@ int lengthOfLongestSubstring(string s)
 
 找连续合法的括号对数。
 
-#####0. O(2\*N) 
+#### 0. O(2\*N) 
 
 1、用一个数组记录每个括号的配对状态，借助stack找配对的index，最后再扫描一遍，找连续配对的数量max.[ref1](https://oj.leetcode.com/discuss/5907/an-easy-understanding-way-to-solve-it).
 
@@ -7976,7 +8019,7 @@ int lengthOfLongestSubstring(string s)
     }
 ```
 
-#####1. O(N)
+#### 1. O(N)
 
 
 用last记录上一个还没配对的右括号”)”, 用一个栈记录下”(“的index, 遇到”)”, 配对时pop掉，记录其长度, pop完时，长度为当前 `index-last`, 没完时，长度为当前`index-stack.top()`. [ref2](http://www.cnblogs.com/lichen782/p/leetcode_Longest_Valid_Parentheses.html)
@@ -8018,7 +8061,7 @@ int lengthOfLongestSubstring(string s)
     }
 ```
 
-###Minimum Window Substring
+### Minimum Window Substring
 
 题目来源：[Minimum Window Substring](https://oj.leetcode.com/problems/minimum-window-substring/)
 
@@ -8098,7 +8141,7 @@ int lengthOfLongestSubstring(string s)
 
 [Ref](http://www.cnblogs.com/lichen782/p/leetcode_minimum_window_substring_3.html)
 
-###Regular Expression Matching
+### Regular Expression Matching
 
 题目来源：[Regular Expression Matching](https://oj.leetcode.com/problems/regular-expression-matching/)
 
@@ -8145,7 +8188,7 @@ int lengthOfLongestSubstring(string s)
     }
 ```
 
-###Reverse Words in a String
+### Reverse Words in a String
 
 
 >Given an input string, reverse the string word by word.
@@ -8198,6 +8241,7 @@ void reverseWords(string &s)
 }
 ```
 从[discuss](https://oj.leetcode.com/discuss/3378/is-my-solution-good-enough)里面还看到了简短的代码～值得学习。 通过stringstream 一次提取一个单词出来, 然后将这个单词与上一次的结果连接(逆序)。
+
 ```cpp
 void reverseWords2(string &s)
 {
@@ -8214,7 +8258,8 @@ void reverseWords2(string &s)
 }
 ```
 
-###Simplify Path
+
+### Simplify Path
 
 题目来源：[Simplify Path](https://oj.leetcode.com/problems/simplify-path/)
 
@@ -8320,7 +8365,7 @@ C++ 一样的。
 
 ```
 
-###Text Justification
+### Text Justification
 
 题目来源：[Text Justification](https://oj.leetcode.com/problems/text-justification/)
 
@@ -8417,7 +8462,7 @@ C++ 一样的。
 	}
 ```
 
-###Valid Parentheses
+### Valid Parentheses
 
 题目来源：[Valid Parentheses](https://oj.leetcode.com/problems/valid-parentheses/)
 
@@ -8470,7 +8515,7 @@ bool isValid(string s)
 
  
 
-###Wildcard Matching
+### Wildcard Matching
 
 题目来源：[Wildcard Matching](https://oj.leetcode.com/problems/wildcard-matching/)
 
@@ -8494,7 +8539,7 @@ bool isValid(string s)
 
 跟 [regular-expression-matching](./regular-expression-matching.html) 类似。
 
-#####0. 递归
+#### 0. 递归
 
 主要是考虑 “\*” 匹配任意字符的问题， 下面代码超时了。
 
@@ -8525,7 +8570,7 @@ bool isMatch(const char *s, const char *p)
 }
 ```
 
-#####1. 迭代
+#### 1. 迭代
 
 Key point, compare char one by one, if not matched, and '\*' matched before, then pattern backtrace to '\*', and string backtrace to the later one of compared char of last iterative time. 
 参考了 [discuss.leetcode](http://discuss.leetcode.com/questions/222/wildcard-matching).
@@ -8567,7 +8612,7 @@ bool isMatch(const char *s, const char *p)
 }
 ```
 
-###ZigZag Conversion
+### ZigZag Conversion
 
 题目来源：[ZigZag Conversion](https://oj.leetcode.com/problems/zigzag-conversion/)
 
@@ -8618,7 +8663,7 @@ string convert(string s, int nRows)
 
 ## combination and permutation, 排列组合相关
 
-###Combinations
+### Combinations
 
 题目来源：[Combinations](https://oj.leetcode.com/problems/combinations/)
 
@@ -8663,7 +8708,7 @@ string convert(string s, int nRows)
 ```
  
 
-###Combination Sum
+### Combination Sum
 
 题目来源：[combination Sum](https://oj.leetcode.com/problems/combination-sum/)
 
@@ -8717,7 +8762,7 @@ string convert(string s, int nRows)
     }
 ```
 
-###Combination Sum II
+### Combination Sum II
 
 题目来源：[combination Sum II](https://oj.leetcode.com/problems/combination-sum-ii/)
 
@@ -8774,7 +8819,7 @@ string convert(string s, int nRows)
     }
 ```
 
-###Letter Combinations of a Phone Number
+### Letter Combinations of a Phone Number
 
 题目来源：[Letter Combinations of a Phone Number](https://oj.leetcode.com/problems/letter-combinations-of-a-phone-number/)
 
@@ -8821,7 +8866,7 @@ vector<string> letterCombinations(string digits)
 ```
  
 
-###Next Permutation
+### Next Permutation
 
 题目来源：[Next Permutation](https://oj.leetcode.com/problems/next-permutation/)
 
@@ -8860,7 +8905,7 @@ vector<string> letterCombinations(string digits)
     }
 ```
 
-###Palindrome Partitioning
+### Palindrome Partitioning
 
 题目来源：[Palindrome Partitioning](https://oj.leetcode.com/problems/palindrome-partitioning/)
 
@@ -8881,7 +8926,7 @@ vector<string> letterCombinations(string digits)
 
 解题思路：
 
-##### 0. 直接暴力解决
+####  0. 直接暴力解决
 枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
 还可以优化，把中间的某个子串是否回文用hash缓存下来。
 
@@ -8933,7 +8978,7 @@ vector<string> letterCombinations(string digits)
 
 ```
 
-#####1. 利用动态规划 O(n^2)
+#### 1. 利用动态规划 O(n^2)
 
 `dp[i:j]`表示`s[i:j]`是回文,  如果`s[i] == s[j] and dp[i+1, j-1]`,满足条件, 则dp[i:j]就是回文。 
 注意要先算dp[i+1][j-1]，所以循环的顺序。
@@ -9021,7 +9066,7 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 
 ```
 
-###Permutation Sequence
+### Permutation Sequence
 
 题目来源：[Permutation Sequence](https://oj.leetcode.com/problems/permutation-sequence/)
 
@@ -9052,6 +9097,7 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 	所以这个数是45321.
 
 代码如下：
+
 ```cpp
 	
 	void jiecheng(vector<int> &f, int n)
@@ -9087,7 +9133,8 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
 - [Leetcode: Permutation Sequence](http://blog.csdn.net/doc_sgl/article/details/12840715)
 http://blog.csdn.net/MrRoyLee/article/details/34981399 
 
-###Permutations
+
+### Permutations
 
 题目来源：[Permutations](https://oj.leetcode.com/problems/permutations/)
 
@@ -9099,7 +9146,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 解题思路：
 
-#####0. 置换法
+#### 0. 置换法
 
 递归, 一个一个与第一个交换。
 
@@ -9127,7 +9174,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
     }
 ```
 
-#####1. 增量构造法
+#### 1. 增量构造法
 
 可以跟 [combinations](./combinations.html) 类似, 一个一个往里面加。
 
@@ -9160,11 +9207,11 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 
-#####2. nextPermunation
+#### 2. nextPermunation
 
 参考 [permutations-ii](./permutations-ii.html).
 
-###Permutations II
+### Permutations II
 
 题目来源：[Permutations II](https://oj.leetcode.com/problems/permutations-ii/)
 
@@ -9178,7 +9225,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 跟 [Permutations](./Permutations.html)思路差不多，分为下面几种解法。
 
-#####0.置换法
+#### 0.置换法
 
 跟[Permutations](./Permutations.html)一样，每一个与第一个交换～用set存结果，将重复的去掉，中途剪枝下即可AC。
 
@@ -9209,7 +9256,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 	}
 ```
 
-#####1. 增量构造
+#### 1. 增量构造
 
 或者跟permutation的方法，增量构造, 这里需要用一个map存下数量。
 
@@ -9251,7 +9298,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
     }
 ```
 
-#####2. next_permunation 
+#### 2. next_permunation 
 
 自然序的下一个：1 3 5 4 2，从后往前找，找到第一个降序(从后往前看)的数字3，然后找后面的比3大的最小的数字4，交换，1 4 5 3 2，然后交换index后面的序列逆序 532->235，构成下一个自然序：1 4 2 3 5。 
 
@@ -9286,7 +9333,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 	}
 ```
 
-###Subsets
+### Subsets
 
 题目来源：[Subsets](https://oj.leetcode.com/problems/subsets/)
 
@@ -9312,9 +9359,10 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 注意输出的每个子集要有序。
 
-#####0.DFS搜索
+####  0.DFS搜索
 
 跟[Combinations](./Combinations.html)一样。
+
 ```cpp
 	
 	void search(vector<vector<int> > &result, vector<int> &S, vector<int> &input, int start, int k)
@@ -9341,9 +9389,10 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 
-#####1.0 二进制组合
+####  1.0 二进制组合
 每个元素都有0/1两种状态，全部排列一下即可。例如1,2,3,4一共有2^4=16种子集，第15种(2^0+2^1+2^2+2^3)为1-4都取, 第7种`(1*(2^0)+1*(2^1)+1*(2^2)+0*(2^3))`为[1,2,3]. [ref](http://blog.csdn.net/magisu/article/details/12989531).
 注意得先将S排序(当然也可以先加到result中，最后再来排序), 不然结果中的子集顺序不是升序的。
+
 ```cpp
 	
 	vector<vector<int> > subsets(vector<int> &S) 
@@ -9365,7 +9414,8 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 
 
-###Subsets II
+
+### Subsets II
 
 题目来源：[Subsets II ](https://oj.leetcode.com/problems/subsets-ii/)
 
@@ -9452,7 +9502,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
     }
 ```
 
-###Unique Paths
+### Unique Paths
 
 题目来源：[Unique Paths](https://oj.leetcode.com/problems/unique-paths/)
 
@@ -9498,7 +9548,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 ## matrix, 二维数组, 矩阵相关
 
-###Rotate Image
+### Rotate Image
 
 题目来源：[Rotate Image](https://oj.leetcode.com/problems/rotate-image/)
 
@@ -9510,7 +9560,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 解题思路：
 
-#####0. 常规
+#### 0. 常规
 
 ```cpp
 	
@@ -9535,7 +9585,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 	}
 ```
 
-#####1. 高级解法
+#### 1. 高级解法
 
 参考[discuss](https://oj.leetcode.com/discuss/3064/in-place-solution)
 	
@@ -9560,7 +9610,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
     }
 ```
 
-###Set Matrix Zeroes
+### Set Matrix Zeroes
 
 题目来源：[Set Matrix Zeroes](https://oj.leetcode.com/problems/set-matrix-zeroes/)
 
@@ -9575,7 +9625,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 解题思路：
 
-#####0.  O(m + n) 空间
+#### 0.  O(m + n) 空间
 另用数组记录哪些行/列有0.
 
 ```cpp
@@ -9602,7 +9652,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
     }	
 ```
 
-#####1.  常数空间
+#### 1.  常数空间
 
 假设第i行j列是0，那么第0行的j列、第0列第i行 肯定要设置为0。 所以可以用两个变量记录下第0行0列是否有，然后把其他行列的信息往这写。
 
@@ -9657,7 +9707,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
     }
 ```
 
-###Spiral Matrix
+### Spiral Matrix
 
 题目来源：[Spiral Matrix](https://oj.leetcode.com/problems/spiral-matrix/)
 
@@ -9719,7 +9769,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
  
 
-###Spiral Matrix II
+### Spiral Matrix II
 
 题目来源：[Spiral Matrix II](https://oj.leetcode.com/problems/spiral-matrix-ii/)
 
@@ -9782,7 +9832,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
  
  
 
-###Maximal Rectangle
+### Maximal Rectangle
 
 题目来源：[Maximal Rectangle](https://oj.leetcode.com/problems/maximal-rectangle/)
 
@@ -9791,7 +9841,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 解题思路：
 
-#####0 O(n^3) 算法
+####  0 O(n^3) 算法
 
 一种直接的方法是: 横向记录从左到i, 包括i为1的连续1的长度，然后再纵向去查找以这个连续1长度作为min宽的最大的高度,得到面积。O(n^3)
 
@@ -9839,7 +9889,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
     }
 ```
 
-#####1. O(n^2)算法
+####  1. O(n^2)算法
 
 一行一行处理，每一行，按照柱状图那道题目 [Largest Rectangle in Histogram](./Largest-Rectangle-in-Histogram.html) `O(n)`算法处理，总体复杂度O(n^2).
 
@@ -9899,6 +9949,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 	2*(4)=8.
 
 上面代码还可以优化下内存空间, 用`O(n)`n为列数量。
+
 ```cpp
 
 	int maximalRectangle2(vector <string > & matrix)
@@ -9924,7 +9975,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 ```
 
 
-#####2. O(n^2)算法 思路2
+####  2. O(n^2)算法 思路2
 参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。 思路是对当前高度h, 找左边比他小的最大的index,设为i, 右边比h小最小的index,设为j,则以h为最小高度的面积应该为 
 `(j-i-1)*h`.  eg : [2,5,3,4,1], 当前高度3, 则, left=0, right = 4, area = 3*(4-0-1)=9.
 
@@ -9968,9 +10019,10 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 
 
+
 ## 回溯, BFS/DFS
 
-###Clone Graph
+### Clone Graph
 
 题目来源：[Clone Graph](https://oj.leetcode.com/problems/clone-graph/)
 
@@ -10040,7 +10092,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
     }
 ```
 
-###Generate Parentheses
+### Generate Parentheses
 
 题目来源：[Generate Parentheses](https://oj.leetcode.com/problems/generate-parentheses/)
 
@@ -10077,7 +10129,7 @@ vector<string> generateParenthesis(int n)
 }
 ```
 
-###N Queens
+### N Queens
 
 题目来源：[N-Queens](https://oj.leetcode.com/problems/n-queens/)
 
@@ -10156,7 +10208,7 @@ vector<string> generateParenthesis(int n)
 ```
  
 
-###N Queens II
+### N Queens II
 
 题目来源：[N-Queens II](https://oj.leetcode.com/problems/n-queens-ii/)
 
@@ -10213,7 +10265,7 @@ vector<string> generateParenthesis(int n)
 
  
 
-###Restore IP Addresses
+### Restore IP Addresses
 
 题目来源：[Restore IP Addresses](https://oj.leetcode.com/problems/restore-ip-addresses/)
 
@@ -10227,6 +10279,7 @@ vector<string> generateParenthesis(int n)
 解题思路：
 在原串中加点，每个位置都去试探，直到3个点加完毕，若满足规则就是。
 注意以0开头的段。
+
 ```cpp
 
 	bool check(const string &str)
@@ -10271,7 +10324,8 @@ vector<string> generateParenthesis(int n)
 ```
 
 
-###Sudoku Solver
+
+### Sudoku Solver
 
 题目来源：[Sudoku Solver](https://oj.leetcode.com/problems/sudoku-solver/)
 
@@ -10328,7 +10382,7 @@ vector<string> generateParenthesis(int n)
 ```
  
 
-###Surrounded Regions
+### Surrounded Regions
 
 题目来源：[Surrounded Regions](https://oj.leetcode.com/problems/surrounded-regions/)
 
@@ -10439,7 +10493,7 @@ vector<string> generateParenthesis(int n)
 	}
 ```
 
-###Word Ladder
+### Word Ladder
 
 题目来源：[Word Ladder](https://oj.leetcode.com/problems/word-ladder/)
 
@@ -10463,7 +10517,7 @@ vector<string> generateParenthesis(int n)
 
 解题思路：
 
-#####0. bfs
+####  0. bfs
 
 用BFS搜索，记录从开始到当前路径长度。注意遍历map/set删除满足条件的element的写法。第一个用BFS搜索到的肯定是最短的之一。DFS则不是哦。
 
@@ -10508,6 +10562,7 @@ vector<string> generateParenthesis(int n)
 ```
 
 悲剧的是，上面的过不了～ testcase中dict太大，而word相对较短，去从dict去搜索相邻的单词，耗时太久。改为变动word中的每一个字符(26个一个一个试)，然后再去dict中判断是否存在。这样就能AC。[ref](https://oj.leetcode.com/discuss/7348/time-limit-exceeded-bfs), 代码如下：
+
 ```cpp
 
 	void getDiff1chars(string s1, queue<std::pair<string,int>> &next, int nextLen, unordered_set<string> &dict)
@@ -10550,7 +10605,8 @@ vector<string> generateParenthesis(int n)
 
 ```
 
-###Word Ladder II
+
+### Word Ladder II
 
 题目来源：[Word Ladder II](https://oj.leetcode.com/problems/word-ladder-ii/)
 
@@ -10704,7 +10760,7 @@ get了一种bfs的新技能，用一个queue，不用像上面那样两层之间
 	}
 ```
 
-###Word Search
+### Word Search
 
 题目来源：[Word Search](https://oj.leetcode.com/problems/word-search/)
 
@@ -10842,7 +10898,7 @@ bool exist(vector<vector<char> > &board, string word)
 
 ## greedy, 贪心
 
-###Best Time to Buy and Sell Stock II
+### Best Time to Buy and Sell Stock II
 
 题目来源：[Best Time to Buy and Sell Stock II](https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/)
 
@@ -10902,7 +10958,7 @@ bool exist(vector<vector<char> > &board, string word)
     }
 ```
 
-###Jump Game
+### Jump Game
 
 题目来源：[Jump Game](https://oj.leetcode.com/problems/jump-game/)
 
@@ -10916,7 +10972,7 @@ bool exist(vector<vector<char> > &board, string word)
 
 解题思路：
 
-#####0. 贪心
+#### 0. 贪心
 过每个index查看能到的最远的index，若当前最远的比遍历index还小或者相等时就走不下去了。 
 
 ```cpp
@@ -10935,7 +10991,7 @@ bool exist(vector<vector<char> > &board, string word)
     }
 ```
 
-#####1. 动归
+#### 1. 动归
 
 f[i]表示走到第A[i]时, 多余的最大步数。
 ```f[i] = max(f[i-1], A[i-1])-1 ```
@@ -10955,7 +11011,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
     }
 ```
 
-###Jump Game II
+### Jump Game II
 
 题目来源：[Jump Game II](https://oj.leetcode.com/problems/jump-game-ii/)
 
@@ -11036,7 +11092,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
 
 ## 其他
 
-###Candy
+### Candy
 
 题目来源：[Candy](https://oj.leetcode.com/problems/candy/)
 
@@ -11056,7 +11112,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
 
 解析：注意理解题意 [3,2,2,3,1] 糖数量: 2,1,1,2,1; [4,2,3,4,1] 结果是 2,1,2,3,1. 
 
-##### 0. 每次找最低点，再往回确定糖数量
+####  0. 每次找最低点，再往回确定糖数量
 
 遍历一两遍即可,每次找下一次最低点，最低点的糖数量为1，再从最低的遍历到当前点得到结果。下面代码用了一个数组保存了每个child的结果，实际上只需用几个变量记录即可。
 按照这个思路写了下面的比较戳的代码。
@@ -11140,7 +11196,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
 ```
 
 
-##### 1. 从左到右从右到左双向遍历
+####  1. 从左到右从右到左双向遍历
 
 从[discuss](https://oj.leetcode.com/discuss/76/does-anyone-have-a-better-idea)看到的答案，短小精悍的代码。思路也很清晰。
 
@@ -11178,7 +11234,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
 
 ```
 
-##### 2. 备忘录法
+####  2. 备忘录法
 
 这个方法参考了[leetcode-cpp](https://github.com/soulmachine/leetcode)。即用递归的方式使得分得candy数量同时满足以上两个条件。
 
@@ -11205,7 +11261,7 @@ f[i]表示走到第A[i]时, 多余的最大步数。
 	}
 ```
 
-###Container With Most Water
+### Container With Most Water
 
 题目来源：[Container With Most Water](https://oj.leetcode.com/problems/container-with-most-water/)
 
@@ -11249,7 +11305,7 @@ Suppose the returned result is not the optimal solution. Then there must exist a
 
 v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设height[low] < height[high]，那么算法将low++, 这意味着v[low, high-1],v[low, high-2]等被忽略。v[low, high-1],v[low, high-2]…...不会大于v[low, high]，因为装水的容量是由宽度和短的那个height[low]决定的(low是固定的)，宽度显然(low, high)更宽。
 
-###Gas Station
+### Gas Station
 
 题目来源：[Gas Station](https://oj.leetcode.com/problems/gas-station/)
 
@@ -11270,7 +11326,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
 
 解题思路：
 
-##### 0. 暴力法
+####  0. 暴力法
 
 一个一个试～  `O(N^2)` 能AC。
 
@@ -11304,7 +11360,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
     }
 ```
 
-#####1. O(N)解法
+#### 1. O(N)解法
 
 从[discuss](https://oj.leetcode.com/discuss/4159/share-some-of-my-ideas)看来的答案。思路如下：
 
@@ -11335,7 +11391,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
     }
 ```
 
-###Gray Code
+### Gray Code
 
 题目来源：[Gray Code](https://oj.leetcode.com/problems/gray-code/)
 
@@ -11354,7 +11410,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
 
 
 解题思路：
-#####0. 逆序
+#### 0. 逆序
 注意观察，n每增加1，即是在n-1的结果之上，最高位加1，并按照n-1的逆序。 
 
 	n = 1 
@@ -11395,7 +11451,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
     }
 ```
 
-#####1.公式法
+#### 1.公式法
 
 [格雷码](http://zh.wikipedia.org/zh-cn/%E6%A0%BC%E9%9B%B7%E7%A0%81)
 
@@ -11416,7 +11472,7 @@ v[low, high] 表示(low, hight)和x轴围成的容器装水的结果，假设hei
     }
 ```
 
-###Max Points on a Line
+### Max Points on a Line
 
 题目来源：[Max Points on a Line](https://oj.leetcode.com/problems/max-points-on-a-line/)
 
@@ -11545,7 +11601,7 @@ int maxPoints2(vector<Point> &points)
 
 ```
 
-###Pascal's Triangle
+### Pascal's Triangle
 
 题目来源：[Pascal's Triangle](https://oj.leetcode.com/problems/pascals-triangle/)
 
@@ -11584,7 +11640,7 @@ int maxPoints2(vector<Point> &points)
 
 还可以用二项式系数那个公式算。在[Pascal's Triangle II](http://tanglei.me/leetcode/pascals-triangle-ii.html)中有，这里就不再贴了。
 
-###Pascal's Triangle II
+### Pascal's Triangle II
 
 题目来源：[Pascal's Triangle II](https://oj.leetcode.com/problems/pascals-triangle-ii/)
 
@@ -11626,7 +11682,7 @@ int maxPoints2(vector<Point> &points)
 ```
 
 
-###Remove Element
+### Remove Element
 
 题目来源：[Remove Element](https://oj.leetcode.com/problems/remove-element/)
 
@@ -11650,7 +11706,7 @@ int removeElement(int A[], int n, int elem)
 }
 ```
 
-###Trapping Rain Water
+### Trapping Rain Water
 
 题目来源：[Trapping Rain Water](https://oj.leetcode.com/problems/trapping-rain-water/)
 
@@ -11663,7 +11719,7 @@ int removeElement(int A[], int n, int elem)
 
 解题思路：
 
-#####0. O(2\*n)
+#### 0. O(2\*n)
 
 先找打最高的柱子, 然后从两边往中间走, 如从左到右时, maxHeight记录到当前位置最高的柱子, 若当前高度cur小于maxHeight, 则 water += maxHeight - cur;
 
@@ -11698,7 +11754,7 @@ int removeElement(int A[], int n, int elem)
     }
 ```
 
-#####1. O(n)
+#### 1. O(n)
 
 >
 	one pass and constant space,one point starts from left,another starts from right,and store the level at present,calculate the area of rectangle "all",and remove the area of block "block".It's the answer. 
@@ -11735,6 +11791,3 @@ int removeElement(int A[], int n, int elem)
 类似的题目还有 [Container With Most Water](./container-with-most-water.html).
 
 
-<!-- MathJax Section -->
-<script type="text/javascript"
-src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>

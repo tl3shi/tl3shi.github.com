@@ -20,6 +20,7 @@ tags: [leetcode, c++, DFS]
 解题思路：
 在原串中加点，每个位置都去试探，直到3个点加完毕，若满足规则就是。
 注意以0开头的段。
+
 ```cpp
 
 	bool check(const string &str)
@@ -62,4 +63,5 @@ tags: [leetcode, c++, DFS]
 	    return move(result);
 	}
 ```
+
 

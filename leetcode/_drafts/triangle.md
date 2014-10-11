@@ -45,6 +45,7 @@ tags: [leetcode, c++, DP]
 ```
 
 如果triangle值可以改变的话，可以O(1)的空间复杂度。
+
 ```cpp
 
     //triangle can be changed
@@ -58,4 +59,5 @@ tags: [leetcode, c++, DP]
         return triangle [0][0];
 }
 ```
+
 

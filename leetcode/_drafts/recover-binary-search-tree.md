@@ -15,10 +15,11 @@ tags: [leetcode, c++, inorder traveral, binary tree]
 
 解题思路：
 
-#### 0. 求得中序遍历结果,再两边向中间扫描
+####  0. 求得中序遍历结果,再两边向中间扫描
 
 O(2*n) 空间解法～
 直接中序遍历，然后分别从前往后、从后往前找非升序、非降序的两个node，交换其值即可。
+
 ```cpp
 	
 	void inorder1(vector<TreeNode*> &result, TreeNode* root)
@@ -58,7 +59,7 @@ O(2*n) 空间解法～
 	}
 ```
 
-#### 1. 中序遍历一边遍历，一边扫描。
+####  1. 中序遍历一边遍历，一边扫描。
 
 当两个节点都找到后，即可退出中序遍历流程。
 
@@ -98,7 +99,7 @@ O(2*n) 空间解法～
     }
 ```
 
-####2. Morris遍历，常数空间。
+#### 2. Morris遍历，常数空间。
 
 算法解释见[binary-tree-inorder-traversal](./binary-tree-inorder-traversal.html);
 
@@ -156,3 +157,4 @@ O(2*n) 空间解法～
         std::swap(node1->val, node2->val);
     }
 ```
+

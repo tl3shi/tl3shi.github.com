@@ -37,6 +37,7 @@ tags: [leetcode, c++, 排列组合, permutation]
 	所以这个数是45321.
 
 代码如下：
+
 ```cpp
 	
 	void jiecheng(vector<int> &f, int n)
@@ -71,3 +72,4 @@ tags: [leetcode, c++, 排列组合, permutation]
 - [康托展开](http://baike.baidu.com/view/437641.htm)
 - [Leetcode: Permutation Sequence](http://blog.csdn.net/doc_sgl/article/details/12840715)
 http://blog.csdn.net/MrRoyLee/article/details/34981399 
+

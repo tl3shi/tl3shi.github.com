@@ -21,8 +21,9 @@ tags: [leetcode, c++, DP]
 
 解题思路：
 
-#### 0.递归
+####  0.递归
 超时。
+
 ```cpp
 bool isInterleave(string s1, string s2, string s3)
 {
@@ -39,7 +40,7 @@ bool isInterleave(string s1, int i1, string s2, int i2, string s, int i)
 }
 ```
 
-####1. 动态规划
+#### 1. 动态规划
 DP。
 
 用DP，类似[Distinct Subsequences](./distinct-subsequences.html) 一样，
@@ -76,3 +77,4 @@ bool isInterleave(string s1, string s2, string s3)
     return dp[n1][n2];
 }
 ```
+

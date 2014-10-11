@@ -22,7 +22,7 @@ tags: [leetcode, c++, math, string]
 
 解题思路：
 
-####0. 粗暴方法
+#### 0. 粗暴方法
 
 自己写的代码丑陋无比，一种情况一种情况试, 实在是无参考价值。
 主要是各种情况，例如：
@@ -130,7 +130,7 @@ tags: [leetcode, c++, math, string]
     }
 ```   
 
-####1. 利用strtod. 
+#### 1. 利用strtod. 
 
 利用函数**strtod**. 
 	
@@ -154,7 +154,7 @@ tags: [leetcode, c++, math, string]
     }
 ```
 
-####2. 利用自动机
+#### 2. 利用自动机
 
 可参考 [自动机实现valid-number](http://blog.csdn.net/kenden23/article/details/18696083).
 
@@ -170,6 +170,7 @@ tags: [leetcode, c++, math, string]
 	8前面有有效数输入之后，输入space的状态
 	共9种状态了，难设计的是6,7,8状态。
 	分好之后就好办了，设计出根据输入进行状态转换就OK了。
+
 ```cpp
 
 	class Solution {
@@ -212,3 +213,4 @@ tags: [leetcode, c++, math, string]
 	     }
 	};
 ```
+

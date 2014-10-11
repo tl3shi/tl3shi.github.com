@@ -16,7 +16,7 @@ tags: [leetcode, c++, math]
 
 解题思路：
 
-####0 二分
+#### 0 二分
 
 注意 可能越界Int。
 
@@ -70,6 +70,7 @@ tags: [leetcode, c++, math]
 	x_(k+1) = 1/2 * (x_k + n / x_k)
 
 其实牛顿迭代法也可以看作是泰勒公式(Taylor Series)的简化.
+
 ```cpp
 	
 	int sqrt(int x) 
@@ -92,3 +93,4 @@ f'(x_{n}) = \frac{ \mathrm{rise} }{ \mathrm{run} } = \frac{ \mathrm{\Delta y} }{
 $$
 
 <script type="text/javascript" src="https://stackedit.io/libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+

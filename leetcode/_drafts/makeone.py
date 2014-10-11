@@ -8,8 +8,8 @@ def parsefile(filename):
     for i in range(10, len(lines)):
         line = lines[i]
         if (line.startswith("###")):
-            line = '#'+line
-        if (line == '```cpp') and (len(lines[i-1]) < 2):
+            line = '#'+line[:3]+' '+line[4:]
+        if (line.startswith('```cpp')) and (len(lines[i-1]) > 2):
             needchange = True
             result.append('\n')
         result.append(line)
@@ -17,6 +17,7 @@ def parsefile(filename):
     f.close()
     if(needchange):
         output = open(filename, 'w')
+        output.writelines(lines[:10])
         output.writelines(result)
         output.close()
     return result
@@ -51,14 +52,14 @@ def parseAll(filename):
         elif (onefile == "Pascal's-Triangle-II.md"):
             onefile = 'pascals-triangle-ii.md'
         onefilecontent = parsefile(onefile)
-        result.append('###' + title + '\n\n')
+        result.append('### ' + title + '\n\n')
         result += onefilecontent
         i += 1
         #if(i == 5):
         #    break
-    exit()
-    output = open(filename+'.out.md', 'w')
+    output = open('makeone.out.md', 'w')
     output.writelines(result)
     output.close()
 
 parseAll('leetcode-summary.md')
+#parsefile('decode-ways.md')

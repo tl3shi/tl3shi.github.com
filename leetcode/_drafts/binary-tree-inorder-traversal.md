@@ -25,9 +25,9 @@ tags: [leetcode, c++, tree traversal, binary tree]
 解题思路：
 
 
-####1. 思路一: 直接递归(略)
+#### 1. 思路一: 直接递归(略)
 
-####2. 思路二: 用stack.
+#### 2. 思路二: 用stack.
 
 ```cpp
 vector<int> inorderNormal(TreeNode * root)
@@ -61,7 +61,7 @@ vector<int> inorderTraversal(TreeNode *root)
 }
 ```
 
-####3. 思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
+#### 3. 思路三： Morris遍历. `O(1)`空间 + `O(n)`时间
 
 利用线索二叉树, 利用叶子节点的空指针指向前驱后继来记住状态。算法仍参考[Morris Traversal](http://www.cnblogs.com/AnnieKim/archive/2013/06/15/MorrisTraversal.html)，里面讲了详细的案例。
 
@@ -76,6 +76,7 @@ vector<int> inorderTraversal(TreeNode *root)
 	3. 重复以上1、2直到当前节点为空。
 
 ```cpp
+
 ```cpp
 vector<int> inorderMorris(TreeNode * root)
 {
@@ -108,4 +109,5 @@ vector<int> inorderMorris(TreeNode * root)
 }
 ```
 ```
+
 
