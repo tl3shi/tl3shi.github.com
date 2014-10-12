@@ -165,7 +165,7 @@ tags: [leetcode, c++, leetcode, 总结]
 - [Set Matrix Zeroes 题解](./Set-Matrix-Zeroes.html)
 - [Spiral Matrix 题解](./Spiral-Matrix.html)
 - [Spiral Matrix II 题解](./Spiral-Matrix-II.html)
-- [Maximal Rectangle 题解](./Maximal-Rectangle.html) 给定二维填满0-1的矩阵，找填充1的最大的面积
+- [Maximal Rectangle 题解](./Maximal-Rectangle.html) 
 
 
 

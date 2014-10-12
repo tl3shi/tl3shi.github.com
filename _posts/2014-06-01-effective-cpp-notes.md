@@ -18,17 +18,18 @@ tags: [读书笔记, c++]
   
 例如
 
->	
-	Widget w1; //default 构造函数
-	Widget w2(w1); // copy 构造
-	w1 = w2; // copy assignment 赋值运算
-	Widget w3 = w1; // **copy构造，有新对象w3产生**
-    //注意这个跟类成员初始化列表的区别，初始化列表是copy构造函数；而在类构造函数里面通过＝赋值，是先调用了default构造函数，然后才copy
-    //assignment的。
+```	cpp
+Widget w1; //default 构造函数
+Widget w2(w1); // copy 构造
+w1 = w2; // copy assignment 赋值运算
+Widget w3 = w1; // **copy构造，有新对象w3产生**
+//注意这个跟类成员初始化列表的区别，初始化列表是copy构造函数；而在类构造函数里面通过＝赋值，是先调用了default构造函数，然后才copy assignment的。
+```
 
 ##1  让自己习惯C++
 
 ###01 视C++为一个语言联邦 
+
 对内置(C-like)类型在函数传参时pass by value比pass by reference更高效，当用OO的c++自定义类型(存在构造/析构等)pass by reference to const 更好，STL里的迭代器和函数对象是用C指针实现的，因此pass by value更好。
 
 ###02 尽量以const,enum,inline替换#define
@@ -39,34 +40,39 @@ tags: [读书笔记, c++]
 - \#include必需, \#ifdef/\#ifndef 仍扮演控制编译的重要角色.
 
 ###03 尽可能使用const
+
 - const指针时注意区分含义，const出现在\*左边，被指物是常量，出现在\*右边,表示指针是常量. 
 
->
-	const char * p; //const data, non-const pointer, same as char const * p
-	char * const p; //const pointer, non-const data
-	const char* const p;// const pointer, const data
-	const Widget * pw = Widget const * pw; // const data,non-const pointer
+```cpp
+const char * p; //const data, non-const pointer, same as 
+char const * p
+char * const p; //const pointer, non-const data
+const char* const p;// const pointer, const data
+const Widget * pw = Widget const * pw; // const data,non-const pointer
+```
 	
-- const 成员函数不可以更改对象内任何non-static成员变量，mutabl声明的成员变量除外。
+- const 成员函数不可以更改对象内任何non-static成员变量，mutable 声明的成员变量除外。
 - const 成员函数版本和non-const版本函数重载时(实现逻辑一样)，用non-const 函数 调用相应 const函数节省编码，即*运用const成员函数实现其non-const的孪生兄弟*. 不能反过来，反过来调用const 版本时，内部调用了non-const，就有可能修改了成员。
 
->
-	class A
+```cpp
+class A
+{
+	...
+public:
+	const char & operator[](size_t pos) const 
 	{
-		...
-	public:
-		const char & operator[](size_t pos) const 
-		{
-		}
-		char & operator[](size_t pos)
-		{
-			return const_cast<char&>(static_cast<const A &>(*this)[pos]);
-			//*this 加上const，再调用const op[]
-			//必须明确指出调用const operator[](强转自己为const A&),否则会自己调用自己死循环,返回结果再去除const限制
-		}
-	} 
+	}
+	char & operator[](size_t pos)
+	{
+		return const_cast<char&>(static_cast<const A &>(*this)[pos]);
+		//*this 加上const，再调用const op[]
+		//必须【明确】指出调用const operator[](强转自己为const A&),否则会自己调用自己死循环,返回结果再去除const限制
+	}
+} 
+```
 	
 ### 04 确定对象使用前已被初始化
+
 - 类成员初始化通过在构造函数定义用:初始化列表形式给出，在进入构造函数函数体之前已被初始化。初始化列表的形式比在构造函数体内通过赋值(=)更高效，**赋值时会先调用default构造函数，然后再进行赋值(copy assignment)**，而初始化列表直接调用copy构造函数。[测试代码](https://gist.github.com/tl3shi/36b70a11d6cfb7727e67)
 - 成员初始化顺序：base class, derived class, 成员变量按照其**声明**次序(非初始列表顺序)。
 
@@ -76,90 +82,105 @@ tags: [读书笔记, c++]
 ## 2 构造/析构/赋值运算
 
 ### 05 了解C++默默编写并调用哪些函数
+
 - **需要**(代码中有调用)时，编译器才会生成如下函数：default构造、析构函数(非vitual除非其base class含有vitual 析构)、copy构造、copy assignment操作符，public的。
 - 当自定义构造函数时，编译器将不自动生成。
 - 编译器生成的copy构造，内部简单地调用每个non-static成员的copy构造，对内置类型，会copy每个bits来构造初始化。
 - 类含有*reference成员或const成员*时，编译器不自动生成copy assignment ， base class 的copy assignment为private时，也不自动生成。
 
 ### 06 若不想使用编译器自动生成的函数，就应该明确拒绝
+
 - 例如不想让别人调用copy构造或者copy assignment，将二者手动设置为private，其他类就调用不了了。*BUT*member 函数和 friend函数还是可以调用，可以只private声明，不定义函数体，这时member或者friend调用时就得到link error。*成员函数声明为private并且故意不实现*
 - 写一个super class，将其copy/ copy assignment设置为private，可以将上述link error提前到编译期间。任何试图调用copy/copy assignment时，编译器生成版本将试图调用其super class对应函数，而super class中是private，因此编译不通过。如boost中的noncopyable.
 
 ### 07 为多态基类声明 virtual 析构
+
 - polymorphic (带多态性质的)base classes应该声明一个virtual 析构函数；如果class带有任何virtual 函数，应该拥有一个virtual析构函数。
 - classes设计目的如果不是作为base class使用，或不是为了多态条件时，不应该声明virtual 析构函数。产生指向虚表(函数指针的数组)的指针增加类空间大小。
 
 ### 08 别让异常逃离析构函数
-- 析构函数不要吐出异常。如果一个析构函数调用的函数有可能抛出异常，在析构函数中要try，catch住，然后吞下他们(不传播出去)或结束程序。
+
+- 析构函数不要吐出异常。如果一个析构函数调用的函数有可能抛出异常，在析构函数中要try，catch住，然后吞下他们(不传播出去)或结束程序。(**因为抛出异常后，控制权离开析构函数，可能发生资源泄漏，另外若连续有两个异常的话，程序默认会直接终止或不明确的行为。**)
 - 如果客户需要对某个操作函数运行期间抛出的异常做出反应, 那么 class 应该提供一个普通函数(而非在析构函数中)执行该操作.
 
 ###09 绝不在构造和析构函数中调用virtual函数
-- base class构造期间virtual函数**绝不会**下降到derived classes阶层。base class构造函数执行时，derived class成员变量尚未初始化(base class都还没构造完呢)。是调用的当前类的相应的函数。会被编译器解析(resolve to) base class. 
+
+- base class构造期间virtual函数**绝不会**下降到derived classes阶层。base class构造函数执行时，derived class成员变量尚未初始化(base class都还没构造完呢)，是调用的当前类的相应的函数，会被编译器解析(resolve to) base class. 
 - 运行期间类型信息(runtime type infomation,如dynamic_cast, typeid)也会把对象视为base class类型。
+- 析构函数也一样。
 - 注意跟Java/C# 之类的区别。[测试代码实例](https://gist.github.com/tl3shi/a48462793ee557263cd9)
 
 ###10 另 operator = 返回一个reference to *this
+
 - 为了实现 连锁形式的赋值, 赋值操作符(类似 +=, -=, *=, /= 等操作符)应返回一个 reference to *this. 类似Java中布局常用的里面的setXX(...).setYY(...).setXXX...
 
 ### 11 在 operator = 中处理自我赋值
-- 确保当对象自我赋值时operator＝有良好的行为，技术包括比较来源对象和目标对象地址、精心周到的语句顺序，以及copy-and-swap技术。
-- 确保任何函数如果操作一个以上的对象，其中多个对象是同一个独享时行外仍然正确。
 
->	
-	class Widget
-	{
-		...
-		private:
-			Bitmap* pb;//指向heap中分配得到的对象
-	}
-	Widget & Widget::operator=(const Widget &rhs)
-	{
-		delete pb; //!! 当rhs 和 this是同一个对象时，就挂了。
-		pb = new Bitmap(*rhs.pb);//非异常安全，若此处发生异常，widget会持有一个指向被删除的bitmap
-		return *this;
-	}
+- 确保当对象自我赋值时operator＝有良好的行为，技术包括比较来源对象和目标对象地址、精心周到的语句顺序，以及copy-and-swap技术。
+- 确保任何函数如果操作一个以上的对象，其中多个对象是同一个对象时行外仍然正确。
+
+```cpp	
+class Widget
+{
+	...
+	private:
+		Bitmap* pb;//指向heap中分配得到的对象
+}
+Widget & Widget::operator=(const Widget &rhs)
+{
+	delete pb; //!! 当rhs 和 this是同一个对象时，就挂了。
+	pb = new Bitmap(*rhs.pb);//非异常安全，若此处发生异常，widget会持有一个指向被删除的bitmap
+	return *this;
+}
+```
 上述代码当比如 w1, w2 之前都指向同一个对象(别名/指针等)。调用w1=w2时，就会挂掉。因此在delete之前可以加上 
->
-	if (this == &rhs) return *this; //导入新的control flow, prefetching、caching、pipelining等指令效率会降低
-	//或者也可以
-	Wdiget & Widget::operator=(const Widget & rhs)
-	{
-		Bitmap * pOrig = pb; 
-		pb = new Bitmap(*rhs.pb);
-		delte pOrig;
-		return *this
-	}
-	//copy and swap
-	Wdiget & Widget::operator=(const Widget & rhs)
-	{
-		Widget temp(rhs);
-		swap(*this, temp);// 交换*this 和 temp的数据
-		return *this
-	}	
+
+```cpp
+if (this == &rhs) return *this; //导入新的control flow, prefetching、caching、pipelining等指令效率会降低
+//或者也可以
+Wdiget & Widget::operator=(const Widget & rhs)
+{
+	Bitmap * pOrig = pb; 
+	pb = new Bitmap(*rhs.pb);
+	delte pOrig;
+	return *this
+}
+//copy and swap
+Wdiget & Widget::operator=(const Widget & rhs)
+{
+	Widget temp(rhs);
+	swap(*this, temp);// 交换*this 和 temp的数据
+	return *this
+}	
+```
 	
 ### 12 复制对象时勿忘其每个成分
-- copying 函数(copy 构造,copy assignment)应该确保复制对象内的所有成员变量以及所有 base class 成分(调用基类的 copying 函数). 在为 class 添加一个成员变量后, 必须同时修改所有的构造函数 和 copying 函数. 确保(1)复制所有local变量，(2)调用所有base class内适当的copying函数。
-- 不要尝试以某个 copying 函数实现另外一个 copying 函数, 应该将共同机能放进第三个函数(init之类)中, 并由两个 copying 函数共同调用.
+
+- copying 函数(copy 构造,copy assignment)应该确保复制对象内的所有成员变量以及所有 **base class** 成分(调用基类的 copying 函数). 在为 class 添加一个成员变量后, 必须同时修改所有的构造函数 和 copying 函数. 确保(1)复制所有local变量，(2)调用所有base class内适当的copying函数。
+- 不要尝试以某个 copying 函数实现另外一个 copying 函数(copy assignment 调用 copy构造意思是试图构造已经存在的对象, copy调用copy assignment 一样不合理 因为copy构造新对象，assignment是实施于以初始化的对象), 应该将共同机能放进第三个函数(init之类)中, 并由两个 copying 函数共同调用.
 
 -----
 
 ## 3 资源管理
 
 ### 13 以对象管理资源
-- 资源获得时机便是初始化时机(Resource Acquisition Is Initialization; RAII).
-- 两个常被使用的 RAII class 是 shared_ptr 和 auto_ptr. auto_ptr的复制动作会是它(被复制的对象)指向 NULL. 受auto_ptr管理的资源必须绝对没有一个以上的auto_ptr同时指向它。 share_ptr是RCSP(reference-counting smart pointer),智能指针无法解决循环引用问题。
 
->
+- 资源获得时机便是初始化时机(Resource Acquisition Is Initialization; RAII).
+- 两个常被使用的 RAII class 是 shared\_ptr 和 auto\_ptr. auto\_ptr的复制动作会是它(被复制的对象)指向 NULL. 受auto\_ptr管理的资源必须绝对没有一个以上的auto\_ptr同时指向它。 share\_ptr是RCSP(reference-counting smart pointer), 智能指针无法解决循环引用问题。
+
+```cpp
 	std::auto_ptr<A> p(..);
 	std::auto_ptr<A> p2(p); // p被设为null,p2指向原来p指向的对象
-	p = p2; // p2设置为null，p又指向最初是的对象	
+	p = p2; // p2设置为null，p又指向最初是的对象
+```	
 	
-- auto_ptr / shared_ptr 在其析构函数内做的是delete，非delete[], 所以不能用auto_ptr<std::string> xx(new std::string[10]);
+- auto\_ptr / shared\_ptr 在其析构函数内做的是```delete```，非```delete[]```, 所以不能用 ```auto_ptr<std::string> xx(new std::string[10]);```
 
 ### 14 在资源管理类中小心 copying 行为
+
 - 复制 RAII 对象必须一并复制它所管理的资源, 资源的 copying 行为决定 RAII 对象的 copying 行为.
 - 普遍常见的RAII class copying 行为是：抑制copying(extends Uncopyable)、引用计数法等。
-- std::share_ptr<Resource, func>可以指定当Resource引用技术为0时的行为(删除器deleter)func，auto_ptr总是执行delete指针。
+- std::share\_ptr<Resource, func>可以指定当Resource引用技术为0时的行为(删除器deleter)func，auto\_ptr总是执行delete指针。
 
 ### 15 在资源管理类中提供对原始资源的访问
 
