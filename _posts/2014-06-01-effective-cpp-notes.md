@@ -189,37 +189,42 @@ Wdiget & Widget::operator=(const Widget & rhs)
 
 ### 16 成对使用 new 和 delete 时要采用相同的形式
  
-- new delete, new [] delete[] 成对使用，编译器会根据是否含有[]去解析数组个长度，进而决定调用多少次相应类型的析构函数。
+- new delete, new [] delete[] 成对使用，编译器会根据是否含有[]去解析数组个长度，进而决定调用多少次相应类型的析构函数。 (对于内置类型的话，不需要记录调用多少次析构函数，有的编译器可能就不多花费4个字节来记录长度，因此用new数组，直接delete应该也没问题。但记住自己别这么写代码就行。详情可以参考下这里[C++ 中的 new/delete 和 new[]/delete[]](https://app.yinxiang.com/shard/s29/sh/8a97eba8-9238-4679-8279-b186a8d060c0/a2de9eaa4d5fa2958aa748f1a117e13d))
 - 尽量不要对数组形式做 typedef 动作, 因为在使用 new 表达式时有很大概率不能正确使用 delete. 通过使用 string, vector 等 template 可将对数组的需求降至几乎为0.
 
 ### 17 以独立语句将 newed 对象置入智能指针
-- 以独立语句将newed的对象存储于智能指针内，不然若有异常抛出，可能有难以察觉的资源泄漏。
+
+- 以**独立语句**将newed的对象存储于智能指针内，不然若有异常抛出，可能有难以察觉的资源泄漏。
 例如
 
->
-	int privority();
-	void processWidget(shared_ptr<Widget> pw, int privority);
-	//调用时
-	processWidget(shared_ptr<Widget>(new Widget()), priority());
-	//可能的调用顺序(不同编译器传参压栈顺序可能不一致)
-	1、执行new Widget() 
-	2、调用 privority();
-	3、构造shared_ptr;
-	若在执行2时，有异常，则newed的widget不能正确释放，导致内存泄漏。改成这样就OK:
-	shared_ptr<Widget> pw(new Widget());
-	processWidget(pw, priority());
-
+```cpp
+int privority();
+void processWidget(shared_ptr<Widget> pw, int privority);
+//调用时
+processWidget(shared_ptr<Widget>(new Widget()), priority());
+/*
+可能的调用顺序(不同编译器对参数核算的顺序可能不一致)
+1、执行new Widget() 
+2、调用 privority();
+3、构造shared_ptr;
+若在执行2时，有异常，则newed的widget不能正确释放，导致内存泄漏。改成这样就OK:
+*/
+shared_ptr<Widget> pw(new Widget());
+processWidget(pw, priority());
+```
 ----
 
 ## 4 设计与声明
 
 ### 18 让接口容易被正确使用, 不容易被误用
+
 - 好的接口很容易被正确使用, 不容易被误用. 
 - "促进正确使用"的办法包括接口的一致性, 以及与内置类型的行为兼容.
 - "阻止误用"的方法包括建立新类型(传递年月日的例子)、限制类型上的操作(a*b=c的例子,operator * 返回const，防止==/=混淆), 束缚对象值, 以及消除客户的资源管理责任.
-- shared_ptr 支持定制删除器(custom deleter), 这可防范 cross-DLL 问题, 可被用来自动解除互斥锁(mutex)等.
+- shared\_ptr 支持定制删除器(custom deleter), 这可防范 cross-DLL(一个dll new，另一个delete，shared\_ptr的delete是来自new的那个dll中的)问题, 可被用来自动解除互斥锁(mutex)等.
 
 ### 19 设计 class 犹如设计 type
+
 class 的设计就是 type 的设计, 在定义一个新 type 之前, 请考虑以下几个问题:
 
 - 新 type 的对象应该如何被创建和销毁? 
@@ -235,46 +240,52 @@ class 的设计就是 type 的设计, 在定义一个新 type 之前, 请考虑�
 - 新 type 有多么一般化? 是否考虑 class template.
 
 ### 20 宁以 pass-by-reference-to-const 替换 pass-by-value
-- 尽量以 pass-by-reference-to-const 替换 pass-by-value, 前者通常比较高效, 并可避免切割问题(slicing ,参数为base class,传递是为derived class以by value的形式传递).
-- 以上规则并不适用于内置类型, 以及 STL 的迭代器和函数对象, 对它们来说, pass-by-value 往往比较适当.
+
+- 尽量以 pass-by-reference-to-const 替换 pass-by-value, 前者通常比较高效, 并可避免切割问题(slicing, 参数为base class,传递是为derived class以by value的形式传递).
+- 以上规则并不适用于内置类型, 以及 STL 的迭代器和函数对象, 对它们来说, pass-by-value 往往比较适当. 详情见[C++ 传参时传内置类型时用传值(pass by value)方式效率较高](http://www.tanglei.name/pass-by-value-when-using-c-like-parameter-is-better-than-pass-by-referene/)
 
 ### 21 必须返回对象时，别妄想返回其 reference
+
 绝不要返回 pointer 或 reference 指向一个 local stack 对象, 或返回 reference 指向一个 heap-allocated 对象 或 返回 pointer 或 reference 指向一个 local static 对象而有可能需要多个这样的对象.  
 
-	struct Ratinal
-	{
-		int n, d; //分子 denorminator,分母 numerator
-		...
-	}
-	const Rational & operator(const Rational &a, const Rational &b)
-	{
-		Rational result(a.n*b.n, a.d*b.d);
-		return result;
-		//以上代码 在stack上 构造一个Rantional, 函数返回前 会被析构掉，没有copy～ 
-		//或者这样, 但有由谁来delete?
-		Rational * result = new Ratinoal(a.n*b.n, a.d*b.d);
-		return *result;
-		//当这样的调用代码
-		Rational w, x, y, z;
-		w = x * y * z;
-		// 两次调用operator* ,new 了 2个，中间那个怎么delete?
-	}
-	//又或者
-	const Rational & operator(const Rational &a, const Rational &b)
-	{
-		static Rational result;
-		result = ...;
-		return result;
-	}
-	//上面问题先不考虑static关于线程安全的问题，但就是这样的调用
-	Rational a, b, c, d;
-	if ((a * b) == (c * d))
-	{}
-	else
-	{}
-	(a * b) == (c * d) 表达式永远为true,因为 等效于
-	if (opeartor == (operator*(a, b), operator *(a, b))) 
-	在调用opeator == 时, 有两个operator* 发生调用，的确两次调用都各自改变了static Rational的值，但由于返回的是reference, 在调用端看来永远都是static Rational对象的“现值”。
+```cpp
+struct Ratinal
+{
+	int n, d; //分子 denorminator, 分母 numerator
+	...
+}
+const Rational & operator(const Rational &a, const Rational &b)
+{
+	Rational result(a.n*b.n, a.d*b.d);
+	return result;
+	//以上代码 在stack上 构造一个Rantional, 函数返回前 会被析构掉，没有copy～ 
+	//或者这样, 但有由谁来delete?
+	Rational * result = new Ratinoal(a.n*b.n, a.d*b.d);
+	return *result;
+	//当这样的调用代码
+	Rational w, x, y, z;
+	w = x * y * z;
+	// 两次调用operator* ,new 了 2个，中间那个怎么delete?
+}
+//又或者
+const Rational & operator(const Rational &a, const Rational &b)
+{
+	static Rational result;
+	result = ...;
+	return result;
+}
+//上面问题先不考虑static关于线程安全的问题，但就是这样的调用
+Rational a, b, c, d;
+if ((a * b) == (c * d))
+{}
+else
+{}
+/*
+(a * b) == (c * d) 表达式永远为true,因为 等效于
+if (opeartor == (operator*(a, b), operator *(a, b))) 
+在调用opeator == 时, 有两个operator* 发生调用，的确两次调用都各自改变了static Rational的值，但由于返回的是reference, 在调用端看来永远都是static Rational对象的“现值”。
+*/
+```
 	
 ### 22 将成员变量声明为 private
 
@@ -282,39 +293,42 @@ class 的设计就是 type 的设计, 在定义一个新 type 之前, 请考虑�
 - protected 并不比 public 更具有封装性.
 
 ### 23 宁以 non-member non-friend 替换 member 函数
+
 - 宁可拿non-member non-friend 替换 member 函数, 这样可增加封装性, 包裹弹性(packaging flexibility)和机能扩充性。
 - friends 函数对class private成员的访问权利和memeber函数相同，二者对封装的冲击力道也相同；封装角度看，抉择的关键不在memeber 和 non-member，而是memeber和non-member non-friend函数之间。
-- namespace 和class 不同，前者可跨越多个源代码文件而后者不能。
+- namespace 和 class 不同，前者可跨越多个源代码文件而后者不能。
 
 ### 24 若所有参数都需类型转换，请为此提供 non-member 函数
+
 如果需要为某个函数所有参数(包括被 this 指针所指的那个隐喻参数)进行类型转换, 那么这个函数必须是个 non-member. 
 
->
-	class Rational
-	{
-	public:
-		Rational(int n, int d); // 构造函数可以不为explicit, 允许 int to Rational的隐式转换
-		int numberator() const;
-		int denorminator() const;
-		//member 函数
-		const Rational operator *(const Rational &rhs) const;
-	private:
-		...
-	}
-	//这样调用
-	Rational oneEighth(1, 8);
-	Rational oneHalf(1, 2);
-	Rational result = oneHalf * oneEight; //OK
-	result = result * oneHalf; // OK
-	result = oneHalf * 2; // OK oneHalf.operator*(2), 2被隐式转换成Rational,若构造函数声明为explict，该语句也Error.
-	result = 2 * oneHalf; // Error 2.opeator*(oneHalf), 2 没有对应相应的class，也找不到global里一个接受int 和 Rational作为参数的non-member operator* 的函数
-	但当将operator* 移除Rational外，写成一个non-member函数时
-	const Rational operator *(const Rational& lhs, const Rational &rhs)
-	{
-		return .....;
-	}
-	这样的语句也能通过 
-	result = 2 * oneHalf;
+```cpp
+class Rational
+{
+public:
+	Rational(int n = 0, int d = 1); // 构造函数可以不为explicit, 允许 int to Rational的隐式转换
+	int numberator() const;
+	int denorminator() const;
+	//member 函数
+	const Rational operator *(const Rational &rhs) const;
+private:
+	...
+}
+//这样调用
+Rational oneEighth(1, 8);
+Rational oneHalf(1, 2);
+Rational result = oneHalf * oneEight; //OK
+result = result * oneHalf; // OK
+result = oneHalf * 2; // OK oneHalf.operator*(2), 2被隐式转换成Rational,若构造函数声明为explict，该语句也Error.
+result = 2 * oneHalf; // Error 2.opeator*(oneHalf), 2 没有对应相应的class，也找不到global里一个接受int 和 Rational作为参数的non-member operator* 的函数
+//但当将operator* 移除Rational外，写成一个non-member函数时
+const Rational operator *(const Rational& lhs, const Rational &rhs)
+{
+	return .....;
+}
+这样的语句也能通过 
+result = 2 * oneHalf;
+```
 	
 ### 25 考虑写出一个不抛异常的 swap 函数
 
@@ -325,37 +339,38 @@ class 的设计就是 type 的设计, 在定义一个新 type 之前, 请考虑�
 3. 若你正编写一个class(非class template)，为你的class 提供特化的std::swap，并另它调用swap的成员函数。
 4. 如果你调用swap，确定包含using 声明式，让std::swap在你的函数内曝光，最后不加namespace 修饰，赤裸调用swap。(std::swap(a,b)这样不会调用到你实现的特化版本，直接swap的话，若找到特化版本就直接调用，没找到才用std::swap)
 
->
-	namespace WidgetStuff
-	{
-		template<typename T>
-		class Widget {
-			public:
-				void swap(Widget & other)
-				{
-					using std::swap;
-					swap(pImpl, other.Impl);
-				}
-			private:
-				WidgetImple* pImp;
-		};
-		；
-		template<typename T>
-		void swap(Widget<T> &a, Widget<T> &b)
-		{
-			a.swap(b);
-		}
-	}
-	若是在写一个function template，则这样：
+```cpp
+namespace WidgetStuff
+{
 	template<typename T>
-	void doSomething(T& obj1, T& obj2)
+	class Widget {
+		public:
+			void swap(Widget & other)
+			{
+				using std::swap;
+				swap(pImpl, other.Impl);
+			}
+		private:
+			WidgetImple* pImp;
+	};
+	；
+	template<typename T>
+	void swap(Widget<T> &a, Widget<T> &b)
 	{
-		using std::swap;
-		...
-		swap(obj1, obj2);
-		...
+		a.swap(b);
 	}
+}
+//若是在写一个function template，则这样：
+template<typename T>
+void doSomething(T& obj1, T& obj2)
+{
+	using std::swap;
+	...
+	swap(obj1, obj2);
+	...
+}
 	using 声明让std::swap曝光，编译器若找到std::swap的T专属特化版，则调用，没找到则std::默认的一般化的那个。
+```
 	
 -----
 
