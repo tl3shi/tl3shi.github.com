@@ -353,7 +353,6 @@ namespace WidgetStuff
 		private:
 			WidgetImple* pImp;
 	};
-	；
 	template<typename T>
 	void swap(Widget<T> &a, Widget<T> &b)
 	{
@@ -400,20 +399,21 @@ void doSomething(T& obj1, T& obj2)
 
 Reference、指针、迭代器都是所谓的handles，返回一个代表对象内部的数据的handle，可能导致虽然调用const成员函数却还是造成对象状态被更改。
 
->
-	class GUIObject{...};
-	class Rectangle
-	{
-	public:
-		const Point& upperLeft(){return ...};//return private ..
-	private:
-	...
-	}
-	const Rectangle boundingBox(const GUIObject &obj);//by value
-	//客户有可能这样使用
-	GUIObject *gui;
-	...
-	const Point * pUpperLeft = &(boundingBox(\*gui).upperLeft());
+```cpp
+class GUIObject{...};
+class Rectangle
+{
+public:
+	const Point& upperLeft(){return ...};//return private ..
+private:
+...
+}
+const Rectangle boundingBox(const GUIObject &obj);//by value
+//客户有可能这样使用
+GUIObject *gui;
+...
+const Point * pUpperLeft = &(boundingBox(\*gui).upperLeft());
+```
 
 这样做的结果就是：对boundingBox(\*gui)的调用将得到一个Rectangle的匿名临时对象(假设为tmp),然后通过tmp调用uppperLeft得到一个指向tmp内部Point的reference，然后pUpperLeft指向那个Point对象。结果，语句执行完，tmp对象被销毁/析构,而pUpperLeft此时指向一个不存在的对象。
 
@@ -436,16 +436,17 @@ Reference、指针、迭代器都是所谓的handles，返回一个代表对象�
 - **大多数**C++的inline是在编译期完成的，也可能在链接期，少量如基于.NET CLI(Common Language Infrastructure)的托管环境(managed environments)可在运行期inlining.
 - 编译器不对通过函数指针进行的调用进行inline，例如
 
->
-	inline void f(){...}
-	void (* pf)() = f;
-	...;
-	f(); //被 inlined
-	pf(); // 不被inlined，函数指针的方式
-	
+```cpp
+inline void f(){...}
+void (* pf)() = f;
+...;
+f(); //被 inlined
+pf(); // 不被inlined，函数指针的方式
+```	
+
 - 大部分调试器对inline函数没办法，并不知道在一个并不存在的函数内设定断点。
 - template的具体化与inline无关，不要只因为function template出现在头文件就将它们声明为inline
-- inline 函数无法随程序库的升级而升级.若 f是一个inline的函数，客户将f的本体编进其程序中，一旦f改变，那么用到的f的客户端程序都要重新编译，而若f是non-inline的，若修改了，只要重新链接就好，若是动态链接，升级版函数甚至悄无声息就被应用程序吸纳。
+- inline 函数无法随程序库的升级而升级.若f是一个inline的函数，客户将f的本体编进其程序中，一旦f改变，那么用到的f的客户端程序都要重新编译，而若f是non-inline的，若修改了，只要重新链接就好，若是动态链接，升级版函数甚至悄无声息就被应用程序吸纳。
 
 ### 31 将文件的编译依存关系降至最低
 
@@ -469,52 +470,53 @@ Substitution Principle）
 - derived class内的名称会遮掩base class的名称(名称，not 签名)。
 - 为了让被遮掩的名称重见天日，可使用using 声明式或者转交(forwarding functios)。
 
->
-    class Base
-    {
-    private:
-        int x;
-    public:
-        virtual void mf1() = 0;
-        virtual void mf1(int);
-        virtual void mf2();
-        void mf3();
-        void mf3(double);
-        ...
-    };
-    class Derived: public Base
-    {
-    public:
-        //using Base::mf1;
-        //using Base::mf3;
-        virtual void mf1();
-        void mf3();
-        void mf4();
-        ...
-    };
-    Derived d;
-    int x;
-    d.mf1(); // OK
-    d.mf1(x); // Error, Derived::mf1() 遮盖了 base::mf1
-    d.mf2(); // OK
-    d.mf3(); // OK
-    d.mf3(1.4); // Error, Derived::mf3 遮盖了base::mf3
-    若用using 声明式(取消注释掉的两句代码)，则上面两个OK
-    //转交函数
-    若Derived以private集成Base，而Derived只想继承mf1那个唔参数的版本，using声明式就不行了，可用forwarding function。
-    class Derived: private Base
-    {
-    public:
-        virtual vid mf1()
-        {
-            Base::mf1(); //转交函数，暗自inline
-        }
-    };
-    ...
-    Derived d;
-    int x;
-    d.mf1(); // OK, Derived::mf1调用
-    d.mf1(x); //Error, Base::mf1()遮盖了
+```cpp
+class Base
+{
+private:
+   int x;
+public:
+   virtual void mf1() = 0;
+   virtual void mf1(int);
+   virtual void mf2();
+   void mf3();
+   void mf3(double);
+   ...
+};
+class Derived: public Base
+{
+public:
+   //using Base::mf1;
+   //using Base::mf3;
+   virtual void mf1();
+   void mf3();
+   void mf4();
+   ...
+};
+Derived d;
+int x;
+d.mf1(); // OK
+d.mf1(x); // Error, Derived::mf1() 遮盖了 base::mf1
+d.mf2(); // OK
+d.mf3(); // OK
+d.mf3(1.4); // Error, Derived::mf3 遮盖了base::mf3
+若用using 声明式(取消注释掉的两句代码)，则上面两个OK
+//转交函数
+若Derived以private集成Base，而Derived只想继承mf1那个无参数的版本，using声明式就不行了，可用forwarding function。
+class Derived: private Base
+{
+public:
+   virtual vid mf1()
+   {
+       Base::mf1(); //转交函数，暗自inline
+   }
+};
+...
+Derived d;
+int x;
+d.mf1(); // OK, Derived::mf1调用
+d.mf1(x); //Error, Base::mf1()遮盖了
+```
 
 ### 34 区分接口继承和实现继承
 
@@ -528,7 +530,7 @@ Substitution Principle）
 ### 35  考虑 virtual 函数以外的其他选择
 
 - 使用NVI(non-virtual-interface)手法，模版方法(Template  Method)设计模式的一种特殊形式，以public  non-virtual成员函数调用private/protected 的virtual函数。
-- 将virtual 函数替换为”函数指针成员变量“，是Strategy
+- 将virtual 函数替换为"函数指针成员变量"，是Strategy
   设计模式的一种表现形式，也可以用std::tr1::function<> 封装成函数对象。
 - 将继承体系内的virtual函数替换为另一个继承体系内的virtual函数，传统的Strategy设计模式实现手法。
 
@@ -536,27 +538,29 @@ Substitution Principle）
 
 绝不重新定义继承而来的non-virtual函数.
 
->
-    class B
-    {
-    public:
-        void mf();
-        ...
-    };
-    class D : public B
-    {
-    public:
-        void mf(); // hides B::mf, 名字隐藏
-    };
-    //客户端调用代码
-    D x;
-    B \* pB = &x;
-    pB->mf(); // 调用 B::mf()
-    D \* pD = &x;
-    pD->mf(); // 调用 D::mf()
-    同一个对象，调用”同一个“方法得到不同的结果！
-	non-virtual函数如B::mf(),
-	D::mf()都是静态绑定，通过pB调用的non-virtual函数永远都是B定义的版本。（virtual函数是动态绑定）
+```cpp
+class B
+{
+public:
+   void mf();
+   ...
+};
+class D : public B
+{
+public:
+   void mf(); // hides B::mf, 名字隐藏
+};
+//客户端调用代码
+D x;
+B * pB = &x;
+pB->mf(); // 调用 B::mf()
+D * pD = &x;
+pD->mf(); // 调用 D::mf()
+//同一个对象，调用”同一个“方法得到不同的结果！
+//non-virtual函数如B::mf(),
+//D::mf()都是静态绑定，通过pB调用的non-virtual函数永远都是B定义的版本。（virtual函数是动态绑定）
+
+```
 
 ### 37 绝不重新定义继承而来的缺省参数
 
@@ -660,24 +664,25 @@ types)共享实现码.
   choices)的客户定制代码，也可以用来避免生成对某些特殊类型并不合适的代码。
 - 模板元编程阶乘示例
 
->
-    #include <iostream>
-    using namespace std;
-    template <int T>
-    struct F
-    {
-        enum{value = T * F<T-1>::value};
-    };
-    template<>
-    struct F<0>
-    {
-        enum{value = 1};
-    };
-    int main()
-    {
-        cout << F<5>::value << endl;
-        return 0;
-    }
+```cpp
+#include <iostream>
+using namespace std;
+template <int T>
+struct F
+{
+   enum{value = T * F<T-1>::value};
+};
+template<>
+struct F<0>
+{
+   enum{value = 1};
+};
+int main()
+{
+   cout << F<5>::value << endl;
+   return 0;
+}
+```
 
 ## 8 定制new和delete
 
@@ -690,13 +695,14 @@ objects）管理，不是new和delete直接管理，该章不讨论STL分配器�
   抛出异常以反映一个未满足内存需求之前首先调用的一个客户指定的处理函数。原型如下,
   throw()表示该函数不抛出任何异常。
 
->
+```cpp
     namespace std
     {
         typedef void (*new_handler)();
         new_handler set_new_handler(new_handler p) throw();
         //返回马上要被替换掉的handler
     }
+```
 
 - 良好设计的new-handler函数应该做到：
     - 让更多内存可被使用：使得operator new内的下一次内存分配动作可能成功
@@ -725,26 +731,27 @@ objects）管理，不是new和delete直接管理，该章不讨论STL分配器�
 
 ### 51 编写new、delete时需固守常规
 
->
-    void * operator new(std::size_t size) throw(std::bad_allc)
-    {
-        using namespace std;
-        if(size == 0)
-            size == 1;
-        while(true)
-        {
-            尝试分配size bytes
-            if(分配成功)
-                return (指向分配得到的内存的指针)
-            //分配失败
-            new_handler global_handler = set_new_handler(0);//得到之前的handler
-            set_new_handler(global_hander);
-            if(global_handler) 
-                (*global_handler)();//调用
-            else
-                throw std::bad_alloc();
-        }
-    }
+```cpp
+void * operator new(std::size_t size) throw(std::bad_allc)
+{
+   using namespace std;
+   if(size == 0)
+       size == 1;
+   while(true)
+   {
+       尝试分配size bytes
+       if(分配成功)
+           return (指向分配得到的内存的指针)
+       //分配失败
+       new_handler global_handler = set_new_handler(0);//得到之前的handler
+       set_new_handler(global_hander);
+       if(global_handler) 
+           (*global_handler)();//调用
+       else
+           throw std::bad_alloc();
+   }
+}
+```
     
 - operator new
   应该包含一个无穷循环，在其中尝试分配内存，无法满足内存分配需求则调用new-handler。且有能力处理0bytes的申请。class 专属版本的还应该处理“比正确大小更大的(错误)的内存申请”
@@ -764,11 +771,12 @@ objects）管理，不是new和delete直接管理，该章不讨论STL分配器�
   delete，请确定不要无意识地掩盖了他们的正常版本(名字掩盖)
 - 缺省下C++默认的在global域下提供的operator new:
 
->
+```cpp
     void * operator new(std::size_t) throw(std::bad_alloc); //normal new
     void * operator new(std::size_t, void*) throw(); //placement new
     void * operator new(std::size_t, const std::nothrow_t&) throw(); //nothrow
     new
+```
 
 - Widget * pw = new Widget; new 成功了，而Widget默认的构造函数失败了，运行时系统会找到与new匹配的delete函数去delete，若没找到就啥也不做就泄漏内存了。
 
