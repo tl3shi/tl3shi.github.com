@@ -388,7 +388,9 @@ void doSomething(T& obj1, T& obj2)
 	- const_cast<T>(expression)	 : 去除对象的常量性(cast away the constness).
 	- dynamic_cast<T>(expression) :	 用来执行 安全向下转型(safe downcasting), 也就是用来决定某对象是否归属继承体系中的某个类型. 在转型时可能**耗费重大**的运行成本.
 	- reinterpret_cast<T>(expression):	执行低级转型, 实际动作(及结果)可能取决于编译器.
-	- static_cast<T>(expression) : 强迫隐式转换(implicit conversions), 如 non-const 转型为 const, int 转型为 double, 将 point-to-base 转为 point-to-derived. 无法将const 转为 non-const.
+	- static_cast<T>(expression) : 强迫隐式转换(implicit conversions), 如
+      non-const 转型为 const, int 转型为 double, 将 point-to-base 转为
+      point-to-derived, 或者上述多种转换的反向转换，但无法将const 转为 non-const.
 - 单一对象(如Dereived对象)可能拥有一个以上的地址（如以Base\*指向它的地址和以Derived\*指向它的地址)，这对C，Java,C#都不可能，但C++可以。
 - static_cast<Base>(*this).method(); 这句在Dereived class中写的。这样做是将this独享的base class成分建立一个副本，在副本的基础上调用method()。
 - 如果可以，尽量避免转型，尤其注意dynamic_cast。
