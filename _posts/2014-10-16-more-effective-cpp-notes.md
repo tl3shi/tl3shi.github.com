@@ -205,6 +205,8 @@ new opeartor 和 delete operator 是内置操作符，但他们所调用的内�
 - 避免terminate函数在exception传播过程中的栈展开(stack-unwinding)机制被调用
 - 协助确保destructors完成其应该完成的所有事情
 
+
+<span id="tiaokuan12"></span>
 ## 12 了解 抛出一个exception, 传递一个参数 和 调用一个虚函数 之间的差异
 
 - exception objects 总是会被复制, 如果以 by value方式捕捉，他们甚至会被复制两次，至于传递给函数参数的对象不一定得复制
@@ -220,6 +222,8 @@ void passAndThrow()
 }
 ```
 上述代码中```local```对象始终都会被copy一份，local的对象会析构(static会到程序结束时才析构)，然后将copy的一份抛出。其实此exception 以by reference方式被捕捉，catch端还是只能得到local的副本。 注意copy的一份是按照静态类型copy复制的。
+
+exception 传播可以简单的以by refernce捕捉不需要by reference-to-const 捕捉，而函数调用将一个临时对象传递给一个non-const reference参数是不允许的。 见[条款19](#tiaokuan19).
 
 ```cpp
 ...
@@ -332,5 +336,231 @@ cout << m3[4]; // 输出m3的第4行, 这样才去算
 
 利用 cache 将计算好的缓存；prefetching 如磁盘IO，将可能附近的资源也读取，内存数组扩张并不是一个一个扩张，2倍扩张。
 
+<span id="tiaokuan19"></span>
 ## 19 了解临时对象的来源
 
+注意临时对象和局部对象(swap函数中的交换的那个临时变量)的区别. 临时对象是不可见的，出现于下面两种情况：
+
+- 隐式类型转换(implicit type conversions) 被实施以求函数调用成功;
+- 当函数返回对象时. //这个可能编译器有返回值优化
+
+```cpp
+size_t countChar(const string& str, char ch);
+...
+char buffer[MAX_LEN];
+char c;
+...
+cout << countChar(buffer, c);
+//上述代码中, countChar要求传入参数string&, 而实际参数为buffer[], 编译器为了保证调用成功，
+//会自动产生一个string的临时对象, 将buffer作为自变量调用string的constructor. 这样countChar的str就会绑定此临时对象, countChar返回时, 此临时对象自动析构/销毁.
+``` 
+
+只有当对象以by value的方式或者reference-to-const的方式，这些类型转换才会发生，如果是一个reference-to-non-const参数，并不会发生此类转换。
+
+```cpp
+void upper(string &str)
+{
+}
+void upper1(const string &str)
+{
+}
+int main()
+{
+    char t[] = "hello world";
+    upper1(t); //OK
+    upper(t); //compile error
+}
+```
+原因是, upper中传入string&, 内部str可能会改变, 而内部实际上会作用与编译器生成的那个临时对象上，与coder期望的不一致，因此c++禁止为non-const reference 参数产生临时对象。exception 除外，见[条款12](#tiaokuan12).
+
+当函数返回一个对象时也会产生临时对象. 例如
+
+```cpp
+const Number operator+(const Number &lhs, const Number &rhs);
+//该返回值是一个临时对象，调用opeartor+时，就要付出此对象的构造和析构成本
+```
+但编译器可能会对此产生优化，见[返回值优化](#tiaokuan20). 
+
+<span id="tiaokuan20"></span>
+
+## 20 协助完成 返回值优化(RVO)
+
+```cpp
+const Ratinal operator*(const Ratinal &lhs, const Ratinal &rhs)
+{
+	return Ratinal(lhs.n*rhs.n, lhs.d*rhs.d);
+}
+```
+
+注意在 [effective cpp 读书笔记](effective-cpp-notes.html)中讲了必须返回对象时，别妄想返回其 reference。
+
+```cpp
+Rational a = 10;
+Rational b(1, 2);
+Rational c = a * b;
+```
+c++允许编译器将临时对象优化掉，即上述return 定义的对象构造于c的内存内。是否会优化由编译器所做决定。RVO= Return Value Optimization. 
+
+## 21 利用重载技术(overload)避免隐式类型转换(implicit type conversions)
+
+```cpp
+const UPInt operator+(const UPInt &lhs, const UPInt &rhs);
+....
+UPInt int1, int2;
+...
+UPInt int3 = int1 + int2;
+
+int3 = int1 + 10; //comment1
+int3 = 10 + int1; //comment1
+```
+上述代码中comment1能够通过如果UPInt有一个含int的构造函数，这是编译器执行了隐式转换，中间有临时对象产生和析构。 如果要避免临时对象的话，可以重载如下函数
+
+```cpp
+const UPInt operator+(int lhs, const UPInt &rhs);
+const UPInt operator+(const UPInt &lhs, int rhs);
+const UPInt operator+(int lhs, int rhs);//WRONG
+```
+第3个是错误的，因为C++规定每个重载操作符必须至少获得一个用户自定义类型的自变量，上面的int不是。(如果是的话，岂不是1+2被重载后还不等于3了?).
+
+## 22 考虑以操作符符合形式(op=)取代其独身形式(op)
+
+比如
+
+```cpp
+class Rational{
+...
+Ratinal & operator +=(const Rational &rhs);
+...
+}
+
+const Rational operator+(const Rational &lhs, const Rational &rhs)
+{
+	return Rational(lhs) += rhs;
+	/**
+	返回值优化, 上面的代码被优化的可能性比下面的代码高，具体优化由编译器实现。 --> 匿名对象总比命名对象更容易优化(临时对象消除)
+	Rational result(lhs);
+	return result += rhs;
+	*/
+}
+
+
+Rational a,b,c,d,result;
+result = a + b + c + d; // 可能用到3个临时对象, 每一个对应于一次operator+的调用
+//or 
+result = a;
+result += b; // 可能直接被优化，没有临时对象产生
+result += c;
+result += d;
+```
+
+操作符的复合版本比其对应的独身版本有着更高效率的倾向，程序库的设计者应该两者都提供，软件开发者考虑用复合版本操作符替换独身版本。
+
+## 23 考虑用其他的程序库
+
+例如
+
+如果一个程序有一个IO瓶颈，可以考虑以stdio取代iostream(类型安全)，如果程序花费在动态内存分配和释放方面，可以看看是否有其他operator new 和 operator delete的程序库。不同程序在效率、扩充性、移植性、类型安全性等的不同设计具体化，可以找找是否存在另一个功能相似的程序库在效率上有较高的设计权重。
+
+## 24 了解 virtual functions，multiple inheritance、virtual base classes， runtime type identification的成本
+
+拥有虚函数的类都需要vtbl的空间，大小视虚函数个数(包括继承下来的)而定。含有虚函数的对象内部都含有一个vptr。
+
+指针/引用调用虚函数时, 首先根据对象的vptr知道vtbl，通过vtbl找出被调用的函数指针，然后调用。调用虚函数的成本真正运行时成本发生在和inlining互动的时候，inline意味着编译期，将调用端的调用动作被调用的函数本体所替换，而virtual意味着直到运行时才知道哪个函数被调用，所以虚函数事实上放弃了inline。
+
+多重继承，虚基类可能引起更多vptr，详情后面有机会再讨论。[TODO];
+
+RTTI 相关信息 根据class的vtbl来实现，例如在class的vtbl内增加一个条目，加上每个class所需的一份type\_info对象空间。只有当某类型拥有至少一个虚函数时才保证能够检验该类型对象的动态类型。 静态的在编译期间就可以决定了。
+
+## 25 将 constructor 和 non-member functions 虚化
+
+
+例如 从IO读取对象信息derived object 放到 用base class 的容器如list 存放，还例如 base class 声明了 clone方法返回base class的指针的纯虚函数，derived class 重写方法返回derived class 指针。
+
+non-member functions 虚化 如
+
+```cpp
+inline ostream & operator << (ostream &s, const Base &base)
+{
+	return base.print(s);
+}
+```
+然后 derived class 都重写base 声明的 print 方法。
+
+## 26 限制某个class所能产生的对象数量
+
+0的话private constructor, 1的话可以单例，任意的话可以这样：
+
+```cpp
+template <typename T>
+class Counted
+{
+public:
+	class TooManyObjects {}; // 抛出异常
+	static int objectCount() {return numObjects;}
+protected:
+	Counted();
+	Counted(const Counted& rhs);
+
+	~Counted() {--numObjects;}
+private:
+	static int numObjects;
+	static const size_t maxObjects;
+
+	void Init();
+};
+
+template <typename T>
+Counted<T>::Counted()
+{
+	Init();
+}
+
+template <typename T>
+Counted<T>::Counted(const Counted& rhs)
+{
+	Init();
+}
+template <typename T>
+void Counted<T>::Init()
+{
+	if(numObjects>=maxObjects)
+		throw TooManyObjects();
+	++numObjects;
+};
+
+template <typename T>  
+int Counted<T>::numObjects=0;  //初始化为0
+```
+具体要对某个类(Derived)进行统计限制时，可以private继承下Counted<Derived>类(public的话，Counted得弄成vitural析构，防止有人通过父类指针删除子类对象时出错), 然后将Counted中的objectCount, 和 TooManyObject公开(using 声明)，且须设置/定义具体最大允许的数量, ```const size_t Counted<Derived>::maxObjects=10```， 不然会link错误。
+
+
+## 27 要求或禁止对象产生于heap中
+
+#### 要求对象产生于heap之中
+
+- 析构设置为private～只能new出对象，delete封装一个public方法供手动调用，这样栈上产生对象，后面被隐式调用析构就不合法了。
+
+- 也可以将constructor设置为private，但constructor要设置多个比如default，copy constructor都得设置private。
+
+#### 判断某个对象是否位于heap内
+
+```cpp
+bool onHeap(const void * addr)
+{
+	char onTheStack;
+	return addr < & onTheStack;
+}
+//一种可能可行的思路
+```
+
+【一般】所有系统的程序地址空间stack处于高地址，是向下增长，heap在低地址，向上增长，onTheStack 栈上的，如果 addr 比onTheStack小(更低)的话，就是堆上的地址。 但这只能针对stack、heap中的对象，还有一类static对象(包括global/namespcace scope)，无法区分，例如如果static对象在更低地址，就无法区分heap和static对象了。
+
+较好的做法是，每次new记录到list，delete从list删除，判断时就将地址是否存在list中。封装一个抽象类，让具体要判断的对象继承此，重写operator new。 详情见 P154。
+
+#### 禁止对象产生于heap中
+
+对象可能有3中情况：(1) 对象直接被实例化 (2) 对象被实例化为 derived class objects中的base class成分 (3) 对象被内嵌于其他对象之中。
+
+对于(1), 即不希望通过 "new Object" 产生对象，可以在Object类中将 operator new 设置为 private. 这样外面就调用不到了。但这会妨碍new一个derived object，new derived object时会new base，失败(2)。对于(3)是OK的。
+
+## 28 smart pointers (智能指针)
