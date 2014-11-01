@@ -97,6 +97,8 @@ tags: [leetcode, c++, leetcode, 总结]
 ### search, 搜索相关
 
 1. [First Missing Positive 题解](./First-Missing-Positive.html)
+- [Find Minimum in Rotated Sorted Array 题解](./find-minimum-in-rotated-sorted-array.html)
+- [Find Minimum in Rotated Sorted Array II 题解](./find-minimum-in-rotated-sorted-array-II.html)
 - [Median of Two Sorted Arrays 题解](./Median-of-Two-Sorted-Arrays.html)
 - [Search Insert Position 题解](./Search-Insert-Position.html)
 - [Search a 2D Matrix 题解](./Search-a-2D-Matrix.html)
@@ -105,6 +107,7 @@ tags: [leetcode, c++, leetcode, 总结]
 - [Search in Rotated Sorted Array II 题解](./Search-in-Rotated-Sorted-Array-II.html)
 - [Single Number 题解](./Single-Number.html)
 - [Single Number II 题解](./Single-Number-II.html)
+
 
 ### math, 数学类相关
 

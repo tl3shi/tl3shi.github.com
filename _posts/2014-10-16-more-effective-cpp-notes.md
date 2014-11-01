@@ -564,3 +564,303 @@ bool onHeap(const void * addr)
 对于(1), 即不希望通过 "new Object" 产生对象，可以在Object类中将 operator new 设置为 private. 这样外面就调用不到了。但这会妨碍new一个derived object，new derived object时会new base，失败(2)。对于(3)是OK的。
 
 ## 28 smart pointers (智能指针)
+
+设计一个smart pointers时要注意以下几个问题，
+
+1. smart pointers 的构造、赋值、析构， stl的auto\_ptr 在赋值和复制时，对象拥有权会发生转移，所以 auto\_ptrs不能以by value的方式传递(STL 容器中不能放置auto\_ptr).
+
+	```cpp
+	template<class T>
+	auto_ptr<T>::auto_ptr(auto_ptr<T> & rhs)
+	{
+		pointee = rhs.pointee; //rhs的原始指针控制权转移到this
+		rhs.pointee = 0; // rhs的指针要设置为 NULL
+	}
+	template<class T>
+	auto_ptr<T>& auto_ptr<T>::operator=(auto_ptr<T> & rhs)
+	{
+		if(this == &rhs)
+			return *this;
+		delete pointee;
+		pointee = rhs.pointee;
+		rhs.pointee = 0;
+		return *this;
+	}
+	``` 
+2. 实现 Dereferencing Operators: 
+	
+	```cpp
+	template<class T>
+	T& SmartPtr<T>::operator*() const
+	{
+		//perform "smart pointer" processing
+		return *pointee;
+	}
+	template<class T>
+	T* SmartPtr<T>::operator->() const
+	{
+		//perform "smart pointer" processing
+		return pointee;
+	}
+	//for example
+	SmartPtr<Tuple> entry(*pt);
+	pt->display();
+	//编译器会解释为
+	(pt.operator->())->display();
+	```
+3. 测试 smart pointer 是否为 NULL: 直接用
+	
+	```cpp
+	if(smtPtr == NULL) //...
+	if(smtPtr) //...
+	if(!smtPtr) //... 
+	//上面的方式都会失败, 可考虑写一个隐式类型转换的函数
+	opeartor void* (); // 转化void* 指针直接与 NULL 判断
+	//还有
+	bool operator !(); // 当 smart ptr 是null，返回true
+	```
+
+4. 将 Smart pointers 转化为 Dumb pointers, 场景：
+
+	```cpp
+	void normalize(Tuple *pt);
+	SmartPtr<Tuple> pt;
+	//...
+	normalize(pt); // error
+	normalize(&*pt); // ok, 
+	//新增如下转换操作符，就可以通过
+	template<class T>
+	SmartPtr
+	{
+		...
+		operator T*()
+		{
+			return pointee;
+		}
+	};
+	// 加上这个转换操作符后，上面的测试smart pointer 是否为NULL 也可以通过。
+	```
+
+5. Smart Pointers 和 与继承有关的 类型转换
+	
+	```cpp
+	void display(const SmartPtr<Base> & tmp)
+	{
+		...
+	}
+	SmartPtr<Derived> t(new Derived);
+	display(t); //error, 不符合常理，一般接受base的指针也可以接受derived. //添加一下转换操作符可以解决
+	template<class T>
+	class SmartPtr
+	{
+		...
+		template<class newType>
+		operator SmartPtr<newType>()
+		{
+			return SmartPtr<newType>(pointee);
+		}
+	}
+	//这样，编译器就会生成这样的代码, 以供转换
+	SmartPtr<Derievd>::opeartor SmartPtr<Base>()
+	{
+		return SmartPtr<Base>(pointee);
+	}
+	```
+	
+6. Smart Pointers 和 const: 普通指针和const有3种组合，SmartPtr也要实现这样的组合，可以这样做(类似非const转const OK，const转non-const不安全，如下继承关系设计满足这样的条件)：
+	
+	```cpp
+	template <class T>
+	class SmartPtrConst
+	{
+		...
+		protected:
+			union{
+				const T* constPointee;
+				T* pointee;
+			};
+	}
+	
+	template<class T>
+	class SmartPtr: public SmartPtrConst<T>{
+		... //无 data members
+	}
+	```
+
+## 29 Reference counting 引用计数
+
+场景：GC的简单实现形式，等值对象共享省内存，加快速度， 适用于 (1) 相对多数的对象共享相对少量的实例 (2) 对象实值产生或销毁的成本很高，或他们使用很多内存。
+
+例如一个简单版本的string 如下
+
+```cpp
+class String
+{
+private:
+	struct StringValue
+	{
+		char * data;
+		int refCount;
+		
+		StringValue(const char* initValue):refCount(1)
+		{
+			data = new char[strlen(initValue)+1];
+			strcpy(data, initValue);
+		}
+		~StringValue()
+		{
+			delete [] data;
+		}
+	}
+	StringValue * value;
+public:
+	//constructor
+	String(const char* initValue): value(new StringValue(initValue)
+	{}
+	//copy constructor
+	String(const String &rhs): value(rhs.value)
+	{
+		++value->refCount;
+	}
+	//operator =
+	String & operator=(const String &rhs)
+	{
+		if(value == rhs.value) //同[在 operator = 中处理自我赋值](effective-cpp-notes.html)
+			return *this;
+		if(--value->refCount == 0) //如果没有其他引用，销毁*this
+			delete value;
+		value = rhs.value; //*this 共享rhs的值
+		++value->refCount; 
+		return *this;
+	}
+	
+	//destructor
+	~String()
+	{
+		if(-- value->refCount == 0)
+			delete value;
+	}
+}
+```
+
+上述一个简答版本的reference-counted 字符串，如果加上取下标[]操作符，就麻烦了。通过[]读是OK的，但通过[]写的话，只能修改当前的，不能改其他共享的那个值，所以得重新copy一份出来，这是**copy-on-write**策略。
+
+通过[条款30](#tiaokuan30)的proxy可以区分```operator[]```的读写动作，或者加一个标记shareable(默认为true)，当调用过```operator[]```后，就不再共享，refCount变化的时候就先判断这个标记值，copy构造时，如果shareable为true则refCount++, 不然就重新new一份value，```opeartor[]```操作时，先```value->refCount--```,然后new一份新的value，将shareable设置为false.  详情实现(抽象了模版)可以参考书本.
+
+<span id="tiaokuan30"></span>
+
+## 30 Proxy classes
+
+proxy classes 场景：多维数组，左/右值区分, 压抑隐式转换。缺点是proxy若扮演返回值角色将产生临时对象，构造析构成本。
+
+例如， 如下 Array1D 就是一个proxy class.
+
+```cpp
+template <class T>
+class Array2D
+{
+	public:
+		class Array1D
+		{
+			public:
+				T & operator[](int index);
+				const T & operator[](int index) const;
+		};
+		
+		Array1D operator[](int index);
+		const Array1D operator[](int index) const;
+		...
+};
+
+Array2D<float> data(10,20);
+//...
+cout << data[2][5]; //OK
+```
+
+区分左/右值的proxy: 思想是，左值延缓到调用```opeartor＝```时可知道。
+
+```cpp
+class String
+{
+public:
+	class CharProxy
+	{
+		public:
+			CharProxy(String &str, int index); //构造
+			CharProxy& operator=(const CharProxy &rhs);//左值运用
+			CharProxy& operator=(char c);
+			
+			operator char() const; //右值运用
+		private:
+			String &theString;
+			int charIndex;
+	};
+	const CharProxy operator[](int index) const
+	{
+		return CharProxy(const_cast<String&>(*this), index);
+	}
+	CharProxy operator[](int index)
+	{
+		return CharProxy(*this, index);
+	}
+};
+
+String s1, s2;
+//...
+cout << s2[x]; //右值
+//返回CharProxy, 调用 operator<<, 隐式转换char(CharProxy内有)，编译器就自动调用了，于是右值运用
+
+s1[2] = 'x'; // 左值
+//返回CharProxy, 调用 opeartor＝, 就知道是CharProxy内的那个operator＝(char c) 了，下面的也一样
+s1[2] = s2[1]; // 左值
+```
+
+## 31 让函数根据一个以上的对象类型来觉得如何虚化
+
+要实现的功能如下:
+
+```cpp
+//父类 
+class GameObject;
+//子类
+class SpaceShip: public GameObject;
+class SpaceStation: public GameObject;
+class Asteroid: public GameObject;
+//实现功能类似 collsion(GameObject &obj1, GameObject &obj2);
+
+//在父类声明纯虚函数
+struct GameObject
+{
+    virtual void collide(GameObject &other) = 0 ; 
+}
+//每个子类重写时, 还是得根据other 的type 去 if else 判断进而调用
+//相应的碰撞检测逻辑, 这样做难看且不易维护
+```
+更好的一种做法是，利用虚函数这样做：
+
+```cpp
+struct GameObject
+{
+    virtual void collide(GameObject &other) = 0 ; 
+    virtual void collide(SpaceShip &other) = 0 ; 
+    virtual void collide(SpaceStation &other) = 0 ; 
+    virtual void collide(Asteroid &other) = 0 ; 
+}
+//要求每个子类都重写这些方法， 例如 SpaceShip 来说
+void SpaceShip::collide(GameObject &other)
+{
+    other.collide(*this);
+}
+void SpaceShip::collide(SpaceShip &other)
+{
+    //processing spaceship v.s spaceship
+}
+//...
+```
+上面代码中other可以运行时多态，而*this
+则是静态类型SpaceShip，运行时会根据other具体类型调用与SpaceShip的collide函数实现。
+
+还有一种解决方案就是函数指针，每个具体的类根据另一个Base的多态类型找出提前准备好的map中存好的具体函数实现的地址，然后通过函数指针调用。
+更详细的可以参看书。
+
+## 32 在未来时态下发展程序

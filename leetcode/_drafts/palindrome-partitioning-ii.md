@@ -3,7 +3,7 @@ layout: post
 title: "[leetcode] Palindrome Partitioning II 题解"
 description: "[leetcode] Palindrome Partitioning II 题解"
 category: leetcode 
-tags: [leetcode, c++, DP]
+tags: [leetcode, c++, DP, palindrome]
 ---
 {% include JB/setup %}
 
@@ -14,30 +14,24 @@ tags: [leetcode, c++, DP]
 
     Given a string s, partition s such that every substring of the partition is a
     palindrome.
-
     Return the minimum cuts needed for a palindrome partitioning of s.
-
     For example, given s = "aab",
-    Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1
-    cut.
+    Return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
 
 解题思路：
 
 >
 
 	Calculate and maintain 2 DP states:
-
 	pal[i][j] , which is whether s[i..j] forms a pal
-	
-	d[i], which is the minCut for s[i..n-1]
-	
+    d[i], which is the minCut for s[i..n-1]
 	Once we comes to a pal[i][j]==true:
-	
-	if j==n-1, the string s[i..n-1] is a Pal, minCut is 0, d[i]=0;
-	else: the current cut num (first cut s[i..j] and then cut the rest s[j+1...n-1]) is 1+d[j+1], compare it to the exisiting minCut num d[i], repalce if smaller.
-	d[0] is the answer.
+        if j==n-1, the string s[i..n-1] is a Pal, minCut is 0, d[i]=0;
+        else: the current cut num (first cut s[i..j] and then cut the rest s[j+1...n-1]) is 1+d[j+1], 
+             compare it to the exisiting minCut num d[i], repalce if smaller.
+    d[0] is the answer.
 
-第一步还是跟[Palindrome Partitioning](http://tanglei.me/leetcode/palindrome-partitioning.html)一样，用DP，任意i-j组合先计算好是否是回文；
+第一步还是跟[Palindrome Partitioning](./palindrome-partitioning.html)一样，用DP，任意i-j组合先计算好是否是回文；
 
 第二步仍用DP，dp[i]表示s[i, len-1]最少的minCut, 对每一个palindrome[i][j]为true的:
 
