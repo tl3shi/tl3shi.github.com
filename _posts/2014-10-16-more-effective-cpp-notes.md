@@ -864,3 +864,25 @@ void SpaceShip::collide(SpaceShip &other)
 更详细的可以参看书。
 
 ## 32 在未来时态下发展程序
+
+- 提供完整的classes, 即使某些部分目前用不到，当新的需求进来，不需要回头去修改那些classes.
+- 设计好接口，有利于共同的操作行为，阻止共同的错误，让classes轻易地被正确运用。
+- 尽量使代码一般化(泛化)，除非有不良的巨大后果。
+
+## 33 将非尾端类(non-leaf)设计为抽象类
+
+- 在具体类被当作基类使用(即当该类被复用reused时)，强迫导入一个新的抽象类，这样可以防止如```operator＝```时不好操作的问题。
+- 可以用组合代替继承，如 希望继承某个程序库类，可以自己写一个含有希望继承的程序库类作为成员的新类，在新类中重新实现该程序库类的接口。
+
+## 34 如何在同一个程序中结合C++和C
+
+C++配合C与多个C编译器产生目标文件组合成C所考虑的问题在很多方面类似，如int、double之类的大小，参数传递、调用规则等，还有不同编译器产生的目标文件是否兼容。另外还有如下几个问题需要考虑
+
+- 名称重整(Name Mangling): ```extern "c" ``` 意味着C linkage, 告诉编译器此函数按照C的方式，不要重整函数名（C++支持重载，会把名称重整）。 [详情见这里](https://app.yinxiang.com/l/AB2AYXsT0DNFP7eFU-Ozzn3B1XD1fhSx0rc)
+- Statics 的初始化：尽量在C++中撰写main。 因为static class 对象、全局对象、namespace内的对象及文件scope内的对象其constructors总是在main函数前就执行（static initialization），通过 static initilization出来的对象需要在main函数之后destruction。例如现在要在C++中调用之前C的main，可以直接在c++中用main调用C的main(改个名字)，编译器会在调用前后自动加上(可能是inline)上述的两个过程。
+- 动态内存分配：new/delete, malloc/free 配对。
+- 数据结构的兼容性：例如C++中含有虚的函数的struct是不能和C兼容的。
+
+## 35 让自己习惯于标准的C++语言
+
+标准程序库能力可区分为：支持C标准函数库、支持strings、支持国际化、支持IO、数值应用、容器和algorithms。
