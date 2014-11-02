@@ -12,10 +12,10 @@ def addlinkkey(filename):
         e = line.find('题解')
         title='-'.join(line[s+1:e].split(' '))
         title = title[:-1]+'.html'
-        newline = line[:-2]+title+')\r\n'
+        newline = line[:-2]+title+')\n'
         result.append(newline)
     f.close()
-    print result
+    #print result
     output = open(filename+'.out.md', 'w')
     output.writelines(result)
     output.close()
