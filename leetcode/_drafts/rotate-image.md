@@ -18,7 +18,7 @@ tags: [leetcode, c++, matrix, tricky]
 
 解题思路：
 
-####0. 常规
+###  常规
 
 ```cpp
 	
@@ -43,7 +43,7 @@ tags: [leetcode, c++, matrix, tricky]
 	}
 ```
 
-####1. 高级解法
+###  高级解法
 
 参考[discuss](https://oj.leetcode.com/discuss/3064/in-place-solution)
 	
@@ -55,6 +55,7 @@ tags: [leetcode, c++, matrix, tricky]
 	456  —> 456 —> 852 —>OK
 	789     123    963
 	
+
 ```cpp
 	
 	void rotate(vector<vector<int> > &matrix) 
@@ -67,3 +68,4 @@ tags: [leetcode, c++, matrix, tricky]
                 std::swap(matrix[i][j], matrix[j][i]);
     }
 ```
+

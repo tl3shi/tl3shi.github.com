@@ -1026,6 +1026,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 `result[i]` 表示s[i:n]构成的回文串拆分结果。再走一遍dp就可以构造出来。方法如下:
 result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
  
+
 ```cpp
 	
 	vector<vector<string>> partitionDp(string s)
@@ -2491,6 +2492,7 @@ ListNode *mergeKLists(vector<ListNode *> &lists)
 
 解题思路：
 	
+
 ```cpp
 	
 	ListNode *deleteDuplicates(ListNode *head) 
@@ -3104,7 +3106,6 @@ ListNode *swapPairs(ListNode *head)
 
 
 ###  递归版本
-
 
 >
 	next(p1->p2->p3->p4...) = 	
@@ -3944,6 +3945,7 @@ II](https://oj.leetcode.com/problems/binary-tree-zigzag-level-order-traversal/)
 	中序右: [left+1, in_end]
 	后序右: [post_start + left_len, post_end-1]
 	
+
 ```cpp
 	
 	TreeNode * buildRecursion(vector<int> &postorder, vector<int> &inorder,
@@ -5665,6 +5667,7 @@ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorM
 解题思路：
 	因为A空间足够，所以直接从后往前定位就可以。只需要将B放完即可，若B放完，A也已经呆在应该待的位置了。
 	
+
 ```cpp
 	
 	void merge(int A[], int m, int B[], int n) 
@@ -5925,6 +5928,7 @@ vector<int> twoSum(vector<int> &numbers, int target)
 
 2、用map存起来～直接找对应的另一半
 	
+
 ```cpp
 
 	vector< int> twoSum(vector< int > &numbers, int target)
@@ -6136,6 +6140,7 @@ A里面的数，若A[i]是正数0-n之间的，则把TA放到位置i-1处。即�
 解题思路：	
 二分查找，将index转化为matrix的row/col即可。 
  
+
 ```cpp
 
 	int cmp(vector<vector<int > > &matrix, const int m, const int n, int index, int target)
@@ -8943,7 +8948,7 @@ vector<string> letterCombinations(string digits)
 
 解题思路：
 
-###  直接暴力解决
+### 直接暴力解决
 
 枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
 还可以优化，把中间的某个子串是否回文用hash缓存下来。
@@ -8996,7 +9001,7 @@ vector<string> letterCombinations(string digits)
 
 ```
 
-###  利用动态规划 O(n^2)
+### 利用动态规划 O(n^2)
 
 `dp[i:j]`表示`s[i:j]`是回文,  如果`s[i] == s[j] and dp[i+1, j-1]`,满足条件, 则dp[i:j]就是回文。 
 注意要先算dp[i+1][j-1]，所以循环的顺序。
@@ -9043,6 +9048,7 @@ vector<string> letterCombinations(string digits)
 `result[i]` 表示s[i:n]构成的回文串拆分结果。再走一遍dp就可以构造出来。方法如下:
 result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
  
+
 ```cpp
 	
 	vector<vector<string>> partitionDp(string s)
@@ -9083,6 +9089,7 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
     }
 
 ```
+
 
 ## Permutation Sequence
 
@@ -9538,6 +9545,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 
 一共m-1+n-1步，其中任意选择m-1作为竖着走即可。
  
+
 ```cpp
 	
 	//C_n ^m 
@@ -9616,6 +9624,7 @@ http://blog.csdn.net/MrRoyLee/article/details/34981399
 	456  —> 456 —> 852 —>OK
 	789     123    963
 	
+
 ```cpp
 	
 	void rotate(vector<vector<int> > &matrix) 

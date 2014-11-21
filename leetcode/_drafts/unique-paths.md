@@ -23,6 +23,7 @@ tags: [leetcode, c++, combination, 排列组合, math]
 
 一共m-1+n-1步，其中任意选择m-1作为竖着走即可。
  
+
 ```cpp
 	
 	//C_n ^m 
@@ -48,3 +49,4 @@ tags: [leetcode, c++, combination, 排列组合, math]
 ```
 
  
+

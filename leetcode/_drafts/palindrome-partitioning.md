@@ -27,7 +27,8 @@ tags: [leetcode, c++, DP, 回文, DFS]
 
 解题思路：
 
-#### 0. 直接暴力解决
+###  直接暴力解决
+
 枚举每种可能，去判读是否回文。跟[排列组合](http://tanglei.me/tags.html#排列组合-ref)算法一样。
 还可以优化，把中间的某个子串是否回文用hash缓存下来。
 
@@ -79,7 +80,7 @@ tags: [leetcode, c++, DP, 回文, DFS]
 
 ```
 
-####1. 利用动态规划 O(n^2)
+###  利用动态规划 O(n^2)
 
 `dp[i:j]`表示`s[i:j]`是回文,  如果`s[i] == s[j] and dp[i+1, j-1]`,满足条件, 则dp[i:j]就是回文。 
 注意要先算dp[i+1][j-1]，所以循环的顺序。
@@ -126,6 +127,7 @@ tags: [leetcode, c++, DP, 回文, DFS]
 `result[i]` 表示s[i:n]构成的回文串拆分结果。再走一遍dp就可以构造出来。方法如下:
 result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
  
+
 ```cpp
 	
 	vector<vector<string>> partitionDp(string s)
@@ -166,3 +168,4 @@ result[i]的结果为当前的回文串 插入每一个 result[i+1]构成。
     }
 
 ```
+
