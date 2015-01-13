@@ -26,6 +26,7 @@ tags: [leetcode, c++, binary search, matrix]
 解题思路：	
 二分查找，将index转化为matrix的row/col即可。 
  
+
 ```cpp
 
 	int cmp(vector<vector<int > > &matrix, const int m, const int n, int index, int target)
@@ -62,3 +63,4 @@ tags: [leetcode, c++, binary search, matrix]
 ```
 
  
+

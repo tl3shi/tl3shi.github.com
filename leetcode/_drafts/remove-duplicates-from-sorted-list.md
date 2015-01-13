@@ -18,6 +18,7 @@ tags: [leetcode, c++, list, 链表]
 
 解题思路：
 	
+
 ```cpp
 	
 	ListNode *deleteDuplicates(ListNode *head) 
@@ -62,4 +63,5 @@ tags: [leetcode, c++, list, 链表]
         return dummy.next;
     }
 ```
+
 

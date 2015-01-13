@@ -18,7 +18,7 @@ def parsefile(filename):
                 if(line[4] == '.'):
                     line = line[:4]+line[5:]
             line += '\n'
-        if (line.startswith('```cpp')) and (len(lines[i-1]) > 2):
+        if (line.startswith('```cpp')) and (len(lines[i-1]) >= 2):
             needchange = True
             result.append('\n')
         result.append(line)
@@ -27,6 +27,7 @@ def parsefile(filename):
     result.append('\n')
     f.close()
     if(needchange):
+    #if(True):
         output = open(filename, 'w')
         output.writelines(lines[:10])
         output.writelines(result)

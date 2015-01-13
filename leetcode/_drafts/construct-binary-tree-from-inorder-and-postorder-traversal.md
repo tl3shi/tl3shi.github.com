@@ -32,6 +32,7 @@ tags: [leetcode, c++, rebuild tree, binary tree]
 	中序右: [left+1, in_end]
 	后序右: [post_start + left_len, post_end-1]
 	
+
 ```cpp
 	
 	TreeNode * buildRecursion(vector<int> &postorder, vector<int> &inorder,
@@ -55,4 +56,5 @@ tags: [leetcode, c++, rebuild tree, binary tree]
         return    buildRecursion(postorder, inorder, 0, postorder.size()-1, 0, inorder.size()-1); 
     }
 ```
+
 
