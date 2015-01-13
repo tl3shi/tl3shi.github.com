@@ -58,6 +58,12 @@ tags: [leetcode, c++, math]
  
 求出f(x)的一阶导，即斜率: 
 
+$$
+f'(x)=\frac{f(x\_n)-0}{x\_n - x\_{n+1}}
+$$
+$$
+x\_{n+1} = x\_{n} - f(x_n)
+$$
 >
 	
 	f'(x) = (f(x_n) - 0) / (x_n - x_(n+1) ==>
@@ -92,5 +98,7 @@ $$
 f'(x_{n}) = \frac{ \mathrm{rise} }{ \mathrm{run} } = \frac{ \mathrm{\Delta y} }{ \mathrm{\Delta x} } = \frac{ f( x_{n} ) - 0 }{ x_{n} - x_{n+1} } = \frac{0 - f(x_{n})}{(x_{n+1} - x_{n})}
 $$
 
-<script type="text/javascript" src="https://stackedit.io/libs/MathJax/MathJax.js?config=TeX-AMS_HTML"></script>
+ 
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 

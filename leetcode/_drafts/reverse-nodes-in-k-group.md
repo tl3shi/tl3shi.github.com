@@ -22,8 +22,9 @@ tags: [leetcode, c++, list, 链表]
 
 解题思路：
 
-没遇到k个，就reverse一下。值得注意的是：
-- 输入list长度是否对于k个;
+每遇到k个，就reverse一下。值得注意的是：
+
+- 输入list长度是否大于k个;
 - 最后不足的k个;
 - reverse 中间的一段前之前得backup一下当前段(tail)的下一个, 以防止reverse内部改变了tail->next值.
 

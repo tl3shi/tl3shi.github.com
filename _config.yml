@@ -87,7 +87,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : tanglei
+      short_name : tangleithu
     livefyre :
       site_id : 123
     intensedebate :

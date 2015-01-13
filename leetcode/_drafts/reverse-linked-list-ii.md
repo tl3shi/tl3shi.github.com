@@ -22,35 +22,33 @@ tags: [leetcode, c++, list]
 解题思路：
 画个图 较清晰。
 
-1-> 2->3-> 4->5->NULL
-pre m cur next
-pre不变, 一个一个插入到pre后面.
+	1-> 2->3 -> 4->5->NULL
+	pre m cur next
+	pre不变, 一个一个插入到pre后面.
 
 ```cpp
-	
-	
-	ListNode *reverseBetween(ListNode *head, int m, int n)
-	{
-	    if(m == n) return head;
-	    ListNode dummy(-1);
-	    ListNode * pre = &dummy;
-	    pre->next = head;
-	    int i = 1;
-	    while(i++ < m)
-	        pre = pre->next;
-	    
-	    //reverse between [m n]
-	    ListNode * mthNode = pre->next;
-	    ListNode * cur = mthNode->next, *next = NULL;
-	    while(m++ < n)
-	    {
-	        next = cur->next;
-	        cur->next = pre->next;
-	        pre->next = cur;
-	        cur=next;
-	    }
-	    mthNode->next = next;
-	    return dummy.next;
-	}	
+ListNode *reverseBetween(ListNode *head, int m, int n)
+{
+    if(m == n) return head;
+    ListNode dummy(-1);
+    ListNode * pre = &dummy;
+    pre->next = head;
+    int i = 1;
+    while(i++ < m)
+        pre = pre->next;
+    
+    //reverse between [m n]
+    ListNode * mthNode = pre->next;
+    ListNode * cur = mthNode->next, *next = NULL;
+    while(m++ < n)
+    {
+        next = cur->next;
+        cur->next = pre->next;
+        pre->next = cur;
+        cur=next;
+    }
+    mthNode->next = next;
+    return dummy.next;
+}	
 ```
 
