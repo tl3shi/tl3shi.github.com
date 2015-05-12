@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>微信分享自定义工具</title>
+    <script>
+var imgUrl = "http://1251001823.cdn.myqcloud.com/1251001823/wechat/mao80.jpg";
+var lineLink = "http://1251001823.cdn.myqcloud.com/1251001823/wechat/sjm/launcher";
+var descContent = '在9×9范围内的格子中，使用色块围住白色神经猫。';
+window.shareTitle = '我用了1步围住神经猫，击败99%的人，你能超过我吗？';
+var appid = '';
+function shareFriend() {
+    WeixinJSBridge.invoke('sendAppMessage',{
+        "appid": appid,
+        "img_url": imgUrl,
+        "img_width": "200",
+        "img_height": "200",
+        "link": lineLink,
+        "desc": descContent,
+        "title": window.shareTitle
+    }, function(res) {
+    })
+}
+function shareTimeline() {
+    WeixinJSBridge.invoke('shareTimeline',{
+        "img_url": imgUrl,
+        "img_width": "200",
+        "img_height": "200",
+        "link": lineLink,
+        "desc": descContent,
+        "title": window.shareTitle
+    }, function(res) {
+    });
+}
+function shareWeibo() {
+    WeixinJSBridge.invoke('shareWeibo',{
+        "content": descContent,
+        "url": lineLink,
+    }, function(res) {
+    });
+}
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.on('menu:share:appmessage', function(argv){
+        shareFriend();
+    });
+    WeixinJSBridge.on('menu:share:timeline', function(argv){
+        shareTimeline();
+    });
+    WeixinJSBridge.on('menu:share:weibo', function(argv){
+        shareWeibo();
+    });
+}, false);
+function gotolink()
+        {
+            //window.location.href='http://1251001823.cdn.myqcloud.com/1251001823/wechat/sjm/launcher';
+            var step = prompt("请输入你想骗大家的步数(0-100):");
+            if(step >0 && step <= 100)
+                window.shareTitle = "我用了" + step +"步围住神经猫，击败" +(100-step) + "%的人，你能超过我吗？";
+            alert("没错，点击右上角，就这样分享出去即可!");
+        }
+</script>
+    </head>
+    <body>
+        
+        图片url <input type="text" name="imgUrl"></input> <br/>
+        跳转的url <input type="text" name="link"></input> <br/>
+        分享的标题 <input type="text" name="title"></input> <br/>
+
+        <font size="7">方法 </font><br/>
+
+        <button onclick="gotolink();"><font
+                size="5">点我，然后输入你想几步完成？</font>
+        </button>注意要在微信中内置的浏览器打开才行～<br/>
+        <font
+            size="5">没错，点击右上角，就这样分享出去即可(发送给朋友或者分享到朋友圈)!</font>
+        <br/>
+            <img
+            src="http://1251001823.cdn.myqcloud.com/1251001823/wechat/mao80.jpg"
+            width="100px" height="100px"/><br/>
+        <span style="display:block;float:left;color:red;font-size:40px;">
+        <a href="http://tanglei.me/resource/shenjingmao_reason.html">原理在这里</a>
+    </span><br/>
+        <font size="1">若链接半天打不开，请点击此链接后，右上角点击“在浏览器中打开”</font>
+        <br/>
+            <br/>
+            <br/>
+            <div style="height:100px;"></div>
+            <font size="1" color="FFFFD0">声明：仅供娱乐哈~ 出事本人不负责任~
+                不同意这条就别玩哦~</font>
+    </body>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/17194623.js"></script>
+<noscript><a href="http://www.51.la/?17194623" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17194623.asp" style="border:none" /></a></noscript>
+</html>
