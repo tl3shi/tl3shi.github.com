@@ -186,11 +186,24 @@ sup {
         size="3">高级</font>系统架构设计师认证，获<a href="resource/system-architect-2nd-place-2011-03.jpg" target="_blank">湖南<font
             size="3">省第二名</a></font>
     </li>
-    <li>编程语言: Scala(Playframework, 1.5年), C++(60k+行,近2年), Java(J2EE+Android, 2年), PHP(1/2年,
+    <li>编程语言: Scala(Play, 1.5年, 宜信), C++(60k+行,近2年), Java(J2EE+Android, 2年), PHP(1/2年,
     <a href="http://tencent.com/zh-cn/index.shtml"><font size="3">腾讯</font></a>), Python(1/2年, <a
         href="http://www.umeng.com/" target="_blank">友盟Umeng</a>); 
-    CG算法, Web开发(MVC); 
-    工具: Mac/Linux, Shell, Vim, VisualStudio, (My)Eclipse, IntelliJ IDEA.etc. Mysql/Oracle/Hive etc.
+    </li>
+    <li>
+        计算机基础扎实，熟悉基本算法和数据结构, 掌握基本的CG算法等;
+    </li>
+    <li>
+        熟练常用Web开发技术, 熟练使用常用MVC等开发框架, 如Django/Struts/Spring等; 
+    </li>
+    <li>
+        熟练使用MySQL/Oracle等关系型数据库, 对Hive/MongoDB/Redis有一定经验;
+    </li>
+    <li>
+        常用工具：Mac/Linux, Shell, Vim, Git, VisualStudio, (My)Eclipse, IntelliJ IDEA. etc
+    </li>
+    <li>
+        代码洁癖患者, 具有良好的分析和解决问题能力, 学习能力强, 能够自我驱动.
     </li>
 </ul>
 
@@ -206,20 +219,19 @@ sup {
         关键字：<em>Scala</em>，<em>Playframework</em>，<em>P2P</em>， <em>互联网金融</em>
     </li>
     <li>
-        工作：<a href="https://shangdai.yixin.com/" target="_blank">商通贷</a>是宜信专为电商卖家和小微商户提供的基于业务数据进行实时授信的纯线上贷款服务. 作为核心开发者之一, 主要负责50+合作商的API对接, 用户从申请到放款前的流程, WebSqlTool, 电销系统对接, 部分数据统计系统工作. 短信, 邮件网关改进维护, 制定并实施小组Code Review规范, 开发发布等流程提高产品稳定性. 具体而言主要有: 
+        工作：<a href="https://shangdai.yixin.com/" target="_blank">商通贷</a>是宜信专为电商卖家和小微商户提供的基于业务数据进行实时授信的纯线上贷款服务. 作为核心开发者之一, 主要工作包括: 
     </li>
     <ul>
-        <li><b>WebSqlTool</b>: 使开发/运营人员对数据库查询更加方便, 省去登录堡垒机(跳板机)连接Mysql/Oracle/Hive等繁琐操作, 直接输入SQL得到查询结果. 并能对查询定时邮件报表的方式, 能对数据变动进行简单监控告警. 
-            <em>Play, Akka, Quartz, jQuery/Bootstrap.</em>
+        <li><b>WebSqlTool</b>: 使开发/运营人员对数据库查询更加方便, 省去登录堡垒机(跳板机)连接Mysql/Oracle/Hive等繁琐操作, 直接输入SQL得到查询结果. 并能对查询定时邮件报表的方式, 能对数据变动进行简单监控告警.  
+            <i> (Akka, Quartz, jQuery/Bootstrap)</i>
         </li>
-
-        <li><b>主站及合作商对接</b>: 合作商进件是商通贷主要的来源, 设计并实现OpenAPI, 提供两种对接方式供合作商选择使其能够较快对接商通贷系统(外部系统对接时提高自己系统的鲁棒性与稳定性); 主站包括Lazada平台等数据的抓取工作, 预估额度, 申请贷款流程, 审核状态变更等通知. 用于提高收款的短信/红包定时发送, 后台接口的Tracking等等.
+        <li><b>平台主流程及合作商对接</b>: 平台主流程是业务的核心, 产品的入口. 主要工作包括Lazada平台等数据的抓取工作, 预估额度, 申请贷款流程, 审核状态变更等通知; 合作商进件是商通贷主要的来源, 设计并实现Open API, 提供三种对接方式供合作商选择使其能够较快对接商通贷系统(外部系统对接时提高自己系统的鲁棒性与稳定性); 其中还包括用于提高收款的(活动)短信/红包定时发送(Task系统)等, 后台接口的Tracking系统的设计实现以提供对后台服务的细粒度的监控从而提高产品稳定性.  
+            <i>(Akka, Cron, RESTfulAPI, Hive, Redis, Sqoop)</i>
         </li>
-        <li><b>统计系统/电销系统对接/网关</b>: 统计系统满足日常数据运维需要, 提供各种维度的统计; 
-        对接宜信电销系统, 所有用户数据的不同维度推送(客户召回等策略), 外呼业绩自动化报表;
-        短信, 邮件网关系统的改进重构, 省去添加模板的复杂流程.
+        <li><b>统计系统/电销系统对接/网关</b>: 统计系统满足日常数据运维需要, 提供各种维度的统计分析帮助运营等进行决策; 对接宜信电销系统, 所有用户数据的不同维度推送(客户召回等策略)以提高进件/收款率, 外呼业绩自动化报表为相关人员提供统一考核标准以节省人工成本; 部门短信/邮件网关系统的重构改进, 省去添加模板的复杂流程.   
+            <i>(SQL, SOAP/RESTful, Cron)</i>
         </li>
-        <li><b>其他</b>: 开发/发布流程规范, Code Review 规范并推进实施, 完成自动化Code Review工具(hackthon).
+        <li><b>其他</b>: 开发/产品发布流程规范, 小组Code Review 规范并推进实施, 带领团队完成自动化Code Review工具(hackthon)并应用于小组的所有项目中. <i>(Jenkins/Wiki/Jira/Lain/灰度发布)</i>
         </li>
     </ul>
 </ul>
