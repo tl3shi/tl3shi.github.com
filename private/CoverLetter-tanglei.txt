@@ -7,7 +7,7 @@ I gratuated with a master degree in Software Engineering, from Tsinghua Universi
 As you can see in the attached CV, I have solid computer background, fully experienced with web development, mastering web frameworks.
 I am skillful in MySQL/Oracle or other ralational databases, used MongoDB/Redis/Hive or other NoSQL.
 I'm passionate about clean code and also able to learn new technical materials fast.
-I'm good at analytical thinking and debuging to solve problems.  I also used any tools to make things done with more effeciency.
+I'm good at analytical thinking and debugging to solve problems.  I also used any tools to make things done with more effeciency.
 
 Thank you for taking the time to consider my application and I amd looking forward to hearing from you.
 
